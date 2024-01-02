@@ -5,8 +5,8 @@
     <classes>
       <class name="TestCase.LoginPageTest">
         <methods>
-          <include name="intilize"/>
-          <include name="Upload"/>
+          <include name="Start"/>
+          <include name="Review"/>
         </methods>
       </class> <!-- TestCase.LoginPageTest -->
     </classes>

@@ -1,7 +1,5 @@
 package Pages;
 
-import static org.testng.Assert.assertTrue;
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Login {
 	WebDriver driver;
@@ -28,13 +27,15 @@ public class Login {
 
 	}
 
-	public boolean VerifyLoginSucess() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+	public void VerifyLoginSucess() {
 
-		WebElement name = wait.until(
-				ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[@class='fw-large blue-dark mb-3 fs-10']")));
-		System.out.println("Login Sucessfull");
-		return name.isDisplayed();
+	     WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2)); 
+	        WebElement welcomeMessage = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[@class='fw-large blue-dark mb-3 fs-10']")));
 
-	}
-}
+	        
+	        Assert.assertNotNull(welcomeMessage, "Welcome message element is not present Login Failed");
+	        System.out.println("Login Successful");
+    }
+	    }
+	
+
