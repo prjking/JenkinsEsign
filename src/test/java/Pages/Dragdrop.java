@@ -211,7 +211,7 @@ public class Dragdrop {
 		Thread.sleep(10000);
 
 		driver.findElement(By.className("ankaCropper__selectButton")).click();
-		Runtime.getRuntime().exec("\"C:\\Java_Workspace\\Opp\\src\\test\\resources\\image.exe\"");
+		Runtime.getRuntime().exec("\"C:\\Work Space\\EsignTest\\src\\test\\resources\\image.exe\"");
 		Thread.sleep(10000);
 		WebElement Doubleclick2 = driver.findElement(By.xpath("//*[@id=\"drag-template-background\"]//div[9]//canvas"));
 		Actions action2 = new Actions(driver);

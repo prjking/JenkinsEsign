@@ -18,7 +18,7 @@ public class LoginPageTest extends testCaseBase {
 	Addrecipients addrecipients;
 	Dragdrop dragdrop;
 	ReviewaNdSend reviewaNdSend;
-	
+
 	@BeforeMethod
 	public void Start() {
 		setup();
@@ -26,9 +26,9 @@ public class LoginPageTest extends testCaseBase {
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
 		addrecipients = new Addrecipients(driver);
-		dragdrop =new Dragdrop(driver);
+		dragdrop = new Dragdrop(driver);
 		reviewaNdSend = new ReviewaNdSend(driver);
-		
+
 	}
 
 	@Test
@@ -53,10 +53,10 @@ public class LoginPageTest extends testCaseBase {
 		login.VerifyLoginSucess();
 		alldocuments.Createdocument();
 		alldocuments.Validdocument();
-		uploaddocuments.Fileupload();
-		uploaddocuments.VerifyUpload();
+		uploaddocuments.Dropbox();
+		// uploaddocuments.Fileupload();
+		// uploaddocuments.VerifyUpload();
 	}
-
 
 	@Test
 	public void AddingRecipients() throws Exception {
@@ -66,10 +66,9 @@ public class LoginPageTest extends testCaseBase {
 		alldocuments.Validdocument();
 		uploaddocuments.Fileupload();
 		addrecipients.Recipients();
+		addrecipients.Recipients1();
+		addrecipients.MoreFields();
 		addrecipients.Verifrecipient();
-		
-		
-	
 
 	}
 
@@ -87,9 +86,9 @@ public class LoginPageTest extends testCaseBase {
 		dragdrop.image();
 		dragdrop.send();
 
-       
+	}
 
-	}@Test
+	@Test
 	public void Review() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
@@ -97,14 +96,15 @@ public class LoginPageTest extends testCaseBase {
 		alldocuments.Validdocument();
 		uploaddocuments.Fileupload();
 		addrecipients.Recipients();
+		addrecipients.Recipients1();
+		addrecipients.MoreFields();
+		addrecipients.Verifrecipient();
 		dragdrop.EssentialFields();
 		dragdrop.Contentfields();
 		dragdrop.Draw();
 		dragdrop.image();
 		dragdrop.send();
 		reviewaNdSend.submit();
-
-       
 
 	}
 }
