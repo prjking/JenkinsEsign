@@ -70,13 +70,16 @@ public class Addrecipients {
 		Morea.click();
 
 		Thread.sleep(10000);
-
+		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='middle_name']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='middle_name']")).sendKeys("prj");
+		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Address']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Address']")).sendKeys("rjy");
-
+		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Title']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Title']")).sendKeys("mr");
+		driver.findElement(By.id("//input[@placeholder='Company name']")).clear();
 		driver.findElement(By.id("//input[@placeholder='Company name']")).sendKeys("Act");
 		Thread.sleep(10000);
+		driver.findElement(By.id("//div[@id='user_2']//input[@placeholder='Phone']")).clear();
 		driver.findElement(By.id("//div[@id='user_2']//input[@placeholder='Phone']")).sendKeys("9888789456");
 		Thread.sleep(10000);
 
