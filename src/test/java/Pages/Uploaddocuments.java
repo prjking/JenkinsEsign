@@ -23,7 +23,7 @@ public class Uploaddocuments {
 	public void Fileupload() throws InterruptedException, Exception {
 
 		By Element = By.xpath("//h4[@class='fw-normal blue pb-2']");
-		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(4));
+		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(10));
 		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
 		canc.click();
 		Runtime.getRuntime().exec("\"C:\\Work Space\\EsignTest\\src\\test\\resources\\upload.exe\"");

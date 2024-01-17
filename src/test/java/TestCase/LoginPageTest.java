@@ -5,9 +5,13 @@ import org.testng.annotations.Test;
 
 import Pages.Addrecipients;
 import Pages.Alldocuments;
+import Pages.Dashboard;
 import Pages.Dragdrop;
 import Pages.Login;
+import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
+import Pages.Signup;
+import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
 
@@ -18,6 +22,10 @@ public class LoginPageTest extends testCaseBase {
 	Addrecipients addrecipients;
 	Dragdrop dragdrop;
 	ReviewaNdSend reviewaNdSend;
+	RecevierSide recevierSide;
+	Signup signup;
+	Templatespage templatespage;
+	Dashboard dashboard;
 
 	@BeforeMethod
 	public void Start() {
@@ -28,6 +36,16 @@ public class LoginPageTest extends testCaseBase {
 		addrecipients = new Addrecipients(driver);
 		dragdrop = new Dragdrop(driver);
 		reviewaNdSend = new ReviewaNdSend(driver);
+		recevierSide = new RecevierSide(driver);
+		signup = new Signup(driver);
+		templatespage = new Templatespage(driver);
+		dashboard = new Dashboard(driver);
+
+	}
+
+	@Test
+	public void Signupverify() throws Exception {
+		signup.Newsignind();
 
 	}
 
@@ -97,7 +115,6 @@ public class LoginPageTest extends testCaseBase {
 		uploaddocuments.Fileupload();
 		addrecipients.Recipients();
 		addrecipients.Recipients1();
-		addrecipients.MoreFields();
 		addrecipients.Verifrecipient();
 		dragdrop.EssentialFields();
 		dragdrop.Contentfields();
@@ -105,6 +122,39 @@ public class LoginPageTest extends testCaseBase {
 		dragdrop.image();
 		dragdrop.send();
 		reviewaNdSend.submit();
+	}
 
+	@Test
+	public void ValidRecevierSide() throws Exception {
+		recevierSide.CheckRecevierSide();
+
+	}
+
+	@Test
+	public void ValidTemplates() throws Exception {
+		login.Signin();
+		templatespage.Temp();
+		// templatespage.EditTemp();
+		// templatespage.SendTocontacts();
+		// templatespage.Addnew();
+		// templatespage.Send();
+		// templatespage.ConfirmationAlert();
+		// templatespage.BulkSend();
+		// templatespage.ValidBulk();
+		//templatespage.Getlink();
+		//templatespage.Share();
+		//templatespage.Settings();
+		//templatespage.ChangeOwner();
+		//templatespage.Viewdata();
+		//templatespage.DuplicateTemplate();
+		//templatespage.RenameTemplate();
+		templatespage.inactive();
+
+	}
+
+	@Test
+	public void Validdash() throws Exception {
+		login.Signin();
+		dashboard.Verifydashboard();
 	}
 }

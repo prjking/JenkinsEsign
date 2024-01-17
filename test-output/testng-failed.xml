@@ -6,7 +6,7 @@
       <class name="TestCase.LoginPageTest">
         <methods>
           <include name="Start"/>
-          <include name="Review"/>
+          <include name="ValidTemplates"/>
         </methods>
       </class> <!-- TestCase.LoginPageTest -->
     </classes>

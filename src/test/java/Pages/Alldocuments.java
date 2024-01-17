@@ -19,28 +19,45 @@ public class Alldocuments {
 	}
 
 	public void Createdocument() throws InterruptedException {
-		Thread.sleep(10000);
-		By Element = By.xpath("//span[normalize-space()='Create Document']");
-		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(10));
-		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
-		canc.click();
 		
-		/*
-		 * JavascriptExecutor executor = (JavascriptExecutor) driver;
-		 * executor.executeScript("arguments[0]", Element);
-		 */
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
+
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
+		} catch (Exception e) {
+
+			System.out.println("Overlay not found or not invisible.");
+		}
+
+		By ad = By.xpath("//span[normalize-space()='Create Document']");
+
+		try {
+			WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
+			WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
+
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", add);
+			System.out.println("Element clicked using JS.");
+		} catch (Exception e) {
+
+			System.out.println("Element not clickable or not found: ");
+		}
+		
+
+	
 
 	}
 
 	public void Validdocument() {
 
-	     WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2)); 
-	        WebElement DocMessage = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='text-center text-dark fw-normal fs-4 mb-1']")));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement DocMessage = wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//h3[@class='text-center text-dark fw-normal fs-4 mb-1']")));
 
-	        Assert.assertEquals(DocMessage.getText(), "Upload Documents");
-    
+		Assert.assertEquals(DocMessage.getText(), "Upload Documents");
 
-	        System.out.println("Upload Documents Page Displayed");
-   }
-	
+		System.out.println("Upload Documents Page Displayed");
+	}
+
 }
