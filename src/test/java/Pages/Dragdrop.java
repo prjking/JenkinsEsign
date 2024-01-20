@@ -96,7 +96,7 @@ public class Dragdrop {
 		}
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//span[normalize-space()='Edit']")).click();
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		// driver.findElement(By.xpath("//input[@placeholder='Select']")).click();
 		// driver.findElement(By.xpath("//input//ul//li//span[normalize-space()='Segoe
 		// Script']")).click();

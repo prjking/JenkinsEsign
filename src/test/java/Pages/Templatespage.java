@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -553,76 +554,309 @@ public class Templatespage {
 	}
 
 	public void inactive() throws Exception {
+		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
-		By dr = By.xpath("//input[@placeholder='Select Status']");
-		WebElement drp = wait.until(ExpectedConditions.presenceOfElementLocated(dr));
-		drp.click();
-		By sel = By.xpath("//div[@x-placement='bottom-start']//li[2]/span");
-		WebElement sele = wait.until(ExpectedConditions.presenceOfElementLocated(sel));
-		sele.click();
 
-		/*
-		 * JavascriptExecutor executor = (JavascriptExecutor) driver;
-		 * executor.executeScript("arguments[0].click();", sele);
-		 */
-try {
-		By elementToHoverLocator = By.xpath("//div[@class='el-table__fixed']//tr[2]");
-		WebElement elementToHover1 = wait.until(ExpectedConditions.presenceOfElementLocated(elementToHoverLocator));
+		By dropdownLocator = By.xpath("//input[@placeholder='Select Status']");
+		WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(dropdownLocator));
+		dropdown.click();
+
+		By optionLocator = By.xpath("//div[@x-placement='bottom-start']//li[2]/span");
+		WebElement inactive = wait.until(ExpectedConditions.elementToBeClickable(optionLocator));
+		inactive.click();
+
+		Thread.sleep(10000);
+		By elementToHoverLocator = By.xpath("//div[@class='el-table__fixed']//tr[4]");
+		WebElement elementToHover1 = wait.until(ExpectedConditions.elementToBeClickable(elementToHoverLocator));
 
 		Actions actions = new Actions(driver);
 		actions.moveToElement(elementToHover1).perform();
-
-		By elementToHover2Locator = By.xpath("//div[@class='el-table__fixed']//tr[3]//ul/li[2]");
-		WebElement elementToHover2 = wait.until(ExpectedConditions.presenceOfElementLocated(elementToHover2Locator));
+		Thread.sleep(10000);
+		By elementToHover2Locator = By
+				.xpath("//div[@class='el-table__body-wrapper is-scrolling-left']//tr[3]//ul/li[2]//button/span/i");
+		WebElement elementToHover2 = wait.until(ExpectedConditions.elementToBeClickable(elementToHover2Locator));
 
 		Actions actions2 = new Actions(driver);
 		actions2.moveToElement(elementToHover2).perform();
 
 		By subMenuItemLocator = By.xpath("//ul[@x-placement='top-end']//a[2]");
 		WebElement subMenuItem = wait.until(ExpectedConditions.elementToBeClickable(subMenuItemLocator));
-		
-		actions.click(subMenuItem).perform();
-		JavascriptExecutor executor1 = (JavascriptExecutor) driver;
-		executor1.executeScript("arguments[0].click();", subMenuItem);
-}
-catch (Exception e) {
 
-}
+		actions.click(subMenuItem).perform();
+
 	}
 
 	public void Delete() throws Exception {
+
+		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
-		By dr = By.xpath("//input[@placeholder='Select Status']");
-		WebElement drp = wait.until(ExpectedConditions.presenceOfElementLocated(dr));
-		drp.click();
-		By sel = By.xpath("//li//span[text()='Inactive']");
-		WebElement sele = wait.until(ExpectedConditions.presenceOfElementLocated(sel));
-		sele.click();
-		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(3));
 
-		try {
+		By dropdownLocator = By.xpath("//input[@placeholder='Select Status']");
+		WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(dropdownLocator));
+		dropdown.click();
 
-			By elementToHoverLocator = By.xpath("//div[@class='el-table__fixed']//tr[3]");
-			WebElement elementToHover1 = wait1
-					.until(ExpectedConditions.presenceOfElementLocated(elementToHoverLocator));
+		By optionLocator = By.xpath("//div[@x-placement='bottom-start']//li[2]/span");
+		WebElement inactive = wait.until(ExpectedConditions.elementToBeClickable(optionLocator));
+		inactive.click();
 
-			Actions actions = new Actions(driver);
-			actions.moveToElement(elementToHover1).perform();
+		Thread.sleep(10000);
+		By elementToHoverLocator = By
+				.xpath("//div[@class='el-table__header-wrapper']//span[@class='el-checkbox__inner']");
+		WebElement elementToHover1 = wait.until(ExpectedConditions.elementToBeClickable(elementToHoverLocator));
 
-			By elementToHover2Locator = By.xpath("//div[@class='el-table__fixed']//tr[3]//ul/li[2]");
-			WebElement elementToHover2 = wait1
-					.until(ExpectedConditions.presenceOfElementLocated(elementToHover2Locator));
+		Actions actions = new Actions(driver);
+		actions.moveToElement(elementToHover1).perform();
+		Thread.sleep(10000);
+		By elementToHover2Locator = By.xpath("//ul[@x-placement='bottom-end']//li/span");
+		WebElement elementToHover2 = wait.until(ExpectedConditions.elementToBeClickable(elementToHover2Locator));
 
-			Actions actions2 = new Actions(driver);
-			actions2.moveToElement(elementToHover2).perform();
+		Actions actions2 = new Actions(driver);
+		actions2.moveToElement(elementToHover2).perform();
 
-			By subMenuItemLocator = By.xpath("//ul[@x-placement='top-end']//a[3]");
-			WebElement subMenuItem = wait1.until(ExpectedConditions.elementToBeClickable(subMenuItemLocator));
+	}
 
-			actions.click(subMenuItem).perform();
+	public void Creategroup() throws Exception {
 
-		} catch (Exception e) {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		By createdoc = By
+				.xpath("//button[@class='el-button create-btn px-4 ml-2 scaling-button el-button--primary is-plain']");
+		WebElement createdocument = wait.until(ExpectedConditions.elementToBeClickable(createdoc));
+		createdocument.click();
+
+		By blank = By.xpath("//span[normalize-space()='Blank template']");
+		WebElement blankdocument = wait.until(ExpectedConditions.elementToBeClickable(blank));
+		blankdocument.click();
+
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
 
 		}
+		By template = By.xpath("//input[@placeholder='Enter template name']");
+		WebElement templatename = wait.until(ExpectedConditions.elementToBeClickable(template));
+		templatename.sendKeys("Test");
+
+		By number = By.xpath("//input[@placeholder='Select number of pages']");
+		WebElement numberpages = wait.until(ExpectedConditions.elementToBeClickable(number));
+		numberpages.click();
+
+		By list = By.xpath("//div[@x-placement='bottom-start']//li[2]");
+		WebElement sellist = wait.until(ExpectedConditions.elementToBeClickable(list));
+		sellist.click();
+
+		/*
+		 * By Addnew = By.xpath("//i[@class='el-tooltip el-icon-circle-plus-outline']");
+		 * WebElement Addnewgroup =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Addnew));
+		 * Addnewgroup.click();
+		 * 
+		 * Set<String> windowHandles1 = driver.getWindowHandles(); for (String handle :
+		 * windowHandles1) { driver.switchTo().window(handle);
+		 * 
+		 * }
+		 * driver.findElement(By.xpath("//input[@placeholder='Enter Title']")).clear();
+		 * 
+		 * By Group = By.xpath("//input[@placeholder='Enter Title']"); WebElement
+		 * Grouptitle = wait.until(ExpectedConditions.elementToBeClickable(Group));
+		 * Grouptitle.sendKeys("Sample Groups1");
+		 * 
+		 * /* By save = By.xpath("//span//i[@class='el-icon-check']"); WebElement
+		 * savegroup = wait.until(ExpectedConditions.elementToBeClickable(save));
+		 * savegroup.click();
+		 * 
+		 * By Continue = By.xpath("//span[normalize-space()='Continue']"); WebElement
+		 * Continueto = wait.until(ExpectedConditions.elementToBeClickable(Continue));
+		 * Continueto.click();
+		 * 
+		 * Set<String> windowHandles2 = driver.getWindowHandles(); for (String handle :
+		 * windowHandles2) { driver.switchTo().window(handle);
+		 * 
+		 * }
+		 */
+
+		By select = By.xpath(
+				"//div[@class='el-col el-col-20']//i[@class='el-select__caret el-input__icon el-icon-arrow-up']");
+		WebElement selectgroup = wait.until(ExpectedConditions.elementToBeClickable(select));
+		selectgroup.click();
+
+		By selectlist = By.xpath("//div[@class='el-select-dropdown el-popper is-multiple']//li[3]");
+		WebElement selectgrouplist = wait.until(ExpectedConditions.elementToBeClickable(selectlist));
+		selectgrouplist.click();
+
+		By Continue = By.xpath("//span[normalize-space()='Continue']");
+		WebElement Continueto = wait.until(ExpectedConditions.elementToBeClickable(Continue));
+		Continueto.click();
+
+		/*
+		 * Set<String> windowHandles2 = driver.getWindowHandles(); for (String handle :
+		 * windowHandles2) { driver.switchTo().window(handle);
+		 * 
+		 * }
+		 */
+		Thread.sleep(10000);
+		By Select1 = By.xpath("//input[@placeholder='Select Contact type']");
+		WebElement Selectinput1 = wait.until(ExpectedConditions.elementToBeClickable(Select1));
+		Selectinput1.click();
+
+		By Select = By.xpath("//div[@x-placement='bottom-start']//li[1]");
+		WebElement Selectinput = wait.until(ExpectedConditions.elementToBeClickable(Select));
+		Selectinput.click();
+
+		By Ad1 = By.xpath("//span[normalize-space()='Add']");
+		WebElement Add1 = wait.until(ExpectedConditions.elementToBeClickable(Ad1));
+		Add1.click();
+
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//span[normalize-space()='Enforce Signature Order']")).click();
+
+		By saveuser = By.xpath("//span[normalize-space()='Save Users']");
+		WebElement saveusers = wait.until(ExpectedConditions.elementToBeClickable(saveuser));
+		saveusers.click();
+		Thread.sleep(10000);
+		By send = By.xpath("(//input[@class='el-input__inner'])[2]");
+		WebElement sends = wait.until(ExpectedConditions.elementToBeClickable(send));
+		sends.click();
+		Thread.sleep(10000);
+		By send1 = By.xpath("//div[@class='el-select-dropdown el-popper']//li[2]");
+		WebElement sends1 = wait.until(ExpectedConditions.elementToBeClickable(send1));
+		sends1.click();
+
+		By EMPLOYEE = By.xpath("//div[text()='ALL FIELDS']");
+		WebDriverWait wait22 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement EMPLOYEEForm = wait22.until(ExpectedConditions.elementToBeClickable(EMPLOYEE));
+		EMPLOYEEForm.click();
+		System.out.println("EMPLOYEEForm clicked");
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+		/*
+		 * By EMPLOYEE = By.xpath("//div[text()='EMPLOYEE FORM']"); WebDriverWait wait22
+		 * = new WebDriverWait(driver, Duration.ofMinutes(2)); WebElement EMPLOYEEForm =
+		 * wait22.until(ExpectedConditions.elementToBeClickable(EMPLOYEE));
+		 * EMPLOYEEForm.click(); System.out.println("EMPLOYEEForm clicked");
+		 * 
+		 * Thread.sleep(10000);
+		 * 
+		 * Actions actions = new Actions(driver);
+		 * actions.sendKeys(Keys.PAGE_DOWN).perform();
+		 */
+
+		WebElement name = wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//button[@id='0_entity_0']//div[@class='name'][normalize-space()='NAME']")));
+
+		WebElement Target = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='svg']")));
+		Actions actions1 = new Actions(driver);
+		actions1.clickAndHold(name).moveToElement(Target).release().build().perform();
+
+		/*
+		 * WebElement Doubleclick =
+		 * driver.findElement(By.xpath("//div[contains(@class,'overlay')]")); Actions
+		 * action = new Actions(driver);
+		 * action.doubleClick(Doubleclick).build().perform(); Set<String> windowHandles3
+		 * = driver.getWindowHandles(); for (String handle : windowHandles3) {
+		 * driver.switchTo().window(handle); }
+		 * 
+		 * driver.findElement(By.xpath(
+		 * "(//label[text()='Placeholder']/following::input)[1]")).clear(); By Place =
+		 * By.xpath("(//label[text()='Placeholder']/following::input)[1]"); WebElement
+		 * Placeholder = wait.until(ExpectedConditions.elementToBeClickable(Place));
+		 * Placeholder.sendKeys("Sai"); Thread.sleep(10000); By Save = By.
+		 * xpath("//div[contains(@aria-label,'Field Properties')//span[contains(text(),'Save')]"
+		 * ); WebElement Saves =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Save)); Saves.click();
+		 */
+
+		WebElement dob = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='0_entity_1']")));
+
+		Actions actions11 = new Actions(driver);
+		actions11.clickAndHold(dob).moveToElement(Target).release().build().perform();
+
+		/*
+		 * Thread.sleep(1000); WebElement Doubleclick1 =
+		 * driver.findElement(By.xpath("//input[@placeholder='Dob']")); Actions action1
+		 * = new Actions(driver); action1.doubleClick(Doubleclick1).build().perform();
+		 * Set<String> windowHandles5 = driver.getWindowHandles(); for (String handle :
+		 * windowHandles5) { driver.switchTo().window(handle); } Thread.sleep(10000);
+		 * driver.findElement(By.xpath(
+		 * "(//span[@class='el-date-picker__header-label'])[1]")).click(); By Pyear =
+		 * By.xpath("//button[@aria-label='Previous Year']"); WebElement Pyears =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Pyear)); Pyears.click();
+		 * Thread.sleep(10000); By Pyear1 =
+		 * By.xpath("//button[@aria-label='Previous Year']"); WebElement Pyears1 =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Pyear1)); Pyears1.click();
+		 * Thread.sleep(10000); By Pyear2 =
+		 * By.xpath("//button[@aria-label='Previous Year']"); WebElement Pyears2 =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Pyear2)); Pyears2.click();
+		 * Thread.sleep(10000); By year = By.xpath("(//a[@class='cell'])[1]");
+		 * WebElement years = wait.until(ExpectedConditions.elementToBeClickable(year));
+		 * years.click(); Thread.sleep(10000); By month =
+		 * By.xpath("//a[contains(text(),'Jun')]"); WebElement months =
+		 * wait.until(ExpectedConditions.elementToBeClickable(month)); months.click();
+		 * Thread.sleep(10000); By day =
+		 * By.xpath("//span[text()[normalize-space()='19']]"); WebElement days =
+		 * wait.until(ExpectedConditions.elementToBeClickable(day)); days.click();
+		 */
+
+		WebElement phone = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='0_entity_2']")));
+
+		Actions actions12 = new Actions(driver);
+		actions12.clickAndHold(phone).moveToElement(Target).release().build().perform();
+
+		/*
+		 * Thread.sleep(1000); WebElement Doubleclick12 =
+		 * driver.findElement(By.xpath("(//div[text()=' Phone '])[1]")); Actions
+		 * action13 = new Actions(driver);
+		 * action13.doubleClick(Doubleclick12).build().perform(); Set<String>
+		 * windowHandles6 = driver.getWindowHandles(); for (String handle :
+		 * windowHandles6) { driver.switchTo().window(handle); }
+		 * 
+		 * By mob = By.xpath("(//div[@class='el-input']//input)[3]"); WebElement mobn =
+		 * wait.until(ExpectedConditions.elementToBeClickable(mob));
+		 * mobn.sendKeys("8923546987"); Thread.sleep(10000); By Save1 =
+		 * By.xpath("(//span[text()='Save'])[3]"); WebElement Saved =
+		 * wait.until(ExpectedConditions.elementToBeClickable(Save1)); Saved.click();
+		 */
+		
+		By Creat = By.xpath("//span[text()='Create Document']");
+		WebElement Creatdoc = wait.until(ExpectedConditions.elementToBeClickable(Creat));
+		Creatdoc.click();
+
+		try {
+			By clo = By.xpath("(//div[@class='el-notification__closeBtn el-icon-close'])[2]");
+			WebElement close = wait.until(ExpectedConditions.elementToBeClickable(clo));
+			close.click();
+
+		} catch (Exception e) {
+			By Send = By.xpath("//span[text()='Send Document']");
+			WebElement Senddoc = wait.until(ExpectedConditions.elementToBeClickable(Send));
+			Senddoc.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", Senddoc);
+			System.out.println("senddoc clicked using JS.");
+		}
+
+		By emai = By.xpath("(//input[@placeholder='Search with Email'])[2]");
+		WebElement email = wait.until(ExpectedConditions.elementToBeClickable(emai));
+		email.click();
+
+		By emaisel = By.xpath("//div[@x-placement='top-start']//li");
+		WebElement emailsel = wait.until(ExpectedConditions.elementToBeClickable(emaisel));
+		emailsel.click();
+
+		By saveuser1 = By.xpath("//span[text()=' Save Users ']");
+		WebElement saveusers1 = wait.until(ExpectedConditions.elementToBeClickable(saveuser1));
+		saveusers1.click();
+
+		By ele = By.xpath("//textarea[@placeholder='Subject']");
+		WebElement sen = wait.until(ExpectedConditions.elementToBeClickable(ele));
+		sen.sendKeys("Test Sample");
+		driver.findElement(By.xpath("(//textarea[@class='el-textarea__inner'])[2]")).sendKeys(
+				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//span[normalize-space()='Send Document']")).click();
+
 	}
 }

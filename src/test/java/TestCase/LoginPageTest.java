@@ -134,7 +134,7 @@ public class LoginPageTest extends testCaseBase {
 	public void ValidTemplates() throws Exception {
 		login.Signin();
 		templatespage.Temp();
-		// templatespage.EditTemp();
+		//templatespage.EditTemp();
 		// templatespage.SendTocontacts();
 		// templatespage.Addnew();
 		// templatespage.Send();
@@ -148,7 +148,9 @@ public class LoginPageTest extends testCaseBase {
 		//templatespage.Viewdata();
 		//templatespage.DuplicateTemplate();
 		//templatespage.RenameTemplate();
-		templatespage.inactive();
+		//templatespage.inactive();
+		//templatespage.Delete();
+		templatespage.Creategroup();
 
 	}
 
