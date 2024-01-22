@@ -68,21 +68,28 @@ public class Templatespage {
 		actions.click(subMenuItem).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 
-		WebElement Company = wait
-				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='companyEle']")));
-		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
-		Thread.sleep(1000);
-		Actions actions3 = new Actions(driver);
-		actions3.clickAndHold(Company).moveToElement(Target).release().build().perform();
+		/*
+		 * WebElement Company = wait
+		 * .until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+		 * "//button[@id='companyEle']"))); WebElement Target =
+		 * driver.findElement(By.xpath("//*[@id=\"svg\"]")); Thread.sleep(1000); Actions
+		 * actions3 = new Actions(driver);
+		 * actions3.clickAndHold(Company).moveToElement(Target).release().build().
+		 * perform(); Thread.sleep(10000);
+		 */
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']"))
 				.click();
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@class='el-scrollbar']//ul//li[2]")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Save Template']")).click();
+		//driver.findElement(By.xpath("//span[normalize-space()='Save Template']")).click();
+		
+		
+		
+		
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
+		//driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
 	}
 
 	public void SendTocontacts() throws Exception {
