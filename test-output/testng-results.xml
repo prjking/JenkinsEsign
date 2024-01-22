@@ -2,38 +2,38 @@
 <testng-results ignored="9" total="10" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-22T10:40:02 IST" name="Default suite" finished-at="2024-01-22T10:41:01 IST" duration-ms="58741">
+  <suite started-at="2024-01-22T11:06:07 IST" name="Default suite" finished-at="2024-01-22T11:07:12 IST" duration-ms="65155">
     <groups>
     </groups>
-    <test started-at="2024-01-22T10:40:02 IST" name="Default test" finished-at="2024-01-22T10:41:01 IST" duration-ms="58741">
+    <test started-at="2024-01-22T11:06:07 IST" name="Default test" finished-at="2024-01-22T11:07:12 IST" duration-ms="65155">
       <class name="TestCase.LoginPageTest">
-        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.LoginPageTest@17497425]" started-at="2024-01-22T10:40:02 IST" name="Start" finished-at="2024-01-22T10:40:09 IST" duration-ms="7356" status="PASS">
+        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.LoginPageTest@17497425]" started-at="2024-01-22T11:06:07 IST" name="Start" finished-at="2024-01-22T11:06:16 IST" duration-ms="9137" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
-        <test-method signature="ValidTemplates()[pri:0, instance:TestCase.LoginPageTest@17497425]" started-at="2024-01-22T10:40:09 IST" name="ValidTemplates" finished-at="2024-01-22T10:41:01 IST" duration-ms="51342" status="FAIL">
+        <test-method signature="ValidTemplates()[pri:0, instance:TestCase.LoginPageTest@17497425]" started-at="2024-01-22T11:06:16 IST" name="ValidTemplates" finished-at="2024-01-22T11:07:12 IST" duration-ms="55947" status="FAIL">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']"}
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//ul[@x-placement="bottom-end"]//a[1]"}
   (Session info: chrome=120.0.6099.225)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.16.1', revision: '9b4c83354e'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [03a1642b20281982e581787476bfabe5, findElement {using=xpath, value=//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50924}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50924/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 03a1642b20281982e581787476bfabe5]]>
+Command: [b87daa2a8e17a2382ac8ca520699cd8c, findElement {using=xpath, value=//ul[@x-placement="bottom-end"]//a[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53638}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53638/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b87daa2a8e17a2382ac8ca520699cd8c]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']"}
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//ul[@x-placement="bottom-end"]//a[1]"}
   (Session info: chrome=120.0.6099.225)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.16.1', revision: '9b4c83354e'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [03a1642b20281982e581787476bfabe5, findElement {using=xpath, value=//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50924}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50924/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 03a1642b20281982e581787476bfabe5
+Command: [b87daa2a8e17a2382ac8ca520699cd8c, findElement {using=xpath, value=//ul[@x-placement="bottom-end"]//a[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53638}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53638/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b87daa2a8e17a2382ac8ca520699cd8c
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -48,7 +48,7 @@ at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(Elemen
 at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:360)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:354)
-at Pages.Templatespage.EditTemp(Templatespage.java:80)
+at Pages.Templatespage.EditTemp(Templatespage.java:67)
 at TestCase.LoginPageTest.ValidTemplates(LoginPageTest.java:137)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)

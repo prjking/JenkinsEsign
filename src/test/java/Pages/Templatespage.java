@@ -68,28 +68,39 @@ public class Templatespage {
 		actions.click(subMenuItem).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 
-		/*
-		 * WebElement Company = wait
-		 * .until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-		 * "//button[@id='companyEle']"))); WebElement Target =
-		 * driver.findElement(By.xpath("//*[@id=\"svg\"]")); Thread.sleep(1000); Actions
-		 * actions3 = new Actions(driver);
-		 * actions3.clickAndHold(Company).moveToElement(Target).release().build().
-		 * perform(); Thread.sleep(10000);
-		 */
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']"))
 				.click();
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@class='el-scrollbar']//ul//li[2]")).click();
 		Thread.sleep(10000);
-		//driver.findElement(By.xpath("//span[normalize-space()='Save Template']")).click();
 		
+
+		  WebElement Company = wait
+		  .until(ExpectedConditions.presenceOfElementLocated(By.xpath(
+		  "//button[@id='companyEle']"))); WebElement Target =
+		  driver.findElement(By.xpath("//*[@id=\"svg\"]")); Thread.sleep(1000); Actions
+		  actions3 = new Actions(driver);
+		  actions3.clickAndHold(Company).moveToElement(Target).release().build().
+		  perform(); Thread.sleep(10000);
+		 driver.findElement(By.xpath("//span[text()='Create Document']")).click();
+		 
+		 try {
+				By clo = By.xpath("//div[@class='el-notification__closeBtn el-icon-close']");
+				WebElement close = wait.until(ExpectedConditions.elementToBeClickable(clo));
+				close.click();
+
+			} catch (Exception e) {
+				By Send = By.xpath("//span[text()='Save Draft']");
+				WebElement Senddoc = wait.until(ExpectedConditions.elementToBeClickable(Send));
+				Senddoc.click();
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", Senddoc);
+				System.out.println("senddoc clicked using JS.");
+			}
+
 		
-		
-		
-		Thread.sleep(10000);
-		//driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
+		// driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
 	}
 
 	public void SendTocontacts() throws Exception {
@@ -826,7 +837,7 @@ public class Templatespage {
 		 * By.xpath("(//span[text()='Save'])[3]"); WebElement Saved =
 		 * wait.until(ExpectedConditions.elementToBeClickable(Save1)); Saved.click();
 		 */
-		
+
 		By Creat = By.xpath("//span[text()='Create Document']");
 		WebElement Creatdoc = wait.until(ExpectedConditions.elementToBeClickable(Creat));
 		Creatdoc.click();
