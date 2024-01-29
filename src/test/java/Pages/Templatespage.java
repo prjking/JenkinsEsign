@@ -1,5 +1,6 @@
 package Pages;
 
+
 import java.time.Duration;
 import java.util.Set;
 
@@ -74,7 +75,7 @@ public class Templatespage {
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@class='el-scrollbar']//ul//li[2]")).click();
 		Thread.sleep(10000);
-		
+
 
 		  WebElement Company = wait
 		  .until(ExpectedConditions.presenceOfElementLocated(By.xpath(
@@ -84,7 +85,7 @@ public class Templatespage {
 		  actions3.clickAndHold(Company).moveToElement(Target).release().build().
 		  perform(); Thread.sleep(10000);
 		 driver.findElement(By.xpath("//span[text()='Create Document']")).click();
-		 
+
 		 try {
 				By clo = By.xpath("//div[@class='el-notification__closeBtn el-icon-close']");
 				WebElement close = wait.until(ExpectedConditions.elementToBeClickable(clo));
@@ -99,7 +100,7 @@ public class Templatespage {
 				System.out.println("senddoc clicked using JS.");
 			}
 
-		
+
 		// driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
 	}
 
@@ -128,7 +129,7 @@ public class Templatespage {
 		// driver.findElement(By.xpath("(//div[@role='group']//span[@class='el-checkbox__inner'])[2]")).click();
 		driver.findElement(By.xpath("//label[@class='el-checkbox mt-1']//span[normalize-space()='Select All']"))
 				.click();
-		;
+
 	}
 
 	public void Addnew() throws Exception {
@@ -481,14 +482,14 @@ public class Templatespage {
 		 * By.xpath("//div[@class='el-table__fixed']//tr[4]"); WebElement
 		 * elementToHover1 =
 		 * wait.until(ExpectedConditions.presenceOfElementLocated(elementToHover));
-		 * 
+		 *
 		 * Actions actions = new Actions(driver);
-		 * 
+		 *
 		 * actions.moveToElement((WebElement) elementToHover).perform();
 		 * Thread.sleep(10000); WebElement elementToHover2 =
 		 * driver.findElement(By.xpath(
 		 * "//div[@class='el-table__fixed']//tr[3]//ul/li[2]"));
-		 * 
+		 *
 		 * Actions actions2 = new Actions(driver); Thread.sleep(10000);
 		 * actions2.moveToElement(elementToHover2).perform(); Thread.sleep(10000);
 		 * WebElement subMenuItem =
@@ -496,11 +497,11 @@ public class Templatespage {
 		 * actions.click(subMenuItem).perform(); Set<String> windowHandles =
 		 * driver.getWindowHandles(); for (String handle : windowHandles) {
 		 * driver.switchTo().window(handle);
-		 * 
+		 *
 		 * } Thread.sleep(10000); driver.findElement(By.xpath(
 		 * "//label[@class='el-checkbox el-tooltip checkbox mb-2 mr-2']//span[@class='el-checkbox__input']"
 		 * )) .click();
-		 * 
+		 *
 		 * By ad12 = By.xpath("//span[normalize-space()='Download CSV']"); WebDriverWait
 		 * hold12 = new WebDriverWait(driver, Duration.ofMinutes(5)); WebElement add12 =
 		 * hold12.until(ExpectedConditions.elementToBeClickable(ad12)); add12.click();
@@ -668,28 +669,28 @@ public class Templatespage {
 		 * WebElement Addnewgroup =
 		 * wait.until(ExpectedConditions.elementToBeClickable(Addnew));
 		 * Addnewgroup.click();
-		 * 
+		 *
 		 * Set<String> windowHandles1 = driver.getWindowHandles(); for (String handle :
 		 * windowHandles1) { driver.switchTo().window(handle);
-		 * 
+		 *
 		 * }
 		 * driver.findElement(By.xpath("//input[@placeholder='Enter Title']")).clear();
-		 * 
+		 *
 		 * By Group = By.xpath("//input[@placeholder='Enter Title']"); WebElement
 		 * Grouptitle = wait.until(ExpectedConditions.elementToBeClickable(Group));
 		 * Grouptitle.sendKeys("Sample Groups1");
-		 * 
+		 *
 		 * /* By save = By.xpath("//span//i[@class='el-icon-check']"); WebElement
 		 * savegroup = wait.until(ExpectedConditions.elementToBeClickable(save));
 		 * savegroup.click();
-		 * 
+		 *
 		 * By Continue = By.xpath("//span[normalize-space()='Continue']"); WebElement
 		 * Continueto = wait.until(ExpectedConditions.elementToBeClickable(Continue));
 		 * Continueto.click();
-		 * 
+		 *
 		 * Set<String> windowHandles2 = driver.getWindowHandles(); for (String handle :
 		 * windowHandles2) { driver.switchTo().window(handle);
-		 * 
+		 *
 		 * }
 		 */
 
@@ -709,7 +710,7 @@ public class Templatespage {
 		/*
 		 * Set<String> windowHandles2 = driver.getWindowHandles(); for (String handle :
 		 * windowHandles2) { driver.switchTo().window(handle);
-		 * 
+		 *
 		 * }
 		 */
 		Thread.sleep(10000);
@@ -753,9 +754,9 @@ public class Templatespage {
 		 * = new WebDriverWait(driver, Duration.ofMinutes(2)); WebElement EMPLOYEEForm =
 		 * wait22.until(ExpectedConditions.elementToBeClickable(EMPLOYEE));
 		 * EMPLOYEEForm.click(); System.out.println("EMPLOYEEForm clicked");
-		 * 
+		 *
 		 * Thread.sleep(10000);
-		 * 
+		 *
 		 * Actions actions = new Actions(driver);
 		 * actions.sendKeys(Keys.PAGE_DOWN).perform();
 		 */
@@ -774,7 +775,7 @@ public class Templatespage {
 		 * action.doubleClick(Doubleclick).build().perform(); Set<String> windowHandles3
 		 * = driver.getWindowHandles(); for (String handle : windowHandles3) {
 		 * driver.switchTo().window(handle); }
-		 * 
+		 *
 		 * driver.findElement(By.xpath(
 		 * "(//label[text()='Placeholder']/following::input)[1]")).clear(); By Place =
 		 * By.xpath("(//label[text()='Placeholder']/following::input)[1]"); WebElement
@@ -830,7 +831,7 @@ public class Templatespage {
 		 * action13.doubleClick(Doubleclick12).build().perform(); Set<String>
 		 * windowHandles6 = driver.getWindowHandles(); for (String handle :
 		 * windowHandles6) { driver.switchTo().window(handle); }
-		 * 
+		 *
 		 * By mob = By.xpath("(//div[@class='el-input']//input)[3]"); WebElement mobn =
 		 * wait.until(ExpectedConditions.elementToBeClickable(mob));
 		 * mobn.sendKeys("8923546987"); Thread.sleep(10000); By Save1 =

@@ -5,11 +5,9 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 
 public class Addrecipients {
 	WebDriver driver;
@@ -21,21 +19,28 @@ public class Addrecipients {
 	}
 
 	public void Recipients() throws Exception {
-		By ad = By.xpath("//span[contains(text(),'Add Recipient')]");
-		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
-		WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
-		add.click();
-       
-		driver.findElement(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']")).click();
 
-		By ad1 = By.xpath("//div[@x-placement]//ul//li[1]");
-		WebDriverWait hold1 = new WebDriverWait(driver, Duration.ofMinutes(3));
-		WebElement add1 = hold1.until(ExpectedConditions.elementToBeClickable(ad1));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+
+		By ad = By.xpath("//span[contains(text(),'Add Recipient')]");
+
+		WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ad));
+		add.click();
+
+By con = By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']");
+
+		WebElement conc = wait.until(ExpectedConditions.elementToBeClickable(con));
+		conc.click();
+
+
+		By ad1 = By.xpath("//div[@x-placement]//ul//li[2]");
+
+		WebElement add1 = wait.until(ExpectedConditions.elementToBeClickable(ad1));
 		add1.click();
-        Thread.sleep(10000);
+
 		driver.findElement(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']")).click();
-		
-		By ad2 = By.xpath("//div[@x-placement]//ul//li[1]");
+
+		By ad2 = By.xpath("//div[@x-placement]//ul//li[3]");
 		WebDriverWait hold2 = new WebDriverWait(driver, Duration.ofMinutes(3));
 		WebElement add2 = hold2.until(ExpectedConditions.elementToBeClickable(ad2));
 		add2.click();
@@ -57,17 +62,19 @@ public class Addrecipients {
 		WebDriverWait hold12 = new WebDriverWait(driver, Duration.ofMinutes(3));
 		WebElement add12 = hold12.until(ExpectedConditions.elementToBeClickable(ad12));
 		add12.click();
-
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@x-placement]//ul//li[2]")).click();
+		driver.findElement(By.xpath("//div[@x-placement]//ul//li[1]")).click();
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']")).click();
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//div[@x-placement]//ul//li[2]")).click();
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//span[normalize-space()='Enforce Signature Order']")).click();
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//span[normalize-space()='Enforce Signature Order']")).click();
-		
+
 		By ad123 = By.xpath("//span[normalize-space()='Save Users']");
 		WebDriverWait hold123 = new WebDriverWait(driver, Duration.ofMinutes(3));
 		WebElement add123 = hold123.until(ExpectedConditions.elementToBeClickable(ad123));

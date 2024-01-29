@@ -76,12 +76,12 @@ public class RecevierSide {
 		Actions actions = new Actions(driver);
 
 		actions.moveToElement(elementToHover).perform();
-		Thread.sleep(10000);  
+		Thread.sleep(10000);
 		By down11 = By.xpath("//ul[@x-placement]//li[normalize-space()='TESTING (1)']");
 		WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofMinutes(2));
 		WebElement download11 = wait11.until(ExpectedConditions.elementToBeClickable(down11));
 		download11.click();
-		
+
 
 	}
 }

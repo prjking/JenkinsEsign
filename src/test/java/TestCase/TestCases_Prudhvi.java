@@ -1,5 +1,6 @@
 package TestCase;
 
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
 
-public class LoginPageTest extends testCaseBase {
+public class TestCases_Prudhvi extends testCaseBase {
 	Login login;
 	Alldocuments alldocuments;
 	Uploaddocuments uploaddocuments;
@@ -26,6 +27,7 @@ public class LoginPageTest extends testCaseBase {
 	Signup signup;
 	Templatespage templatespage;
 	Dashboard dashboard;
+
 
 	@BeforeMethod
 	public void Start() {
@@ -41,70 +43,73 @@ public class LoginPageTest extends testCaseBase {
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
 
+
 	}
 
-//	@Test
-//	public void Signupverify() throws Exception {
-//		signup.Newsignind();
-//
-//	}
-//
-//	@Test
-//
-//	public void verifyloginwithValidCredentials() throws InterruptedException {
-//		login.Signin();
-//		login.VerifyLoginSucess();
-//
-//	}
-//
-//	@Test
-//	public void Document() throws InterruptedException {
-//		login.Signin();
-//		login.VerifyLoginSucess();
-//		alldocuments.Createdocument();
-//		alldocuments.Validdocument();
-//	}
-//
-//	@Test
-//	public void Upload() throws Exception {
-//		login.Signin();
-//		login.VerifyLoginSucess();
-//		alldocuments.Createdocument();
-//		alldocuments.Validdocument();
-//		uploaddocuments.Dropbox();
-//		// uploaddocuments.Fileupload();
-//		// uploaddocuments.VerifyUpload();
-//	}
-//
-//	@Test
-//	public void AddingRecipients() throws Exception {
-//		login.Signin();
-//		login.VerifyLoginSucess();
-//		alldocuments.Createdocument();
-//		alldocuments.Validdocument();
-//		uploaddocuments.Fileupload();
-//		addrecipients.Recipients();
-//		addrecipients.Recipients1();
-//		addrecipients.MoreFields();
-//		addrecipients.Verifrecipient();
-//
-//	}
-//
-//	@Test
-//	public void Drag() throws Exception {
-//		login.Signin();
-//		login.VerifyLoginSucess();
-//		alldocuments.Createdocument();
-//		alldocuments.Validdocument();
-//		uploaddocuments.Fileupload();
-//		addrecipients.Recipients();
-//		dragdrop.EssentialFields();
-//		dragdrop.Contentfields();
-//		dragdrop.Draw();
-//		dragdrop.image();
-//		dragdrop.send();
-//
-//	}
+	@Test
+	public void Signupverify() throws Exception {
+		signup.Newsignind();
+
+	}
+
+	@Test
+
+	public void verifyloginwithValidCredentials() throws InterruptedException {
+		login.Signin();
+		login.VerifyLoginSucess();
+
+	}
+
+	@Test
+	public void Document() throws InterruptedException {
+		login.Signin();
+		login.VerifyLoginSucess();
+		alldocuments.Createdocument();
+		alldocuments.Validdocument();
+	}
+
+	@Test
+	public void Upload() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		alldocuments.Createdocument();
+		alldocuments.Validdocument();
+		uploaddocuments.oneDriveupload();
+		//uploaddocuments.uploadGdrive();
+		//uploaddocuments.Dropbox();
+		//uploaddocuments.Fileupload();
+		// uploaddocuments.VerifyUpload();
+	}
+
+	@Test
+	public void AddingRecipients() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		alldocuments.Createdocument();
+		alldocuments.Validdocument();
+		uploaddocuments.Fileupload();
+		addrecipients.Recipients();
+		addrecipients.Recipients1();
+		addrecipients.MoreFields();
+		addrecipients.Verifrecipient();
+
+	}
+
+	@Test
+	public void Drag() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		alldocuments.Createdocument();
+		alldocuments.Validdocument();
+		uploaddocuments.Fileupload();
+		addrecipients.Recipients();
+		dragdrop.EssentialFields();
+		dragdrop.Contentfields();
+		dragdrop.Draw();
+		dragdrop.image();
+		dragdrop.send();
+
+	}
 
 	@Test
 	public void Review() throws Exception {
@@ -124,20 +129,20 @@ public class LoginPageTest extends testCaseBase {
 		reviewaNdSend.submit();
 	}
 
-//	@Test
-//	public void ValidRecevierSide() throws Exception {
-//		recevierSide.CheckRecevierSide();
-//
-//	}
+	@Test
+	public void ValidRecevierSide() throws Exception {
+		recevierSide.CheckRecevierSide();
 
-	//@Test
-//	public void ValidTemplates() throws Exception {
-//		login.Signin();
-//		templatespage.Temp();
-//		templatespage.EditTemp();
-		// templatespage.SendTocontacts();
+	}
+
+	@Test
+	public void ValidTemplates() throws Exception {
+		login.Signin();
+		templatespage.Temp();
+		//templatespage.EditTemp();
+		templatespage.SendTocontacts();
 		// templatespage.Addnew();
-		// templatespage.Send();
+		 //templatespage.Send();
 		// templatespage.ConfirmationAlert();
 		// templatespage.BulkSend();
 		// templatespage.ValidBulk();
@@ -157,3 +162,4 @@ public class LoginPageTest extends testCaseBase {
 
 
 
+}

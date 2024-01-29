@@ -1,12 +1,10 @@
 package Pages;
 
-import java.awt.Desktop.Action;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -168,7 +166,7 @@ public class Dragdrop {
 		// paragraphEle
 		/*
 		 * WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
-		 * 
+		 *
 		 * WebElement paragraphEle = wait2
 		 * .until(ExpectedConditions.presenceOfElementLocated(By.id("paragraphEle")));
 		 * Actions actions2 = new Actions(driver);
@@ -187,7 +185,7 @@ public class Dragdrop {
 		 * sendKeys("Test Sample"); driver.findElement(By.
 		 * xpath("//div[@class='el-dialog__wrapper fields-dialog']//button[2]")).click()
 		 * ;
-		 * 
+		 *
 		 */ // image
 
 	}
@@ -245,7 +243,7 @@ public class Dragdrop {
 	/*
 	 * public void Daterange() throws Exception { Thread.sleep(10000); WebDriverWait
 	 * wait3 = new WebDriverWait(driver, Duration.ofMinutes(2));
-	 * 
+	 *
 	 * WebElement tableEle =
 	 * wait3.until(ExpectedConditions.presenceOfElementLocated(By.
 	 * xpath("//div[contains(text(),'Date Time Range')]"))); WebElement Target =
@@ -265,8 +263,8 @@ public class Dragdrop {
 	 * Thread.sleep(20000); driver.findElement(By.
 	 * xpath("//button[@class='el-button el-picker-panel__link-btn el-button--default el-button--mini is-disabled is-plain']//span[contains(text(),'OK')]"
 	 * )).click();
-	 * 
-	 * 
+	 *
+	 *
 	 * }
 	 */
 }
