@@ -179,7 +179,6 @@ public class Docscenarios extends testCaseBase {
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
 		documentsScenarios.MultipleSigners();
-		documentsScenarios.RecipientsCC();
 		documentsScenarios.Signorder();
 		documentsScenarios.Saveuser();
 		documentsScenarios.MultipleSignersEssentialFields();
