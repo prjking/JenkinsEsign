@@ -118,7 +118,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
-
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 		System.out.println("Selected Recipients Successfully");
 
