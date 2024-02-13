@@ -451,7 +451,7 @@ public class DocumentsScenarios {
 
 		waitAndClick(actions, fullName, Target);
 		System.out.println("FullName Element Drag and Drop Done");
-
+		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[3]"));
@@ -460,7 +460,7 @@ public class DocumentsScenarios {
 
 		waitAndClick(actions, fullName1, Target);
 		System.out.println("FullName Element Drag and Drop Done");
-
+		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[4]"));
