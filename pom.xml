@@ -143,30 +143,26 @@
 	<!-- Other project configuration elements -->
 
 	<build>
-		<plugins>
-			<plugin>
-
-
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.2.5</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>test.xml</suiteXmlFile>
-					</suiteXmlFiles>
-					<!-- Other configuration options for the surefire plugin -->
-				</configuration>
-
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.3.0</version>
-				<!-- Other configuration options for the jar plugin -->
-			</plugin>
-
-		</plugins>
+		 <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>test.xml</suiteXmlFile>
+                        <suiteXmlFile>Doc.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <!-- Other configuration options for the surefire plugin -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <!-- Other configuration options for the jar plugin -->
+            </plugin>
+        </plugins>
 	</build>
 
 
