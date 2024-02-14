@@ -50,7 +50,7 @@ public class Docscenarios extends testCaseBase {
 	}
 
 	@Test(priority = 1)
-	public void ValidDocScenarios() throws Exception {
+	public void ValiddocumentsScenarios() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
@@ -120,7 +120,7 @@ public class Docscenarios extends testCaseBase {
 	}
 
 	@Test(priority = 6, enabled = false)
-	public void ValidDocscenariosGdrive() throws Exception {
+	public void ValiddocumentsScenariosGdrive() throws Exception {
 
 		login.Signin();
 		login.VerifyLoginSucess();
@@ -576,5 +576,203 @@ public class Docscenarios extends testCaseBase {
 		documentsScenarios.dragaAndDropAtFour();
 		documentsScenarios.Senddoc();
 		documentsScenarios.Blankwithoutsenderautofill();
+	}
+
+//Ramya_Testcases
+	@Test(priority = 30)
+	public void VerifyAppSigSenderorderWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddApprover();
+		documentsScenarios.AddRearrangeAPPSignerSenderThreeOne();
+		documentsScenarios.AddRearrangeSender();
+		documentsScenarios.AddRearrangeZeroFour();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddEssentialFields();
+		documentsScenarios.AddEssentialFields1();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+
+	}
+
+	@Test(priority = 31)
+	public void VerifySendersigCCorderWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddEssentialFieldscc();
+		documentsScenarios.AddEssentialFieldsccSender();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+	}
+
+	@Test(priority = 32)
+	public void VerifySigSenderCCorderWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.AddRearrangeSignerSenderCCThreeOne();
+		documentsScenarios.AddRearrangeSigners();
+		documentsScenarios.AddRearrangeOneTwo();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddEssentialFieldscc();
+		documentsScenarios.AddEssentialFieldsccSender();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+
+	}
+
+	@Test(priority = 33)
+	public void VerifyCCSenderSingerWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.AddRearrangeCCSenderSignerThreeOne();
+		documentsScenarios.AddRearrangeSendercc();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddEssentialFields();
+		documentsScenarios.AddEssentialFields1();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+
+	}
+
+	@Test(priority = 34)
+	public void VerifySingerCCSenderWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.AddRearrangeSignersCCSenderThreeOne();
+		documentsScenarios.AddRearrangeCC();
+		documentsScenarios.AddRearrangeOnetoThree();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddRearrangeSenderFields1();
+		documentsScenarios.AddEssentialFields1();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+
+	}
+
+	@Test(priority = 35)
+	public void VerifySenderCCSignerWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.AddRearrangeSenderCCSignersThreeOne();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddSenderFields();
+		documentsScenarios.AddEssentialFieldsccSender();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+	}
+
+	@Test(priority = 36)
+	public void VerifyCCSignerSenderWOEWOA() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleSigners();
+		documentsScenarios.AddRecipientsCC();
+		documentsScenarios.AddRearrangeCCSignerSENDERThreeOne();
+		documentsScenarios.AddRearrangeccsignersender();
+		documentsScenarios.AddRearrangeZeroFour1();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddSenderFields2();
+		documentsScenarios.AddEssentialFields();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+
+	}
+
+	@Test(priority = 37)
+	public void VerifySenderMultipleApprovers() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+
+		documentsScenarios.AddMultipleApprovers();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddSenderFields();
+		documentsScenarios.AddMultipleAPPFields();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+	}
+
+	@Test(priority = 38)
+	public void VerifyMultpleApproverSender() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleApprovers();
+		documentsScenarios.AddRearrangeMulApproverSENDERThreeOne();
+		documentsScenarios.AddRearrangeMultipleApproverssender();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddRearrangeMultipleAPPFields();
+		documentsScenarios.AddRearrangeSenderFields();
+		documentsScenarios.Senddoc();
+		documentsScenarios.Blankwithoutsenderautofill();
+	}
+
+	@Test(priority = 39)
+	public void VerifySenderMultipleCC() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleCC();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddSenderFields();
+		documentsScenarios.AddFinishdocument();
+	}
+
+	@Test(priority = 40)
+	public void VerifyMultpleCCSender() throws Exception {
+		login.Signin();
+		login.VerifyLoginSucess();
+		documentsScenarios.DocScenario();
+		documentsScenarios.Blankdocloginaccount();
+		documentsScenarios.AddMultipleCC();
+		documentsScenarios.AddRearrangeMulApproverSENDERThreeOne();
+		documentsScenarios.AddRearrangeMultipleApproverssender();
+		documentsScenarios.Signorder();
+		documentsScenarios.Saveuser();
+		documentsScenarios.AddRearrangeSenderFields();
+		documentsScenarios.AddFinishdocument();
 	}
 }
