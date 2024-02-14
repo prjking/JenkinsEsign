@@ -254,7 +254,10 @@ public class DocumentsScenarios {
 			System.out.println("Overlay not found or not invisible.");
 		}
 		Thread.sleep(10000);
-		waitEle(By.xpath("//span[normalize-space()='Send Document']"));
+
+		WebElement element = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Send Document']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		System.out.println("Document Submitted Sucessfully");
 		waitEle(By.xpath("//span[normalize-space()='View Document']"));
 		System.out.println("Clicked Submitted Sucessfully");
@@ -530,4 +533,279 @@ public class DocumentsScenarios {
 
 	}
 
+	// Meghana
+	public void SignatureAndFullNameFeilds() throws Exception {
+		Thread.sleep(10000);
+		Actions actions1 = new Actions(driver);
+
+		WebElement Sign1 = driver.findElement(By.xpath("//button[@id='signatureEle']"));
+		WebElement Target1 = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+
+		waitAndClick(actions1, Sign1, Target1);
+		System.out.println("Signature Element Drag and Drop Done");
+
+		WebElement fullName1 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
+
+		waitAndClick(actions1, fullName1, Target1);
+		System.out.println("FullName Drag and Drop Done");
+	}
+
+	public void DragAndDropAtThree() throws Exception {
+
+		Thread.sleep(10000);
+		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[3]"));
+		SignatureAndFullNameFeilds();
+
+	}
+
+	public void DradAndDropAtTwo() throws Exception {
+
+		Thread.sleep(10000);
+		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[2]"));
+		SignatureAndFullNameFeilds();
+
+	}
+
+	public void multipleApprover() throws Exception {
+		Thread.sleep(10000);
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+		System.out.println("Approver Element 1 Selected Sucessfully ");
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+		System.out.println("Approver Element 2 Selected Sucessfully ");
+	}
+
+	public void CCAtFour() throws Exception {
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+
+		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		System.out.println("selected CC At 4");
+	}
+
+	public void dragaAndDropAtFour() throws Exception {
+		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[4]"));
+
+		SignatureAndFullNameFeilds();
+	}
+
+	public void DragAndDropAtThreeFour() throws Exception {
+
+		Thread.sleep(10000);
+
+		DragAndDropAtThree();
+		// At four
+		dragaAndDropAtFour();
+	}
+
+	public void multipleCCThreeFour() throws Exception {
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		System.out.println("CC Element Selected Successfully");
+		CCAtFour();
+
+	}
+
+	public void multipleCCFourFive() throws Exception {
+		Thread.sleep(10000);
+		CCAtFour();
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
+
+		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		System.out.println("Multiple CC selected successfully");
+	}
+
+	public void RearrangeThreeOne() throws Exception {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement CC = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='user_3']")));
+		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
+		System.out.println("Rearrangement done");
+	}
+
+	public void RearrangeAtThreeTwo() throws Exception {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement CC = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='user_3']")));
+		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_2']"));
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
+		System.out.println("Rearrangement done");
+	}
+
+	public void multipleSigner() throws Exception {
+		Recipients();
+		System.out.println("signer Element Selected Successfully");
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
+		System.out.println("signer Element Selected Successfully");
+	}
+
+	public void ApproverThree() throws Exception {
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+		System.out.println("Approver Element Selected Sucessfully ");
+	}
+
+	public void RearrangeZeroTwo() throws Exception {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement CC = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='user_0']")));
+		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_2']"));
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
+		System.out.println("Rearrangement done");
+	}
+
+	public void scrollDown() throws Exception {
+
+		WebElement scrollbar = driver.findElement(By.xpath(
+				"//div[@class='select-recipients']/div[@class='el-scrollbar']/div[@class='el-scrollbar__bar is-vertical']/div[@class='el-scrollbar__thumb']"));
+
+		Actions actions = new Actions(driver);
+
+		actions.clickAndHold(scrollbar).perform();
+
+		int offset = 100;
+		actions.moveByOffset(0, offset).perform();
+
+		actions.release().perform();
+		System.out.println("ScrollDown done successfully");
+	}
+
+	public void scrollUp() {
+		WebElement scrollbar = driver.findElement(By.xpath(
+				"//div[@class='select-recipients']/div[@class='el-scrollbar']/div[@class='el-scrollbar__bar is-vertical']/div[@class='el-scrollbar__thumb']"));
+
+		Actions actions = new Actions(driver);
+
+		actions.clickAndHold(scrollbar).perform();
+
+		int offset = 0;
+		actions.moveByOffset(0, offset).perform();
+
+		actions.release().perform();
+		System.out.println("ScrollUp done successfully");
+	}
+
+	public void Approver1() throws Exception {
+
+		Thread.sleep(10000);
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+		System.out.println("Approver Element Selected Sucessfully ");
+	}
+
+	public void RecipientsCC3() throws Exception {
+
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+
+		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		System.out.println("Selected CC Successfully");
+	}
 }
