@@ -2,9 +2,7 @@
 <suite name="MyTestSuite">
 	<test name="Docscenarios Test Run">
 		<classes>
-			<class name="TestCase.Docscenarios" />
-			<class name="TestCase.Docscenarios_Meghana"/>
-			<class name="TestCase.Docscenarios_Ramya"/>
+			<class name="TestCase.Docscenarios" />	
 		</classes>
 	</test>
 </suite>
