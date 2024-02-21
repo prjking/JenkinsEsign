@@ -150,7 +150,7 @@
 				<version>3.2.5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>test.xml</suiteXmlFile>
+						
 						<suiteXmlFile>Doc.xml</suiteXmlFile>
 						<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
 						<suiteXmlFile>DocRamya.xml</suiteXmlFile>
