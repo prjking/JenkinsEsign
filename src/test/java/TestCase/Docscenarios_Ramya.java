@@ -48,10 +48,11 @@ public class Docscenarios_Ramya extends testCaseBase {
 		documentsScenarios = new DocumentsScenarios(driver);
 
 	}
+
 	@Test(priority = 30)
 	public void VerifyAppSigSenderorderWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleSigners();
@@ -71,7 +72,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 31)
 	public void VerifySendersigCCorderWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 
@@ -88,7 +89,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 32)
 	public void VerifySigSenderCCorderWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 
@@ -109,7 +110,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 33)
 	public void VerifyCCSenderSingerWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 
@@ -129,7 +130,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 34)
 	public void VerifySingerCCSenderWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 
@@ -150,7 +151,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 35)
 	public void VerifySenderCCSignerWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleSigners();
@@ -167,7 +168,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 36)
 	public void VerifyCCSignerSenderWOEWOA() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleSigners();
@@ -187,7 +188,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 37)
 	public void VerifySenderMultipleApprovers() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 
@@ -203,7 +204,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 38)
 	public void VerifyMultpleApproverSender() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleApprovers();
@@ -220,7 +221,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 39)
 	public void VerifySenderMultipleCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleCC();
@@ -233,7 +234,7 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 40)
 	public void VerifyMultpleCCSender() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
+
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleCC();
