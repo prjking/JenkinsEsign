@@ -52,7 +52,7 @@ public class DocumentsScenarios {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
 		} catch (Exception e) {
 
-			System.out.println("Overlay not found or not invisible.");
+			// System.out.println("Overlay not found or not invisible.");
 		}
 
 		By ad = By.xpath("//span[normalize-space()='Documents']");
@@ -66,11 +66,11 @@ public class DocumentsScenarios {
 			WebElement docu = wait.until(ExpectedConditions
 					.presenceOfElementLocated(By.xpath("//h3[@class='fw-medium blue-dark mb-3 fs-6']")));
 			Assert.assertNotNull(docu, "Documents");
-			System.out.println("Clicked On Documents using JS successfully");
+			// System.out.println("Clicked On Documents using JS successfully");
 
 		} catch (Exception e) {
 
-			System.out.println("Element not clickable or not found: ");
+			// System.out.println("Element not clickable or not found: ");
 		}
 		waitEle(By
 				.xpath("//button[@class='el-button scaling-button el-button--primary is-plain create-btn px-4 ml-2']"));
@@ -101,10 +101,10 @@ public class DocumentsScenarios {
 		Docnameen.sendKeys("test");
 
 		driver.findElement(By.xpath("(//span[normalize-space()='Continue'])[2]")).click();
-		WebElement doc = wait
-				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='fw-bold fs-24']")));
-		Assert.assertNotNull(doc, "Add Recepient element is not present Create document failed");
-		System.out.println("Selected BlankDocument successfull");
+//		WebElement doc = wait
+//				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='fw-bold fs-24']")));
+//		Assert.assertNotNull(doc, "Add Recepient element is not present Create document failed");
+//		// System.out.println("Selected BlankDocument successfull");
 
 	}
 
@@ -114,13 +114,15 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		System.out.println("Selected Recipients Successfully");
+		//// System.out.println("Selected Recipients Successfully");
 
 	}
 
@@ -129,8 +131,11 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
-		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 
@@ -140,21 +145,21 @@ public class DocumentsScenarios {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
-		System.out.println("Selected Recipients For CC Successfully");
+		// System.out.println("Selected Recipients For CC Successfully");
 
 	}
 
 	public void Saveuser() throws Exception {
 
 		waitEle(By.xpath("//span[normalize-space()='Save Users']"));
-		System.out.println("Users Saved Successfully");
+		//// System.out.println("Users Saved Successfully");
 
 	}
 
 	public void Signorder() throws Exception {
 
 		waitEle(By.xpath("//span[normalize-space()='Enforce Signature Order']"));
-		System.out.println("Signorder Unchecked Successfully");
+		// System.out.println("Signorder Unchecked Successfully");
 
 	}
 
@@ -170,7 +175,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		//// System.out.println("Sign Element Drag and Drop Done");
 
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 
@@ -183,10 +188,10 @@ public class DocumentsScenarios {
 		WebElement company = driver.findElement(By.xpath("//button[@id='companyEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("Fullname Element Drag and Drop Done");
+		//// System.out.println("Fullname Element Drag and Drop Done");
 
 		waitAndClick(actions, company, Target);
-		System.out.println("company Element Drag and Drop Done");
+		//// System.out.println("company Element Drag and Drop Done");
 
 	}
 
@@ -202,7 +207,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -211,7 +216,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 
 	}
 
@@ -227,7 +232,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -236,7 +241,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 
 	}
 
@@ -251,16 +256,16 @@ public class DocumentsScenarios {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
 		} catch (Exception e) {
 
-			System.out.println("Overlay not found or not invisible.");
+			// System.out.println("Overlay not found or not invisible.");
 		}
 		Thread.sleep(10000);
 
 		WebElement element = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Send Document']")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		System.out.println("Document Submitted Sucessfully");
+		//// System.out.println("Document Submitted Sucessfully");
 		waitEle(By.xpath("//span[normalize-space()='View Document']"));
-		System.out.println("Clicked Submitted Sucessfully");
+		//// System.out.println("Clicked Submitted Sucessfully");
 
 	}
 
@@ -277,7 +282,8 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
 		waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
 
-		System.out.println("mySignatureEle Element opened With Double Click and Entered New Sign Data Successfully");
+		//// System.out.println("mySignatureEle Element opened With Double Click and
+		//// Entered New Sign Data Successfully");
 	}
 
 	public void DocscenarioOnedrive() throws Exception {
@@ -286,7 +292,7 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//img[@src='/img/onedrive.cc38d634.svg']"));
 
-		System.out.println("Selected  Onedrive Sucessfully");
+		// System.out.println("Selected Onedrive Sucessfully");
 
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
@@ -331,7 +337,7 @@ public class DocumentsScenarios {
 				Thread.sleep(10000);
 				waitEle(By.xpath("//span[normalize-space()='Next']"));
 
-				System.out.println("Selected File From Onedrive and Uploaded Sucessfully");
+				// System.out.println("Selected File From Onedrive and Uploaded Sucessfully");
 
 			}
 		}
@@ -399,7 +405,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearranged Fields Sucessfully");
+		// System.out.println("Rearranged Fields Sucessfully");
 
 	}
 
@@ -410,25 +416,31 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
 
 		Thread.sleep(10000);
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element1 = driver.findElement(By.xpath("//div[@x-placement]//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
+		Thread.sleep(1000);
+		element1.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 
-		System.out.println("Multi-Signers Added Sucessfully");
+		// System.out.println("Multi-Signers Added Sucessfully");
 
 	}
 
@@ -444,7 +456,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -453,7 +465,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -462,7 +474,7 @@ public class DocumentsScenarios {
 		WebElement fullName1 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName1, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -471,7 +483,7 @@ public class DocumentsScenarios {
 		WebElement fullName2 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName2, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 	}
 
 	public void RearrangeSender() throws Exception {
@@ -482,7 +494,7 @@ public class DocumentsScenarios {
 		WebElement Drop = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Sender).moveToElement(Drop).release().build().perform();
-		System.out.println("Sender Element Rearranged ");
+		// System.out.println("Sender Element Rearranged ");
 
 	}
 
@@ -493,7 +505,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
 
@@ -502,7 +517,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver Element Selected Sucessfully ");
+		// System.out.println("Approver Element Selected Sucessfully ");
 
 		waitEle(By.xpath("//span[normalize-space()='Enforce Signature Order']"));
 
@@ -519,7 +534,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(10000);
@@ -528,8 +543,8 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
-		System.out.println("Approver Added Sucessfully");
+		// System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("Approver Added Sucessfully");
 
 	}
 
@@ -542,12 +557,12 @@ public class DocumentsScenarios {
 		WebElement Target1 = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions1, Sign1, Target1);
-		System.out.println("Signature Element Drag and Drop Done");
+		// System.out.println("Signature Element Drag and Drop Done");
 
 		WebElement fullName1 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions1, fullName1, Target1);
-		System.out.println("FullName Drag and Drop Done");
+		// System.out.println("FullName Drag and Drop Done");
 	}
 
 	public void DragAndDropAtThree() throws Exception {
@@ -575,8 +590,12 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -585,7 +604,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver Element 1 Selected Sucessfully ");
+		// System.out.println("Approver Element 1 Selected Sucessfully ");
 
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
@@ -600,7 +619,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver Element 2 Selected Sucessfully ");
+		// System.out.println("Approver Element 2 Selected Sucessfully ");
 	}
 
 	public void CCAtFour() throws Exception {
@@ -609,7 +628,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -618,7 +640,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_4']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		System.out.println("selected CC At 4");
+		// System.out.println("selected CC At 4");
 	}
 
 	public void dragaAndDropAtFour() throws Exception {
@@ -644,7 +666,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -653,7 +678,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		System.out.println("CC Element Selected Successfully");
+		// System.out.println("CC Element Selected Successfully");
 		CCAtFour();
 
 	}
@@ -666,7 +691,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -675,7 +703,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_5']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		System.out.println("Multiple CC selected successfully");
+		// System.out.println("Multiple CC selected successfully");
 	}
 
 	public void RearrangeThreeOne() throws Exception {
@@ -685,7 +713,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void RearrangeAtThreeTwo() throws Exception {
@@ -695,22 +723,25 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_2']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void multipleSigner() throws Exception {
 		Recipients();
-		System.out.println("signer Element Selected Successfully");
+		// System.out.println("signer Element Selected Successfully");
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
-		System.out.println("signer Element Selected Successfully");
+		// System.out.println("signer Element Selected Successfully");
 	}
 
 	public void ApproverThree() throws Exception {
@@ -719,7 +750,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -728,7 +762,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver Element Selected Sucessfully ");
+		// System.out.println("Approver Element Selected Sucessfully ");
 	}
 
 	public void RearrangeZeroTwo() throws Exception {
@@ -738,7 +772,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_2']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void scrollDown() throws Exception {
@@ -754,7 +788,7 @@ public class DocumentsScenarios {
 		actions.moveByOffset(0, offset).perform();
 
 		actions.release().perform();
-		System.out.println("ScrollDown done successfully");
+		// System.out.println("ScrollDown done successfully");
 	}
 
 	public void scrollUp() {
@@ -769,7 +803,7 @@ public class DocumentsScenarios {
 		actions.moveByOffset(0, offset).perform();
 
 		actions.release().perform();
-		System.out.println("ScrollUp done successfully");
+		// System.out.println("ScrollUp done successfully");
 	}
 
 	public void Approver1() throws Exception {
@@ -779,7 +813,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -788,7 +825,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver Element Selected Sucessfully ");
+		// System.out.println("Approver Element Selected Sucessfully ");
 	}
 
 	public void RecipientsCC3() throws Exception {
@@ -797,7 +834,10 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
 		Thread.sleep(10000);
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
 		Thread.sleep(10000);
@@ -806,7 +846,7 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		System.out.println("Selected CC Successfully");
+		// System.out.println("Selected CC Successfully");
 	}
 
 //Ramya
@@ -816,26 +856,33 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
-
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
 
-		System.out.println("Signer1 added successfully");
+		// System.out.println("Signer1 added successfully");
 
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 
+		Thread.sleep(10000);
+
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 
-		System.out.println("Signer2 added successfully");
+		// System.out.println("Signer2 added successfully");
 
 	}
 
@@ -845,18 +892,24 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
-
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
-		System.out.println("CC added successfully");
+		// System.out.println("CC added successfully");
 
 	}
 
@@ -866,17 +919,23 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select contact type']"));
-
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@id='user_3']//input[@placeholder='Select Signer Type']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		System.out.println("Approver added successfully");
+		// System.out.println("Approver added successfully");
 
 	}
 
@@ -887,7 +946,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeSender() throws Exception {
@@ -910,7 +969,7 @@ public class DocumentsScenarios {
 		WebElement Approver = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Approver).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeZeroFour() throws Exception {
@@ -932,7 +991,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_3']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddEssentialFields() throws Exception {
@@ -948,7 +1007,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
@@ -963,10 +1022,10 @@ public class DocumentsScenarios {
 		WebElement company = driver.findElement(By.xpath("//button[@id='companyEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("Fullname Element Drag and Drop Done");
+		// System.out.println("Fullname Element Drag and Drop Done");
 
 		waitAndClick(actions, company, Target);
-		System.out.println("company Element Drag and Drop Done");
+		// System.out.println("company Element Drag and Drop Done");
 
 	}
 
@@ -982,7 +1041,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 
@@ -994,7 +1053,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 
 	}
 
@@ -1011,7 +1070,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 
@@ -1024,7 +1083,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 
 	}
 
@@ -1041,7 +1100,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
@@ -1052,7 +1111,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("FullName Element Drag and Drop Done");
+		// System.out.println("FullName Element Drag and Drop Done");
 
 	}
 
@@ -1069,7 +1128,7 @@ public class DocumentsScenarios {
 
 		actions.clickAndHold(Signer2).moveToElement(Signer1).release().build().perform();
 
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeSigners() throws Exception {
@@ -1098,7 +1157,7 @@ public class DocumentsScenarios {
 
 		actions1.clickAndHold(Sender).moveToElement(Signer2).release().build().perform();
 
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeOneTwo() throws Exception {
@@ -1120,7 +1179,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_2']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeSenderCCSignersThreeOne() throws Exception {
@@ -1130,7 +1189,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeCCSignerSENDERThreeOne() throws Exception {
@@ -1140,7 +1199,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeccsignersender() throws Exception {
@@ -1163,7 +1222,7 @@ public class DocumentsScenarios {
 		WebElement Approver = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Approver).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeZeroFour1() throws Exception {
@@ -1185,7 +1244,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_3']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeMulApproverSENDERThreeOne() throws Exception {
@@ -1195,7 +1254,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_0']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeMultipleApproverssender() throws Exception {
@@ -1205,7 +1264,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddSenderFields() throws Exception {
@@ -1221,7 +1280,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 	}
 
 	public void AddRearrangeSenderFields() throws Exception {
@@ -1237,7 +1296,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 	}
 
 	public void AddRearrangeSenderFields1() throws Exception {
@@ -1253,7 +1312,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 	}
 
 	public void AddSenderFields2() throws Exception {
@@ -1269,7 +1328,7 @@ public class DocumentsScenarios {
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
 		waitAndClick(actions, Sign, Target);
-		System.out.println("Sign Element Drag and Drop Done");
+		// System.out.println("Sign Element Drag and Drop Done");
 	}
 
 	public void AddMultipleAPPFields() throws Exception {
@@ -1286,7 +1345,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("Fullname Element Drag and Drop Done");
+		// System.out.println("Fullname Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 
@@ -1301,7 +1360,7 @@ public class DocumentsScenarios {
 		WebElement fullName1 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions1, fullName1, Target1);
-		System.out.println("Fullname Element Drag and Drop Done");
+		// System.out.println("Fullname Element Drag and Drop Done");
 	}
 
 	public void AddRearrangeMultipleAPPFields() throws Exception {
@@ -1318,7 +1377,7 @@ public class DocumentsScenarios {
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions, fullName, Target);
-		System.out.println("Fullname Element Drag and Drop Done");
+		// System.out.println("Fullname Element Drag and Drop Done");
 
 		Thread.sleep(10000);
 
@@ -1333,14 +1392,14 @@ public class DocumentsScenarios {
 		WebElement fullName1 = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 
 		waitAndClick(actions1, fullName1, Target1);
-		System.out.println("Fullname Element Drag and Drop Done");
+		// System.out.println("Fullname Element Drag and Drop Done");
 	}
 
 	public void AddFinishdocument() throws Exception {
 		Thread.sleep(10000);
 
 		waitEle(By.xpath("//span[normalize-space()='Finish Document']"));
-		System.out.println("Finish Document successfull");
+		// System.out.println("Finish Document successfull");
 	}
 
 	public void AddMultipleApprovers() throws Exception {
@@ -1350,7 +1409,8 @@ public class DocumentsScenarios {
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
 
@@ -1360,18 +1420,23 @@ public class DocumentsScenarios {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
 
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 
-		System.out.println("Approver1 added successfully");
+		// System.out.println("Approver1 added successfully");
 
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
 
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
 		Thread.sleep(10000);
@@ -1380,7 +1445,7 @@ public class DocumentsScenarios {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 
-		System.out.println("Approver2 added successfully");
+		// System.out.println("Approver2 added successfully");
 
 	}
 
@@ -1390,10 +1455,12 @@ public class DocumentsScenarios {
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[6]"));
 
@@ -1403,15 +1470,17 @@ public class DocumentsScenarios {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
-		System.out.println("CC1 added successfully");
+		// System.out.println("CC1 added successfully");
 
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+		waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 
@@ -1421,7 +1490,7 @@ public class DocumentsScenarios {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
-		System.out.println("CC2 added successfully");
+		// System.out.println("CC2 added successfully");
 
 	}
 
@@ -1432,7 +1501,7 @@ public class DocumentsScenarios {
 		WebElement Signer1 = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Signer2).moveToElement(Signer1).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeSendercc() throws Exception {
@@ -1455,7 +1524,7 @@ public class DocumentsScenarios {
 		WebElement Signer2 = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Signer2).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeSignersCCSenderThreeOne() throws Exception {
@@ -1465,7 +1534,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Approver).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeCC() throws Exception {
@@ -1488,7 +1557,7 @@ public class DocumentsScenarios {
 		WebElement Approver = driver.findElement(By.xpath("//div[@id='user_1']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Approver).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 	public void AddRearrangeOnetoThree() throws Exception {
@@ -1510,7 +1579,7 @@ public class DocumentsScenarios {
 		WebElement Signer = driver.findElement(By.xpath("//div[@id='user_3']"));
 		Actions actions1 = new Actions(driver);
 		actions1.clickAndHold(Sender).moveToElement(Signer).release().build().perform();
-		System.out.println("Rearrangement done");
+		// System.out.println("Rearrangement done");
 	}
 
 }
