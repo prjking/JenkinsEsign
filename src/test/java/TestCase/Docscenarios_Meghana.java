@@ -52,7 +52,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 16)
 	public void ValidBlankDocSignerApproverAndCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -73,7 +72,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 17)
 	public void ValidBlankDocSignerMulApproverAndCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -94,7 +92,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 18)
 	public void ValidBlankDocSignerApproverAndMultipleCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -114,7 +111,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 19)
 	public void validBlankDocSignerMulApproverAndMulCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -134,7 +130,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 20)
 	public void validOneDriveRearrangeorderApproverSignerAndCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -155,7 +150,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 21)
 	public void validOneDriveRearrangeorderCCSignerApprover() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -175,7 +169,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 22)
 	public void validRearrangeorderApproverCCSigner() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -197,7 +190,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 23)
 	public void validBlankDocRearrangeorderSignerCCApprover() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -218,7 +210,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 24)
 	public void validBlankDocRearrangeorderCCApproversigner() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
@@ -239,7 +230,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 25)
 	public void validBlankDocMulsignerApproverCC() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.multipleSigner();
@@ -260,7 +250,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 26)
 	public void validBlankDocOtherSignerSenderSignerApprover() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.multipleSigner();
@@ -280,7 +269,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 27)
 	public void validBlankDocApproverSenderSignerOtherSigner() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.multipleSigner();
@@ -302,7 +290,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 28)
 	public void validBlankDocOtherSignerApproverSenderSigner() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.multipleSigner();
@@ -324,7 +311,6 @@ public class Docscenarios_Meghana extends testCaseBase {
 	@Test(priority = 29)
 	public void validBlankDocSenderSignerApproverOtherSigner() throws Exception {
 		login.Signin();
-		login.VerifyLoginSucess();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.multipleSigner();
