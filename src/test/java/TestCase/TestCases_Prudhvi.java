@@ -11,6 +11,7 @@ import Pages.Dragdrop;
 import Pages.Login;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
+import Pages.Scrool;
 import Pages.Signup;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
@@ -28,6 +29,7 @@ public class TestCases_Prudhvi extends testCaseBase {
 	Templatespage templatespage;
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
+	Scrool scrool;
 
 	@BeforeMethod
 	public void Start() {
@@ -43,6 +45,7 @@ public class TestCases_Prudhvi extends testCaseBase {
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
+		scrool =new Scrool(driver);
 
 	}
 
@@ -61,7 +64,7 @@ public class TestCases_Prudhvi extends testCaseBase {
 	}
 
 	@Test
-	public void Document() throws InterruptedException {
+	public void Document() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 		alldocuments.Createdocument();
@@ -158,211 +161,12 @@ public class TestCases_Prudhvi extends testCaseBase {
 		// templatespage.Creategroup();
 
 	}
-
 	@Test
-	public void ValidDocScenarios() throws Exception {
+	public void ValidScr() throws Exception {
 		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields();
-		documentsScenarios.Senddoc();
-		reviewaNdSend.submit();
-
-	}
-
-	@Test
-	public void ValidBlankdocView() throws Exception {
-		recevierSide.CheckRecevierSide();
-	}
-
-	@Test
-	public void ValidBlankwithoutsenderautofill() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields1();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidWithoutEnforceSignatureThroughLoginAccount() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields1();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-	}
-
-	@Test
-	public void ValidDocscenarioOnedrive() throws Exception {
-
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenarioOnedrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields1();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidDocscenariosGdrive() throws Exception {
-
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenariosGdrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields1();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidWithEnforceSignatureOrderWithSenderAutofill() throws Exception {
-
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields1();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidRearrangingOrderCCndSigner() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Rearrange();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFieldscc();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidBlankDocMultipleSigners() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.MultipleSigners();
-		documentsScenarios.RecipientsCC();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.MultipleSignersEssentialFields();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidOneDriveDocMultipleSigners() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenarioOnedrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.MultipleSigners();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.MultipleSignersEssentialFields();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidRearrangingOrderFirstOtherSignersndThenSender() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Recipients();
-		documentsScenarios.MultipleSigners();
-		documentsScenarios.Rearrange();
-		documentsScenarios.RearrangeSender();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.MultipleSignersEssentialFields();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	public void ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenarioOnedrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.MultipleSigners();
-		documentsScenarios.Rearrange();
-		documentsScenarios.RearrangeSender();
-		documentsScenarios.Signorder();
-		documentsScenarios.Saveuser();
-		documentsScenarios.MultipleSignersEssentialFields();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidBlankdocSignerndApprover() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.Blankdocloginaccount();
-		documentsScenarios.Approver();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-	}
-
-	@Test
-	public void ValidBlankdocSignerndApproverOnedrive() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenarioOnedrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.Approver();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-
-	}
-	@Test
-	public void ValidRearrangingOrderFirstApproverthenSigner() throws Exception {
-		login.Signin();
-		documentsScenarios.DocScenario();
-		documentsScenarios.DocscenarioOnedrive();
-		documentsScenarios.Recipients();
-		documentsScenarios.Approver();
-		documentsScenarios.Rearrange();
-		documentsScenarios.Senddoc();
-		documentsScenarios.Blankwithoutsenderautofill();
-
-
-	}
+		scrool.Scroolele();
+		
 }
+}
+	
+

@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.TestCases_Prudhvi">
+      <class name="TestCase.FormTemplate_Testcases">
         <methods>
-          <include name="ValidBlankdocSignerndApprover"/>
           <include name="Start"/>
+          <include name="ValidTemplates"/>
         </methods>
-      </class> <!-- TestCase.TestCases_Prudhvi -->
+      </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

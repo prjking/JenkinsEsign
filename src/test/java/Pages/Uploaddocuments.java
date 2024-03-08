@@ -20,7 +20,7 @@ public class Uploaddocuments {
 	}
 
 	public void Blankdoc() throws Exception {
-
+    
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		try {

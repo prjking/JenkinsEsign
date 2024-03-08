@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.17.0</version>
+			<version>4.18.1</version>
 		</dependency>
 
 
@@ -22,8 +22,16 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
-			<version>4.17.0</version>
+			<version>4.18.1</version>
 		</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.1.1</version>
+</dependency>
+
 
 
 		<dependency>
@@ -145,27 +153,24 @@
 	<build>
 		<plugins>
 			<plugin>
-
-
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>test.xml</suiteXmlFile>
+						<suiteXmlFile>Doc.xml</suiteXmlFile>
+						<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
+						<suiteXmlFile>DocRamya.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<!-- Other configuration options for the surefire plugin -->
 				</configuration>
-
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.3.0</version>
 				<!-- Other configuration options for the jar plugin -->
 			</plugin>
-
 		</plugins>
 	</build>
 

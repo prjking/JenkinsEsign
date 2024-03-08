@@ -21,12 +21,13 @@ public class Addrecipients {
 	
 	
 
-	public void waitEle(By by) {
+	public void waitEle(By by) throws Exception {
+		Thread.sleep(3000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
 	}
 	public void Recipients() throws Exception {
-
+       Thread.sleep(10000);
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
@@ -43,6 +44,7 @@ public class Addrecipients {
 	}
 
 	public void Recipients1() throws Exception {
+		 Thread.sleep(10000);
 		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
@@ -92,7 +94,8 @@ public class Addrecipients {
 		Thread.sleep(10000);
 	}
 
-	public void Verifrecipient() {
+	public void Verifrecipient() throws Exception {
+		 Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 
 		WebElement DocMessage = wait.until(

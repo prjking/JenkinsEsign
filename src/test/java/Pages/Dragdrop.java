@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.build.Plugin.Engine.Dispatcher.ForParallelTransformation.WithThrowawayExecutorService;
+
 public class Dragdrop {
 	WebDriver driver;
 
@@ -35,7 +37,8 @@ public class Dragdrop {
 		}
 	}
 
-	public void waitEle(By by) {
+	public void waitEle(By by) throws Exception {
+		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
 	}
@@ -215,7 +218,7 @@ public class Dragdrop {
 
 	}
 
-	public void send() throws InterruptedException, IOException {
+	public void send() throws Exception {
 
 		// waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
 
