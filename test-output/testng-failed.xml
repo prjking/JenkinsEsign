@@ -5,8 +5,8 @@
     <classes>
       <class name="TestCase.FormTemplate_Testcases">
         <methods>
+          <include name="ValidAdvancedFields"/>
           <include name="Start"/>
-          <include name="ValidTemplates"/>
         </methods>
       </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>

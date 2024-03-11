@@ -26,7 +26,7 @@ public class FormTemplate {
 	public void Template() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.Loadingmask();
-		MethodActions.waitEle(By.xpath("//span[@class='el-icon-arrow-down text-white']"));
+		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[4]"));
 
@@ -302,7 +302,7 @@ public class FormTemplate {
 				MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
 
 			} catch (Exception e) {
-				// TODO: handle exception
+
 			}
 			MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
@@ -313,7 +313,7 @@ public class FormTemplate {
 		}
 	}
 
-	public void Multipleactions() {
+	public void Multipleactions() throws Exception {
 
 		boolean Number = performAction("//span[text()='Number']", false);
 		boolean Date = performAction("//span[text()='Date']", false);
@@ -329,6 +329,8 @@ public class FormTemplate {
 		boolean phone = performAction("//span[text()='Phone']", false);
 		boolean Signature = performAction("//span[text()='Signature']", false);
 		boolean Captcha = performAction("//span[text()='Captcha']", false);
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
 	}
 
 	public void Contentfields() throws Exception {
@@ -348,14 +350,8 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		Actions builder = new Actions(driver);
 		MethodActions.waitAndClick(builder, Heading, dropLocation);
-		MethodActions.waitAndClick(builder, HTML, dropLocation);
-		MethodActions.waitAndClick(builder, Paragraph, dropLocation);
-		MethodActions.waitAndClick(builder, SingleLineContent, dropLocation);
-		MethodActions.waitAndClick(builder, Image, dropLocation);
-		MethodActions.waitAndClick(builder, Video, dropLocation);
-		MethodActions.waitAndClick(builder, ActionButton, dropLocation);
-		MethodActions.waitAndClick(builder, HorizontalLine, dropLocation);
-		MethodActions.waitAndClick(builder, Division, dropLocation);
+		// MethodActions.waitAndClick(builder, HorizontalLine, dropLocation);
+		// MethodActions.waitAndClick(builder, Division, dropLocation);
 		Thread.sleep(10000);
 		// Heading
 		MethodActions.switchToNewWindow();
@@ -368,6 +364,7 @@ public class FormTemplate {
 
 		// HTML
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, HTML, dropLocation);
 		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
@@ -380,6 +377,7 @@ public class FormTemplate {
 
 		// Paragraph
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Paragraph, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
@@ -388,6 +386,7 @@ public class FormTemplate {
 
 		// SingleLineContent
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, SingleLineContent, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter content']"),
@@ -396,6 +395,7 @@ public class FormTemplate {
 
 		// Image
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Image, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
@@ -408,6 +408,7 @@ public class FormTemplate {
 
 		// Video
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Video, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
@@ -418,8 +419,9 @@ public class FormTemplate {
 		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Video
+		// Action Button
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, ActionButton, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter label']"),
@@ -430,7 +432,8 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select type']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
+		// Division
+		MethodActions.waitAndClick(builder, Division, dropLocation);
 		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
 	}
 
@@ -439,7 +442,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//div[text()=\"Advanced Fields\"]"));
 		Thread.sleep(10000);
 		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement AutoIncrementNumber = driver.findElement(By.xpath("//span[text()='Auto Increment Number']"));
+		//WebElement AutoIncrementNumber = driver.findElement(By.xpath("//span[text()='Auto Increment Number']"));
 		WebElement Location = driver.findElement(By.xpath("//span[text()='Location']"));
 		WebElement Currency = driver.findElement(By.xpath("//span[text()='Currency']"));
 		WebElement Question = driver.findElement(By.xpath("//span[text()='Question']"));
@@ -460,38 +463,26 @@ public class FormTemplate {
 		WebElement QRReader = driver.findElement(By.xpath("//span[text()='QR Reader']"));
 		Thread.sleep(10000);
 		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, AutoIncrementNumber, dropLocation);
-		MethodActions.waitAndClick(builder, Location, dropLocation);
-		MethodActions.waitAndClick(builder, Currency, dropLocation);
-		MethodActions.waitAndClick(builder, Question, dropLocation);
-		// MethodActions.waitAndClick(builder, AuthorizedSignature, dropLocation);
-		MethodActions.waitAndClick(builder, Entity, dropLocation);
-		MethodActions.waitAndClick(builder, EntityVariable, dropLocation);
-		MethodActions.waitAndClick(builder, Formula, dropLocation);
-		MethodActions.waitAndClick(builder, AggregateFunction, dropLocation);
-		MethodActions.waitAndClick(builder, DataTable, dropLocation);
-		MethodActions.waitAndClick(builder, ChildEntityTable, dropLocation);
-		MethodActions.waitAndClick(builder, PayButtons, dropLocation);
-		MethodActions.waitAndClick(builder, PaymentVariable, dropLocation);
-		MethodActions.waitAndClick(builder, StarRating, dropLocation);
-		MethodActions.waitAndClick(builder, Concatenate, dropLocation);
-		MethodActions.waitAndClick(builder, Audio, dropLocation);
-		MethodActions.waitAndClick(builder, QRCode, dropLocation);
-		MethodActions.waitAndClick(builder, QRReader, dropLocation);
-		Thread.sleep(10000);
-		// Auto Increment Number
 
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//textarea[@placeholder='Enter Description Here']"));
-		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Prifix']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		// MethodActions.waitAndClick(builder, AuthorizedSignature, dropLocation);
+
+		// MethodActions.waitAndClick(builder, PayButtons, dropLocation);
+		// Auto Increment Number
+//		Thread.sleep(10000);
+//		MethodActions.waitAndClick(builder, AutoIncrementNumber, dropLocation);
+//		MethodActions.switchToNewWindow();
+//		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+//				MethodActions.generateUniqueString());
+//		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+//				MethodActions.generateUniqueString());
+//		Thread.sleep(10000);
+//		driver.findElement(By.xpath("//input[@placeholder='Prifix']")).sendKeys("prifix");
+//		Thread.sleep(10000);
+//		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
 		// Location
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Location, dropLocation);
 		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
@@ -503,6 +494,7 @@ public class FormTemplate {
 
 		// Currency
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Currency, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
@@ -515,6 +507,7 @@ public class FormTemplate {
 
 		// Question
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Question, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[1]"));
@@ -530,44 +523,176 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//span[text()='Yes']"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Entity yet
+		// Entity
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Entity, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
-		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[normalize-space()='entity-t3']"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Sorting order']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[7]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[1]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[3]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[4]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[5]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[6]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[7]"));
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[8]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Video
+		// EntityVariable
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, EntityVariable, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
-		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// Video
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter label']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Button Type']"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//span[text()='ALL FIELDS-EUR']"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Field operation']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary el-button--mini']"));
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select type']"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Formula
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Formula, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Fields']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
+		MethodActions
+				.waitEle(By.xpath("//button[@class='el-button btn-operation el-button--success el-button--mini']"));
+		driver.findElement(By.xpath("//input[@placeholder='Enter Number']")).sendKeys("49");
+		MethodActions.waitEle(By.xpath("//i[@class='el-icon-plus']"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
+		// AggregateFunction
+		MethodActions.waitAndClick(builder, AggregateFunction, dropLocation);
+		MethodActions.switchToNewWindow();
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Label']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Function Type']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Field Type']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select field']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Data Table
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, DataTable, dropLocation);
+		MethodActions.switchToNewWindow();
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Child Entity Table
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, ChildEntityTable, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Add Payment Variable
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitAndClick(builder, PaymentVariable, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Star Rating
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, StarRating, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Concatenate
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Concatenate, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Field']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
+		MethodActions.waitEle(By.xpath("//span[text()=' Add ']"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// Audio
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Audio, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// QR Code
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, QRCode, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+
+		// QRReader
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, QRReader, dropLocation);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
+
 	}
 
 }

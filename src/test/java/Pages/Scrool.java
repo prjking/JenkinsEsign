@@ -42,10 +42,38 @@ public class Scrool {
 		}
 	}
 
-	public void Scroolele() throws Exception {
-		driver.get(
-				"https://dev.esigns.io/company-documents/65cdd5aaf0daa150cf954a29/configure/image/65cdd5aaf0daa150cf954a2a/update");
-        Thread.sleep(10000);
+	public void pagenation() throws Exception {
+		driver.get("https://dev.esigns.io/contacts");
+		Thread.sleep(10000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		int pageNumber = 1;
+		do {
+			try {
+
+				waitEle(By.xpath(
+						"//div[@class='el-table__fixed-right']//div[normalize-space()='akhil.pachipala@nimbleaccounting.com']/ancestor::tr//button[@title='View Document']"));
+
+				System.out.println("Element found on page ");
+			} catch (Exception e) {
+				System.out.println("Element not found on page " + pageNumber);
+			}
+
+			try {
+				WebElement nextPageButton = wait
+						.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn-next']")));
+				nextPageButton.click();
+				pageNumber++;
+			} catch (Exception e) {
+				System.out.println("Next page button not found or timeout, ending loop.");
+				break;
+			}
+		} while (true);
+
+	}
+
+	public void scrool() throws Exception {
+
 		WebElement element = driver.findElement(By.xpath("(//div[normalize-space()='EMPLOYEE FORM'])[1]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		Thread.sleep(1000);
@@ -53,11 +81,11 @@ public class Scrool {
 
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		WebElement CC = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='name'][normalize-space()='NAME']")));
+		WebElement CC = wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//div[@class='name'][normalize-space()='NAME']")));
 		WebElement Signer = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
 		System.out.println("Rearranged Fields Successfully");
 	}
-
 }
