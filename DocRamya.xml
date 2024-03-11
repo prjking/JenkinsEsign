@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MyTestSuite">
 	<test name="Docscenarios Test Run">
@@ -10,3 +11,17 @@
 
 
 
+=======
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+	<test name="Docscenarios Test Run">
+		<classes>
+			<class name="TestCase.Docscenarios_Ramya"/>
+		</classes>
+	</test>
+</suite>
+
+
+
+
+>>>>>>> 757c8599b6f379ae5caf0697938fa6202124e5dc
