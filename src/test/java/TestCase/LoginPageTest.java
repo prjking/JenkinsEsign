@@ -1,6 +1,7 @@
 package TestCase;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Pages.Addrecipients;
@@ -13,8 +14,10 @@ import Pages.ReviewaNdSend;
 import Pages.Signup;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
+import Reports.TestNGExtentReport;
+import Reports.Testlistner;
 import TestBase.testCaseBase;
-
+@Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class LoginPageTest extends testCaseBase {
 	Login login;
 	Alldocuments alldocuments;
