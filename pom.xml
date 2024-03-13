@@ -159,9 +159,9 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>Doc.xml</suiteXmlFile>
 
-						<!--	<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
+					<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
 						<suiteXmlFile>DocRamya.xml</suiteXmlFile>
--->
+
 					</suiteXmlFiles>
 					<!-- Other configuration options for the surefire plugin -->
 				</configuration>

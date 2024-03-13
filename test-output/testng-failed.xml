@@ -6,7 +6,7 @@
       <class name="TestCase.FormTemplate_Testcases">
         <methods>
           <include name="Start"/>
-          <include name="ValidTemplates"/>
+          <include name="ValidContentfields"/>
         </methods>
       </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
