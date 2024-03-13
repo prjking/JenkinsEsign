@@ -442,7 +442,8 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//div[text()=\"Advanced Fields\"]"));
 		Thread.sleep(10000);
 		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		//WebElement AutoIncrementNumber = driver.findElement(By.xpath("//span[text()='Auto Increment Number']"));
+		// WebElement AutoIncrementNumber =
+		// driver.findElement(By.xpath("//span[text()='Auto Increment Number']"));
 		WebElement Location = driver.findElement(By.xpath("//span[text()='Location']"));
 		WebElement Currency = driver.findElement(By.xpath("//span[text()='Currency']"));
 		WebElement Question = driver.findElement(By.xpath("//span[text()='Question']"));
@@ -516,6 +517,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("(//textarea[@class='el-textarea__inner'])[1]"),
 				MethodActions.generateUniqueString());
+		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("(//input[@class='el-input__inner'])[4]"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("(//textarea[@class='el-textarea__inner'])[2]"),
@@ -539,7 +541,10 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[1]"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[3]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[4]"));
+		WebElement element = driver.findElement(By.xpath("(//span[@class='el-checkbox__inner'])[4]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[5]"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[6]"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[7]"));
@@ -555,12 +560,13 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
 		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[4]"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//span[text()='ALL FIELDS-EUR']"));
 		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Field operation']"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
@@ -569,9 +575,9 @@ public class FormTemplate {
 		MethodActions.waitAndClick(builder, Formula, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter field title']"),
 				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter description here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Fields']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
@@ -579,7 +585,8 @@ public class FormTemplate {
 				.waitEle(By.xpath("//button[@class='el-button btn-operation el-button--success el-button--mini']"));
 		driver.findElement(By.xpath("//input[@placeholder='Enter Number']")).sendKeys("49");
 		MethodActions.waitEle(By.xpath("//i[@class='el-icon-plus']"));
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-form-item']//input[@placeholder='Select']"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
@@ -589,10 +596,13 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Label']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Function Type']"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Field Type']"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select field']"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Template']"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
@@ -608,6 +618,7 @@ public class FormTemplate {
 
 		// Child Entity Table
 		Thread.sleep(10000);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ChildEntityTable);
 		MethodActions.waitAndClick(builder, ChildEntityTable, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
@@ -615,23 +626,28 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[2]"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[3]"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
 		// Add Payment Variable
 		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, PaymentVariable, dropLocation);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitAndClick(builder, PaymentVariable, dropLocation);
+
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		try {
+			MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[2]"));
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		} catch (Exception e) {
+			//
+		}
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
 		// Star Rating

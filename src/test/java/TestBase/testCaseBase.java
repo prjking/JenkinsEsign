@@ -20,36 +20,19 @@ public class testCaseBase {
 	public void setup() {
 
 		// driver = new FirefoxDriver();
-<<<<<<< HEAD
-=======
 
-		
-
-ChromeOptions options = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
-		 options.addArguments("--disable-gpu");
-		 options.setBinary("/usr/bin/sgoogle-chrome-stable");
-		 options.addArguments("--no-sandbox");
+		options.addArguments("--disable-gpu");
+		//options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.addArguments("--no-sandbox");
 
 		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
 		driver.get("https://dev.esigns.io/signin");
-
-
-	}
->>>>>>> 757c8599b6f379ae5caf0697938fa6202124e5dc
-	
-		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--headless");
-//	options.addArguments("--window-size=1920,1080");
-//		 options.addArguments("--disable-gpu");
-//		// options.setBinary("/usr/bin/sgoogle-chrome-stable");
-//		 options.addArguments("--no-sandbox");
-
-		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 

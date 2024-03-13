@@ -25,13 +25,12 @@
 			<version>4.18.1</version>
 		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-<dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>5.1.1</version>
-</dependency>
-
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.1</version>
+		</dependency>
 
 
 		<dependency>
@@ -159,11 +158,10 @@
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>Doc.xml</suiteXmlFile>
-<<<<<<< HEAD
-						<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
+
+						<!--	<suiteXmlFile>DocMeghana.xml</suiteXmlFile>
 						<suiteXmlFile>DocRamya.xml</suiteXmlFile>
-=======
->>>>>>> 757c8599b6f379ae5caf0697938fa6202124e5dc
+-->
 					</suiteXmlFiles>
 					<!-- Other configuration options for the surefire plugin -->
 				</configuration>

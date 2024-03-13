@@ -3,10 +3,11 @@
 <suite name="MyTestSuite">
 	<test name="Docscenarios Test Run">
 		<classes>
-			<class name="TestCase.Docscenarios_Ramya"/>
+			<class name="TestCase.FormTemplate_Testcases" />	
 		</classes>
 	</test>
 </suite>
+
 
 
 

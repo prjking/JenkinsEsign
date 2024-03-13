@@ -3,12 +3,13 @@
 <suite name="Failed suite [MyTestSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Docscenarios Test Run(failed)">
     <classes>
-      <class name="TestCase.Docscenarios">
+      <class name="TestCase.FormTemplate_Testcases">
         <methods>
-          <include name="ValidBlankDocMultipleSigners"/>
+          <include name="ValidAdvancedFields"/>
           <include name="Start"/>
+          <include name="ValidTemplates"/>
         </methods>
-      </class> <!-- TestCase.Docscenarios -->
+      </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
   </test> <!-- Docscenarios Test Run(failed) -->
 </suite> <!-- Failed suite [MyTestSuite] -->
