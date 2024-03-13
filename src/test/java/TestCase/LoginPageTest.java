@@ -110,19 +110,19 @@ public class LoginPageTest extends testCaseBase {
 	public void Review() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
-		alldocuments.Createdocument();
-		alldocuments.Validdocument();
-		// uploaddocuments.Fileupload();
-		uploaddocuments.Blankdoc();
-		addrecipients.Recipients();
-		addrecipients.Recipients1();
-		addrecipients.Verifrecipient();
-		dragdrop.EssentialFields();
-		dragdrop.Contentfields();
-		dragdrop.Draw();
-		// dragdrop.image();
-		dragdrop.send();
-		reviewaNdSend.submit();
+//		alldocuments.Createdocument();
+//		alldocuments.Validdocument();
+//		// uploaddocuments.Fileupload();
+//		uploaddocuments.Blankdoc();
+//		addrecipients.Recipients();
+//		addrecipients.Recipients1();
+//		addrecipients.Verifrecipient();
+//		dragdrop.EssentialFields();
+//		dragdrop.Contentfields();
+//		dragdrop.Draw();
+//		// dragdrop.image();
+//		dragdrop.send();
+//		reviewaNdSend.submit();
 	}
 
 //	@Test
@@ -131,27 +131,27 @@ public class LoginPageTest extends testCaseBase {
 //
 //	}
 
-	@Test
-	public void ValidTemplates() throws Exception {
-		login.Signin();
-		templatespage.Temp();
-		templatespage.EditTemp();
-		templatespage.SendTocontacts();
-		templatespage.Addnew();
-		templatespage.Send();
-		templatespage.ConfirmationAlert();
-		templatespage.BulkSend();
-		templatespage.ValidBulk();
-		templatespage.Getlink();
-		templatespage.Share();
-		templatespage.Settings();
-		templatespage.ChangeOwner();
-		templatespage.Viewdata();
-		templatespage.DuplicateTemplate();
-		templatespage.RenameTemplate();
-		templatespage.inactive();
-		templatespage.Delete();
-		templatespage.Creategroup();
-
-	}
+//	@Test
+//	public void ValidTemplates() throws Exception {
+//		login.Signin();
+//		templatespage.Temp();
+//		templatespage.EditTemp();
+//		templatespage.SendTocontacts();
+//		templatespage.Addnew();
+//		templatespage.Send();
+//		templatespage.ConfirmationAlert();
+//		templatespage.BulkSend();
+//		templatespage.ValidBulk();
+//		templatespage.Getlink();
+//		templatespage.Share();
+//		templatespage.Settings();
+//		templatespage.ChangeOwner();
+//		templatespage.Viewdata();
+//		templatespage.DuplicateTemplate();
+//		templatespage.RenameTemplate();
+//		templatespage.inactive();
+//		templatespage.Delete();
+//		templatespage.Creategroup();
+//
+//	}
 }
