@@ -22,13 +22,13 @@ public class testCaseBase {
 		// driver = new FirefoxDriver();
 
 		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--headless");
-//		options.addArguments("--window-size=1920,1080");
-//		options.addArguments("--disable-gpu");
-//
-//		options.setBinary("/usr/bin/sgoogle-chrome-stable");
-//
-//		options.addArguments("--no-sandbox");
+		options.addArguments("--headless");
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--disable-gpu");
+
+		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+
+		options.addArguments("--no-sandbox");
 
 		driver = new ChromeDriver(options);
 
