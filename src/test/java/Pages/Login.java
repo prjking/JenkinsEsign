@@ -32,6 +32,41 @@ public class Login {
 
 	}
 
+	public void Signinprj() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("prudhviraju.buddharaju@gmail.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Nimble#2024");
+		waitEle(By.xpath("//span[normalize-space()='Log In']"));
+		Thread.sleep(10000);
+
+	}
+
+	public void SigninRamya() throws InterruptedException {
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']")).sendKeys("N180959@rguktn.ac.in");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramya@1234");
+		driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
+		Thread.sleep(10000);
+
+	}
+
+	public void SigninMeghana() throws InterruptedException {
+
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']")).sendKeys("n180894@rguktn.ac.in");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Meghana@123");
+		waitEle(By.xpath("//span[normalize-space()='Log In']"));
+		Thread.sleep(10000);
+	}
+
+	public void login() throws InterruptedException {
+
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("pmmeghana2001@gmail.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Meghana@123");
+		waitEle(By.xpath("//span[normalize-space()='Log In']"));
+		Thread.sleep(10000);
+	}
+
 	public void VerifyLoginSucess() {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));

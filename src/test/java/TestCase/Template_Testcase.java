@@ -1,5 +1,6 @@
 
 package TestCase;
+
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import org.testng.annotations.BeforeMethod;
@@ -8,6 +9,7 @@ import org.testng.annotations.Test;
 
 import Pages.Addrecipients;
 import Pages.Alldocuments;
+import Pages.CreateFromExcell;
 import Pages.Dashboard;
 import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
@@ -36,6 +38,7 @@ public class Template_Testcase extends testCaseBase {
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
 	TemplateScenarios templateScenarios;
+	CreateFromExcell createFromExcell;
 
 	@BeforeMethod
 	public void Start() {
@@ -52,6 +55,7 @@ public class Template_Testcase extends testCaseBase {
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
 		templateScenarios = new TemplateScenarios(driver);
+		createFromExcell = new CreateFromExcell(driver);
 
 	}
 
@@ -163,7 +167,17 @@ public class Template_Testcase extends testCaseBase {
 		templateScenarios.PDFfilling();
 		documentsScenarios.Senddoc();
 		documentsScenarios.Blankwithoutsenderautofill();
-		
+
+	}
+
+	@Test
+	public void ValidExcel() throws Exception {
+		login.Signin();
+		createFromExcell.Importexcel();
+		createFromExcell.Selectall();
+		createFromExcell.selectlist();
+
+		// createFromExcell.add();
 
 	}
 }

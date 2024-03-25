@@ -40,18 +40,9 @@ public class EntityCases {
 
 		Thread.sleep(10000);
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-
-		Thread.sleep(3000);
-
 		MethodActions.Loadingmask();
-		MethodActions.waitEle(By.xpath("//span[@class='el-icon-arrow-down text-white']"));
-
-		Thread.sleep(3000);
-		By Entities = By.xpath("//ul[@x-placement]//a[6]");
-		WebElement Entities1 = wait.until(ExpectedConditions.elementToBeClickable(Entities));
-		Entities1.click();
-
+		MethodActions.waitEle(By.xpath("//div[@class=\"icon-text\"]"));
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[7]"));
 		System.out.println("Clicked on entities in profile completed");
 
 	}
@@ -90,6 +81,9 @@ public class EntityCases {
 	public void actionView() throws Exception {
 		Thread.sleep(10000);
 
+		MethodActions.pagenation(
+				"//div[@class='el-table__fixed']//div[contains(text(), 'bb')]/ancestor::tr//span[normalize-space()=\"Actions\"]");
+
 		WebElement elementToHover = driver.findElement(By.xpath(
 				"//div[@class='el-table__fixed']//div[contains(text(), 'bb')]/ancestor::tr//span[normalize-space()=\"Actions\"]"));
 
@@ -102,6 +96,9 @@ public class EntityCases {
 
 	public void actionView1() throws Exception {
 		Thread.sleep(10000);
+
+		MethodActions.pagenation(
+				"//div[@class='el-table__fixed']//div[contains(text(), 'Sample')]/ancestor::tr//span[normalize-space()='Actions']");
 
 		WebElement elementToHover = driver.findElement(By.xpath(
 				"//div[@class='el-table__fixed']//div[contains(text(), 'Sample')]/ancestor::tr//span[normalize-space()='Actions']"));

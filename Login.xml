@@ -3,7 +3,7 @@
 <suite name="MyTestSuite">
 	<test name="Docscenarios Test Run">
 		<classes>
-			<class name="TestCase.LoginPageTest" />	
+			<class name="TestCase.LoginPageTest" />
 		</classes>
 	</test>
 </suite>

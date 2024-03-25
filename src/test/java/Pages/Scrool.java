@@ -88,4 +88,9 @@ public class Scrool {
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
 		System.out.println("Rearranged Fields Successfully");
 	}
+	public void test() throws Exception {
+		
+		driver.get("https://preprod.esigns.io/entity");
+		MethodActions.waitEle(By.xpath(""));
+	}
 }

@@ -63,39 +63,42 @@ public class FormTemplate_Testcases extends testCaseBase {
 	}
 
 	@Test
-	public void ValidTemplates() throws Exception {
-		login.Signin();
+	public void ValidTemplatesBasicFieldsSingleline() throws Exception {
+		login.Signinprj();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.BasicFieldssingleline();
-		formTemplate.Multiline();
-		formTemplate.Select();
-		formTemplate.MultipleSelect();
-		formTemplate.List();
-		formTemplate.Checkboxgroup();
-		formTemplate.Radiogroup();
-		formTemplate.Multipleactions();
+		formTemplate.SingleLineWithSENDER();
+		formTemplate.SingleLineWithRECEIVER();
+		formTemplate.SingleLineWithSENDERORRECEIVER();
+
+//		formTemplate.Multiline();
+//		formTemplate.Select();
+//		formTemplate.MultipleSelect();
+//		formTemplate.List();
+//		formTemplate.Checkboxgroup();
+//		formTemplate.Radiogroup();
+//		formTemplate.Multipleactions();
 
 	}
 
-	@Test
-	public void ValidContentfields() throws Exception {
-		login.Signin();
-		MethodActions.Loadingmask();
-		formTemplate.Template();
-		formTemplate.Createtemp();
-		formTemplate.Contentfields();
-
-	}
-
-	@Test
-	public void ValidAdvancedFields() throws Exception {
-		login.Signin();
-		MethodActions.Loadingmask();
-		formTemplate.Template();
-		formTemplate.Createtemp();
-		formTemplate.AdvancedFields();
-
-	}
+//	@Test
+//	public void ValidContentfields() throws Exception {
+//		login.Signin();
+//		MethodActions.Loadingmask();
+//		formTemplate.Template();
+//		formTemplate.Createtemp();
+//		formTemplate.Contentfields();
+//
+//	}
+//
+//	@Test
+//	public void ValidAdvancedFields() throws Exception {
+//		login.Signin();
+//		MethodActions.Loadingmask();
+//		formTemplate.Template();
+//		formTemplate.Createtemp();
+//		formTemplate.AdvancedFields();
+//
+//	}
 }

@@ -1,13 +1,22 @@
 package Pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,7 +57,6 @@ public class MethodActions {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
 		} catch (Exception e) {
 
-			System.out.println("Overlay not found or not invisible.");
 		}
 
 	}
@@ -90,6 +98,56 @@ public class MethodActions {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		Thread.sleep(50000);
 		element.click();
+	}
+
+	public static void asert(String message, WebElement element) {
+		String actualValue = element.getText();
+		System.out.println(message + ": " + actualValue);
+	}
+
+	public static void takeScreenshot(WebDriver driver) throws Exception {
+		Thread.sleep(10000);
+		try {
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+			String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+			String filename = "C:\\Work Space\\Esign\\src\\test\\Screenshots\\screenshot_" + timestamp + ".png";
+			FileUtils.copyFile(screenshotFile, new File(filename));
+		} catch (IOException e) {
+			System.out.println("Failed to take screenshot: " + e.getMessage());
+		}
+	}
+
+	public static void pagenation(String elementXPath) throws Exception {
+		Thread.sleep(10000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		int pageNumber = 1;
+		do {
+			try {
+				waitEle(By.xpath(elementXPath));
+
+				System.out.println("Element found on page " + pageNumber);
+			} catch (Exception e) {
+				System.out.println("Element not found on page " + pageNumber);
+			}
+
+			try {
+				WebElement nextPageButton = wait
+						.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn-next']")));
+				nextPageButton.click();
+				pageNumber++;
+			} catch (Exception e) {
+				System.out.println("Next page button not found or timeout, ending loop.");
+				break;
+			}
+		} while (true);
+	}
+
+	public static void dragAndDrop(WebElement source, WebElement target) {
+		Actions builder = new Actions(driver);
+		Action dragAndDrop = builder.clickAndHold(source).moveToElement(target).release(target).build();
+		dragAndDrop.perform();
 	}
 
 }

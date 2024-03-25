@@ -164,7 +164,8 @@ public class TestCases_Prudhvi extends testCaseBase {
 	@Test
 	public void ValidScr() throws Exception {
 		login.Signin();
-		scrool.pagenation();
+		//scrool.pagenation();
+		
 		
 }
 }

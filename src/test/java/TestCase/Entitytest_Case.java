@@ -1,5 +1,6 @@
 
 package TestCase;
+
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import org.testng.annotations.BeforeMethod;
@@ -62,11 +63,13 @@ public class Entitytest_Case extends testCaseBase {
 	@Test
 	public void validBugid4732() throws Exception {
 		login.Signin();
+		MethodActions.Loadingmask();
 		entityCases.entity();
 		entityCases.actionView();
 		entityCases.clickOnLayout();
 		entityCases.layoutChart();
 		entityCases.SelectChart();
+		MethodActions.takeScreenshot(driver);
 
 	}
 
@@ -79,7 +82,7 @@ public class Entitytest_Case extends testCaseBase {
 		entityCases.EyeIcon();
 		entityCases.LayoutOptions();
 		entityCases.Validdata();
-
+		MethodActions.takeScreenshot(driver);
 	}
 
 //	@Test
@@ -89,6 +92,6 @@ public class Entitytest_Case extends testCaseBase {
 //		entityCases.entity();
 //		entityCases.listclick();
 
-	//}
+	// }
 
 }
