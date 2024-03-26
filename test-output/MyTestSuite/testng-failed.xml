@@ -3,12 +3,12 @@
 <suite name="Failed suite [MyTestSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Docscenarios Test Run(failed)">
     <classes>
-      <class name="TestCase.LoginPageTest">
+      <class name="TestCase.BugTestcase">
         <methods>
+          <include name="Bug4004"/>
           <include name="Start"/>
-          <include name="Review"/>
         </methods>
-      </class> <!-- TestCase.LoginPageTest -->
+      </class> <!-- TestCase.BugTestcase -->
     </classes>
   </test> <!-- Docscenarios Test Run(failed) -->
 </suite> <!-- Failed suite [MyTestSuite] -->
