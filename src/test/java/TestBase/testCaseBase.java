@@ -26,7 +26,7 @@ public class testCaseBase {
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--disable-gpu");
 
-		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.setBinary("/usr/bin/chrome");
 
 		options.addArguments("--no-sandbox");
 
