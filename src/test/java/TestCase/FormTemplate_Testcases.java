@@ -63,14 +63,29 @@ public class FormTemplate_Testcases extends testCaseBase {
 	}
 
 	@Test
-	public void ValidTemplatesBasicFieldsSingleline() throws Exception {
+	public void BasicFieldsSingleline() throws Exception {
 		login.Signinprj();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.SingleLineWithSENDER();
+		// formTemplate.SingleLineWithSENDER();
 		formTemplate.SingleLineWithRECEIVER();
 		formTemplate.SingleLineWithSENDERORRECEIVER();
+		formTemplate.closeingleline();
+		formTemplate.SinglelineGlobalVariable();
+
+	}
+
+	@Test
+	public void BasicFieldsMultiline() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.MultilineSender();
+		formTemplate.MultilineRecevier();
+		formTemplate.MultilineSENDERORRECEIVER();
+	}
 
 //		formTemplate.Multiline();
 //		formTemplate.Select();
@@ -79,8 +94,6 @@ public class FormTemplate_Testcases extends testCaseBase {
 //		formTemplate.Checkboxgroup();
 //		formTemplate.Radiogroup();
 //		formTemplate.Multipleactions();
-
-	}
 
 //	@Test
 //	public void ValidContentfields() throws Exception {

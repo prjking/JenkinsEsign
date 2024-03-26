@@ -385,7 +385,7 @@ public class Entities {
 
 		System.out.println("shared file is not showing");
 		Thread.sleep(10000);
-		
+
 	}
 
 	public void FormTemplate() throws Exception {
@@ -542,9 +542,18 @@ public class Entities {
 
 		waitEle(By.xpath("//span[normalize-space()='BUSINESS']"));
 
-		waitEle(By.xpath("//p[normalize-space()='Create a new app base with custom fields,tables, and filters.']"));
+		Thread.sleep(10000);
+		WebElement scratch = driver.findElement(By.xpath("(//span[@class='el-radio__input is-checked'])[1]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scratch);
+		Thread.sleep(1000);
+		scratch.click();
 
-		waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+		Thread.sleep(10000);
+		WebElement element = driver
+				.findElement(By.xpath("//button[@class=\"btn btn btn-outline-primary btn-sm m-lr-1\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
 
 		System.out.println("Create entity successfull");
 	}
@@ -704,9 +713,9 @@ public class Entities {
 		}
 
 		System.out.println("Status: " + status);
-		
+
 		Thread.sleep(10000);
-		
+
 	}
 
 	public void Addbasicfields1() throws Exception {
@@ -1931,10 +1940,9 @@ public class Entities {
 	}
 
 	public void Screenshot() throws Exception {
-		
-		
+
 		Thread.sleep(10000);
 		MethodActions.takeScreenshot(driver);
-		
+
 	}
 }

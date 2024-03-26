@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.FormTemplate_Testcases">
+      <class name="TestCase.EntitiesScenariosTestRamya">
         <methods>
-          <include name="Start"/>
-          <include name="ValidTemplatesBasicFieldsSingleline"/>
+          <include name="Validbugid4692"/>
+          <include name="initialize"/>
         </methods>
-      </class> <!-- TestCase.FormTemplate_Testcases -->
+      </class> <!-- TestCase.EntitiesScenariosTestRamya -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

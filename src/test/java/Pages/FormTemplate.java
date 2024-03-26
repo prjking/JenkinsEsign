@@ -70,6 +70,7 @@ public class FormTemplate {
 		element.click();
 	}
 
+	// Single-Line
 	public void addFieldSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
 			boolean isYes) throws Exception {
 		Thread.sleep(10000);
@@ -106,44 +107,45 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='el-select filledby']//input"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (fieldType) {
 		case "PASSWORD":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
 			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
 			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
 			System.out.println("PASSWORD  With SENDER OR RECEIVER from Field Type Selected Sucessully ");
 			break;
 		case "EMAIL":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
 			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
 			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
 			System.out.println("EMAIL With SENDER OR RECEIVER from Field Type Selected Sucessully ");
 			break;
 		case "TEXT":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
 			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
 			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
 			System.out.println("TEXT With SENDER OR RECEIVER from Field Type Selected Sucessully ");
 			break;
 		case "MASKED":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
 			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
 			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
 			System.out.println("MASKED With SENDER OR RECEIVER from Field Type Selected Sucessully ");
 			break;
 		case "HYPER LINK":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
 			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
 			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
 			System.out.println("HYPER LINK With SENDER OR RECEIVER from Field Type Selected Sucessully ");
@@ -191,16 +193,17 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='el-select filledby']//input"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (fieldType) {
 		case "PASSWORD":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
 			Thread.sleep(10000);
 			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
 			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
@@ -208,7 +211,7 @@ public class FormTemplate {
 			break;
 		case "EMAIL":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
 			Thread.sleep(10000);
 			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
 			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
@@ -216,7 +219,7 @@ public class FormTemplate {
 			break;
 		case "TEXT":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
 			Thread.sleep(10000);
 			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
 			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
@@ -224,7 +227,7 @@ public class FormTemplate {
 			break;
 		case "MASKED":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
 			Thread.sleep(10000);
 			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
 			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
@@ -232,7 +235,7 @@ public class FormTemplate {
 			break;
 		case "HYPER LINK":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
 			Thread.sleep(10000);
 			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
 			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
@@ -261,6 +264,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
+
 		if (isYes) {
 
 			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -282,44 +286,45 @@ public class FormTemplate {
 		}
 
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='el-select filledby']//input"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (fieldType) {
 		case "PASSWORD":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
 			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
 			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
 			System.out.println("PASSWORD  With Sender from Field Type Selected Sucessully ");
 			break;
 		case "EMAIL":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
 			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
 			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
 			System.out.println("EMAIL With Sender from Field Type Selected Sucessully ");
 			break;
 		case "TEXT":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
 			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
 			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
 			System.out.println("TEXT With Sender from Field Type Selected Sucessully ");
 			break;
 		case "MASKED":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
 			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
 			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
 			System.out.println("MASKED With Sender from Field Type Selected Sucessully ");
 			break;
 		case "HYPER LINK":
 			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
 			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
 			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
 			System.out.println("HYPER LINK With Sender from Field Type Selected Sucessully ");
@@ -356,38 +361,16 @@ public class FormTemplate {
 		addField("HYPER LINK", sourceElement, targetElement, false);
 	}
 
-//	public void SingleLineWithSENDERNo() throws Exception {
-//		Thread.sleep(10000);
-//		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-//		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
-//		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-//		MethodActions.dragAndDrop(sourceElement, targetElement);
-//		Thread.sleep(10000);
-//		WebElement ListdElementHYPER = driver.findElement(By.xpath("//h2[text()='Add Single Line Text']"));
-//		Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
-//		System.out.println("Add Single Line Text Inserted Sucessully ");
-//		MethodActions.waitEle(By.xpath("//span[@class='el-radio__label' and text()='No']"));
-//		System.out.println("With Field Required! No");
-//		Thread.sleep(10000);
-//
-//		addField("PASSWORD", sourceElement, targetElement);
-//		addField("EMAIL", sourceElement, targetElement);
-//		addField("TEXT", sourceElement, targetElement);
-//		addField("MASKED", sourceElement, targetElement);
-//		addField("HYPER LINK", sourceElement, targetElement);
-//	}
-
 	public void SingleLineWithRECEIVER() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		MethodActions.dragAndDrop(sourceElement, targetElement);
 		Thread.sleep(10000);
 		WebElement ListdElementHYPER = driver.findElement(By.xpath("//h2[text()='Add Single Line Text']"));
 		Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
 		System.out.println("Add Single Line With RECEIVER DRAG and DROP Sucessully ");
-		MethodActions.waitEle(By.xpath("//span[@class='el-radio__label' and text()='Yes']"));
-		System.out.println("With Field Required! Yes");
 
 		Thread.sleep(10000);
 		// Yes
@@ -418,9 +401,6 @@ public class FormTemplate {
 		WebElement ListdElementHYPER = driver.findElement(By.xpath("//h2[text()='Add Single Line Text']"));
 		Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
 		System.out.println("Add Single Line DRAG and DROP WithcSENDER OR RECEIVER Sucessully ");
-		MethodActions.waitEle(By.xpath("//span[@class='el-radio__label' and text()='Yes']"));
-		System.out.println("With Field Required! Yes");
-
 		Thread.sleep(10000);
 		// Yes
 		addFieldSENDERORRECEIVER("PASSWORD", sourceElement, targetElement, true);
@@ -436,27 +416,471 @@ public class FormTemplate {
 		addFieldSENDERORRECEIVER("HYPER LINK", sourceElement, targetElement, false);
 	}
 
-	public void Multiline() throws Exception {
+	public void closeingleline() throws Exception {
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Multiline = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		MethodActions.dragAndDrop(sourceElement, targetElement);
+		MethodActions.waitEle(By.xpath("//button[@class='close-button']"));
+		System.out.println("Single Line Text Field - Closed  Button  by clicking X");
+
+	}
+
+	public void SinglelineGlobalVariable() throws Exception {
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Multiline, dropLocation);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		MethodActions.dragAndDrop(sourceElement, targetElement);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Singleline Global Variable");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Number Of Rows']")).sendKeys("3");
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		WebElement global = driver
+				.findElement(By.xpath("//div[@class='el-form-item']//label[normalize-space()='Global Variable']"));
+		Assert.assertTrue(global.isDisplayed(), "Unable to Click On Global ariable");
+		System.out.println("Clicked on the Global Variable the pop up tab is changed to Global variables");
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+
+	}
+
+//MultiLine
+
+	public void MultilineRecevier() throws Exception {
+		Thread.sleep(10000);
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
+		Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		MethodActions.waitAndClick(builder, sourceElement, targetElement);
+		Thread.sleep(10000);
+		MethodActions.switchToNewWindow();
+
+		Thread.sleep(10000);
+		// Yes
+		addFieldMultilineRecevier("RICH TEXT", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("PASSWORD", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("TEXT", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("NUMBER", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("CURRENCY", sourceElement, targetElement, true);
+		addFieldMultilineRecevier("MULTI LINE TEXT", sourceElement, targetElement, true);
+
+		// No
+		addFieldMultilineRecevier("RICH TEXT", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("PASSWORD", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("TEXT", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("NUMBER", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("CURRENCY", sourceElement, targetElement, false);
+		addFieldMultilineRecevier("MULTI LINE TEXT", sourceElement, targetElement, false);
+	}
+
+	public void addFieldMultilineRecevier(String fieldType, WebElement sourceElement, WebElement targetElement,
+			boolean isYes) throws Exception {
+		Thread.sleep(10000);
+		MethodActions.dragAndDrop(sourceElement, targetElement);
 		Thread.sleep(10000);
 
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Multilie");
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
+		switch (fieldType) {
+		case "RICH TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
+			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
+			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			Thread.sleep(10000);
+			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
+			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
+			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
+			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
+			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
+			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "NUMBER":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
+			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementCURRENCY = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementCURRENCY.isDisplayed(), "List is not selected successfully");
+			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "MULTI LINE TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMULTILINETEXT = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementMULTILINETEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	}
+
+	public void addFieldMultilineSender(String fieldType, WebElement sourceElement, WebElement targetElement,
+			boolean isYes) throws Exception {
+		Thread.sleep(10000);
+		MethodActions.dragAndDrop(sourceElement, targetElement);
+		Thread.sleep(10000);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Multilie");
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
+
+		switch (fieldType) {
+		case "RICH TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
+			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
+			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			Thread.sleep(10000);
+			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
+			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
+			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
+			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
+			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
+			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "NUMBER":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
+			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementCURRENCY = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementCURRENCY.isDisplayed(), "List is not selected successfully");
+			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "MULTI LINE TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMULTILINETEXT = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementMULTILINETEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	}
+
+	public void MultilineSender() throws Exception {
+		Thread.sleep(10000);
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
+		Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		MethodActions.waitAndClick(builder, sourceElement, targetElement);
+		Thread.sleep(10000);
+		MethodActions.switchToNewWindow();
+
+		Thread.sleep(10000);
+		// Yes
+		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, true);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, true);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineSender("TEXT", sourceElement, targetElement, true);
+		addFieldMultilineSender("NUMBER", sourceElement, targetElement, true);
+		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, true);
+		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, true);
+
+		// No
+		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, false);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, false);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineSender("TEXT", sourceElement, targetElement, false);
+		addFieldMultilineSender("NUMBER", sourceElement, targetElement, false);
+		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, false);
+		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, false);
+	}
+
+	public void addFieldMultilineSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
+			boolean isYes) throws Exception {
+		Thread.sleep(10000);
+		MethodActions.dragAndDrop(sourceElement, targetElement);
+		Thread.sleep(10000);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Multilie");
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
+
+		switch (fieldType) {
+		case "RICH TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
+			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
+			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			Thread.sleep(10000);
+			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
+			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
+			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
+			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
+			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
+			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "NUMBER":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
+			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementCURRENCY = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementCURRENCY.isDisplayed(), "List is not selected successfully");
+			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		case "MULTI LINE TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			WebElement ListdElementMULTILINETEXT = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
+			Assert.assertTrue(ListdElementMULTILINETEXT.isDisplayed(), "List is not selected successfully");
+			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	}
+
+	public void MultilineSENDERORRECEIVER() throws Exception {
+		Thread.sleep(10000);
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
+		Thread.sleep(10000);
+		Actions builder = new Actions(driver);
+		MethodActions.waitAndClick(builder, sourceElement, targetElement);
+		Thread.sleep(10000);
+		MethodActions.switchToNewWindow();
+
+		Thread.sleep(10000);
+		// Yes
+		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, true);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, true);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
+		addFieldMultilineSender("TEXT", sourceElement, targetElement, true);
+		addFieldMultilineSender("NUMBER", sourceElement, targetElement, true);
+		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, true);
+		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, true);
+
+		// No
+		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, false);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, false);
+		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
+		addFieldMultilineSender("TEXT", sourceElement, targetElement, false);
+		addFieldMultilineSender("NUMBER", sourceElement, targetElement, false);
+		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, false);
+		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, false);
 	}
 
 	public void Select() throws Exception {

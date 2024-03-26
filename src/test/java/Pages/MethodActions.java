@@ -44,9 +44,14 @@ public class MethodActions {
 
 	public static void Javascriptclick(By xpath) throws Exception {
 		Thread.sleep(3000);
+
 		WebElement element = driver.findElement(xpath);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
+
 	}
 
 	public static void Loadingmask() {
