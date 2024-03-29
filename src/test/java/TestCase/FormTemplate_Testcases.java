@@ -68,8 +68,8 @@ public class FormTemplate_Testcases extends testCaseBase {
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		// formTemplate.SingleLineWithSENDER();
-		formTemplate.SingleLineWithRECEIVER();
+		formTemplate.SelectSender();
+		formTemplate.SingleLineWithSENDER();
 		formTemplate.SingleLineWithSENDERORRECEIVER();
 		formTemplate.closeingleline();
 		formTemplate.SinglelineGlobalVariable();
@@ -85,6 +85,28 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.MultilineSender();
 		formTemplate.MultilineRecevier();
 		formTemplate.MultilineSENDERORRECEIVER();
+	}
+
+	@Test
+	public void BasicFieldsSelect() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.SelectSender();
+		formTemplate.SelectRecevier();
+		formTemplate.SelectSENDERORRECEIVER();
+
+	}
+
+	@Test
+	public void BasicFieldsNumber() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.NumberSender();
+
 	}
 
 //		formTemplate.Multiline();

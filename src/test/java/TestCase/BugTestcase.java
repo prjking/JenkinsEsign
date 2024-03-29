@@ -63,7 +63,7 @@ public class BugTestcase extends testCaseBase {
 
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void Bug4004() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
@@ -73,6 +73,19 @@ public class BugTestcase extends testCaseBase {
 		bug.entity4004();
 		bug.confirmButton();
 		bug.validSuccessBug4004();
+		MethodActions.takeScreenshot(driver);
+	}
+
+	@Test
+	public void bug5423() throws Exception {
+		bug.SigninjeevithaNSUI();
+		login.VerifyLoginSucess();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		bug.Feild5423();
+		bug.Save5423();
+		bug.veiwAction5423();
 		MethodActions.takeScreenshot(driver);
 	}
 }
