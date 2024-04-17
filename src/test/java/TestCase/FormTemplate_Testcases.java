@@ -68,8 +68,8 @@ public class FormTemplate_Testcases extends testCaseBase {
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.SelectSender();
 		formTemplate.SingleLineWithSENDER();
+		formTemplate.SingleLineWithRECEIVER();
 		formTemplate.SingleLineWithSENDERORRECEIVER();
 		formTemplate.closeingleline();
 		formTemplate.SinglelineGlobalVariable();
@@ -106,6 +106,66 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.NumberSender();
+		formTemplate.NumberRECEIVER();
+		formTemplate.NumberSENDERORRECEIVER();
+
+	}
+
+	@Test
+	public void BasicFieldsMultipleSelect() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.MultipleSelectSender();
+		formTemplate.MultipleSelectRecevier();
+		formTemplate.MultipleSelectSENDERORRECEIVER();
+
+	}
+
+	@Test
+	public void BasicFieldsList() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.ListSender();
+		formTemplate.ListRecevier();
+		formTemplate.ListSENDERORRECEIVER();
+
+	}
+
+	@Test
+	public void BasicFieldsDate() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.DateSender();
+		formTemplate.DateRecevier();
+		formTemplate.DateSENDERORRECEIVER();
+
+	}
+
+	@Test
+	public void BasicFieldsTime() throws Exception {
+		login.Signinprj();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.TimeSender();
+		formTemplate.TimeRecevier();
+		formTemplate.TimeSENDERORRECEVIER();
+
+	}
+
+	@Test
+	public void BasicFieldsFixedTime() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.FixedTimeSender();
 
 	}
 

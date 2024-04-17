@@ -84,8 +84,28 @@ public class BugTestcase extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		bug.Feild5423();
-		bug.Save5423();
+		bug.Save();
 		bug.veiwAction5423();
 		MethodActions.takeScreenshot(driver);
 	}
+
+	@Test
+	public void bug5421() throws Exception {
+		bug.SigninjeevithaNSUI();
+		login.VerifyLoginSucess();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		bug.Feild5421();
+		bug.Save();
+		bug.x();
+		bug.entity();
+		bug.CreateEntity();
+		bug.CreateEntityGeneral();
+		bug.confirmButton();
+		bug.addtemplates5421();
+		bug.primaryFeild();
+		bug.Done();
+		bug.veiwAction5421();
+	}
+
 }

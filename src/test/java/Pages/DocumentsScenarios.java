@@ -89,7 +89,7 @@ public class DocumentsScenarios {
 
 		}
 
-		waitEle(By.xpath("//img[@src='/img/Blank.1f314c3f.svg']"));
+		waitEle(By.xpath("//img[@src='/img/Blank.e1a6da04.svg']"));
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);

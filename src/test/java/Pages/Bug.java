@@ -265,7 +265,7 @@ public class Bug {
 
 	}
 
-	public void Save5423() throws Exception {
+	public void Save() throws Exception {
 		MethodActions.waitEle(By.xpath("//span[normalize-space()=\"Save\"]"));
 
 	}
@@ -273,6 +273,8 @@ public class Bug {
 	public void veiwAction5423() throws Exception {
 		Thread.sleep(10000);
 
+		MethodActions.waitEle(By.xpath("//input[@placeholder=\"Select\"]"));
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='50/page']"));
 		WebElement elementToHover = driver.findElement(By.xpath(
 				"//div[@class='el-table__body-wrapper is-scrolling-none']//td[normalize-space()='unique_string_sample12a560']/ancestor::tr//span[normalize-space()=\"Actions\"]"
 						+ ""));
@@ -283,6 +285,190 @@ public class Bug {
 		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[1]"));
 		System.out.println("Hidden doc field is getting visible");
 
+	}
+
+	public void Feild5421() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()=\"Content Fields\"]"));
+
+		Thread.sleep(10000);
+		WebElement videofield = driver.findElement(By.xpath("(//span[normalize-space()='Video'])[2]"));
+
+		WebElement Target = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+
+		MethodActions.waitAndClick(actions, videofield, Target);
+		System.out.println("video feild Drag and Drop Done");
+
+		Set<String> windowHandles1 = driver.getWindowHandles();
+		for (String handle : windowHandles1) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"), "5421");
+		MethodActions.waitEle(By.xpath("(//div[@class=\"el-upload__text\"])"));
+		Thread.sleep(10000);
+		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\uploadimage.exe\"");
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Insert Field'])[1]"));
+
+		// add
+
+	}
+
+	public void entitys() throws Exception {
+
+		Thread.sleep(5000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+		Thread.sleep(3000);
+
+		MethodActions.waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
+
+		Thread.sleep(3000);
+
+		By Entities = By.xpath("//li[normalize-space()=\"Entities\"]");
+		WebElement Entities1 = wait.until(ExpectedConditions.elementToBeClickable(Entities));
+		Entities1.click();
+
+		System.out.println("Clicked on entities in profile completed");
+
+	}
+
+	public void CreateEntity() throws Exception {
+
+		By ad = By.xpath("//button[normalize-space()='Create Entity']");
+
+		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
+		WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", add);
+		System.out.println("clicked on ceate entity using JS.");
+
+	}
+
+	public void CreateEntityGeneral() throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		try {
+
+			By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
+		} catch (Exception e) {
+
+		}
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+
+//		WebElement Title1 = driver.findElement(By.xpath("//input[@placeholder='Title']"));
+//		String uniqueString = generateUniqueString();
+//		Title1.sendKeys(uniqueString);
+		By Description = By.xpath("//textarea[@placeholder='Description']");
+		WebElement Description1 = wait.until(ExpectedConditions.elementToBeClickable(Description));
+		Description1.sendKeys("This entity is only for testing purpose");
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='GENERAL']"));
+		System.out.println("Clicked on GENERAL Successfully");
+		MethodActions.waitEle(By.xpath("//h4[text()=\"Start from scratch\"]"));
+		System.out.println("Clicked on Create from scratch successfully");
+
+	}
+
+	public void confirmButton1() throws Exception {
+		Thread.sleep(10000);
+		WebElement element = driver
+				.findElement(By.xpath("//button[@class=\"btn btn btn-outline-primary btn-sm m-lr-1\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
+
+	}
+
+	public void addtemplates5421() throws Exception {
+
+		MethodActions
+				.waitEle(By.xpath("(//div[@class='el-scrollbar__view'])[2]//button//p[normalize-space()=\"okk\"]"));
+
+		System.out.println("Form template added successfully");
+		Thread.sleep(10000);
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Update & Next']"));
+	}
+
+	public void primaryFeild() throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+
+		WebElement Video55421 = wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("(//div[@class='el-scrollbar__view'])[2]//ul//li[1]")));
+
+		WebElement Target = driver.findElement(By.xpath("(//div[@class='el-scrollbar'])[4]"));
+
+		Actions actions = new Actions(driver);
+
+		MethodActions.waitAndClick(actions, Video55421, Target);
+
+		System.out.println("primary feild Drag and Drop Done");
+
+		updateAndNext();
+		updateAndNext();
+
+		updateAndNext();
+		// waitEle(By.xpath("//span[normalize-space()='Update & Next']"));
+
+	}
+
+	public void updateAndNext() throws Exception {
+		Thread.sleep(10000);
+		try {
+			MethodActions.waitEle(By.xpath("//div[@class=\"el-notification__closeBtn el-icon-close\"]"));
+		} catch (Exception e) {
+		}
+		Thread.sleep(10000);
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Update & Next']"));
+
+	}
+
+	public void Done() throws Exception {
+		Thread.sleep(5000);
+		x();
+		MethodActions.waitEle(By.xpath("//span[normalize-space()=\"Done\"]"));
+	}
+
+	public void x() throws Exception {
+		Thread.sleep(30000);
+		try {
+			MethodActions.waitEle(By.xpath("//div[@class=\"el-notification__closeBtn el-icon-close\"]"));
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public void veiwAction5421() throws Exception {
+
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//input[@placeholder='Select']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(1000);
+		element.click();
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
+		Thread.sleep(10000);
+		WebElement elementToHover = driver.findElement(By.xpath(
+				"(//div[@class='el-table__fixed']//div[contains(text(),'5421')]/ancestor::tr//span[normalize-space()=\"Actions\"])[1]"));
+
+		Actions actions = new Actions(driver);
+		Thread.sleep(10000);
+		actions.moveToElement(elementToHover).perform();
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[1]"));
+		System.out.println("Thumbnail Image Is Not Displaying");
 	}
 
 }

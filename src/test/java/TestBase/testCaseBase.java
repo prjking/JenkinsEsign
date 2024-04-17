@@ -33,12 +33,13 @@ public class testCaseBase {
 		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
+		driver.get("http://localhost:8008/signin");
 
 		// driver.get("https://preprod.esigns.io/signin");
 
 		// driver.get("https://dev.esigns.io/signin");
 
-		driver.get("https://nsui.esigns.io/signin");
+		// driver.get("https://nsui.esigns.io/signin");
 
 		driver.manage().window().maximize();
 

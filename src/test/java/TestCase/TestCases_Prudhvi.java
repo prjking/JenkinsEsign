@@ -5,14 +5,18 @@ import org.testng.annotations.Test;
 
 import Pages.Addrecipients;
 import Pages.Alldocuments;
+import Pages.Bug;
 import Pages.Dashboard;
 import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
+import Pages.EntityCases;
+import Pages.FormTemplate;
 import Pages.Login;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Scrool;
 import Pages.Signup;
+import Pages.TemplateScenarios;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
@@ -30,6 +34,10 @@ public class TestCases_Prudhvi extends testCaseBase {
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
 	Scrool scrool;
+	TemplateScenarios templateScenarios;
+	EntityCases entityCases;
+	FormTemplate formTemplate;
+	Bug bug;
 
 	@BeforeMethod
 	public void Start() {
@@ -45,7 +53,8 @@ public class TestCases_Prudhvi extends testCaseBase {
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
-		scrool =new Scrool(driver);
+		scrool = new Scrool(driver);
+		bug = new Bug(driver);
 
 	}
 
@@ -161,13 +170,18 @@ public class TestCases_Prudhvi extends testCaseBase {
 		// templatespage.Creategroup();
 
 	}
+
 	@Test
 	public void ValidScr() throws Exception {
-		login.Signin();
-		//scrool.pagenation();
+		login.Signinprj();
+		bug.entity();
+		bug.CreateEntity();
+		bug.CreateEntityGeneral();
+		scrool.ent();
+		bug.addtemplates5421();
+		bug.primaryFeild();
+		bug.Done();
 		
-		
-}
-}
-	
 
+	}
+}

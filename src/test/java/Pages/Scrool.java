@@ -1,6 +1,7 @@
 package Pages;
 
 import java.time.Duration;
+import java.util.UUID;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -88,9 +89,26 @@ public class Scrool {
 		actions.clickAndHold(CC).moveToElement(Signer).release().build().perform();
 		System.out.println("Rearranged Fields Successfully");
 	}
-	public void test() throws Exception {
-		
-		driver.get("https://preprod.esigns.io/entity");
-		MethodActions.waitEle(By.xpath(""));
+
+	private static int counter = 0;
+
+	public static String generateUniqueString(WebElement element) {
+		String uniqueString = "unique_string_sample" + UUID.randomUUID().toString().substring(0, 5) + counter++;
+		element.sendKeys(uniqueString);
+		return uniqueString;
 	}
+
+	public void ent() throws Exception {
+
+		WebElement titleElement = driver.findElement(By.xpath("//input[@placeholder='Title']"));
+		String savedString = generateUniqueString(titleElement);
+
+		Thread.sleep(10000);
+		WebElement element1 = driver.findElement(By.xpath("//button[@class=\"el-button el-button--primary\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
+		Thread.sleep(1000);
+		element1.click();
+
+	}
+
 }
