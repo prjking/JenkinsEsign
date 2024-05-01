@@ -111,4 +111,42 @@ public class Scrool {
 
 	}
 
+	public void drop() throws InterruptedException {
+		Thread.sleep(10000);
+		Actions actions1 = new Actions(driver);
+
+		WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+
+		WebElement signElement = driver.findElement(By.xpath("//button[@id='signatureEle']"));
+		waitAndClick(actions1, signElement, targetElement, 10, 10);
+		System.out.println("Signature Element Drag and Drop Done");
+
+		WebElement fullNameElement = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
+		waitAndClick(actions1, fullNameElement, targetElement, 50, 50);
+		System.out.println("FullName Drag and Drop Done");
+
+		WebElement initialElement = driver.findElement(By.xpath("//button[@id='initialEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 90, 90);
+		System.out.println("Initial Drag and Drop Done");
+		
+		WebElement dateSingedEle = driver.findElement(By.xpath("//button[@id='dateSingedEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 130, 130);
+		System.out.println("Initial Drag and Drop Done");
+		
+		WebElement companyEle = driver.findElement(By.xpath("//button[@id='companyEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 170, 170);
+		System.out.println("Initial Drag and Drop Done");
+		
+		WebElement titleEle = driver.findElement(By.xpath("//button[@id='titleEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 210, 210);
+		System.out.println("Initial Drag and Drop Done");
+		
+
+	}
+
+	public void waitAndClick(Actions actions, WebElement sourceElement, WebElement targetElement, int xOffset,
+			int yOffset) {
+		actions.clickAndHold(sourceElement).moveToElement(targetElement, xOffset, yOffset).release().build().perform();
+	}
+
 }

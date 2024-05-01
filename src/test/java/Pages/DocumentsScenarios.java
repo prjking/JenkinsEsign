@@ -73,6 +73,7 @@ public class DocumentsScenarios {
 
 			// System.out.println("Element not clickable or not found: ");
 		}
+		Thread.sleep(10000);
 		waitEle(By
 				.xpath("//button[@class='el-button scaling-button el-button--primary is-plain create-btn px-4 ml-2']"));
 
@@ -139,7 +140,7 @@ public class DocumentsScenarios {
 		element.click();
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
-        Thread.sleep(10000);
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 
 		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));

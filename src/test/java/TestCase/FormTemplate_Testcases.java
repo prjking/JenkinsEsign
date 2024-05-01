@@ -62,138 +62,513 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	}
 
-	@Test
+//Basic Fields
+	@Test(priority = 1)
 	public void BasicFieldsSingleline() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.SingleLineWithSENDER();
-		formTemplate.SingleLineWithRECEIVER();
-		formTemplate.SingleLineWithSENDERORRECEIVER();
+		formTemplate.SingleLine();
 		formTemplate.closeingleline();
 		formTemplate.SinglelineGlobalVariable();
+		formTemplate.StyleSettings();
 
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void BasicFieldsMultiline() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.MultilineSender();
-		formTemplate.MultilineRecevier();
-		formTemplate.MultilineSENDERORRECEIVER();
+		formTemplate.Multiline();
+		formTemplate.MultilineGlobalVariable();
+
 	}
 
-	@Test
+	@Test(priority = 3)
 	public void BasicFieldsSelect() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.SelectSender();
-		formTemplate.SelectRecevier();
-		formTemplate.SelectSENDERORRECEIVER();
+		formTemplate.Select();
+		formTemplate.SelectGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 4)
 	public void BasicFieldsNumber() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.NumberSender();
-		formTemplate.NumberRECEIVER();
-		formTemplate.NumberSENDERORRECEIVER();
+		formTemplate.Number();
+		formTemplate.NumberGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 5)
 	public void BasicFieldsMultipleSelect() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.MultipleSelectSender();
-		formTemplate.MultipleSelectRecevier();
-		formTemplate.MultipleSelectSENDERORRECEIVER();
+		formTemplate.MultipleSelect();
+		formTemplate.MultipleGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 6)
 	public void BasicFieldsList() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.ListSender();
-		formTemplate.ListRecevier();
-		formTemplate.ListSENDERORRECEIVER();
+		formTemplate.List();
+		formTemplate.ListGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 7)
 	public void BasicFieldsDate() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.DateSender();
-		formTemplate.DateRecevier();
-		formTemplate.DateSENDERORRECEIVER();
+		formTemplate.Date();
+		formTemplate.DateGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 8)
 	public void BasicFieldsTime() throws Exception {
-		login.Signinprj();
+		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.TimeSender();
-		formTemplate.TimeRecevier();
-		formTemplate.TimeSENDERORRECEVIER();
+		formTemplate.Time();
+		formTemplate.TimeGlobalVariable();
 
 	}
 
-	@Test
+	@Test(priority = 9)
 	public void BasicFieldsFixedTime() throws Exception {
 		login.Signin();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.FixedTimeSender();
+		formTemplate.FixedTime();
+		formTemplate.FixedTimeGlobalVariable();
 
 	}
 
-//		formTemplate.Multiline();
-//		formTemplate.Select();
-//		formTemplate.MultipleSelect();
-//		formTemplate.List();
-//		formTemplate.Checkboxgroup();
-//		formTemplate.Radiogroup();
-//		formTemplate.Multipleactions();
+	@Test(priority = 10)
+	public void BasicFieldsTimerange() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Timerange();
+		formTemplate.TimerangeGlobalVariable();
 
-//	@Test
-//	public void ValidContentfields() throws Exception {
-//		login.Signin();
-//		MethodActions.Loadingmask();
-//		formTemplate.Template();
-//		formTemplate.Createtemp();
-//		formTemplate.Contentfields();
-//
-//	}
-//
-//	@Test
-//	public void ValidAdvancedFields() throws Exception {
-//		login.Signin();
-//		MethodActions.Loadingmask();
-//		formTemplate.Template();
-//		formTemplate.Createtemp();
-//		formTemplate.AdvancedFields();
-//
-//	}
+	}
+
+	@Test(priority = 11)
+	public void BasicFieldsDateTime() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Date();
+
+	}
+
+	@Test(priority = 12)
+	public void BasicFieldsWeekDays() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.WeekDays();
+		formTemplate.WeekDaysGlobalVariable();
+
+	}
+
+	@Test(priority = 13)
+	public void BasicFieldsDateTimeRange() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Date();
+
+	}
+
+	@Test(priority = 14)
+	public void BasicFieldsDateRange() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Date();
+
+	}
+
+	@Test(priority = 15)
+	public void BasicFieldsYesORNo() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.YesorNo();
+
+	}
+
+	@Test(priority = 16)
+	public void BasicFieldsCheckbox() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.CheckBox();
+
+	}
+
+	@Test(priority = 17)
+	public void BasicFieldsCheckBoxGroup() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.CheckBoxGroup();
+		formTemplate.CheckBoxGroupGlobalVariable();
+
+	}
+
+	@Test(priority = 18)
+	public void BasicFieldsDocument() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Document();
+
+	}
+
+	@Test(priority = 19)
+	public void BasicFieldsRadio() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Radio();
+
+	}
+
+	@Test(priority = 20)
+	public void BasicFieldsRadioGroup() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.RadioGroup();
+		formTemplate.RadioGroupGlobalVariable();
+
+	}
+
+	@Test(priority = 21)
+	public void BasicFieldsPhone() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Phone();
+
+	}
+
+	@Test(priority = 22)
+	public void BasicFieldsSignature() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Signature();
+
+	}
+
+	@Test(priority = 23)
+	public void BasicFieldsCaptcha() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Captcha();
+
+	}
+
+//Content Fields
+	@Test(priority = 24)
+	public void ContentHeading() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Heading();
+
+	}
+
+	@Test(priority = 25)
+	public void ContentHTML() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.HTML();
+
+	}
+
+	@Test(priority = 26)
+	public void ContentParagraph() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Paragraph();
+
+	}
+
+	@Test(priority = 27)
+	public void ContentSingleLineContent() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.SingleLineContent();
+
+	}
+
+	@Test(priority = 28)
+	public void ContentImage() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Image();
+
+	}
+
+	@Test(priority = 29)
+	public void ContentVideo() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Video();
+
+	}
+
+	@Test(priority = 30)
+	public void ContentActionButton() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.ActionButton();
+
+	}
+
+	@Test(priority = 31)
+	public void ContentHorizontalLine() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.HorizontalLine();
+
+	}
+
+	@Test(priority = 32)
+	public void ContentDivision() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Division();
+
+	}
+
+//Advanced Fields
+	@Test(priority = 33)
+	public void AdvancedAutoIncrementNumber() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.AutoIncrementNumber();
+
+	}
+
+	@Test(priority = 34)
+	public void AdvancedLocation() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Location();
+
+	}
+
+	@Test(priority = 35)
+	public void AdvancedCurrency() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		// formTemplate.Currency();
+		formTemplate.CurrencyGlobalVariable();
+
+	}
+
+	@Test(priority = 36)
+	public void AdvancedQuestion() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Question();
+
+	}
+
+	@Test(priority = 37)
+	public void AdvancedAuthorizedSignature() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.AuthorizedSignature();// check
+
+	}
+
+	@Test(priority = 38)
+	public void AdvancedEntity() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.EntityVariable();
+
+	}
+
+	@Test(priority = 39)
+	public void AdvancedFormula() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Formula();
+
+	}
+
+	@Test(priority = 40)
+	public void AdvancedAggregateFunction() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.AggregateFunction();
+
+	}
+
+	@Test(priority = 41)
+	public void AdvancedDataTable() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.DataTable();// same place
+
+	}
+
+	@Test(priority = 42)
+	public void AdvancedChildEntityTable() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.ChildEntityTable();
+
+	}
+
+	@Test(priority = 43)
+	public void AdvancedPayButtons() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.PayButtons();
+
+	}
+
+	@Test(priority = 44)
+	public void AdvancedPaymentVariable() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.PaymentVariable();
+
+	}
+
+	@Test(priority = 45)
+	public void AdvancedStarRating() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.StarRating();
+		formTemplate.StarRatingGlobalVariable();
+
+	}
+
+	@Test(priority = 46)
+	public void AdvancedConcatenate() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Concatenate();
+
+	}
+
+	@Test(priority = 47)
+	public void AdvancedAudio() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.Audio();
+
+	}
+
+	@Test(priority = 48)
+	public void AdvancedQRCode() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.QRCode();
+	}
+
+	@Test(priority = 49)
+	public void AdvancedQRReader() throws Exception {
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
+		formTemplate.QRReader();
+
+	}
+
 }

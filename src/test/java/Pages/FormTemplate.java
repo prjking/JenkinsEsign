@@ -4,11 +4,13 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -47,11 +49,6 @@ public class FormTemplate {
 	public void Createtemp() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@class='right-create-button']"));
-//		WebElement elementToClick = driver.findElement(By.xpath("//div[@class='right-create-button']"));
-//		Actions actions = new Actions(driver);
-//		actions.moveToElement(elementToClick).perform();
-//		actions.moveByOffset(10, 20).click().perform();
-
 		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Template Title']"),
 				MethodActions.generateUniqueString());
@@ -81,283 +78,17 @@ public class FormTemplate {
 	}
 
 	// Single-Line
-	public void addFieldSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-
-		Thread.sleep(10000);
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-//			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
-//			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
-			System.out.println("PASSWORD  With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-//			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
-//			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
-			System.out.println("EMAIL With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-//			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
-//			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
-			System.out.println("TEXT With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MASKED":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-//			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
-//			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
-			System.out.println("MASKED With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "HYPER LINK":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-//			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
-//			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
-			System.out.println("HYPER LINK With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void addFieldRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement, boolean isYes)
-			throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
-//			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
-			System.out.println("PASSWORD  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
-//			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
-			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
-//			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
-			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MASKED":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
-//			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
-			System.out.println("MASKED With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "HYPER LINK":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
-//			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
-			System.out.println("HYPER LINK With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void addField(String fieldType, WebElement sourceElement, WebElement targetElement, boolean isYes)
-			throws Exception {
-
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementpwd = driver.findElement(By.xpath("//span[text()='PASSWORD']"));
-//			Assert.assertTrue(ListdElementpwd.isDisplayed(), "List is not selected successfully");
-			System.out.println("PASSWORD  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementemail = driver.findElement(By.xpath("//span[text()='EMAIL']"));
-//			Assert.assertTrue(ListdElementemail.isDisplayed(), "List is not selected successfully");
-			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementTEXT = driver.findElement(By.xpath("//span[text()='TEXT']"));
-//			Assert.assertTrue(ListdElementTEXT.isDisplayed(), "List is not selected successfully");
-			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MASKED":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementMASKED = driver.findElement(By.xpath("//span[text()='MASKED']"));
-//			Assert.assertTrue(ListdElementMASKED.isDisplayed(), "List is not selected successfully");
-			System.out.println("MASKED With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "HYPER LINK":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-//			Thread.sleep(10000);
-//			WebElement ListdElementHYPER = driver.findElement(By.xpath("//span[text()='HYPER LINK']"));
-//			Assert.assertTrue(ListdElementHYPER.isDisplayed(), "List is not selected successfully");
-			System.out.println("HYPER LINK With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void SingleLineWithSENDER() throws Exception {
+	public void SingleLine() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 
 		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement SingleLine = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(SingleLine));
 
 		Dimension dropSize = dropLocation.getSize();
 
@@ -367,71 +98,149 @@ public class FormTemplate {
 		builder.dragAndDropBy(SingleLine, targetX, targetY).perform();
 
 		// Yes
-		addField("PASSWORD", SingleLine, dropLocation, true);
-		addField("EMAIL", SingleLine, dropLocation, true);
-		addField("TEXT", SingleLine, dropLocation, true);
-		addField("MASKED", SingleLine, dropLocation, true);
-		addField("HYPER LINK", SingleLine, dropLocation, true);
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "PASSWORD");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "PASSWORD");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "PASSWORD");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "EMAIL");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "EMAIL");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "EMAIL");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "TEXT");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "TEXT");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "TEXT");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "MASKED");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "MASKED");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "MASKED");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "HYPER LINK");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "HYPER LINK");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "HYPER LINK");
 
 		// No
-		addField("PASSWORD", SingleLine, dropLocation, false);
-		addField("EMAIL", SingleLine, dropLocation, false);
-		addField("TEXT", SingleLine, dropLocation, false);
-		addField("MASKED", SingleLine, dropLocation, false);
-		addField("HYPER LINK", SingleLine, dropLocation, false);
+		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "PASSWORD");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "PASSWORD");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "PASSWORD");
 
+		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "EMAIL");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "EMAIL");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "EMAIL");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "TEXT");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "TEXT");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "TEXT");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "MASKED");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "MASKED");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "MASKED");
+
+		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "HYPER LINK");
+		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
+		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
 	}
 
-	public void SingleLineWithRECEIVER() throws Exception {
+	public void FieldSingleLine(String fieldType, WebElement singleline, WebElement targetElement, boolean isYes,
+			String field) throws Exception {
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		MethodActions.dragAndDrop(sourceElement, targetElement);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(singleline));
+		MethodActions.dragAndDrop(singleline, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
 
 		Thread.sleep(10000);
-		// Yes
-		addFieldRECEIVER("PASSWORD", sourceElement, targetElement, true);
-		addFieldRECEIVER("EMAIL", sourceElement, targetElement, true);
-		addFieldRECEIVER("TEXT", sourceElement, targetElement, true);
-		addFieldRECEIVER("MASKED", sourceElement, targetElement, true);
-		addFieldRECEIVER("HYPER LINK", sourceElement, targetElement, true);
-		// No
-		addFieldRECEIVER("PASSWORD", sourceElement, targetElement, false);
-		addFieldRECEIVER("EMAIL", sourceElement, targetElement, false);
-		addFieldRECEIVER("TEXT", sourceElement, targetElement, false);
-		addFieldRECEIVER("MASKED", sourceElement, targetElement, false);
-		addFieldRECEIVER("HYPER LINK", sourceElement, targetElement, false);
-	}
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+		Thread.sleep(1000);
 
-	public void SingleLineWithSENDERORRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
+		WebElement element = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Thread.sleep(1000);
 
-		Thread.sleep(10000);
-		// Yes
-		addFieldSENDERORRECEIVER("PASSWORD", sourceElement, targetElement, true);
-		addFieldSENDERORRECEIVER("EMAIL", sourceElement, targetElement, true);
-		addFieldSENDERORRECEIVER("TEXT", sourceElement, targetElement, true);
-		addFieldSENDERORRECEIVER("MASKED", sourceElement, targetElement, true);
-		addFieldSENDERORRECEIVER("HYPER LINK", sourceElement, targetElement, true);
-		// No
-		addFieldSENDERORRECEIVER("PASSWORD", sourceElement, targetElement, false);
-		addFieldSENDERORRECEIVER("EMAIL", sourceElement, targetElement, false);
-		addFieldSENDERORRECEIVER("TEXT", sourceElement, targetElement, false);
-		addFieldSENDERORRECEIVER("MASKED", sourceElement, targetElement, false);
-		addFieldSENDERORRECEIVER("HYPER LINK", sourceElement, targetElement, false);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
+
+		switch (field) {
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			System.out.println("Single Line With PASSWORD " + label + " Selected Successfully");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			System.out.println("Single Line With EMAIL " + label + " Selected Successfully");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			System.out.println("Single Line With TEXT " + label + " Selected Successfully");
+			break;
+		case "MASKED":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
+			System.out.println("Single Line With MASKED " + label + " Selected Successfully");
+			break;
+		case "HYPER LINK":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Single Line With HYPER LINK " + label + " Selected Successfully");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 	}
 
 	public void closeingleline() throws Exception {
@@ -447,10 +256,19 @@ public class FormTemplate {
 
 	public void SinglelineGlobalVariable() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		MethodActions.dragAndDrop(sourceElement, targetElement);
+
+		Point targetLocation = targetElement.getLocation();
+		int xOffset = 50;
+
+		int targetX = targetLocation.getX() + xOffset;
+		int targetY = targetLocation.getY();
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(sourceElement).moveToElement(targetElement, targetX, targetY).release().build().perform();
+
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
@@ -458,542 +276,567 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath(
 				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
 				MethodActions.generateUniqueString() + "Singleline Global Variable");
-		driver.findElement(By.xpath("//input[@placeholder='Enter Number Of Rows']")).sendKeys("3");
-
 		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
-		WebElement global = driver
-				.findElement(By.xpath("//div[@class='el-form-item']//label[normalize-space()='Global Variable']"));
-		Assert.assertTrue(global.isDisplayed(), "Unable to Click On Global ariable");
-		System.out.println("Clicked on the Global Variable the pop up tab is changed to Global variables");
 		System.out.println("data is fetched To The Global Variables");
 		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 
 	}
 
+	public void MultilineGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Multi Line Text']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(sourceElement).moveToElement(targetElement).release().build().perform();
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void SelectGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement Select = driver.findElement(By.xpath("//span[text()='Select']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Select).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void NumberGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement Number = driver.findElement(By.xpath("//span[text()='Number']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Number).moveToElement(targetElement).release().build().perform();
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void MultipleGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()='Multiple Select']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(MultipleSelect).moveToElement(targetElement).release().build().perform();
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void ListGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement List = driver.findElement(By.xpath("//span[text()='List']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(List).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void DateGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement Date = driver.findElement(By.xpath("//span[text()='Date']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Date).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void TimeGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement Time = driver.findElement(By.xpath("//span[text()='Time']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Time).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void TimerangeGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement TimeRange = driver.findElement(By.xpath("//span[text()='Time Range']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(TimeRange).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void WeekDaysGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement WeekDays = driver.findElement(By.xpath("//span[text()='Week Days']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(WeekDays).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void CheckBoxGroupGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement WeekDays = driver.findElement(By.xpath("//span[text()='Week Days']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(WeekDays).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void RadioGroupGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement RadioGroup = driver.findElement(By.xpath("//span[text()='Radio Group']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(RadioGroup).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void CurrencyGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Currency).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void StarRatingGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement StarRating = driver.findElement(By.xpath("//span[text()=\"Star Rating\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", StarRating);
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(StarRating).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void FixedTimeGlobalVariable() throws Exception {
+		Thread.sleep(10000);
+		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement FixedTime = driver.findElement(By.xpath("//span[text()='Fixed Time']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(FixedTime).moveToElement(targetElement).release().build().perform();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Global Variable']"));
+		MethodActions.sendKeysToElement(By.xpath("//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		System.out.println("data is fetched To The Global Variables");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	public void StyleSettings() throws Exception {
+		SinglelineGlobalVariable();
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@id='each-field']"));
+		MethodActions.waitEle(By.xpath("//div[@class='setting-icon el-row']"));
+		MethodActions.waitEle(By.xpath("//div[@id='tab-second']"));
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		MethodActions.waitEle(By.xpath("(//span[text()='Border Type']/following::input)[1]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
+		System.out.println("Slected Dotted Boredrr Line ");
+		MethodActions.waitEle(By.xpath("(//span[text()='Font Size']/following::input)[1]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[9]"));
+		MethodActions.waitEle(By.xpath("//div[@class='el-drawer__container el-drawer__open']"));
+		MethodActions.waitEle(By.xpath("//div[@id='each-field']"));
+		MethodActions.waitEle(By.xpath("//i[@class='el-icon-copy-document ']"));
+		System.out.println("Field duplicating done");
+
+	}
+
 //MultiLine
 
-	public void MultilineRecevier() throws Exception {
-		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, sourceElement, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-
-		Thread.sleep(10000);
-		// Yes
-		addFieldMultilineRecevier("RICH TEXT", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("PASSWORD", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("TEXT", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("NUMBER", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("CURRENCY", sourceElement, targetElement, true);
-		addFieldMultilineRecevier("MULTI LINE TEXT", sourceElement, targetElement, true);
-
-		// No
-		addFieldMultilineRecevier("RICH TEXT", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("PASSWORD", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("TEXT", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("NUMBER", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("CURRENCY", sourceElement, targetElement, false);
-		addFieldMultilineRecevier("MULTI LINE TEXT", sourceElement, targetElement, false);
-	}
-
-	public void addFieldMultilineRecevier(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Multilie");
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "RICH TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
-			Thread.sleep(10000);
-			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "NUMBER":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "CURRENCY":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MULTI LINE TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void addFieldMultilineSender(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Multilie");
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "RICH TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
-			Thread.sleep(10000);
-			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "NUMBER":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "CURRENCY":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MULTI LINE TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void MultilineSender() throws Exception {
-		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, sourceElement, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-
-		Thread.sleep(10000);
-		// Yes
-		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, true);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, true);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineSender("TEXT", sourceElement, targetElement, true);
-		addFieldMultilineSender("NUMBER", sourceElement, targetElement, true);
-		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, true);
-		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, true);
-
-		// No
-		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, false);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, false);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineSender("TEXT", sourceElement, targetElement, false);
-		addFieldMultilineSender("NUMBER", sourceElement, targetElement, false);
-		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, false);
-		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, false);
-	}
-
-	public void addFieldMultilineSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Multilie");
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "RICH TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("RICH TEXT  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("PASSWORD With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			System.out.println("EMAIL With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
-			Thread.sleep(10000);
-			System.out.println("TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "NUMBER":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("NUMBER With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "CURRENCY":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MULTI LINE TEXT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI LINE TEXT With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void MultilineSENDERORRECEIVER() throws Exception {
+	public void Multiline() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
-		Thread.sleep(10000);
+		WebElement Multiline = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, sourceElement, targetElement);
+		wait.until(ExpectedConditions.elementToBeClickable(Multiline));
+		MethodActions.waitAndClick(builder, Multiline, targetElement);
 		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
 
 		Thread.sleep(10000);
 		// Yes
-		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, true);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, true);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, true);
-		addFieldMultilineSender("TEXT", sourceElement, targetElement, true);
-		addFieldMultilineSender("NUMBER", sourceElement, targetElement, true);
-		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, true);
-		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, true);
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "RICH TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "RICH TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "RICH TEXT");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "EMAIL");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "EMAIL");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "EMAIL");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "PASSWORD");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "PASSWORD");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "PASSWORD");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "EMAIL");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "EMAIL");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "EMAIL");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "TEXT");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "NUMBER");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "NUMBER");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "NUMBER");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "CURRENCY");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "CURRENCY");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "CURRENCY");
+
+		FieldMultiline("SENDER", Multiline, targetElement, true, "MULTI LINE TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, true, "MULTI LINE TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, true, "MULTI LINE TEXT");
 
 		// No
-		addFieldMultilineSender("RICH TEXT", sourceElement, targetElement, false);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineSender("PASSWORD", sourceElement, targetElement, false);
-		addFieldMultilineSender("EMAIL", sourceElement, targetElement, false);
-		addFieldMultilineSender("TEXT", sourceElement, targetElement, false);
-		addFieldMultilineSender("NUMBER", sourceElement, targetElement, false);
-		addFieldMultilineSender("CURRENCY", sourceElement, targetElement, false);
-		addFieldMultilineSender("MULTI LINE TEXT", sourceElement, targetElement, false);
+		FieldMultiline("SENDER", Multiline, targetElement, false, "RICH TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "RICH TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "RICH TEXT");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "EMAIL");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "EMAIL");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "EMAIL");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "PASSWORD");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "PASSWORD");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "PASSWORD");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "EMAIL");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "EMAIL");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "EMAIL");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "TEXT");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "NUMBER");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "NUMBER");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "NUMBER");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "CURRENCY");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "CURRENCY");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "CURRENCY");
+
+		FieldMultiline("SENDER", Multiline, targetElement, false, "MULTI LINE TEXT");
+		FieldMultiline("RECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
+		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
+	}
+
+	public void FieldMultiline(String fieldType, WebElement Multiline, WebElement targetElement, boolean isYes,
+			String field) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Multiline));
+		MethodActions.dragAndDrop(Multiline, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Multilie");
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+		Thread.sleep(10000);
+		WebElement element = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Thread.sleep(10000);
+
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
+		Thread.sleep(10000);
+		switch (field) {
+		case "RICH TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+			System.out.println("Multi Line With RICH TEXT " + label + " Selected Successfully");
+			break;
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+			System.out.println("Multi Line With PASSWORD " + label + " Selected Successfully");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			System.out.println("Multi Line With EMAIL " + label + " Selected Successfully");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+			Thread.sleep(10000);
+			System.out.println("Multi Line With TEXT " + label + " Selected Successfully");
+			break;
+		case "":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			System.out.println("Multi Line With NUMBER " + label + " Selected Successfully");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			System.out.println("Multi Line With CURRENCY " + label + " Selected Successfully");
+			break;
+		case "MULTI LINE TEXT":
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[5]"));
+			Thread.sleep(10000);
+			System.out.println("Multi Line With MULTI LINE TEXT " + label + " Selected Successfully");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 	}
 
 	// Select
-	public void SelectSender() throws Exception {
+	public void Select() throws Exception {
 
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Select\"]"));
+		WebElement Select = driver.findElement(By.xpath("//span[text()=\"Select\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-
+		wait.until(ExpectedConditions.elementToBeClickable(Select));
 		Dimension dropSize = targetElement.getSize();
 
 		int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
 		int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
 
-		builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
+		builder.dragAndDropBy(Select, targetX, targetY).perform();
 
 		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
 
 		// Yes
-		addFieldSelectSender("SELECT", sourceElement, targetElement, true);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, true);
+
+		FieldSelect("SENDER", Select, targetElement, true, "SELECT");
+		FieldSelect("RECEIVER", Select, targetElement, true, "SELECT");
+		FieldSelect("SENDERORRECEIVER", Select, targetElement, true, "SELECT");
+
+		FieldSelect("SENDER", Select, targetElement, true, "MULTI SELECT");
+		FieldSelect("RECEIVER", Select, targetElement, true, "MULTI SELECT");
+		FieldSelect("SENDERORRECEIVER", Select, targetElement, true, "MULTI SELECT");
 
 		// No
-		addFieldSelectSender("SELECT", sourceElement, targetElement, false);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, false);
+
+		FieldSelect("SENDER", Select, targetElement, false, "SELECT");
+		FieldSelect("RECEIVER", Select, targetElement, false, "SELECT");
+		FieldSelect("SENDERORRECEIVER", Select, targetElement, false, "SELECT");
+
+		FieldSelect("SENDER", Select, targetElement, false, "MULTI SELECT");
+		FieldSelect("RECEIVER", Select, targetElement, false, "MULTI SELECT");
+		FieldSelect("SENDERORRECEIVER", Select, targetElement, false, "MULTI SELECT");
 
 	}
 
-	public void addFieldSelectSender(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
+	public void FieldSelect(String fieldType, WebElement Select, WebElement targetElement, boolean isYes, String field)
+			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Select");
-		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
-				MethodActions.generateUniqueString());
-		Thread.sleep(50000);
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//li"));
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
-		case "SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("SELECT  With SENDER from Field Type Selected Sucessully ");
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
 			break;
-		case "MULTI SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With SENDER from Field Type Selected Sucessully ");
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
 			break;
 		default:
-
-			break;
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
 		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void SelectRecevier() throws Exception {
 
 		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Select\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-		int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 4);
-
-		builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-
-		// Yes
-		addFieldSelectSender("SELECT", sourceElement, targetElement, true);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, true);
-
-		// No
-		addFieldSelectSender("SELECT", sourceElement, targetElement, false);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, false);
-
-	}
-
-	public void addFieldSelectSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Select));
+		MethodActions.dragAndDrop(Select, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1036,121 +879,24 @@ public class FormTemplate {
 
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+		Thread.sleep(10000);
+		WebElement element1 = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
-		switch (fieldType) {
+		switch (field) {
 		case "SELECT":
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 			Thread.sleep(10000);
-			System.out.println("SELECT  With SENDER OR RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("SELECT With " + label + " Selected Successfully");
 			break;
 		case "MULTI SELECT":
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void SelectSENDERORRECEIVER() throws Exception {
-
-		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Select\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 8);
-		int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 8);
-
-		builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-
-		// Yes
-		addFieldSelectSender("SELECT", sourceElement, targetElement, true);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, true);
-
-		// No
-		addFieldSelectSender("SELECT", sourceElement, targetElement, false);
-		addFieldSelectSender("MULTI SELECT", sourceElement, targetElement, false);
-
-	}
-
-	public void addFieldSelectRecevier(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Select");
-		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
-				MethodActions.generateUniqueString());
-		Thread.sleep(50000);
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//li"));
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("SELECT  With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MULTI SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("MULTI SELECT With " + label + " Selected Successfully");
 			break;
 		default:
 
@@ -1160,154 +906,59 @@ public class FormTemplate {
 	}
 
 	// Number
-	public void NumberSender() throws Exception {
-
+	public void Number() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
-		Thread.sleep(10000);
+		WebElement Number = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Number));
 
-		Dimension dropSize = targetElement.getSize();
+		builder.dragAndDrop(Number, Number).perform();
 
-		for (int i = 0; i < 6; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
-
-			builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
+		Thread.sleep(1000);
 
 		// Yes
-		addFieldNumberSender("NUMBER", sourceElement, targetElement, true);
-		addFieldNumberSender("PHONE", sourceElement, targetElement, true);
-		addFieldNumberSender("CURRENCY", sourceElement, targetElement, true);
+
+		FieldNumber("SENDER", Number, targetElement, true, "NUMBER");
+		FieldNumber("RECEIVER", Number, targetElement, true, "PHONE");
+		FieldNumber("SENDERORRECEIVER", Number, targetElement, true, "CURRENCY");
 
 		// No
-		addFieldNumberSender("NUMBER", sourceElement, targetElement, false);
-		addFieldNumberSender("PHONE", sourceElement, targetElement, false);
-		addFieldNumberSender("CURRENCY", sourceElement, targetElement, false);
+		FieldNumber("SENDER", Number, targetElement, false, "NUMBER");
+		FieldNumber("RECEIVER", Number, targetElement, false, "PHONE");
+		FieldNumber("SENDERORRECEIVER", Number, targetElement, false, "CURRENCY");
 
 	}
 
-	public void addFieldNumberSender(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
+	public void FieldNumber(String fieldType, WebElement Number, WebElement targetElement, boolean isYes, String field)
+			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Number");
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
-		case "NUMBER":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("NUMBER  With SENDER from Field Type Selected Sucessully ");
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
 			break;
-		case "PHONE":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//input[@placeholder=\"Country code\"]"));
-			MethodActions.Javascriptclick(By.xpath("//div[text()=' India (भारत) ']"));
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Phone number *']")));
-			driver.findElement(By.xpath("//input[@placeholder='Phone number *']")).sendKeys("7894561230");
-			Thread.sleep(10000);
-			System.out.println("PHONE With SENDER from Field Type Selected Sucessully ");
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
 			break;
-		case "CURRENCY":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-			System.out.println("CURRENCY With SENDER from Field Type Selected Sucessully ");
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
 			break;
 		default:
-
-			break;
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
 		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void addFieldNumberSENDERORRECEIVER() throws Exception {
 		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 3; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
-
-			builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldNumberRECEIVER("NUMBER", sourceElement, targetElement, true);
-		addFieldNumberRECEIVER("PHONE", sourceElement, targetElement, true);
-		addFieldNumberRECEIVER("CURRENCY", sourceElement, targetElement, true);
-
-		// No
-		addFieldNumberRECEIVER("NUMBER", sourceElement, targetElement, false);
-		addFieldNumberRECEIVER("PHONE", sourceElement, targetElement, false);
-		addFieldNumberRECEIVER("CURRENCY", sourceElement, targetElement, false);
-
-	}
-
-	public void addFieldNumberRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Number));
+		MethodActions.dragAndDrop(Number, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1347,15 +998,17 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement elementNumber = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementNumber);
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
-		switch (fieldType) {
+		switch (field) {
 		case "NUMBER":
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 			Thread.sleep(10000);
-			System.out.println("NUMBER  With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("NUMBER With " + label + " Selected Successfully");
 			break;
 		case "PHONE":
 			Thread.sleep(10000);
@@ -1367,7 +1020,7 @@ public class FormTemplate {
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Phone number *']")));
 			driver.findElement(By.xpath("//input[@placeholder='Phone number *']")).sendKeys("7894561230");
 			Thread.sleep(10000);
-			System.out.println("PHONE With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("PHONE With " + label + " Selected Successfully");
 			break;
 		case "CURRENCY":
 			Thread.sleep(10000);
@@ -1375,150 +1028,7 @@ public class FormTemplate {
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-			System.out.println("CURRENCY With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void NumberRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 6; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
-
-			builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldNumberRECEIVER("NUMBER", sourceElement, targetElement, true);
-		addFieldNumberRECEIVER("PHONE", sourceElement, targetElement, true);
-		addFieldNumberRECEIVER("CURRENCY", sourceElement, targetElement, true);
-
-		// No
-		addFieldNumberRECEIVER("NUMBER", sourceElement, targetElement, false);
-		addFieldNumberRECEIVER("PHONE", sourceElement, targetElement, false);
-		addFieldNumberRECEIVER("CURRENCY", sourceElement, targetElement, false);
-
-	}
-
-	public void NumberSENDERORRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement sourceElement = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 6; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
-
-			builder.dragAndDropBy(sourceElement, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldNumberSENDERORRECEIVER("NUMBER", sourceElement, targetElement, true);
-		addFieldNumberSENDERORRECEIVER("PHONE", sourceElement, targetElement, true);
-		addFieldNumberSENDERORRECEIVER("CURRENCY", sourceElement, targetElement, true);
-
-		// No
-		addFieldNumberSENDERORRECEIVER("NUMBER", sourceElement, targetElement, false);
-		addFieldNumberSENDERORRECEIVER("PHONE", sourceElement, targetElement, false);
-		addFieldNumberSENDERORRECEIVER("CURRENCY", sourceElement, targetElement, false);
-
-	}
-
-	public void addFieldNumberSENDERORRECEIVER(String fieldType, WebElement sourceElement, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(sourceElement, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Number");
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "NUMBER":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("NUMBER  With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "PHONE":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//input[@placeholder=\"Country code\"]"));
-			MethodActions.Javascriptclick(By.xpath("//div[text()=' India (भारत) ']"));
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Phone number *']")));
-			driver.findElement(By.xpath("//input[@placeholder='Phone number *']")).sendKeys("7894561230");
-			Thread.sleep(10000);
-			System.out.println("PHONE With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "CURRENCY":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-			System.out.println("CURRENCY With SENDER OR RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("CURRENCY With " + label + " Selected Successfully");
 			break;
 		default:
 
@@ -1528,13 +1038,15 @@ public class FormTemplate {
 	}
 
 	// Mutltiple Select
-	public void MultipleSelectSender() throws Exception {
+	public void MultipleSelect() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()=\"Multiple Select\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(MultipleSelect));
 
 		Dimension dropSize = targetElement.getSize();
 
@@ -1548,124 +1060,53 @@ public class FormTemplate {
 		}
 
 		// Yes
-		addFieldMultipleSelectSender("SELECT", MultipleSelect, targetElement, true);
-		addFieldMultipleSelectSender("MULTI SELECT", MultipleSelect, targetElement, true);
+
+		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, true, "SELECT");
+		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, true, "SELECT");
+		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, true, "SELECT");
+
+		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, true, "MULTI SELECT");
+		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, true, "MULTI SELECT");
+		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, true, "MULTI SELECT");
 
 		// No
-		addFieldMultipleSelectSender("SELECT", MultipleSelect, targetElement, false);
-		addFieldMultipleSelectSender("MULTI SELECT", MultipleSelect, targetElement, false);
+		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, false, "SELECT");
+		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, false, "SELECT");
+		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, false, "SELECT");
+
+		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, false, "MULTI SELECT");
+		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
+		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
 
 	}
 
-	public void addFieldMultipleSelectSender(String fieldType, WebElement MultipleSelect, WebElement targetElement,
-			boolean isYes) throws Exception {
+	public void FieldMultipleSelect(String fieldType, WebElement MultipleSelect, WebElement targetElement,
+			boolean isYes, String field) throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(MultipleSelect, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Number");
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='mt-2']//span[@class='el-checkbox__inner']"));
-		MethodActions.waitEle(By.xpath("//div[@class='mt-1']//span[@class='el-checkbox__inner']"));
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
-		case "SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("SELECT  With SENDER from Field Type Selected Sucessully ");
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
 			break;
-		case "MULTI SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With SENDER from Field Type Selected Sucessully ");
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
 			break;
 		default:
-
-			break;
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
 		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void MultipleSelectRecevier() throws Exception {
 		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()=\"Multiple Select\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(MultipleSelect, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldMultipleSelectRecevier("SELECT", MultipleSelect, targetElement, true);
-		addFieldMultipleSelectRecevier("MULTI SELECT", MultipleSelect, targetElement, true);
-
-		// No
-		addFieldMultipleSelectRecevier("SELECT", MultipleSelect, targetElement, false);
-		addFieldMultipleSelectRecevier("MULTI SELECT", MultipleSelect, targetElement, false);
-
-	}
-
-	public void addFieldMultipleSelectRecevier(String fieldType, WebElement MultipleSelect, WebElement targetElement,
-			boolean isYes) throws Exception {
-		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(MultipleSelect));
 		MethodActions.dragAndDrop(MultipleSelect, targetElement);
-		Thread.sleep(10000);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1674,10 +1115,6 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
@@ -1713,125 +1150,23 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement ElementMultipleSelect = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
-		switch (fieldType) {
+		switch (field) {
 		case "SELECT":
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 			Thread.sleep(10000);
-			System.out.println("SELECT  With Recevier from Field Type Selected Sucessully ");
+			System.out.println("SELECT With " + label + " Selected Successfully");
 			break;
 		case "MULTI SELECT":
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With Recevier from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void MultipleSelectSENDERORRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()=\"Multiple Select\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(MultipleSelect, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldMultipleSelectSENDERORRECEIVER("SELECT", MultipleSelect, targetElement, true);
-		addFieldMultipleSelectSENDERORRECEIVER("MULTI SELECT", MultipleSelect, targetElement, true);
-
-		// No
-		addFieldMultipleSelectSENDERORRECEIVER("SELECT", MultipleSelect, targetElement, false);
-		addFieldMultipleSelectSENDERORRECEIVER("MULTI SELECT", MultipleSelect, targetElement, false);
-
-	}
-
-	public void addFieldMultipleSelectSENDERORRECEIVER(String fieldType, WebElement MultipleSelect,
-			WebElement targetElement, boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(MultipleSelect, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Add Number");
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='mt-2']//span[@class='el-checkbox__inner']"));
-		MethodActions.waitEle(By.xpath("//div[@class='mt-1']//span[@class='el-checkbox__inner']"));
-
-		if (isYes) {
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("SELECT  With SENDER OR RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "MULTI SELECT":
-			Thread.sleep(10000);
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("MULTI SELECT With SENDER OR RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("MULTI SELECT With " + label + " Selected Successfully");
 			break;
 		default:
 
@@ -1841,36 +1176,59 @@ public class FormTemplate {
 	}
 
 	// Fixed Time
-	public void FixedTimeSender() throws Exception {
+	public void FixedTime() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement FixedTime = driver.findElement(By.xpath("//span[text()=\"Fixed Time\"]"));
-		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
+		wait.until(ExpectedConditions.elementToBeClickable(FixedTime));
 
 		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 8);
-
-			builder.dragAndDropBy(FixedTime, targetX, targetY).perform();
+			builder.dragAndDrop(FixedTime, targetElement).perform();
 
 			Thread.sleep(1000);
 		}
 
 		// Yes
-		addFielFixedTimeSender(FixedTime, targetElement, true);
+		FieldFixedTime("SENDER", FixedTime, targetElement, true);
+		FieldFixedTime("RECEIVER", FixedTime, targetElement, true);
+		FieldFixedTime("SENDERORRECEIVER", FixedTime, targetElement, true);
 		// No
-		addFielFixedTimeSender(FixedTime, targetElement, false);
+		FieldFixedTime("SENDER", FixedTime, targetElement, false);
+		FieldFixedTime("RECEIVER", FixedTime, targetElement, false);
+		FieldFixedTime("SENDERORRECEIVER", FixedTime, targetElement, false);
 
 	}
 
-	public void addFielFixedTimeSender(WebElement FixedTime, WebElement targetElement, boolean isYes) throws Exception {
+	public void FieldFixedTime(String fieldType, WebElement FixedTime, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(FixedTime));
 		MethodActions.dragAndDrop(FixedTime, targetElement);
-		Thread.sleep(10000);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1879,22 +1237,21 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, FixedTime, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "FixedTime");
+				"(//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text'])[1]"),
+				MethodActions.generateUniqueString() + "Fixed Time Range");
 		MethodActions.waitEle(
 				By.xpath("//div[@class='el-date-editor el-range-editor el-input__inner el-date-editor--timerange']"));
 		MethodActions.waitEle(By.xpath("(//div[@class='el-time-spinner has-seconds']//ul//li[text()='05'])[1]"));
 		Thread.sleep(10000);
-
+		MethodActions.waitEle(By.xpath("(//div[@class='el-time-spinner has-seconds']//ul//li[text()='10'])[4]"));
+		MethodActions.waitEle(By.xpath("//button[normalize-space()='OK']"));
+		MethodActions.waitEle(By.xpath("//input[@Placeholder='Step time']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[5]"));
 		if (isYes)
 
 		{
@@ -1920,44 +1277,69 @@ public class FormTemplate {
 
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+		WebElement elementFixedTime = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementFixedTime);
 		Thread.sleep(10000);
-		System.out.println("Time With SENDER Selected Sucessfully");
+		System.out.println("TimeRange With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
 
-	public void FixedTimeRecevier() throws Exception {
+	// WeekDays
+	public void WeekDays() throws Exception {
 		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement FixedTime = driver.findElement(By.xpath("//span[text()=\"Fixed Time\"]"));
+		WebElement WeekDays = driver.findElement(By.xpath("//span[text()=\"Week Days\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
+		wait.until(ExpectedConditions.elementToBeClickable(WeekDays));
 
 		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 3);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 6);
-
-			builder.dragAndDropBy(FixedTime, targetX, targetY).perform();
+			builder.dragAndDrop(WeekDays, targetElement).perform();
 
 			Thread.sleep(1000);
 		}
 
 		// Yes
-		addFieldFixedTimeRecevier(FixedTime, targetElement, true);
+		FieldWeekDays("SENDER", WeekDays, targetElement, true);
+		FieldWeekDays("RECEIVER", WeekDays, targetElement, true);
+		FieldWeekDays("SENDERORRECEIVER", WeekDays, targetElement, true);
 		// No
-		addFieldFixedTimeRecevier(FixedTime, targetElement, false);
+		FieldWeekDays("SENDER", WeekDays, targetElement, false);
+		FieldWeekDays("RECEIVER", WeekDays, targetElement, false);
+		FieldWeekDays("SENDERORRECEIVER", WeekDays, targetElement, false);
 
 	}
 
-	public void addFieldFixedTimeRecevier(WebElement FixedTime, WebElement targetElement, boolean isYes)
+	public void FieldWeekDays(String fieldType, WebElement WeekDays, WebElement targetElement, boolean isYes)
 			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(FixedTime, targetElement);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
 		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(WeekDays));
+		MethodActions.dragAndDrop(WeekDays, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1966,19 +1348,14 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, FixedTime, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Time");
-		Thread.sleep(10000);
-
+				"(//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text'])[1]"),
+				MethodActions.generateUniqueString() + "Week Days");
+		MethodActions.waitEle(By.xpath("//input[@class='el-checkbox__original']"));
 		if (isYes)
 
 		{
@@ -2005,43 +1382,64 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement elementWeekDays = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementWeekDays);
 		Thread.sleep(10000);
-		System.out.println("Time With RECEVIER Selected Sucessfully");
+		System.out.println("TimeRange With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
 
-	public void FixedTimeSENDERORRECEVIER() throws Exception {
+	// Yes or No
+	public void YesorNo() throws Exception {
 		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement FixedTime = driver.findElement(By.xpath("//span[text()=\"Fixed Time\"]"));
+		WebElement YesorNo = driver.findElement(By.xpath("//span[text()=\"Yes or No\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 3);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 6);
-
-			builder.dragAndDropBy(FixedTime, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
+		wait.until(ExpectedConditions.elementToBeClickable(YesorNo));
+		builder.dragAndDrop(YesorNo, targetElement).perform();
 
 		// Yes
-		addFieldFixedTimeSENDERORRECEVIER(FixedTime, targetElement, true);
+		FieldYesorNo("SENDER", YesorNo, targetElement, true, true);
+		FieldYesorNo("RECEIVER", YesorNo, targetElement, true, true);
+		FieldYesorNo("SENDERORRECEIVER", YesorNo, targetElement, true, true);
 		// No
-		addFieldFixedTimeSENDERORRECEVIER(FixedTime, targetElement, false);
+		FieldYesorNo("SENDER", YesorNo, targetElement, false, false);
+		FieldYesorNo("RECEIVER", YesorNo, targetElement, false, false);
+		FieldYesorNo("SENDERORRECEIVER", YesorNo, targetElement, false, false);
 
 	}
 
-	public void addFieldFixedTimeSENDERORRECEVIER(WebElement FixedTime, WebElement targetElement, boolean isYes)
-			throws Exception {
+	public void FieldYesorNo(String fieldType, WebElement YesorNo, WebElement targetElement, boolean isYes,
+			boolean Field) throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(FixedTime, targetElement);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
 		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(YesorNo));
+		MethodActions.dragAndDrop(YesorNo, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2050,18 +1448,28 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, FixedTime, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Time");
-		Thread.sleep(10000);
+
+		if (Field)
+
+		{
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='YES']"));
+			System.out.println("Selectd Default Field YES");
+		}
+
+		else {
+
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='NO']"));
+			System.out.println("Selectd Default Field NO");
+
+		}
 
 		if (isYes)
 
@@ -2089,20 +1497,420 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+		WebElement elementYesorNo = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementYesorNo);
 		Thread.sleep(10000);
-		System.out.println("Time With SENDER OR RECEVIER Selected Sucessfully");
+		System.out.println("Yes OR No With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Document
+	public void Document() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Document = driver.findElement(By.xpath("//span[text()=\"Document\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Document);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Document));
+		builder.dragAndDrop(Document, targetElement).perform();
+
+		Thread.sleep(10000);
+
+		// Gif
+
+		// Yes and Single
+		FieldDocument("SENDER", "Gif", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "Gif", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "Gif", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "Gif", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "Gif", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "Gif", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "Gif", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "Gif", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "Gif", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "Gif", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "Gif", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "Gif", Document, targetElement, false, false);
+
+		// JPEG
+
+		// Yes and Single
+		FieldDocument("SENDER", "JPEG", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "JPEG", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "JPEG", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "JPEG", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "JPEG", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "JPEG", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "JPEG", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "JPEG", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "JPEG", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "JPEG", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "JPEG", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "JPEG", Document, targetElement, false, false);
+
+		// SVG
+
+		// Yes and Single
+		FieldDocument("SENDER", "SVG", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "SVG", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "SVG", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "SVG", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "SVG", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "SVG", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "SVG", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "SVG", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "SVG", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "SVG", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "SVG", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "SVG", Document, targetElement, false, false);
+
+		// PNG
+
+		// Yes and Single
+		FieldDocument("SENDER", "PNG", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "PNG", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "PNG", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "PNG", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "PNG", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "PNG", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "PNG", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "PNG", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "PNG", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "PNG", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "PNG", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "PNG", Document, targetElement, false, false);
+
+		// PPT
+
+		// Yes and Single
+		FieldDocument("SENDER", "PPT", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "PPT", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "PPT", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "PPT", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "PPT", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "PPT", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "PPT", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "PPT", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "PPT", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "PPT", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "PPT", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "PPT", Document, targetElement, false, false);
+
+		// Xls
+
+		// Yes and Single
+		FieldDocument("SENDER", "Xls", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "Xls", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "Xls", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "Xls", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "Xls", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "Xls", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "Xls", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "Xls", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "Xls", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "Xls", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "Xls", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "Xls", Document, targetElement, false, false);
+
+		// pdf
+
+		// Yes and Single
+		FieldDocument("SENDER", "pdf", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "pdf", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "pdf", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "pdf", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "pdf", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "pdf", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "pdf", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "pdf", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "pdf", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "pdf", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "pdf", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "pdf", Document, targetElement, false, false);
+
+		// Doc
+
+		// Yes and Single
+		FieldDocument("SENDER", "Doc", Document, targetElement, true, true);
+		FieldDocument("RECEIVER", "Doc", Document, targetElement, true, true);
+		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, true, true);
+		// Yes and Multiple
+		FieldDocument("SENDER", "Doc", Document, targetElement, true, false);
+		FieldDocument("RECEIVER", "Doc", Document, targetElement, true, false);
+		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, true, false);
+		// No and Single
+		FieldDocument("SENDER", "Doc", Document, targetElement, false, true);
+		FieldDocument("RECEIVER", "Doc", Document, targetElement, false, true);
+		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, false, true);
+		// No and Multiple
+		FieldDocument("SENDER", "Doc", Document, targetElement, false, false);
+		FieldDocument("RECEIVER", "Doc", Document, targetElement, false, false);
+		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, false, false);
+
+	}
+
+	public void FieldDocument(String fieldType, String field, WebElement Document, WebElement targetElement,
+			boolean isYes, boolean type) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Document));
+		MethodActions.dragAndDrop(Document, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		if (type)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Single']")));
+			yesElement.click();
+
+			System.out.println("Upload Type! Single");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Multiple']")));
+			noElement.click();
+			System.out.println("Upload Type! Multiple");
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Minium Files To upload']"), "1");
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Maximum Files To upload']"), "3");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementDocument = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
+		Thread.sleep(10000);
+
+		MethodActions.Javascriptclick(By.xpath("//input[@class='el-select__input']"));
+
+		switch (field) {
+		case "Gif":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			try {
+				MethodActions.waitEle(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+
+			System.out.println("Document  With Gif " + label + " Selected Successfully");
+			break;
+		case "JPEG":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With JPEG " + label + " Selected Successfully");
+			break;
+		case "SVG":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With SVG " + label + " Selected Successfully");
+			break;
+		case "PNG":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With PNG " + label + " Selected Successfully");
+			break;
+		case "PPT":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With PPT " + label + " Selected Successfully");
+			break;
+		case "Xls":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[6]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With Xls " + label + " Selected Successfully");
+			break;
+		case "pdf":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[7]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With pdf " + label + " Selected Successfully");
+			break;
+		case "Doc":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[8]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With Doc " + label + " Selected Successfully");
+			break;
+		case "DocX":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[9]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With DocX " + label + " Selected Successfully");
+			break;
+		case "XlsX":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[10]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With XlsX " + label + " Selected Successfully");
+			break;
+		case "CSV":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[11]"));
+			try {
+				MethodActions.Javascriptclick(By.xpath("//div[@class=\"el-upload el-upload--text\"]"));
+				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\excel.exe\"");
+			} catch (Exception e) {
+				System.out.println("RECEIVER Side Attachment Issue Not Solved ");
+			}
+			System.out.println("Document With CSV " + label + " Selected Successfully");
+			break;
+		default:
+			break;
+		}
+
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
 	}
 
 	// Time
-	public void TimeSender() throws Exception {
+	public void Time() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement Time = driver.findElement(By.xpath("//span[text()=\"Time\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Time));
 
 		Dimension dropSize = targetElement.getSize();
 
@@ -2116,266 +1924,43 @@ public class FormTemplate {
 		}
 
 		// Yes
-		addFielTimeSender(Time, targetElement, true);
+		addFieldTime("SENDER", Time, targetElement, true);
+		addFieldTime("RECEIVER", Time, targetElement, true);
+		addFieldTime("SENDERORRECEIVER", Time, targetElement, true);
 		// No
-		addFielTimeSender(Time, targetElement, false);
+		addFieldTime("SENDER", Time, targetElement, false);
+		addFieldTime("RECEIVER", Time, targetElement, false);
+		addFieldTime("SENDERORRECEIVER", Time, targetElement, false);
 
 	}
 
-	public void addFielTimeSender(WebElement Time, WebElement targetElement, boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Time, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Time, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Time");
-		Thread.sleep(10000);
-
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		Thread.sleep(10000);
-		System.out.println("Time With SENDER Selected Sucessfully");
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void TimeRecevier() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Time = driver.findElement(By.xpath("//span[text()=\"Time\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 3);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 6);
-
-			builder.dragAndDropBy(Time, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFielTimeRecevier(Time, targetElement, true);
-		// No
-		addFielTimeRecevier(Time, targetElement, false);
-
-	}
-
-	public void addFielTimeRecevier(WebElement Time, WebElement targetElement, boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Time, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Time, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Time");
-		Thread.sleep(10000);
-
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-		Thread.sleep(10000);
-		System.out.println("Time With RECEVIER Selected Sucessfully");
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void TimeSENDERORRECEVIER() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Time = driver.findElement(By.xpath("//span[text()=\"Time\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 3);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 6);
-
-			builder.dragAndDropBy(Time, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFielTimeSENDERORRECEVIER(Time, targetElement, true);
-		// No
-		addFielTimeSENDERORRECEVIER(Time, targetElement, false);
-
-	}
-
-	public void addFielTimeSENDERORRECEVIER(WebElement Time, WebElement targetElement, boolean isYes) throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Time, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Time, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Time");
-		Thread.sleep(10000);
-
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		Thread.sleep(10000);
-		System.out.println("Time With SENDER OR RECEVIER Selected Sucessfully");
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void ListRecevier() throws Exception {
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement List = driver.findElement(By.xpath("//span[text()=\"List\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(List, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldListSender(List, targetElement, true);
-		// No
-		addFieldListSender(List, targetElement, false);
-
-	}
-
-	public void addFieldListtRecevier(WebElement MultipleSelect, WebElement targetElement, boolean isYes)
+	public void addFieldTime(String fieldType, WebElement Time, WebElement targetElement, boolean isYes)
 			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(MultipleSelect, targetElement);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
 		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Time));
+		MethodActions.dragAndDrop(Time, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2384,37 +1969,14 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath(
 				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "List");
-		MethodActions.waitEle(By.xpath("//span[@class='el-checkbox__inner']"));
+				MethodActions.generateUniqueString() + "Time");
 		Thread.sleep(10000);
-		for (int i = 0; i < 2; i++) {
-			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Name']"),
-					MethodActions.generateUniqueString());
-			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Value']"), "55");
-			System.out.println("List Items Data added");
-			MethodActions.waitEle(By.xpath("//button[@class='el-button f-weight-600 el-button--primary']"));
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver
-				.findElement(By.xpath("//div[@class='el-table__fixed-body-wrapper']/table//tr[2]/td[3]//i"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-
-		System.out.println("List Items Data Deleted");
 
 		if (isYes)
 
@@ -2442,123 +2004,24 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement elementTime = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementTime);
 		Thread.sleep(10000);
-		System.out.println("List With RECEVIER Selected Sucessfully");
-		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-	}
-
-	public void ListSENDERORRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()=\"List\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = targetElement.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(MultipleSelect, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldListSENDERORRECEIVER(MultipleSelect, targetElement, true);
-		// No
-		addFieldListSENDERORRECEIVER(MultipleSelect, targetElement, false);
-
-	}
-
-	public void addFieldListSENDERORRECEIVER(WebElement MultipleSelect, WebElement targetElement, boolean isYes)
-			throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(MultipleSelect, targetElement);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "List");
-		MethodActions.waitEle(By.xpath("//span[@class='el-checkbox__inner']"));
-		Thread.sleep(10000);
-		for (int i = 0; i < 2; i++) {
-			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Name']"),
-					MethodActions.generateUniqueString());
-			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Value']"), "55");
-			System.out.println("List Items Data added");
-			MethodActions.waitEle(By.xpath("//button[@class='el-button f-weight-600 el-button--primary']"));
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver
-				.findElement(By.xpath("//div[@class='el-table__fixed-body-wrapper']/table//tr[2]/td[3]//i"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-
-		System.out.println("List Items Data Deleted");
-
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		Thread.sleep(10000);
-		System.out.println("List With SENDER OR RECEIVER Selected Sucessfully");
+		System.out.println("Time With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
 
 	// Date
-	public void DateSender() throws Exception {
+	public void Date() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement Date = driver.findElement(By.xpath("//span[text()=\"Date\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Date));
 
 		Dimension dropSize = dropLocation.getSize();
 
@@ -2572,153 +2035,68 @@ public class FormTemplate {
 		}
 
 		// Yes
-		addFieldDateSender("DATE", Date, dropLocation, true);
-		addFieldDateSender("TIME", Date, dropLocation, true);
-		addFieldDateSender("DATE TIME", Date, dropLocation, true);
-		addFieldDateSender("DATE TIME RANGE", Date, dropLocation, true);
-		addFieldDateSender("DATE RANGE", Date, dropLocation, true);
+		FieldDate("SENDER", Date, dropLocation, true, "DATE");
+		FieldDate("RECEIVER", Date, dropLocation, true, "DATE");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, true, "DATE");
+
+		FieldDate("SENDER", Date, dropLocation, true, "TIME");
+		FieldDate("RECEIVER", Date, dropLocation, true, "TIME");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, true, "TIME");
+
+		FieldDate("SENDER", Date, dropLocation, true, "DATE TIME");
+		FieldDate("RECEIVER", Date, dropLocation, true, "DATE TIME");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, true, "DATE TIME");
+
+		FieldDate("SENDER", Date, dropLocation, true, "DATE RANGE");
+		FieldDate("RECEIVER", Date, dropLocation, true, "DATE RANGE");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, true, "DATE RANGE");
 
 		// No
-		addFieldDateSender("DATE", Date, dropLocation, false);
-		addFieldDateSender("TIME", Date, dropLocation, false);
-		addFieldDateSender("DATE TIME", Date, dropLocation, false);
-		addFieldDateSender("DATE TIME RANGE", Date, dropLocation, false);
-		addFieldDateSender("DATE RANGE", Date, dropLocation, false);
+		FieldDate("SENDER", Date, dropLocation, false, "DATE");
+		FieldDate("RECEIVER", Date, dropLocation, false, "DATE");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "DATE");
+
+		FieldDate("SENDER", Date, dropLocation, false, "TIME");
+		FieldDate("RECEIVER", Date, dropLocation, false, "TIME");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "TIME");
+
+		FieldDate("SENDER", Date, dropLocation, false, "DATE TIME");
+		FieldDate("RECEIVER", Date, dropLocation, false, "DATE TIME");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "DATE TIME");
+
+		FieldDate("SENDER", Date, dropLocation, false, "DATE RANGE");
+		FieldDate("RECEIVER", Date, dropLocation, false, "DATE RANGE");
+		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "DATE RANGE");
 
 	}
 
-	public void addFieldDateSender(String fieldType, WebElement Date, WebElement dropLocation, boolean isYes)
+	public void FieldDate(String fieldType, WebElement Date, WebElement targetElement, boolean isYes, String field)
 			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Date, dropLocation);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Date, dropLocation);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Date");
-		Thread.sleep(10000);
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
-
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
-		case "DATE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("DATE  With SENDER from Field Type Selected Sucessully ");
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
 			break;
-		case "TIME":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("TIME With SENDER from Field Type Selected Sucessully ");
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
 			break;
-		case "DATE TIME":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			System.out.println("DATE TIME With SENDER from Field Type Selected Sucessully ");
-			break;
-		case "DATE TIME RANGE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-			Thread.sleep(10000);
-			System.out.println("DATE TIME RANGE With SENDER from Field Type Selected Sucessully ");
-			break;
-		case "DATE RANGE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("DATE RANGE With SENDER from Field Type Selected Sucessully ");
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
 			break;
 		default:
-
-			break;
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
 		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void DateRecevier() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Date = driver.findElement(By.xpath("//span[text()=\"Date\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = dropLocation.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldDateRecevier("DATE", Date, dropLocation, true);
-		addFieldDateRecevier("TIME", Date, dropLocation, true);
-		addFieldDateRecevier("DATE TIME", Date, dropLocation, true);
-		addFieldDateRecevier("DATE TIME RANGE", Date, dropLocation, true);
-		addFieldDateRecevier("DATE RANGE", Date, dropLocation, true);
-
-		// No
-		addFieldDateRecevier("DATE", Date, dropLocation, false);
-		addFieldDateRecevier("TIME", Date, dropLocation, false);
-		addFieldDateRecevier("DATE TIME", Date, dropLocation, false);
-		addFieldDateRecevier("DATE TIME RANGE", Date, dropLocation, false);
-		addFieldDateRecevier("DATE RANGE", Date, dropLocation, false);
-
-	}
-
-	public void addFieldDateRecevier(String fieldType, WebElement Date, WebElement dropLocation, boolean isYes)
-			throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Date, dropLocation);
-		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Date));
+		MethodActions.dragAndDrop(Date, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2727,10 +2105,6 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Date, dropLocation);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
@@ -2765,166 +2139,41 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+		WebElement elementDate = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDate);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
-		switch (fieldType) {
+		switch (field) {
 		case "DATE":
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
 			Thread.sleep(10000);
-			System.out.println("DATE  With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("DATE  With " + label + " from Field Type Selected Sucessully ");
 			break;
 		case "TIME":
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
 			Thread.sleep(10000);
-			System.out.println("TIME With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("TIME With " + label + " from Field Type Selected Sucessully ");
 			break;
 		case "DATE TIME":
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
 			Thread.sleep(10000);
-			System.out.println("DATE TIME With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("DATE TIME With " + label + " from Field Type Selected Sucessully ");
 			break;
 		case "DATE TIME RANGE":
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
 			Thread.sleep(10000);
-			System.out.println("DATE TIME RANGE With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("DATE TIME RANGE With " + label + " from Field Type Selected Sucessully ");
 			break;
 		case "DATE RANGE":
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
 			Thread.sleep(10000);
-			System.out.println("DATE RANGE With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
-	}
-
-	public void DateSENDERORRECEIVER() throws Exception {
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Date = driver.findElement(By.xpath("//span[text()=\"Date\"]"));
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-
-		Dimension dropSize = dropLocation.getSize();
-
-		for (int i = 0; i < 2; i++) {
-			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
-			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
-
-			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
-
-			Thread.sleep(1000);
-		}
-
-		// Yes
-		addFieldDateSENDERORRECEIVER("DATE", Date, dropLocation, true);
-		addFieldDateSENDERORRECEIVER("TIME", Date, dropLocation, true);
-		addFieldDateSENDERORRECEIVER("DATE TIME", Date, dropLocation, true);
-		addFieldDateSENDERORRECEIVER("DATE TIME RANGE", Date, dropLocation, true);
-		addFieldDateSENDERORRECEIVER("DATE RANGE", Date, dropLocation, true);
-
-		// No
-		addFieldDateSENDERORRECEIVER("DATE", Date, dropLocation, false);
-		addFieldDateSENDERORRECEIVER("TIME", Date, dropLocation, false);
-		addFieldDateSENDERORRECEIVER("DATE TIME", Date, dropLocation, false);
-		addFieldDateSENDERORRECEIVER("DATE TIME RANGE", Date, dropLocation, false);
-		addFieldDateSENDERORRECEIVER("DATE RANGE", Date, dropLocation, false);
-
-	}
-
-	public void addFieldDateSENDERORRECEIVER(String fieldType, WebElement Date, WebElement dropLocation, boolean isYes)
-			throws Exception {
-		Thread.sleep(10000);
-		MethodActions.dragAndDrop(Date, dropLocation);
-		Thread.sleep(10000);
-
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
-
-		}
-		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Date, dropLocation);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath(
-				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
-				MethodActions.generateUniqueString() + "Date");
-		Thread.sleep(10000);
-		if (isYes)
-
-		{
-
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
-
-			System.out.println("With Field Required! Yes");
-		}
-
-		else {
-
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
-
-		}
-		Thread.sleep(10000);
-
-		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (fieldType) {
-		case "DATE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-			Thread.sleep(10000);
-			System.out.println("DATE  With SENDER from Field Type Selected Sucessully ");
-			break;
-		case "TIME":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-			Thread.sleep(10000);
-			System.out.println("TIME With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "DATE TIME":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-			Thread.sleep(10000);
-			System.out.println("DATE TIME With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "DATE TIME RANGE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-			Thread.sleep(10000);
-			System.out.println("DATE TIME RANGE With RECEIVER from Field Type Selected Sucessully ");
-			break;
-		case "DATE RANGE":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-			Thread.sleep(10000);
-			System.out.println("DATE RANGE With RECEIVER from Field Type Selected Sucessully ");
+			System.out.println("DATE RANGE With " + label + " from Field Type Selected Sucessully ");
 			break;
 		default:
 
@@ -2934,13 +2183,15 @@ public class FormTemplate {
 	}
 
 	// List
-	public void ListSender() throws Exception {
+	public void List() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
 		WebElement List = driver.findElement(By.xpath("//span[text()=\"List\"]"));
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(List));
 
 		Dimension dropSize = targetElement.getSize();
 
@@ -2954,17 +2205,42 @@ public class FormTemplate {
 		}
 
 		// Yes
-		addFieldListSender(List, targetElement, true);
-		// No
-		addFieldListSender(List, targetElement, false);
+		FieldList("SENDER", List, targetElement, true);
+		FieldList("RECEIVER", List, targetElement, true);
+		FieldList("SENDERORRECEIVER", List, targetElement, true);
 
+		// No
+		FieldList("SENDER", List, targetElement, false);
+		FieldList("RECEIVER", List, targetElement, false);
+		FieldList("SENDERORRECEIVER", List, targetElement, false);
 	}
 
-	public void addFieldListSender(WebElement MultipleSelect, WebElement targetElement, boolean isYes)
-			throws Exception {
+	public void FieldList(String fieldType, WebElement List, WebElement targetElement, boolean isYes) throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		MethodActions.dragAndDrop(MultipleSelect, targetElement);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
 		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(List));
+		MethodActions.dragAndDrop(List, targetElement);
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2973,10 +2249,6 @@ public class FormTemplate {
 
 		}
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, MultipleSelect, targetElement);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
@@ -3031,224 +2303,1259 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+		WebElement elementList = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementList);
 		Thread.sleep(10000);
-		System.out.println("List With SENDER Selected Sucessfully");
+		System.out.println("List With " + label + " Selected Successfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
 
-	public void Checkboxgroup() throws Exception {
+	// Time Range
+	public void Timerange() throws Exception {
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement List = driver.findElement(By.xpath("//span[text()=\"Checkbox Group\"]"));
-		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement TimeRange = driver.findElement(By.xpath("//span[text()=\"Time Range\"]"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, List, dropLocation);
-		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
+		wait.until(ExpectedConditions.elementToBeClickable(TimeRange));
 
-		MethodActions.sendKeysToElement(By.xpath("(//input[@max='Infinity'])[1]"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("(//input[@max='Infinity'])[2]"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
-				MethodActions.generateUniqueString());
-		driver.findElement(By.xpath("(//input[@max='Infinity'])[1]")).sendKeys("1");
-		driver.findElement(By.xpath("(//input[@max='Infinity'])[2]")).sendKeys("4");
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		builder.dragAndDrop(TimeRange, targetElement).perform();
+
+		Thread.sleep(1000);
+
+		// Yes
+		FieldTimerange(TimeRange, targetElement, true, "SENDER");
+		FieldTimerange(TimeRange, targetElement, true, "RECEIVER");
+		FieldTimerange(TimeRange, targetElement, true, "SENDERORRECEIVER");
+
+		// No
+		FieldTimerange(TimeRange, targetElement, false, "SENDER");
+		FieldTimerange(TimeRange, targetElement, false, "RECEIVER");
+		FieldTimerange(TimeRange, targetElement, false, "SENDERORRECEIVER");
 
 	}
 
-	public void Radiogroup() throws Exception {
+	public void FieldTimerange(WebElement TimeRange, WebElement targetElement, boolean isYes, String fieldType)
+			throws Exception {
+		int index;
+		String label;
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement List = driver.findElement(By.xpath("//span[text()=\"Radio Group\"]"));
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+
 		Thread.sleep(10000);
-		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, List, dropLocation);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(TimeRange));
+		MethodActions.dragAndDrop(TimeRange, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+
+		if (isYes) {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+			System.out.println("With Field Required! Yes");
+		} else {
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+		}
+
 		Thread.sleep(10000);
-		MethodActions.switchToNewWindow();
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementTimerange = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementTimerange);
+		Thread.sleep(10000);
+		System.out.println("Time Range With " + label + " Selected Successfully");
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"(//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text'])[1]"),
+				MethodActions.generateUniqueString() + "Time Range");
+		MethodActions.sendKeysToElement(By.xpath(
+				"(//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text'])[2]"),
+				MethodActions.generateUniqueString());
 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Check Box
+	public void CheckBox() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Checkbox = driver.findElement(By.xpath("//span[text()=\"Checkbox\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Checkbox);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Checkbox));
+		builder.dragAndDrop(Checkbox, targetElement).perform();
+		Thread.sleep(1000);
+
+		// Yes
+		FieldCheckbox("SENDER", Checkbox, targetElement, true);
+		FieldCheckbox("RECEIVER", Checkbox, targetElement, true);
+		FieldCheckbox("SENDERORRECEIVER", Checkbox, targetElement, true);
+		// No
+		FieldCheckbox("SENDER", Checkbox, targetElement, false);
+		FieldCheckbox("RECEIVER", Checkbox, targetElement, false);
+		FieldCheckbox("SENDERORRECEIVER", Checkbox, targetElement, false);
+
+	}
+
+	public void FieldCheckbox(String fieldType, WebElement Checkbox, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Checkbox));
+		MethodActions.dragAndDrop(Checkbox, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement element = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		Thread.sleep(10000);
+
+		System.out.println("CheckBox With " + label + " Selected Sucessfully");
+//		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
+//		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
+//				MethodActions.generateUniqueString());
+
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Check Box
+	public void CheckBoxGroup() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement CheckboxGroup = driver.findElement(By.xpath("//span[text()=\"Checkbox Group\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", CheckboxGroup);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(CheckboxGroup));
+		builder.dragAndDrop(CheckboxGroup, targetElement).perform();
+		Thread.sleep(1000);
+
+		// Yes
+		FieldCheckBoxGroup("SENDER", CheckboxGroup, targetElement);
+		FieldCheckBoxGroup("RECEIVER", CheckboxGroup, targetElement);
+		FieldCheckBoxGroup("SENDERORRECEIVER", CheckboxGroup, targetElement);
+
+	}
+
+	public void FieldCheckBoxGroup(String fieldType, WebElement CheckboxGroup, WebElement targetElement)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(CheckboxGroup));
+		MethodActions.dragAndDrop(CheckboxGroup, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		Thread.sleep(10000);
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementCheckBoxGroup = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementCheckBoxGroup);
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("(//input[@aria-valuemax='Infinity'])[1]"));
+		MethodActions.sendKeysToElement(By.xpath("(//input[@aria-valuemax='Infinity'])[1]"), "3");
+		int i = 3;
+		for (i = 0; i < 3; i++) {
+			MethodActions.waitEle(By.xpath("(//span[@class='el-input-number__increase'])[2]"));
+		}
+		MethodActions.sendKeysToElement(
+				By.xpath("//textarea[@placeholder='Please enter a custom notification message.']"), "invalid details");
+		// MethodActions.waitEle(By.xpath("//span[@class='el-checkbox__inner']"));
+		MethodActions.waitEle(By.xpath("//span[@class='el-switch__core']"));
 		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+		System.out.println("CheckBox Group With " + label + " Selected Sucessfully");
 
 	}
 
-	public boolean performAction(String elementXPath, boolean useJavaScriptClick) {
-		try {
-			Thread.sleep(10000);
-			WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-			WebElement element = driver.findElement(By.xpath(elementXPath));
-			Thread.sleep(10000);
-			Actions builder = new Actions(driver);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-			Thread.sleep(10000);
-			if (useJavaScriptClick) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-			} else {
-				MethodActions.waitAndClick(builder, element, dropLocation);
-			}
-			Thread.sleep(10000);
-			MethodActions.switchToNewWindow();
-			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-					MethodActions.generateUniqueString());
-			MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-					MethodActions.generateUniqueString());
-			Thread.sleep(10000);
-
-			try {
-				MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
-				Thread.sleep(10000);
-				MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-			} catch (Exception e) {
-
-			}
-			try {
-				MethodActions.waitEle(By.xpath("//input[@class='el-select__input']"));
-				MethodActions.waitEle(By.xpath("//div[@x-placement]//li[5]"));
-				MethodActions.waitEle(By.xpath("//div[@class='avatar-uploader']"));
-				Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
-
-			} catch (Exception e) {
-
-			}
-
-			try {
-				MethodActions.waitEle(By.xpath("//input[@class='el-select__input']"));
-				MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
-
-			} catch (Exception e) {
-
-			}
-			MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	public void Multipleactions() throws Exception {
-
-		boolean Number = performAction("//span[text()='Number']", false);
-		boolean Date = performAction("//span[text()='Date']", false);
-		boolean Time = performAction("//span[text()='Time']", false);
-		boolean Fixedtime = performAction("//span[text()='Fixed Time']", false);
-		boolean Timerange = performAction("//span[text()='Time Range']", false);
-		boolean Datetime = performAction("//span[text()='Date Time']", false);
-		boolean Weekdays = performAction("//span[text()='Week Days']", false);
-		boolean Datetimerange = performAction("//span[text()='Date Time Range']", false);
-		boolean Yes = performAction("//span[text()='Yes or No']", false);
-		boolean Document = performAction("//span[text()='Document']", false);
-		boolean Radio = performAction("//span[text()='Radio']", false);
-		boolean phone = performAction("//span[text()='Phone']", false);
-		boolean Signature = performAction("//span[text()='Signature']", false);
-		boolean Captcha = performAction("//span[text()='Captcha']", false);
-
-		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
-	}
-
-	public void Contentfields() throws Exception {
+	// Radio
+	public void Radio() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()=\"Content Fields\"]"));
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Radio = driver.findElement(By.xpath("//span[text()=\"Radio\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Radio);
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement Heading = driver.findElement(By.xpath("//span[text()='Heading']"));
-		WebElement HTML = driver.findElement(By.xpath("//span[text()='HTML']"));
-		WebElement Paragraph = driver.findElement(By.xpath("//span[text()='Paragraph']"));
-		WebElement SingleLineContent = driver.findElement(By.xpath("//span[text()='Single Line Content']"));
-		WebElement Image = driver.findElement(By.xpath("//span[text()='Image']"));
-		WebElement Video = driver.findElement(By.xpath("//span[text()='Video']"));
-		WebElement ActionButton = driver.findElement(By.xpath("//span[text()='Action Button']"));
-		WebElement HorizontalLine = driver.findElement(By.xpath("//span[text()='Horizontal Line']"));
-		WebElement Division = driver.findElement(By.xpath("//span[text()='Division']"));
-		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
-		MethodActions.waitAndClick(builder, Heading, dropLocation);
-		// MethodActions.waitAndClick(builder, HorizontalLine, dropLocation);
-		// MethodActions.waitAndClick(builder, Division, dropLocation);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Radio));
+		builder.dragAndDrop(Radio, targetElement).perform();
+		Thread.sleep(1000);
+
+		// Yes
+		FieldRadio("SENDER", Radio, targetElement, true);
+		FieldRadio("RECEIVER", Radio, targetElement, true);
+		FieldRadio("SENDERORRECEIVER", Radio, targetElement, true);
+		// No
+		FieldRadio("SENDER", Radio, targetElement, false);
+		FieldRadio("RECEIVER", Radio, targetElement, false);
+		FieldRadio("SENDERORRECEIVER", Radio, targetElement, false);
+
+	}
+
+	public void FieldRadio(String fieldType, WebElement Radio, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
 		Thread.sleep(10000);
-		// Heading
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Radio));
+		MethodActions.dragAndDrop(Radio, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementRadio = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementRadio);
+
+		Thread.sleep(10000);
+
+		System.out.println("Radio With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Radio Group
+	public void RadioGroup() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement RadioGroup = driver.findElement(By.xpath("//span[text()=\"Radio Group\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", RadioGroup);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(RadioGroup));
+		builder.dragAndDrop(RadioGroup, targetElement).perform();
+		Thread.sleep(1000);
+
+		// Yes
+		FieldRadioGroup("SENDER", RadioGroup, targetElement, true);
+		FieldRadioGroup("RECEIVER", RadioGroup, targetElement, true);
+		FieldRadioGroup("SENDERORRECEIVER", RadioGroup, targetElement, true);
+		// No
+		FieldRadioGroup("SENDER", RadioGroup, targetElement, false);
+		FieldRadioGroup("RECEIVER", RadioGroup, targetElement, false);
+		FieldRadioGroup("SENDERORRECEIVER", RadioGroup, targetElement, false);
+
+	}
+
+	public void FieldRadioGroup(String fieldType, WebElement RadioGroup, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(RadioGroup));
+		MethodActions.dragAndDrop(RadioGroup, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementRadiogroup = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementRadiogroup);
+
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
+				MethodActions.generateUniqueString());
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
+		MethodActions.waitEle(By.xpath("//span[@class='el-switch__core']"));
+		System.out.println("Horizontal View Selected");
+		MethodActions.waitEle(By.xpath("//span[@aria-hidden='true']"));
+		System.out.println("Vertical View Selected");
+		System.out.println("Radio With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	// Phone
+	public void Phone() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Phone = driver.findElement(By.xpath("//span[text()=\"Phone\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Phone);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Phone));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+
+		// Yes
+		FieldPhone("SENDER", Phone, dropLocation, true, "NUMBER");
+		FieldPhone("RECEIVER", Phone, dropLocation, true, "NUMBER");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, true, "NUMBER");
+
+		FieldPhone("SENDER", Phone, dropLocation, true, "PHONE");
+		FieldPhone("RECEIVER", Phone, dropLocation, true, "PHONE");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, true, "PHONE");
+
+		FieldPhone("SENDER", Phone, dropLocation, true, "CURRENCY");
+		FieldPhone("RECEIVER", Phone, dropLocation, true, "CURRENCY");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, true, "CURRENCY");
+
+		// No
+		FieldPhone("SENDER", Phone, dropLocation, false, "NUMBER");
+		FieldPhone("RECEIVER", Phone, dropLocation, false, "NUMBER");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, false, "NUMBER");
+
+		FieldPhone("SENDER", Phone, dropLocation, false, "PHONE");
+		FieldPhone("RECEIVER", Phone, dropLocation, false, "PHONE");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, false, "PHONE");
+
+		FieldPhone("SENDER", Phone, dropLocation, false, "CURRENCY");
+		FieldPhone("RECEIVER", Phone, dropLocation, false, "CURRENCY");
+		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, false, "CURRENCY");
+
+	}
+
+	public void FieldPhone(String fieldType, WebElement Phone, WebElement targetElement, boolean isYes, String field)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Phone));
+		MethodActions.dragAndDrop(Phone, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Phone");
+		Thread.sleep(10000);
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elementPhone = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
+
+		switch (field) {
+		case "NUMBER":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			System.out.println("NUMBER  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "PHONE":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			Thread.sleep(10000);
+//			MethodActions.Javascriptclick(By.xpath("//input[@placeholder='Country code']"));
+//			Thread.sleep(10000);
+//			MethodActions.waitEle(By.xpath("//div[text()=' Sweden (Sverige) ']"));
+//			Thread.sleep(10000);
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Phone number *']"), "1236549");
+			System.out.println("PHONE With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
+			System.out.println("CURRENCY  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		default:
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	}
+
+	// Signature
+	public void Signature() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Signature = driver.findElement(By.xpath("//span[text()=\"Signature\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Signature);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Signature));
+		builder.dragAndDrop(Signature, targetElement).perform();
+		Thread.sleep(1000);
+
+		// Yes
+		FieldSignature("SENDER", Signature, targetElement, true);
+		FieldSignature("RECEIVER", Signature, targetElement, true);
+		FieldSignature("SENDERORRECEIVER", Signature, targetElement, true);
+		// No
+		FieldSignature("SENDER", Signature, targetElement, false);
+		FieldSignature("RECEIVER", Signature, targetElement, false);
+		FieldSignature("SENDERORRECEIVER", Signature, targetElement, false);
+
+	}
+
+	public void FieldSignature(String fieldType, WebElement Signature, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Signature));
+		MethodActions.dragAndDrop(Signature, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementSignature = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementSignature);
+
+		Thread.sleep(10000);
+		if (index == 1) {
+			Thread.sleep(10000);
+			WebElement canvas = driver.findElement(By.xpath(
+					"//canvas[@width='1035' and @style='width: 100%; height: 300px; touch-action: none;' and @height='300']"));
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", canvas);
+
+			MethodActions.waitEle(By.xpath(
+					"//canvas[@width='1035' and @style='width: 100%; height: 300px; touch-action: none;' and @height='300']"));
+			Actions act = new Actions(driver);
+			Thread.sleep(10000);
+			act.clickAndHold(driver.findElement(By.xpath(
+					"//canvas[@width='1035' and @style='width: 100%; height: 300px; touch-action: none;' and @height='300']")))
+					.moveToElement(driver.findElement(By.xpath(
+							"//canvas[@width='1035' and @style='width: 100%; height: 300px; touch-action: none;' and @height='300']")))
+					.moveByOffset(10, 10).moveByOffset(0, 50).moveByOffset(0, -50).moveByOffset(20, 50)
+					.moveByOffset(30, -30).moveByOffset(-30, 30).moveByOffset(20, 0).moveByOffset(-20, -30).release()
+					.build().perform();
+		}
+
+		System.out.println("Signature With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Captcha
+	public void Captcha() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Captcha = driver.findElement(By.xpath("//span[text()=\"Captcha\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Captcha);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Captcha));
+		builder.dragAndDrop(Captcha, targetElement).perform();
+		Thread.sleep(1000);
+		try {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Captcha, targetElement);
+		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		System.out.println("Captch Field Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	// Content Fields
+	// Heading
+	public void Heading() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Heading = driver.findElement(By.xpath("//span[text()=\"Heading\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Heading);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Heading));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 2);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 2);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+
+		// Yes
+		FieldHeading("H1", Heading, dropLocation);
+		FieldHeading("H2", Heading, dropLocation);
+		FieldHeading("H3", Heading, dropLocation);
+		FieldHeading("H4", Heading, dropLocation);
+		FieldHeading("H5", Heading, dropLocation);
+		FieldHeading("H6", Heading, dropLocation);
+
+	}
+
+	public void FieldHeading(String fieldType, WebElement Phone, WebElement targetElement) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "H1":
+			index = 1;
+			label = "H1";
+			break;
+		case "H2":
+			index = 2;
+			label = "H2";
+			break;
+		case "H3":
+			index = 3;
+			label = "H3";
+			break;
+		case "H4":
+			index = 1;
+			label = "H4";
+			break;
+		case "H5":
+			index = 2;
+			label = "H5";
+			break;
+		case "H6":
+			index = 3;
+			label = "H6";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Phone));
+		MethodActions.dragAndDrop(Phone, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter content or block title']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Heading Type']"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// HTML
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, HTML, dropLocation);
+
+		WebElement element = driver.findElement(By.xpath("//input[@placeholder='Select Heading Type']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elementPhone = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		System.out.println("Heading With " + label + " Selected Successfully");
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	}
+
+	// HTML
+	public void HTML() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement HTML = driver.findElement(By.xpath("//span[text()=\"HTML\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", HTML);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(HTML));
+		builder.dragAndDrop(HTML, targetElement).perform();
+		Thread.sleep(1000);
+		try {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, HTML, targetElement);
+		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		System.out.println("Html Field Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 
-		// Paragraph
+	}
+
+	// Paragraph
+	public void Paragraph() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Paragraph, dropLocation);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Paragraph = driver.findElement(By.xpath("//span[text()=\"Paragraph\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Paragraph);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Paragraph));
+		builder.dragAndDrop(Paragraph, targetElement).perform();
+		Thread.sleep(1000);
+		try {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, Paragraph, targetElement);
+		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		System.out.println("Captch Field Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 
-		// SingleLineContent
+	}
+	// Add Single Line Content
+
+	public void SingleLineContent() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, SingleLineContent, dropLocation);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement SingleLineContent = driver.findElement(By.xpath("//span[text()=\"Single Line Content\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", SingleLineContent);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(SingleLineContent));
+		builder.dragAndDrop(SingleLineContent, targetElement).perform();
+		Thread.sleep(1000);
+		try {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, SingleLineContent, targetElement);
+		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter content']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		System.out.println("Captch Field Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 
-		// Image
+	}
+	// Image
+
+	public void Image() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Image, dropLocation);
-		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Image = driver.findElement(By.xpath("//span[text()=\"Image\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Image));
+		builder.dragAndDrop(Image, targetElement).perform();
+
+		// Yes
+		Fieldimage("SENDER", Image, targetElement, true, true);
+		Fieldimage("RECEIVER", Image, targetElement, true, true);
+		Fieldimage("SENDERORRECEIVER", Image, targetElement, true, true);
+		// No
+		Fieldimage("SENDER", Image, targetElement, false, false);
+		Fieldimage("RECEIVER", Image, targetElement, false, false);
+		Fieldimage("SENDERORRECEIVER", Image, targetElement, false, false);
+
+	}
+
+	public void Fieldimage(String fieldType, WebElement YesorNo, WebElement targetElement, boolean isYes, boolean Field)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(YesorNo));
+		MethodActions.dragAndDrop(YesorNo, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
-		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Video
+		if (Field)
+
+		{
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='Yes']"));
+			System.out.println("Field Required! Yes");
+		}
+
+		else {
+
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='No']"));
+			System.out.println("Field Required! No");
+
+		}
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementDocument = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
+		try {
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
+			Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
+		} catch (Exception e) {
+
+		}
+		System.out.println("Image With " + label + " Seleceted Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+	// Video
+
+	public void Video() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Video, dropLocation);
-		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Video = driver.findElement(By.xpath("//span[text()=\"Video\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Video));
+		builder.dragAndDrop(Video, targetElement).perform();
+
+		// Yes
+		Fieldimage("SENDER", Video, targetElement, true, true);
+		Fieldimage("RECEIVER", Video, targetElement, true, true);
+		Fieldimage("SENDERORRECEIVER", Video, targetElement, true, true);
+		// No
+		Fieldimage("SENDER", Video, targetElement, false, false);
+		Fieldimage("RECEIVER", Video, targetElement, false, false);
+		Fieldimage("SENDERORRECEIVER", Video, targetElement, false, false);
+
+	}
+
+	public void FieldVideo(String fieldType, WebElement YesorNo, WebElement targetElement, boolean isYes, boolean Field)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(YesorNo));
+		MethodActions.dragAndDrop(YesorNo, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
-		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Action Button
+		if (Field)
+
+		{
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='Yes']"));
+			System.out.println("With Field YES");
+		}
+
+		else {
+
+			Thread.sleep(1000);
+			MethodActions.Javascriptclick(
+					By.xpath("//div[@class='form-group']//span[@class='el-radio__label' and text()='No']"));
+			System.out.println("With Field NO");
+
+		}
+		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
+		WebElement elementDocument = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, ActionButton, dropLocation);
+		try {
+			MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
+			Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\image.exe\"");
+		} catch (Exception e) {
+
+		}
+		System.out.println("Video With " + label + "Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// HorizontalLine
+	public void HorizontalLine() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement HorizontalLine = driver.findElement(By.xpath("//span[text()=\"Horizontal Line\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", HorizontalLine);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(HorizontalLine));
+		builder.dragAndDrop(HorizontalLine, targetElement).perform();
+
+	}
+
+	// Division
+	public void Division() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Division = driver.findElement(By.xpath("//span[text()=\"Division\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Division);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(Division));
+		builder.dragAndDrop(Division, targetElement).perform();
+
+	}
+
+	// ActionButton
+	public void ActionButton() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement ActionButton = driver.findElement(By.xpath("//span[text()=\"Action Button\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ActionButton);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(ActionButton));
+		builder.dragAndDrop(ActionButton, targetElement).perform();
+		Thread.sleep(10000);
+		MethodActions.waitAndClick(builder, ActionButton, targetElement);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter label']"),
@@ -3259,194 +3566,1038 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select type']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		// Division
-		MethodActions.waitAndClick(builder, Division, dropLocation);
-		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
+
 	}
 
-	public void AdvancedFields() throws Exception {
+//Advanced Fields
+
+	// AutoIncrementNumber
+	public void AutoIncrementNumber() throws Exception {
+
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()=\"Advanced Fields\"]"));
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement AutoIncrementNumber = driver.findElement(By.xpath("//span[text()=\"Auto Increment Number\"]"));
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		// WebElement AutoIncrementNumber =
-		// driver.findElement(By.xpath("//span[text()='Auto Increment Number']"));
-		WebElement Location = driver.findElement(By.xpath("//span[text()='Location']"));
-		WebElement Currency = driver.findElement(By.xpath("//span[text()='Currency']"));
-		WebElement Question = driver.findElement(By.xpath("//span[text()='Question']"));
-		// WebElement AuthorizedSignature =
-		// driver.findElement(By.xpath("//span[text()='Authorized Signature']"));
-		WebElement Entity = driver.findElement(By.xpath("//span[text()='Entity']"));
-		WebElement EntityVariable = driver.findElement(By.xpath("//span[text()='Entity Variable']"));
-		WebElement Formula = driver.findElement(By.xpath("//span[text()='Formula']"));
-		WebElement AggregateFunction = driver.findElement(By.xpath("//span[text()='Aggregate Function']"));
-		WebElement DataTable = driver.findElement(By.xpath("//span[text()='Data Table']"));
-		WebElement ChildEntityTable = driver.findElement(By.xpath("//span[text()='Child Entity Table']"));
-		WebElement PayButtons = driver.findElement(By.xpath("//span[text()='Pay Buttons']"));
-		WebElement PaymentVariable = driver.findElement(By.xpath("//span[text()='Payment Variable']"));
-		WebElement StarRating = driver.findElement(By.xpath("//span[text()='Star Rating']"));
-		WebElement Concatenate = driver.findElement(By.xpath("//span[text()='Concatenate']"));
-		WebElement Audio = driver.findElement(By.xpath("//span[text()='Audio']"));
-		WebElement QRCode = driver.findElement(By.xpath("//span[text()='QR Code']"));
-		WebElement QRReader = driver.findElement(By.xpath("//span[text()='QR Reader']"));
-		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(AutoIncrementNumber));
+		Dimension dropSize = targetElement.getSize();
 
-		// MethodActions.waitAndClick(builder, AuthorizedSignature, dropLocation);
+		int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
+		int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
 
-		// MethodActions.waitAndClick(builder, PayButtons, dropLocation);
-		// Auto Increment Number
-//		Thread.sleep(10000);
-//		MethodActions.waitAndClick(builder, AutoIncrementNumber, dropLocation);
-//		MethodActions.switchToNewWindow();
-//		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-//				MethodActions.generateUniqueString());
-//		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-//				MethodActions.generateUniqueString());
-//		Thread.sleep(10000);
-//		driver.findElement(By.xpath("//input[@placeholder='Prifix']")).sendKeys("prifix");
-//		Thread.sleep(10000);
-//		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		builder.dragAndDropBy(AutoIncrementNumber, targetX, targetY).perform();
 
-		// Location
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Location, dropLocation);
 		MethodActions.switchToNewWindow();
+
+		// Yes
+		FieldAutoIncrementNumber("SENDER", AutoIncrementNumber, targetElement, true);
+		FieldAutoIncrementNumber("RECEIVER", AutoIncrementNumber, targetElement, true);
+		FieldAutoIncrementNumber("SENDERORRECEIVER", AutoIncrementNumber, targetElement, true);
+		// No
+		FieldAutoIncrementNumber("SENDER", AutoIncrementNumber, targetElement, false);
+		FieldAutoIncrementNumber("RECEIVER", AutoIncrementNumber, targetElement, false);
+		FieldAutoIncrementNumber("SENDERORRECEIVER", AutoIncrementNumber, targetElement, false);
+
+	}
+
+	public void FieldAutoIncrementNumber(String fieldType, WebElement AutoIncrementNumber, WebElement targetElement,
+			boolean isYes) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(AutoIncrementNumber));
+		MethodActions.dragAndDrop(AutoIncrementNumber, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Add Auto Increment Number");
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Prifix']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Starting Number']"), "1");
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Thread.sleep(10000);
+		WebElement element1 = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+		System.out.println("Auto Increment Number " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Location
+	public void Location() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Location = driver.findElement(By.xpath("//span[text()=\"Location\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Location));
+		Dimension dropSize = targetElement.getSize();
+
+		int targetX = targetElement.getLocation().getX() + (dropSize.getWidth() / 2);
+		int targetY = targetElement.getLocation().getY() + (dropSize.getHeight() / 2);
+
+		builder.dragAndDropBy(Location, targetX, targetY).perform();
+
+		Thread.sleep(10000);
+		MethodActions.switchToNewWindow();
+
+		// Yes
+		FieldLocation("SENDER", Location, targetElement, true);
+		FieldLocation("RECEIVER", Location, targetElement, true);
+		FieldLocation("SENDERORRECEIVER", Location, targetElement, true);
+		// No
+		FieldLocation("SENDER", Location, targetElement, false);
+		FieldLocation("RECEIVER", Location, targetElement, false);
+		FieldLocation("SENDERORRECEIVER", Location, targetElement, false);
+
+	}
+
+	public void FieldLocation(String fieldType, WebElement Location, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Location));
+		MethodActions.dragAndDrop(Location, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("(//span[@class='el-switch__core'])[1]"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-switch__core'])[2]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Currency
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Currency, dropLocation);
-		MethodActions.switchToNewWindow();
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Thread.sleep(10000);
+		WebElement element1 = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+		System.out.println("Location " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Currency
+	public void Currency() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Currency));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+
+		// Yes
+		FieldCurrency("SENDER", Currency, dropLocation, true, "NUMBER");
+		FieldCurrency("RECEIVER", Currency, dropLocation, true, "NUMBER");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, true, "NUMBER");
+
+		FieldCurrency("SENDER", Currency, dropLocation, true, "PHONE");
+		FieldCurrency("RECEIVER", Currency, dropLocation, true, "PHONE");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, true, "PHONE");
+
+		FieldCurrency("SENDER", Currency, dropLocation, true, "CURRENCY");
+		FieldCurrency("RECEIVER", Currency, dropLocation, true, "CURRENCY");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, true, "CURRENCY");
+
+		// No
+		FieldCurrency("SENDER", Currency, dropLocation, false, "NUMBER");
+		FieldCurrency("RECEIVER", Currency, dropLocation, false, "NUMBER");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, false, "NUMBER");
+
+		FieldCurrency("SENDER", Currency, dropLocation, false, "PHONE");
+		FieldCurrency("RECEIVER", Currency, dropLocation, false, "PHONE");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, false, "PHONE");
+
+		FieldCurrency("SENDER", Currency, dropLocation, false, "CURRENCY");
+		FieldCurrency("RECEIVER", Currency, dropLocation, false, "CURRENCY");
+		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, false, "CURRENCY");
+
+	}
+
+	public void FieldCurrency(String fieldType, WebElement Currency, WebElement targetElement, boolean isYes,
+			String field) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Currency));
+		MethodActions.dragAndDrop(Currency, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Phone");
+		Thread.sleep(10000);
+		if (isYes)
 
-		// Question
-		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Question, dropLocation);
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[1]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.sendKeysToElement(By.xpath("(//input[@class='el-input__inner'])[3]"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("(//textarea[@class='el-textarea__inner'])[1]"),
-				MethodActions.generateUniqueString());
-		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("(//input[@class='el-input__inner'])[4]"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("(//textarea[@class='el-textarea__inner'])[2]"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Yes']"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		{
 
-		// Entity
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Entity, dropLocation);
-		MethodActions.switchToNewWindow();
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elementPhone = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
+
+		switch (field) {
+		case "NUMBER":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			System.out.println("NUMBER  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "PHONE":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			Thread.sleep(10000);
+//			MethodActions.Javascriptclick(By.xpath("//input[@placeholder='Country code']"));
+//			Thread.sleep(10000);
+//			MethodActions.waitEle(By.xpath("//div[text()=' Sweden (Sverige) ']"));
+//			Thread.sleep(10000);
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Phone number *']"), "1236549");
+			System.out.println("PHONE With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "CURRENCY":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//input[@id='currencySelect']"));
+			Thread.sleep(10000);
+			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
+			System.out.println("CURRENCY  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		default:
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// Question
+	public void Question() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Question = driver.findElement(By.xpath("//span[text()=\"Question\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Question);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Question));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+
+		// Yes
+		FieldQuestion("SENDER", Question, dropLocation, true, "Yes Or No");
+		FieldQuestion("RECEIVER", Question, dropLocation, true, "Yes Or No");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, true, "Yes Or No");
+
+		FieldQuestion("SENDER", Question, dropLocation, true, "MCQ");
+		FieldQuestion("RECEIVER", Question, dropLocation, true, "MCQ");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, true, "MCQ");
+
+		FieldQuestion("SENDER", Question, dropLocation, true, "TEXT");
+		FieldQuestion("RECEIVER", Question, dropLocation, true, "TEXT");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, true, "TEXT");
+
+		// No
+		FieldQuestion("SENDER", Question, dropLocation, false, "Yes Or No");
+		FieldQuestion("RECEIVER", Question, dropLocation, false, "Yes Or No");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, false, "Yes Or No");
+
+		FieldQuestion("SENDER", Question, dropLocation, false, "MCQ");
+		FieldQuestion("RECEIVER", Question, dropLocation, false, "MCQ");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, false, "MCQ");
+
+		FieldQuestion("SENDER", Question, dropLocation, false, "TEXT");
+		FieldQuestion("RECEIVER", Question, dropLocation, false, "TEXT");
+		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, false, "TEXT");
+
+	}
+
+	public void FieldQuestion(String fieldType, WebElement Question, WebElement targetElement, boolean isYes,
+			String field) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Question));
+		MethodActions.dragAndDrop(Question, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+
+		MethodActions.sendKeysToElement(By.xpath("//div[normalize-space()='Before']//input[@type='text']"),
 				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+		MethodActions.sendKeysToElement(
+				By.xpath("//div[normalize-space()='Question Text']//textarea[@class='el-textarea__inner']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[normalize-space()='entity-t3']"));
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Sorting order']"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[7]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[1]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[3]"));
-		WebElement element = driver.findElement(By.xpath("(//span[@class='el-checkbox__inner'])[4]"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		MethodActions.sendKeysToElement(By.xpath("//div[normalize-space()='After']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(
+				By.xpath("//div[normalize-space()='Description']//textarea[@class='el-textarea__inner']"),
+				MethodActions.generateUniqueString());
+		Thread.sleep(10000);
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elementPhone = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+
+		switch (field) {
+		case "Yes Or No":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			Thread.sleep(10000);
+			System.out.println("Yes Or No  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "MCQ":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			System.out.println("MCQ With " + label + " from Field Type Selected Sucessully ");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			Thread.sleep(10000);
+			System.out.println("TEXT  With " + label + " from Field Type Selected Sucessully ");
+			break;
+		default:
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// Authorized Signature
+	public void AuthorizedSignature() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement AuthorizedSignature = driver.findElement(By.xpath("//span[text()=\"Authorized Signature\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", AuthorizedSignature);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.elementToBeClickable(AuthorizedSignature));
+		builder.dragAndDrop(AuthorizedSignature, targetElement).perform();
 		Thread.sleep(1000);
-		element.click();
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[5]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[6]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[7]"));
-		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[8]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		try {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
 
-		// EntityVariable
+		}
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, EntityVariable, dropLocation);
+		MethodActions.waitAndClick(builder, AuthorizedSignature, targetElement);
+		Thread.sleep(10000);
 		MethodActions.switchToNewWindow();
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
+				MethodActions.generateUniqueString());
+		System.out.println("Authorized Signature Field Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
+
+	// Entity
+	public void Entity() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Entity = driver.findElement(By.xpath("//span[text()=\"Entity\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Entity);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Entity));
+
+		builder.dragAndDrop(dropLocation, dropLocation).perform();
+
+		// Yes
+		FieldEntity("SENDER", Entity, dropLocation, true);
+		FieldEntity("RECEIVER", Entity, dropLocation, true);
+		FieldEntity("SENDERORRECEIVER", Entity, dropLocation, true);
+
+		// No
+		FieldEntity("SENDER", Entity, dropLocation, false);
+		FieldEntity("RECEIVER", Entity, dropLocation, false);
+		FieldEntity("SENDERORRECEIVER", Entity, dropLocation, false);
+
+	}
+
+	public void FieldEntity(String fieldType, WebElement Entity, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Entity));
+		MethodActions.dragAndDrop(Entity, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li//span[text()='Testing']"));
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(
+				By.xpath("//div[normalize-space()='Description']//textarea[@class='el-textarea__inner']"),
+				MethodActions.generateUniqueString() + "Add Entity");
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Sorting order']"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
+
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+		for (int i = 1; i <= 8; i++) {
+			String xpath = String.format("(//span[@class='el-checkbox__inner'])[%d]", i);
+			MethodActions.waitEle(By.xpath(xpath));
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath(xpath)));
+		}
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elemententity = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		Thread.sleep(10000);
+		System.out.println("Entity With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// Entity Variable
+	public void EntityVariable() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement target = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Entity = driver.findElement(By.xpath("//span[text()=\"Entity\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Entity);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Entity));
+
+		builder.dragAndDrop(Entity, target).perform();
+
+		FieldEntity("SENDER", Entity, target, true);
+
+		Thread.sleep(10000);
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement EntityVariable = driver.findElement(By.xpath("//span[text()=\"Entity Variable\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder1 = new Actions(driver);
+		wait1.until(ExpectedConditions.elementToBeClickable(EntityVariable));
+
+		builder1.dragAndDrop(EntityVariable, dropLocation).perform();
+
+		Thread.sleep(1000);
+
+		// Yes
+		FieldEntityVariable("SENDER", EntityVariable, dropLocation, true);
+		FieldEntityVariable("RECEIVER", EntityVariable, dropLocation, true);
+		FieldEntityVariable("SENDERORRECEIVER", EntityVariable, dropLocation, true);
+
+		// No
+		FieldEntityVariable("SENDER", EntityVariable, dropLocation, false);
+		FieldEntityVariable("RECEIVER", EntityVariable, dropLocation, false);
+		FieldEntityVariable("SENDERORRECEIVER", EntityVariable, dropLocation, false);
+
+	}
+
+	public void FieldEntityVariable(String fieldType, WebElement EntityVariable, WebElement targetElement,
+			boolean isYes) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(EntityVariable));
+		MethodActions.dragAndDrop(EntityVariable, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("(//input[@class='el-input__inner'])[2]"),
+				MethodActions.generateUniqueString() + "Add Entity Variable");
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li"));
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[4]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//span[text()='ALL FIELDS-EUR']"));
-		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[3]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Field operation']"));
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+		Thread.sleep(10000);
 
-		// Formula
+		if (isYes)
+
+		{
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Formula, dropLocation);
-		MethodActions.switchToNewWindow();
+		if (index == 1) {
+			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[3]"));
+			System.out.println("Entity Variable With Read only " + label + " Read only Selected Sucessfully");
+
+		}
+		if (index == 2) {
+			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[4]"));
+			System.out.println("Entity Variable With Editable " + label + "  Selected Sucessfully");
+
+		}
+//		if (index == 3) {
+//			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[5]"));
+//			System.out.println("Entity Variable With  Update parent " + label + "  Selected Sucessfully");
+//
+//		}
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elemententityvar = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententityvar);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
 		Thread.sleep(10000);
+
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// Formula
+	public void Formula() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		WebElement targetElement1 = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Number = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder1 = new Actions(driver);
+		wait1.until(ExpectedConditions.elementToBeClickable(Number));
+		builder1.dragAndDrop(Number, targetElement1).perform();
+		Thread.sleep(1000);
+		FieldNumber("SENDER", Number, targetElement1, true, "NUMBER");
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Formula = driver.findElement(By.xpath("//span[text()=\"Formula\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Formula);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Formula));
+		builder.dragAndDrop(Formula, targetElement).perform();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter field title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter description here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Fields']"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions
 				.waitEle(By.xpath("//button[@class='el-button btn-operation el-button--success el-button--mini']"));
 		driver.findElement(By.xpath("//input[@placeholder='Enter Number']")).sendKeys("49");
 		MethodActions.waitEle(By.xpath("//i[@class='el-icon-plus']"));
-		MethodActions.waitEle(By.xpath("//div[@class='el-form-item']//input[@placeholder='Select']"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		System.out.println("Formula Seleceted Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
 
-		// AggregateFunction
-		MethodActions.waitAndClick(builder, AggregateFunction, dropLocation);
-		MethodActions.switchToNewWindow();
+	// Aggregate Function
+	public void AggregateFunction() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement AggregateFunction = driver.findElement(By.xpath("//span[text()=\"Aggregate Function\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", AggregateFunction);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(AggregateFunction));
+		builder.dragAndDrop(AggregateFunction, targetElement).perform();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Label']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Function Type']"));
-		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Field Type']"));
-		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Template']"));
-		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
 
-		// Data Table
+	// DataTable
+	public void DataTable() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, DataTable, dropLocation);
-		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement DataTable = driver.findElement(By.xpath("//span[text()=\"Data Table\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", DataTable);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(DataTable));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+		FieldDataTable("SENDER", DataTable, dropLocation);
+		FieldDataTable("RECEIVER", DataTable, dropLocation);
+		// FieldDataTable("SENDERORRECEIVER", DataTable, dropLocation);
+	}
+
+	public void FieldDataTable(String fieldType, WebElement DataTable, WebElement targetElement) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+//		case "SENDERORRECEIVER":
+//			index = 3;
+//			label = "SENDER OR RECEIVER";
+//			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(DataTable));
+		MethodActions.dragAndDrop(DataTable, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 
-		// Child Entity Table
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elemententity = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		System.out.println("Data Table With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// ChildEntityTable
+	public void ChildEntityTable() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement ChildEntityTable = driver.findElement(By.xpath("//span[text()=\"Child Entity Table\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ChildEntityTable);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(ChildEntityTable));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		for (int i = 0; i < 2; i++) {
+			int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+			int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+			builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+			Thread.sleep(1000);
+		}
+
+		FieldChildEntityTable("SENDER", ChildEntityTable, dropLocation);
+		FieldChildEntityTable("RECEIVER", ChildEntityTable, dropLocation);
+		FieldChildEntityTable("SENDERORRECEIVER", ChildEntityTable, dropLocation);
+
+	}
+
+	public void FieldChildEntityTable(String fieldType, WebElement ChildEntityTable, WebElement targetElement)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(ChildEntityTable));
+		MethodActions.dragAndDrop(ChildEntityTable, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
 		Thread.sleep(10000);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ChildEntityTable);
-		MethodActions.waitAndClick(builder, ChildEntityTable, dropLocation);
 		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
@@ -3454,88 +4605,613 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[2]"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[4]"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li//span[text()='Testing']"));
 		MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[3]"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elemententity = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		System.out.println("Child Entity Table  With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+	// PayButtons
 
-		// Add Payment Variable
+	public void PayButtons() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, PaymentVariable, dropLocation);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Currency));
+		builder.dragAndDrop(Currency, dropLocation).perform();
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"), "Currency");
+		MethodActions.waitEle(By.xpath("//input[@id=\"currencySelect\"]"));
+		MethodActions.waitEle(By.xpath("//span[text()=\"INR\"]"));
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+		Thread.sleep(10000);
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement PayButtons = driver.findElement(By.xpath("//span[text()=\"Pay Buttons\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", PayButtons);
+		Thread.sleep(10000);
+		WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder1 = new Actions(driver);
 
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
+		wait11.until(ExpectedConditions.elementToBeClickable(PayButtons));
+		builder1.dragAndDrop(PayButtons, targetElement).perform();
+		Thread.sleep(1000);
 		try {
-			MethodActions.waitEle(By.xpath("(//div[@class='el-form-item__content']//input[@placeholder='Select'])[2]"));
-			MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
 		} catch (Exception e) {
-			//
+
 		}
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// Star Rating
-		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, StarRating, dropLocation);
-		MethodActions.switchToNewWindow();
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// Concatenate
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Methods']"));
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Concatenate, dropLocation);
-		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Modes']"));
 		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Field']"));
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[3]"));
-		MethodActions.waitEle(By.xpath("//span[text()=' Add ']"));
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// Audio
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Charge Field']"));
 		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, Audio, dropLocation);
-		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select']"));
 		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Redirection URL']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// QR Code
-		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, QRCode, dropLocation);
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-
-		// QRReader
-		Thread.sleep(10000);
-		MethodActions.waitAndClick(builder, QRReader, dropLocation);
-		MethodActions.switchToNewWindow();
-		Thread.sleep(10000);
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
 
 	}
 
+	// PaymentVariable
+	public void PaymentVariable() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement PaymentVariable = driver.findElement(By.xpath("//span[text()=\"Payment Variable\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", PaymentVariable);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(PaymentVariable));
+
+		Dimension dropSize = dropLocation.getSize();
+
+		int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 4);
+		int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 4);
+
+		builder.dragAndDropBy(dropLocation, targetX, targetY).perform();
+
+		Thread.sleep(1000);
+
+		FieldPaymentVariable("SENDER", PaymentVariable, dropLocation, "Gateway");
+		FieldPaymentVariable("RECEIVER", PaymentVariable, dropLocation, "Name");
+		FieldPaymentVariable("SENDERORRECEIVER", PaymentVariable, dropLocation, "Phone Number");
+
+	}
+
+	public void FieldPaymentVariable(String fieldType, WebElement PaymentVariable, WebElement targetElement,
+			String field) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(PaymentVariable));
+		MethodActions.dragAndDrop(PaymentVariable, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", PaymentVariable);
+		MethodActions.switchToNewWindow();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement elemententity = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		MethodActions.Javascriptclick(By.xpath("(//input[@placeholder='Select'])[3]"));
+		switch (field) {
+		case "Transaction Id":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			System.out.println("Transaction Id " + label + " Selected Successfully");
+			break;
+		case "Gateway":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			System.out.println("Gateway " + label + " Selected Successfully");
+			break;
+		case "Name":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			System.out.println("Name " + label + " Selected Successfully");
+			break;
+		case "Email":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
+			System.out.println("Email " + label + " Selected Successfully");
+			break;
+		case "Phone Number":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Phone Number " + label + " Selected Successfully");
+			break;
+		case "Payment Type":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Payment Type " + label + " Selected Successfully");
+			break;
+		case "Method":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Method " + label + " Selected Successfully");
+			break;
+		case "Currency":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Currency " + label + " Selected Successfully");
+			break;
+		default:
+
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
+	}
+
+	// Star Rating
+	public void StarRating() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement StarRating = driver.findElement(By.xpath("//span[text()=\"Star Rating\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(StarRating));
+
+		builder.dragAndDrop(StarRating, targetElement).perform();
+
+		Thread.sleep(1000);
+
+		// Yes
+
+		FieldStarRating("SENDER", StarRating, targetElement, true);
+		FieldStarRating("RECEIVER", StarRating, targetElement, true);
+		FieldStarRating("SENDERORRECEIVER", StarRating, targetElement, true);
+
+		// No
+		FieldStarRating("SENDER", StarRating, targetElement, false);
+		FieldStarRating("RECEIVER", StarRating, targetElement, false);
+		FieldStarRating("SENDERORRECEIVER", StarRating, targetElement, false);
+
+	}
+
+	public void FieldStarRating(String fieldType, WebElement StarRating, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(StarRating));
+		MethodActions.dragAndDrop(StarRating, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Star Rating");
+		Thread.sleep(10000);
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement ElementMultipleSelect = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		System.out.println("Star Rating With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Concatenate
+	public void Concatenate() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Concatenate = driver.findElement(By.xpath("//span[text()=\"Concatenate\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Concatenate);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Concatenate));
+		builder.dragAndDrop(Concatenate, targetElement).perform();
+
+		// Yes
+
+		FieldConcatenate("SENDER", Concatenate, targetElement, true);
+		FieldConcatenate("RECEIVER", Concatenate, targetElement, true);
+		FieldConcatenate("SENDERORRECEIVER", Concatenate, targetElement, true);
+
+		// No
+		FieldConcatenate("SENDER", Concatenate, targetElement, false);
+		FieldConcatenate("RECEIVER", Concatenate, targetElement, false);
+		FieldConcatenate("SENDERORRECEIVER", Concatenate, targetElement, false);
+
+	}
+
+	public void FieldConcatenate(String fieldType, WebElement Concatenate, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Concatenate));
+		MethodActions.dragAndDrop(Concatenate, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Add Concatenate");
+		Thread.sleep(10000);
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+		}
+		Thread.sleep(10000);
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement ElementMultipleSelect = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		System.out.println("Concatenate With "  + label +   "Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// Audio
+	public void Audio() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement Audio = driver.findElement(By.xpath("//span[text()=\"Audio\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(Audio));
+
+		builder.dragAndDrop(Audio, targetElement).perform();
+
+		// Yes
+
+		FieldAudio("SENDER", Audio, targetElement, true);
+		FieldAudio("RECEIVER", Audio, targetElement, true);
+		FieldAudio("SENDERORRECEIVER", Audio, targetElement, true);
+
+		// No
+		FieldAudio("SENDER", Audio, targetElement, false);
+		FieldAudio("RECEIVER", Audio, targetElement, false);
+		FieldAudio("SENDERORRECEIVER", Audio, targetElement, false);
+
+	}
+
+	public void FieldAudio(String fieldType, WebElement Audio, WebElement targetElement, boolean isYes)
+			throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(Audio));
+		MethodActions.dragAndDrop(Audio, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Add Audio");
+		Thread.sleep(10000);
+
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+
+			System.out.println("With Field Required! Yes");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+
+		}
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement ElementMultipleSelect = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		System.out.println("Audio With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// QRCode
+	public void QRCode() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement QRCode = driver.findElement(By.xpath("//span[text()=\"QR Code\"]"));
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(QRCode));
+
+		builder.dragAndDrop(QRCode, targetElement).perform();
+
+		// Yes
+
+		FieldQRCode("SENDER", QRCode, targetElement);
+		FieldQRCode("RECEIVER", QRCode, targetElement);
+		FieldQRCode("SENDERORRECEIVER", QRCode, targetElement);
+
+	}
+
+	public void FieldQRCode(String fieldType, WebElement QRCode, WebElement targetElement) throws Exception {
+
+		int index;
+		String label;
+		Thread.sleep(10000);
+		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
+		Thread.sleep(10000);
+		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitsource.until(ExpectedConditions.elementToBeClickable(QRCode));
+		MethodActions.dragAndDrop(QRCode, targetElement);
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath(
+				"//div[@class='el-col el-col-12']//div//div[@class='form-group']//div[@class='el-input']//input[@type='text']"),
+				MethodActions.generateUniqueString() + "Add QR Code");
+		Thread.sleep(10000);
+
+		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		WebElement ElementMultipleSelect = fieldTypecase.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		if (index == 1) {
+
+			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[1]"));
+
+		}
+		if (index == 2) {
+
+			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[2]"));
+
+		}
+		if (index == 3) {
+
+			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[3]"));
+
+		}
+
+		System.out.println("QR CODE With " + label + " Selected Sucessfully");
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+	}
+
+	// QR Reader
+	public void QRReader() throws Exception {
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement QRReader = driver.findElement(By.xpath("//span[text()=\"QR Reader\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", QRReader);
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(QRReader));
+		builder.dragAndDrop(QRReader, targetElement).perform();
+		Thread.sleep(10000);
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
+		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
+
+	}
 }

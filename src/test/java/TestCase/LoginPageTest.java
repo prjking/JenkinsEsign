@@ -11,6 +11,7 @@ import Pages.Dragdrop;
 import Pages.Login;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
+import Pages.Scrool;
 import Pages.Signup;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
@@ -30,6 +31,7 @@ public class LoginPageTest extends testCaseBase {
 	Signup signup;
 	Templatespage templatespage;
 	Dashboard dashboard;
+	Scrool scrool;
 
 	@BeforeMethod
 	public void Start() {
@@ -44,6 +46,7 @@ public class LoginPageTest extends testCaseBase {
 		signup = new Signup(driver);
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
+		scrool =new Scrool(driver);
 
 	}
 
@@ -157,5 +160,13 @@ public class LoginPageTest extends testCaseBase {
 //		templatespage.Delete();
 //		templatespage.Creategroup();
 //
-//	}
+//	
+	@Test
+	public void dragdrop() throws InterruptedException {
+		login.Signin();
+		scrool.drop();
+		
+		
+		
+	}
 }

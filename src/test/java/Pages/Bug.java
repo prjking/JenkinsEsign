@@ -471,4 +471,861 @@ public class Bug {
 		System.out.println("Thumbnail Image Is Not Displaying");
 	}
 
-}
+	
+	
+	//doc
+	public void AllCombos() throws Exception {
+		 
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Create Document']"));
+ 
+	}
+ 
+	public void ValidAllCombos() {
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement Message = wait1.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//h3[@class='text-center text-dark fw-normal fs-4 mb-1']")));
+		Assert.assertNotNull(Message, "Upload document element is not present Create document failed");
+		System.out.println("Create document successfull");
+	}
+ 
+	@SuppressWarnings("deprecation")
+	public void uploadDocument() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//h4[@class='fw-normal blue pb-2']"));
+ 
+		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
+ 
+//		waitTill(By.xpath("//button[@class='el-button text-center upload-btn el-button--danger']"));
+ 
+		Thread.sleep(10000);
+	}
+ 
+	public void ValidUploadDocument() throws InterruptedException {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Next']")));
+		Assert.assertNotNull(Message1, "Next button not present Create document failed");
+		System.out.println("Upload document successfull");
+ 
+	}
+ 
+	@SuppressWarnings("deprecation")
+	public void UploadMultipledocuments() throws Exception  {
+		MethodActions.waitEle(By.xpath("//h4[@class='fw-normal blue pb-2']"));
+		Runtime.getRuntime()
+				.exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\multiple document.exe");
+ 
+		Thread.sleep(10000);
+	}
+ 
+	public void ValidUploadMultipleDocument() throws InterruptedException {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Next']")));
+		Assert.assertNotNull(Message1, "Next button not present Create document failed");
+		System.out.println("Upload document successfull");
+ 
+	}
+ 
+	public void oneDriveupload() throws Exception {
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/onedrive.cc38d634.svg']"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(5000);
+		String Parentwindowid = driver.getWindowHandle();
+ 
+		MethodActions.waitEle(By.xpath("//button[normalize-space()='Connect OneDrive']"));
+		Thread.sleep(5000);
+ 
+		Set<String> allwindowhandles = driver.getWindowHandles();
+		for (String childwindow : allwindowhandles) {
+			if (!childwindow.endsWith(Parentwindowid)) {
+				driver.switchTo().window(childwindow);
+				driver.findElement(By.xpath("//input[@id='i0116']")).sendKeys("bsrv.prudhviraju@outlook.com");
+ 
+				MethodActions.waitEle(By.xpath("//input[@id='idSIButton9']"));
+ 
+				Thread.sleep(10000);
+ 
+				By password = By.xpath("//input[@id='i0118']");
+				WebElement Upload1 = wait.until(ExpectedConditions.elementToBeClickable(password));
+				Upload1.sendKeys("Prjking@99");
+ 
+				Thread.sleep(10000);
+				MethodActions.waitEle(By.xpath("//input[@id='idSIButton9']"));
+				try {
+					MethodActions.waitEle(By.xpath("//button[normalize-space()='Yes']"));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+ 
+				Thread.sleep(5000);
+				Set<String> windowHandles1 = driver.getWindowHandles();
+				for (String handle : windowHandles1) {
+					driver.switchTo().window(handle);
+				}
+ 
+				MethodActions.waitEle(By.xpath("//span//span[normalize-space()='Document 1.docx']"));
+ 
+				MethodActions.waitEle(By.xpath("//span[@title='Upload']"));
+ 
+			}
+		}
+	}
+ 
+	public void ValidOneDrive() throws InterruptedException {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Next']")));
+		Assert.assertNotNull(Message1, "Next button not present Create document failed");
+		System.out.println("One Drive Upload document successfull");
+ 
+	}
+ 
+	public void googledrive() throws Exception {
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+ 
+		MethodActions.waitEle(By.xpath("//img[@placeholder='top-start']"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+		String Parentwindowid = driver.getWindowHandle();
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Sign in with Google']"));
+ 
+		Set<String> allwindowhandles = driver.getWindowHandles();
+		for (String childwindow : allwindowhandles) {
+			if (!childwindow.endsWith(Parentwindowid)) {
+				driver.switchTo().window(childwindow);
+				Thread.sleep(10000);
+ 
+				By upload3 = By.xpath("//input[@id=\\\"identifierId\\\"]");
+				WebElement upload2 = wait.until(ExpectedConditions.elementToBeClickable(upload3));
+				upload2.sendKeys("n180894@rguktn.ac.in");
+ 
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='Next']"));
+ 
+				Set<String> windowHandles1 = driver.getWindowHandles();
+				for (String handle : windowHandles1) {
+					driver.switchTo().window(handle);
+ 
+				}
+				By user = By.xpath("//input[@name='Passwd']");
+				WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(user));
+				user1.sendKeys("meghu@123");
+ 
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='Next']"));
+ 
+				Thread.sleep(10000);
+				Set<String> windowHandles11 = driver.getWindowHandles();
+				for (String handle : windowHandles11) {
+					driver.switchTo().window(handle);
+ 
+				}
+ 
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='Allow']"));
+ 
+				Set<String> windowHandles111 = driver.getWindowHandles();
+				for (String handle : windowHandles111) {
+					driver.switchTo().window(handle);
+ 
+				}
+ 
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='N180894-resume.pdf']"));
+ 
+				Set<String> windowHandles2 = driver.getWindowHandles();
+				for (String handle : windowHandles2) {
+					driver.switchTo().window(handle);
+ 
+				}
+ 
+				MethodActions.waitEle(By.xpath("//span[@class='fsp-button fsp-button--primary fsp-button-upload']"));
+			}
+		}
+	}
+ 
+	public void ValidGoogleDriveUploadDocument() throws InterruptedException {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Next']")));
+		Assert.assertNotNull(Message1, "Next button not present Create document failed");
+		System.out.println("Google Drive Upload document successfull");
+ 
+	}
+ 
+	public void BlankDoc() throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/Blank.1f314c3f.svg']"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+ 
+		By Element2 = By.xpath("//input[@placeholder='Enter Document name']");
+		WebElement document2 = wait.until(ExpectedConditions.elementToBeClickable(Element2));
+		document2.sendKeys("test");
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select number of pages']"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Continue'])[2]"));
+ 
+	}
+ 
+	public void ValidBlankDoc() {
+ 
+		WebDriverWait page = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement doc = page
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='fw-bold fs-24']")));
+		Assert.assertNotNull(doc, "Add Recepient element is not present Create document failed");
+		System.out.println("Upload document successfull");
+ 
+	}
+ 
+	@SuppressWarnings("deprecation")
+	public void UploadPdfAf() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//h4[@class='fw-normal blue pb-2']"));
+ 
+		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
+ 
+		MethodActions.waitEle(By.xpath("//button[@class='el-button text-center upload-btn el-button--danger']"));
+ 
+	}
+ 
+	public void Selecttofillrec() throws Exception {
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select']"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+ 
+	}
+ 
+	public void Selectautofill() throws Throwable {
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Add fields']"));
+		Thread.sleep(10000);
+	}
+ 
+	public void PCOnedoc() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[@class='el-checkbox__inner']"));
+	}
+ 
+	public void ValidPCOneDoc() {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Next']")));
+		Assert.assertNotNull(Message1, "Next button is not present Create document failed");
+		System.out.println("Process as a single Document successfull");
+ 
+	}
+ 
+	public void Nextbt() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Next']"));
+		Thread.sleep(10000);
+	}
+ 
+	public void ValidNextbtn() {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2.until(
+				ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[normalize-space()='Add Recipients']")));
+		Assert.assertNotNull(Message1, "Add Recipient not present Create document failed");
+		System.out.println("Document successfull");
+ 
+	}
+ 
+	public void AddRep() throws Exception {
+ 
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/Add Recipients.0f0af0e8.svg']"));
+ 
+	}
+ 
+	public void AddRepApprover() throws Exception {
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[36]"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[4]"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+ 
+	}
+ 
+	public void ValidAddRepApprover() {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@x-placement]//ul//li[3]")));
+		Assert.assertNotNull(Message1, "Approver present in Add Recipient failed");
+		System.out.println("Adding Approver is successfull");
+	}
+ 
+	public void AddRepSigner() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[12]"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+ 
+		// span[normalize-space()='Save Users']"
+	}
+ 
+	public void ValidAddRepSigner() {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@x-placement]//ul//li[1]")));
+		Assert.assertNotNull(Message1, "Signer present in Add Recipient failed");
+		System.out.println("Signer  is successfull");
+	}
+ 
+	public void Addrepsigner1() throws Exception {
+ 
+		Thread.sleep(1000);
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[12]"));
+ 
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
+	}
+ 
+	public void ValidAddRepSigner1() {
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement Message1 = wait2
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@x-placement]//ul//li[1]")));
+		Assert.assertNotNull(Message1, "Signer present in Add Recipient failed");
+		System.out.println("Signer  is successfull");
+	}
+ 
+	public void Saveuser() throws Exception {
+ 
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save Users']"));
+ 
+	}
+ 
+	public void SaveAsDraft() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save Draft']"));
+	}
+ 
+	private void waitAndClick(Actions actions, WebElement element, WebElement target) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		try {
+ 
+			WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+ 
+			actions.clickAndHold(clickableElement).moveToElement(target).release().build().perform();
+ 
+			Thread.sleep(1000);
+ 
+		} catch (Exception e) {
+			e.printStackTrace();
+ 
+		}
+	}
+ 
+	public void SenderFields() throws InterruptedException {
+ 
+		Thread.sleep(10000);
+		Actions actions1 = new Actions(driver);
+ 
+		WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+ 
+		WebElement signElement = driver.findElement(By.xpath("//button[@id='signatureEle']"));
+		waitAndClick(actions1, signElement, targetElement, 10, 10);
+		System.out.println("Signature Element Drag and Drop Done");
+ 
+		WebElement fullNameElement = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
+		waitAndClick(actions1, fullNameElement, targetElement, 50, 50);
+		System.out.println("FullName Drag and Drop Done");
+ 
+		WebElement initialElement = driver.findElement(By.xpath("//button[@id='initialEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 90, 90);
+		System.out.println("Initial Drag and Drop Done");
+ 
+	}
+ 
+	public void waitAndClick(Actions actions, WebElement sourceElement, WebElement targetElement, int xOffset,
+			int yOffset) {
+		actions.clickAndHold(sourceElement).moveToElement(targetElement, xOffset, yOffset).release().build().perform();
+	}
+ 
+	public void Receiverfields() throws Exception {
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+ 
+		Thread.sleep(10000);
+		Actions actions1 = new Actions(driver);
+ 
+		WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+ 
+		WebElement signElement = driver.findElement(By.xpath("//button[@id='signatureEle']"));
+		waitAndClick(actions1, signElement, targetElement, 10, 10);
+		System.out.println("Signature Element Drag and Drop Done");
+ 
+		WebElement fullNameElement = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
+		waitAndClick(actions1, fullNameElement, targetElement, 50, 50);
+		System.out.println("FullName Drag and Drop Done");
+ 
+		WebElement initialElement = driver.findElement(By.xpath("//button[@id='initialEle']"));
+		waitAndClick(actions1, initialElement, targetElement, 90, 90);
+		System.out.println("Initial Drag and Drop Done");
+ 
+	}
+ 
+	public void VerifyApproverfields() throws Exception {
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+ 
+		// ... (omitting the previous code for brevity)
+ 
+		// Sign
+		WebElement Sign = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+		System.out.println("Signature Element Drag and Drop Done");
+ 
+		Actions actions = new Actions(driver);
+ 
+		waitAndClick(actions, Sign, Target);
+		System.out.println("Sign Element Drag and Drop Done");
+ 
+	}
+ 
+	public void Signerfields() throws Exception {
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+ 
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+ 
+		// ... (omitting the previous code for brevity)
+ 
+		// Sign
+		WebElement Sign = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+		System.out.println("Signature Element Drag and Drop Done");
+ 
+		Actions actions = new Actions(driver);
+ 
+		waitAndClick(actions, Sign, Target);
+		System.out.println("Sign Element Drag and Drop Done");
+ 
+	}
+ 
+	public void Settings() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[1]"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Secure E-Sign'])[1]"));
+ 
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
+ 
+		MethodActions.waitEle(By.xpath("(//i[@class='el-dialog__close el-icon el-icon-close'])[26]"));
+ 
+	}
+ 
+	@SuppressWarnings("deprecation")
+	public void changedoc() throws InterruptedException, Exception {
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[2]"));
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/attachment-filling.da0448d7.svg']"));
+ 
+		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Continue']"));
+ 
+		Actions actions1 = new Actions(driver);
+ 
+		WebElement Target = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"svg\"]")));
+ 
+		// Sign
+		WebElement Sign = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		actions1.clickAndHold(Sign).moveToElement(Target).release().build().perform();
+ 
+		MethodActions.waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='EMPLOYEE-1']"));
+ 
+		// signature
+ 
+		Actions actions = new Actions(driver);
+ 
+		WebElement Target1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"svg\"]")));
+ 
+		// Sign
+		WebElement Sign1 = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		actions.clickAndHold(Sign1).moveToElement(Target1).release().build().perform();
+ 
+	}
+ 
+	public void Lockfields() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[3]"));
+ 
+	}
+ 
+	public void Senddocument() throws Exception {
+		Thread.sleep(1000);
+		By ad = By.xpath("//span[normalize-space()='Send Document']");
+ 
+		try {
+			WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
+			WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
+ 
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", add);
+			System.out.println("Element clicked using JS.");
+		} catch (Exception e) {
+ 
+			System.out.println("Element not clickable or not found: ");
+		}
+ 
+ 
+		System.out.println("click on send Doc after drag and drop done successfully");
+		try {
+			MethodActions.waitEle(By.xpath("//div[@role='alert']//div[@class='el-notification__closeBtn el-icon-close']"));
+		} catch (Exception e) {
+ 
+		}
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		By ele = By.xpath("//textarea[@placeholder='Subject']");
+		WebElement sen = wait.until(ExpectedConditions.elementToBeClickable(ele));
+		sen.sendKeys("Test Sample");
+ 
+		By ele2 = By.xpath("//textarea[@placeholder='Type your text here']");
+		WebElement sen2 = wait.until(ExpectedConditions.elementToBeClickable(ele2));
+		sen2.sendKeys("Test Sample");
+		Thread.sleep(5000);
+		WebElement element = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Send Document']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+ 
+	}
+ 
+	public void TextAndMsg() throws InterruptedException {
+ 
+		try {
+			MethodActions.waitEle(By.xpath("//div[@role='alert']//div[@class='el-notification__closeBtn el-icon-close']"));
+		} catch (Exception e) {
+ 
+		}
+		try {
+			MethodActions.waitEle(By.xpath("//div[@role='alert']//div[@class='el-notification__closeBtn el-icon-close']"));
+		} catch (Exception e) {
+ 
+		}
+//		Thread.sleep(10000);
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+//		
+//		By Subject = By.xpath("//div[@class='el-textarea']");
+//		WebElement Subject2 = wait.until(ExpectedConditions.elementToBeClickable(Subject));
+//		Subject2.sendKeys("Please fill all sender fields");
+//		
+//		Thread.sleep(10000);
+//		By Text = By.xpath("//div[@class='border-0 el-textarea']");
+//		WebElement Text2 = wait.until(ExpectedConditions.elementToBeClickable(Text));
+//		Text2.sendKeys("Please fill all sender fields correctly");
+//		Thread.sleep(10000);
+ 
+		By ad = By.xpath("//button[@class='el-button fs-7 el-button--danger']");
+ 
+		try {
+			WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
+			WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
+ 
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", add);
+			System.out.println("Element clicked using JS.");
+		} catch (Exception e) {
+ 
+			System.out.println("Element not clickable or not found: ");
+		}
+ 
+	}
+ 
+	public void Viewdoc() throws Exception {
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='View Document']"));
+ 
+	}
+ 
+	public void OtherOptions() throws InterruptedException {
+ 
+		Thread.sleep(10000);
+ 
+		By ad = By.xpath("//div[@class='el-dropdown']");
+ 
+		try {
+			WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
+			WebElement add = hold.until(ExpectedConditions.elementToBeClickable(ad));
+ 
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", add);
+			System.out.println("Element clicked using JS.");
+		} catch (Exception e) {
+ 
+			System.out.println("Element not clickable or not found: ");
+		}
+	}
+ 
+	public void otheroptionsfinishlater() throws Exception {
+ 
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[1]"));
+ 
+	}
+ 
+	@SuppressWarnings("deprecation")
+	public void otheroptionsprintandsign() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[2]"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Download Document']"));
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Continue']"));
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Upload a File']"));
+		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Finish']"));
+	}
+ 
+	public void Otheroptionsdownload() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[3]"));
+ 
+	}
+ 
+	public void otheroptionshistory() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[4]"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Download History'])[1]"));
+ 
+		MethodActions.waitEle(By.xpath("(//i[@class='el-dialog__close el-icon el-icon-close'])[18]"));
+	}
+ 
+	public void otheroptionssettings() throws Exception {
+		Thread.sleep(null);
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[5]"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Secure E-Sign'])[1]"));
+ 
+		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
+ 
+		MethodActions.waitEle(By.xpath("(//i[@class='el-dialog__close el-icon el-icon-close'])[26]"));
+	}
+ 
+	public void otheroptionsCorrectdoc() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[6]"));
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Yes'])[2]"));
+ 
+	}
+ 
+	public void otheroptionssaveastem() throws Exception {
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[7]"));
+ 
+	}
+ 
+	public void otheroptionsvoiddoc() throws Exception {
+		Thread.sleep(null);
+ 
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[8]"));
+ 
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Yes'])[2]"));
+ 
+	}
+ 
+	public void otheroptionsdelete() throws Exception {
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//a[9]"));
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='OK']"));
+ 
+	}
+ 
+	public void Previousbtn() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='PREV FIELD']"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
+ 
+	}
+ 
+	public void Nextbtn() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+ 
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
+ 
+	}
+ 
+	public void FinishDoc() throws Exception {
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='FINISH']"));
+	}
+ 
+	public void Chat() throws Exception {
+ 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Chat']"));
+ 
+		By comment = By.xpath("//textarea[@placeholder='Enter comments here...']");
+		WebElement comment2 = wait.until(ExpectedConditions.elementToBeClickable(comment));
+		comment2.sendKeys("no comments");
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Post']"));
+	}
+ 
+//	public void FillRF() {
+//		
+//		
+//		
+//	}
+	public void Logs() throws Exception {
+ 
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Logs']"));
+ 
+	}
+//	"C:\Users\ramya.sibbala\OneDrive - Nimble Accounting\Documents\fileupload.exe"
+ 
+
+public void Signinramya() throws InterruptedException {
+	Thread.sleep(10000);
+//	driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+//			.sendKeys("N180959@rguktn.ac.in");
+//	driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramya@1234");
+//	driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
+	driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+	.sendKeys("ramya.sibbala@nimbleaccounting.com");
+	driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramyasri@123");
+	driver.findElement(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--danger']")).click();
+	Thread.sleep(10000);
+
+}}

@@ -13,6 +13,7 @@ import Pages.Dashboard;
 import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
 import Pages.Login;
+import Pages.MethodActions;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Signup;

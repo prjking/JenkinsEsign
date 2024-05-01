@@ -108,4 +108,44 @@ public class BugTestcase extends testCaseBase {
 		bug.veiwAction5421();
 	}
 
+	@Test
+	public void Verifyotheroptionsfinishlater() throws Exception {
+		bug.Signinramya();
+		login.VerifyLoginSucess();
+		bug.AllCombos();
+		bug.ValidAllCombos();
+		bug.BlankDoc();
+		bug.ValidBlankDoc();
+		bug.AddRep();
+		bug.Addrepsigner1();
+		bug.ValidAddRepSigner1();
+		bug.Saveuser();
+		bug.SenderFields();
+		bug.Receiverfields();
+		bug.Senddocument();
+		bug.Viewdoc();
+		bug.OtherOptions();
+		bug.otheroptionsfinishlater();
+	}
+
+	@Test
+	public void Verifyotheroptionsprintandsign() throws Exception {
+		bug.Signinramya();
+		login.VerifyLoginSucess();
+		bug.AllCombos();
+		bug.ValidAllCombos();
+		bug.BlankDoc();
+		bug.ValidBlankDoc();
+		bug.AddRep();
+		bug.Addrepsigner1();
+		bug.ValidAddRepSigner1();
+		bug.SenderFields();
+		bug.Receiverfields();
+		bug.Senddocument();
+		bug.TextAndMsg();
+		bug.Viewdoc();
+		bug.OtherOptions();
+		bug.otheroptionsprintandsign();
+	}
+
 }
