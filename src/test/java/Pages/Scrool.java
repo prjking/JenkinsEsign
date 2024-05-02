@@ -339,7 +339,6 @@ public class Scrool {
 		Thread.sleep(10000);
 
 		WebElement copy = driver.findElement(By.xpath("//tbody//span[text()]"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", copy);
 
 		Thread.sleep(10000);
 		Actions action = new Actions(driver);
@@ -349,7 +348,7 @@ public class Scrool {
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
 		WebElement element = wait1
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[normalize-space()='Review & sign']//a")));
-        element.click();
+		element.click();
 		String parentWindow = driver.getWindowHandle();
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String windowHandle : allWindows) {

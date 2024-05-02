@@ -15,11 +15,15 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -146,7 +150,6 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -199,13 +202,23 @@ public class FormTemplate {
 		}
 
 		Thread.sleep(10000);
-		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
+		Wait<WebDriver> wait11 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
+
+		WebElement del = wait11
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='el-select filledby']//input")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+
 		Thread.sleep(1000);
 
-		WebElement element = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement element = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
 		Thread.sleep(1000);
 
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
@@ -651,7 +664,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -711,9 +724,13 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 		Thread.sleep(10000);
-		WebElement element = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement element = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
 		Thread.sleep(10000);
 
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
@@ -815,7 +832,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -880,9 +897,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		Thread.sleep(10000);
-		WebElement element1 = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+		WebElement element1 = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -938,7 +958,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -998,9 +1018,13 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementNumber = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementnum = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementNumber);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementnum);
+
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -1016,8 +1040,9 @@ public class FormTemplate {
 			Thread.sleep(10000);
 			MethodActions.Javascriptclick(By.xpath("//input[@placeholder=\"Country code\"]"));
 			MethodActions.Javascriptclick(By.xpath("//div[text()=' India (भारत) ']"));
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Phone number *']")));
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait1.until(
+					ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Phone number *']")));
 			driver.findElement(By.xpath("//input[@placeholder='Phone number *']")).sendKeys("7894561230");
 			Thread.sleep(10000);
 			System.out.println("PHONE With " + label + " Selected Successfully");
@@ -1086,7 +1111,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -1150,9 +1175,13 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement ElementMultipleSelect = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
+
 		MethodActions.waitEle(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -1208,7 +1237,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -1277,9 +1306,12 @@ public class FormTemplate {
 
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
-		WebElement elementFixedTime = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementfixedtime = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementFixedTime);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementfixedtime);
 		Thread.sleep(10000);
 		System.out.println("TimeRange With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
@@ -1319,7 +1351,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -1382,9 +1414,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementWeekDays = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementweekdays = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementWeekDays);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementweekdays);
 		Thread.sleep(10000);
 		System.out.println("TimeRange With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
@@ -1419,7 +1454,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -1497,9 +1532,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementYesorNo = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementyesorno = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementYesorNo);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementyesorno);
 		Thread.sleep(10000);
 		System.out.println("Yes OR No With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
@@ -1681,7 +1719,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -1763,10 +1801,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementDocument = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementdocument = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
-		Thread.sleep(10000);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementdocument);
 
 		MethodActions.Javascriptclick(By.xpath("//input[@class='el-select__input']"));
 
@@ -1940,7 +1980,6 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2004,9 +2043,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementTime = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementtime = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementTime);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementtime);
 		Thread.sleep(10000);
 		System.out.println("Time With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
@@ -2076,7 +2118,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2139,9 +2181,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementDate = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementdate = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDate);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementdate);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -2220,7 +2265,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2303,9 +2348,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementList = fieldTypecase.until(
+		Wait<WebDriver> wait1 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementlist = wait1.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementList);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementlist);
 		Thread.sleep(10000);
 		System.out.println("List With " + label + " Selected Successfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
@@ -2342,7 +2390,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2390,9 +2438,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementTimerange = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementtimerange = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementTimerange);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementtimerange);
 		Thread.sleep(10000);
 		System.out.println("Time Range With " + label + " Selected Successfully");
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
@@ -2442,7 +2493,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2501,9 +2552,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement element = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementcheck = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementcheck);
 
 		Thread.sleep(10000);
 
@@ -2543,7 +2597,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2580,9 +2634,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementCheckBoxGroup = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementcheckbox = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementCheckBoxGroup);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementcheckbox);
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("(//input[@aria-valuemax='Infinity'])[1]"));
 		MethodActions.sendKeysToElement(By.xpath("(//input[@aria-valuemax='Infinity'])[1]"), "3");
@@ -2634,7 +2691,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2693,9 +2750,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementRadio = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementradio = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementRadio);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementradio);
 
 		Thread.sleep(10000);
 
@@ -2735,7 +2795,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2793,10 +2853,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementRadiogroup = fieldTypecase.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementRadiogroup);
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
 
+		WebElement elementradiogroup = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementradiogroup);
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@class='el-select__input']"),
 				MethodActions.generateUniqueString());
@@ -2868,7 +2930,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -2931,9 +2993,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementPhone = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -3000,7 +3065,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3059,9 +3124,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementSignature = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementSignature);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 
 		Thread.sleep(10000);
 		if (index == 1) {
@@ -3162,7 +3230,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "H1":
 			index = 1;
@@ -3211,9 +3279,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//input[@placeholder='Select Heading Type']"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementPhone = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Heading With " + label + " Selected Successfully");
 		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 	}
@@ -3344,7 +3415,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3398,9 +3469,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementDocument = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		try {
 			Thread.sleep(10000);
 			MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
@@ -3441,7 +3515,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3495,9 +3569,12 @@ public class FormTemplate {
 		WebElement del = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		WebElement elementDocument = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementDocument);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		Thread.sleep(10000);
 		try {
 			MethodActions.waitEle(By.xpath("//div[@class='el-upload__text']"));
@@ -3609,7 +3686,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3673,9 +3750,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		Thread.sleep(10000);
-		WebElement element1 = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Auto Increment Number " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
@@ -3717,7 +3797,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3777,9 +3857,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		Thread.sleep(10000);
-		WebElement element1 = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Location " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
@@ -3841,7 +3924,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -3904,9 +3987,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementPhone = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
 		switch (field) {
@@ -3999,7 +4085,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4066,9 +4152,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elementPhone = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementPhone);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
 
 		switch (field) {
@@ -4158,7 +4247,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4240,9 +4329,15 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elemententity = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		Thread.sleep(10000);
+
 		Thread.sleep(10000);
 		System.out.println("Entity With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
@@ -4294,7 +4389,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4388,9 +4483,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elemententityvar = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententityvar);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
 		Thread.sleep(10000);
 
@@ -4488,7 +4586,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4526,9 +4624,15 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elemententity = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select']//input[@placeholder='Select']"));
+		Thread.sleep(10000);
+
 		System.out.println("Data Table With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 	}
@@ -4568,7 +4672,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4614,9 +4718,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elemententity = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Child Entity Table  With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 	}
@@ -4711,7 +4818,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4751,9 +4858,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement elemententity = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elemententity);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		MethodActions.Javascriptclick(By.xpath("(//input[@placeholder='Select'])[3]"));
 		switch (field) {
 		case "Transaction Id":
@@ -4837,7 +4947,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4898,9 +5008,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement ElementMultipleSelect = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Star Rating With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
@@ -4937,7 +5050,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -4996,10 +5109,13 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement ElementMultipleSelect = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
-		System.out.println("Concatenate With "  + label +   "Selected Sucessfully");
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
+		System.out.println("Concatenate With " + label + "Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
 
@@ -5035,7 +5151,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -5097,9 +5213,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement ElementMultipleSelect = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		System.out.println("Audio With " + label + " Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
 	}
@@ -5130,7 +5249,7 @@ public class FormTemplate {
 		int index;
 		String label;
 		Thread.sleep(10000);
-		WebDriverWait fieldTypecase = new WebDriverWait(driver, Duration.ofMinutes(1));
+
 		switch (fieldType) {
 		case "SENDER":
 			index = 1;
@@ -5171,9 +5290,12 @@ public class FormTemplate {
 		WebElement element = driver.findElement(By.xpath("//div[@class='el-select filledby']//input"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		WebElement ElementMultipleSelect = fieldTypecase.until(
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+
+		WebElement elementmultipleelect = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ElementMultipleSelect);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", elementmultipleelect);
 		if (index == 1) {
 
 			MethodActions.waitEle(By.xpath("(//span[@class='el-radio__inner'])[1]"));

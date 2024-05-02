@@ -46,7 +46,7 @@ public class LoginPageTest extends testCaseBase {
 		signup = new Signup(driver);
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
-		scrool =new Scrool(driver);
+		scrool = new Scrool(driver);
 
 	}
 
@@ -173,7 +173,6 @@ public class LoginPageTest extends testCaseBase {
 		scrool.Receiverfields();
 		scrool.Senddocument();
 		scrool.Yahoomail();
-	 
-	 
+
 	}
 }
