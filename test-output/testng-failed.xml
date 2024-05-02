@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.FormTemplate_Testcases">
+      <class name="TestCase.LoginPageTest">
         <methods>
-          <include name="AdvancedConcatenate"/>
           <include name="Start"/>
+          <include name="Verifyscrool"/>
         </methods>
-      </class> <!-- TestCase.FormTemplate_Testcases -->
+      </class> <!-- TestCase.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

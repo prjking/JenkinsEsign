@@ -49,6 +49,15 @@ public class Login {
 		Thread.sleep(10000);
 
 	}
+	public void Signinr() throws InterruptedException {
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+		.sendKeys("ramya.sibbala@nimbleaccounting.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramyasri@123");
+		driver.findElement(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--danger']")).click();
+		Thread.sleep(10000);
+ 
+	}
 
 	public void SigninMeghana() throws InterruptedException {
 

@@ -28,7 +28,7 @@ public class testCaseBase {
 //
 		 options.setBinary("/usr/bin/sgoogle-chrome-stable");
 //
-		 options.addArguments("--no-sandbox");
+		options.addArguments("--no-sandbox");
 
 		driver = new ChromeDriver(options);
 
@@ -40,8 +40,8 @@ public class testCaseBase {
 		driver.get("https://dev.esigns.io/signin");
 
 		// driver.get("https://nsui.esigns.io/signin");
-
-		driver.manage().window().maximize();
+			
+		
 
 	}
 

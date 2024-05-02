@@ -162,11 +162,18 @@ public class LoginPageTest extends testCaseBase {
 //
 //	
 	@Test
-	public void dragdrop() throws InterruptedException {
-		login.Signin();
-		scrool.drop();
-		
-		
-		
+	public void Verifyscrool() throws Exception {
+		login.Signinr();
+		login.VerifyLoginSucess();
+		scrool.AllCombos();
+		scrool.BlankDoc();
+		scrool.AddRep();
+		scrool.AddSigner();
+		scrool.Saveuser();
+		scrool.Receiverfields();
+		scrool.Senddocument();
+		scrool.Yahoomail();
+	 
+	 
 	}
 }

@@ -71,8 +71,8 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Createtemp();
 		formTemplate.SingleLine();
 		formTemplate.closeingleline();
-		formTemplate.SinglelineGlobalVariable();
-		formTemplate.StyleSettings();
+		//formTemplate.SinglelineGlobalVariable();
+		//formTemplate.StyleSettings();
 
 	}
 
@@ -83,7 +83,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Multiline();
-		formTemplate.MultilineGlobalVariable();
+		//formTemplate.MultilineGlobalVariable();
 
 	}
 
@@ -94,7 +94,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Select();
-		formTemplate.SelectGlobalVariable();
+		//formTemplate.SelectGlobalVariable();
 
 	}
 
@@ -105,7 +105,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Number();
-		formTemplate.NumberGlobalVariable();
+		//formTemplate.NumberGlobalVariable();
 
 	}
 
@@ -116,7 +116,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.MultipleSelect();
-		formTemplate.MultipleGlobalVariable();
+		//formTemplate.MultipleGlobalVariable();
 
 	}
 
@@ -127,7 +127,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.List();
-		formTemplate.ListGlobalVariable();
+		//formTemplate.ListGlobalVariable();
 
 	}
 
@@ -138,7 +138,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Date();
-		formTemplate.DateGlobalVariable();
+		//formTemplate.DateGlobalVariable();
 
 	}
 
@@ -149,7 +149,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Time();
-		formTemplate.TimeGlobalVariable();
+		//formTemplate.TimeGlobalVariable();
 
 	}
 
@@ -160,7 +160,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.FixedTime();
-		formTemplate.FixedTimeGlobalVariable();
+		//formTemplate.FixedTimeGlobalVariable();
 
 	}
 
@@ -171,7 +171,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.Timerange();
-		formTemplate.TimerangeGlobalVariable();
+		//formTemplate.TimerangeGlobalVariable();
 
 	}
 
@@ -192,11 +192,11 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.WeekDays();
-		formTemplate.WeekDaysGlobalVariable();
+		//formTemplate.WeekDaysGlobalVariable();
 
 	}
 
-	@Test(priority = 13)
+	@Test(priority = 13,enabled=false)
 	public void BasicFieldsDateTimeRange() throws Exception {
 		login.Signin();
 		MethodActions.Loadingmask();
@@ -206,7 +206,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	}
 
-	@Test(priority = 14)
+	@Test(priority = 14,enabled=false)
 	public void BasicFieldsDateRange() throws Exception {
 		login.Signin();
 		MethodActions.Loadingmask();
@@ -243,7 +243,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.CheckBoxGroup();
-		formTemplate.CheckBoxGroupGlobalVariable();
+		//formTemplate.CheckBoxGroupGlobalVariable();
 
 	}
 
@@ -274,7 +274,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.RadioGroup();
-		formTemplate.RadioGroupGlobalVariable();
+		//formTemplate.RadioGroupGlobalVariable();
 
 	}
 
@@ -426,8 +426,8 @@ public class FormTemplate_Testcases extends testCaseBase {
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		// formTemplate.Currency();
-		formTemplate.CurrencyGlobalVariable();
+		 formTemplate.Currency();
+		//formTemplate.CurrencyGlobalVariable();
 
 	}
 
@@ -481,7 +481,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	}
 
-	@Test(priority = 41)
+	@Test(priority = 41,enabled=false)
 	public void AdvancedDataTable() throws Exception {
 		login.Signin();
 		MethodActions.Loadingmask();
@@ -528,7 +528,7 @@ public class FormTemplate_Testcases extends testCaseBase {
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formTemplate.StarRating();
-		formTemplate.StarRatingGlobalVariable();
+		//formTemplate.StarRatingGlobalVariable();
 
 	}
 

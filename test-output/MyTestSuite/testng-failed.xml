@@ -3,12 +3,60 @@
 <suite name="Failed suite [MyTestSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Docscenarios Test Run(failed)">
     <classes>
-      <class name="TestCase.BugTestcase">
+      <class name="TestCase.FormTemplate_Testcases">
         <methods>
-          <include name="Bug4004"/>
+          <include name="AdvancedChildEntityTable"/>
+          <include name="AdvancedConcatenate"/>
+          <include name="BasicFieldsSelect"/>
           <include name="Start"/>
+          <include name="AdvancedQRCode"/>
+          <include name="BasicFieldsNumber"/>
+          <include name="BasicFieldsDate"/>
+          <include name="AdvancedPayButtons"/>
+          <include name="BasicFieldsRadio"/>
+          <include name="AdvancedEntity"/>
+          <include name="AdvancedAggregateFunction"/>
+          <include name="AdvancedPaymentVariable"/>
+          <include name="BasicFieldsMultipleSelect"/>
+          <include name="ContentDivision"/>
+          <include name="BasicFieldsCaptcha"/>
+          <include name="ContentImage"/>
+          <include name="BasicFieldsFixedTime"/>
+          <include name="BasicFieldsDocument"/>
+          <include name="ContentParagraph"/>
+          <include name="ContentHorizontalLine"/>
+          <include name="BasicFieldsDateTime"/>
+          <include name="ContentHTML"/>
+          <include name="AdvancedQuestion"/>
+          <include name="ContentSingleLineContent"/>
+          <include name="AdvancedDataTable"/>
+          <include name="BasicFieldsDateRange"/>
+          <include name="ContentVideo"/>
+          <include name="BasicFieldsCheckbox"/>
+          <include name="AdvancedAuthorizedSignature"/>
+          <include name="AdvancedQRReader"/>
+          <include name="AdvancedAutoIncrementNumber"/>
+          <include name="AdvancedFormula"/>
+          <include name="AdvancedLocation"/>
+          <include name="AdvancedAudio"/>
+          <include name="BasicFieldsSignature"/>
+          <include name="BasicFieldsTimerange"/>
+          <include name="BasicFieldsMultiline"/>
+          <include name="BasicFieldsTime"/>
+          <include name="BasicFieldsYesORNo"/>
+          <include name="ContentActionButton"/>
+          <include name="BasicFieldsList"/>
+          <include name="BasicFieldsCheckBoxGroup"/>
+          <include name="BasicFieldsSingleline"/>
+          <include name="AdvancedCurrency"/>
+          <include name="ContentHeading"/>
+          <include name="BasicFieldsRadioGroup"/>
+          <include name="BasicFieldsPhone"/>
+          <include name="BasicFieldsDateTimeRange"/>
+          <include name="AdvancedStarRating"/>
+          <include name="BasicFieldsWeekDays"/>
         </methods>
-      </class> <!-- TestCase.BugTestcase -->
+      </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
   </test> <!-- Docscenarios Test Run(failed) -->
 </suite> <!-- Failed suite [MyTestSuite] -->
