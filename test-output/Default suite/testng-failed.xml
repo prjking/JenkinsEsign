@@ -5,8 +5,26 @@
     <classes>
       <class name="TestCase.FormTemplate_Testcases">
         <methods>
+          <include name="AdvancedChildEntityTable"/>
+          <include name="ContentDivision"/>
+          <include name="AdvancedConcatenate"/>
           <include name="Start"/>
-          <include name="BasicFieldsSingleline"/>
+          <include name="AdvancedQRCode"/>
+          <include name="AdvancedQRReader"/>
+          <include name="ContentHorizontalLine"/>
+          <include name="setup"/>
+          <include name="AdvancedPayButtons"/>
+          <include name="AdvancedAutoIncrementNumber"/>
+          <include name="AdvancedFormula"/>
+          <include name="AdvancedCurrency"/>
+          <include name="AdvancedEntity"/>
+          <include name="AdvancedLocation"/>
+          <include name="AdvancedAudio"/>
+          <include name="AdvancedAggregateFunction"/>
+          <include name="AdvancedQuestion"/>
+          <include name="AdvancedPaymentVariable"/>
+          <include name="AdvancedStarRating"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>

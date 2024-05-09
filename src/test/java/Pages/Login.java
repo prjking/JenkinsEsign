@@ -23,14 +23,27 @@ public class Login {
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
 	}
 
-	public void Signin() throws InterruptedException {
-		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
-				.sendKeys("saikumar.basolutions@gmail.com");
-		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Nimble#2022");
-		waitEle(By.xpath("//span[normalize-space()='Log In']"));
-		Thread.sleep(10000);
+	private static boolean loginPerformed = false;
 
-	}
+public void Signin() throws Exception {
+ 
+    if (!loginPerformed) {
+        Thread.sleep(10000);
+        MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"),
+                "saikumar.basolutions@gmail.com");
+        System.out.println("Email entered successfully");
+        MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Password']"), "Nimble#2022");
+        System.out.println("Password entered successfully");
+
+        waitEle(By.xpath("//span[normalize-space()='Log In']"));
+        System.out.println("Login button clicked");
+
+        Thread.sleep(10000);
+
+        loginPerformed = true;
+    }
+}
+
 
 	public void Signinprj() throws InterruptedException {
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
@@ -49,14 +62,15 @@ public class Login {
 		Thread.sleep(10000);
 
 	}
+
 	public void Signinr() throws InterruptedException {
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
-		.sendKeys("ramya.sibbala@nimbleaccounting.com");
+				.sendKeys("ramya.sibbala@nimbleaccounting.com");
 		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramyasri@123");
 		driver.findElement(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--danger']")).click();
 		Thread.sleep(10000);
- 
+
 	}
 
 	public void SigninMeghana() throws InterruptedException {

@@ -66,7 +66,7 @@ public class TestCases_Prudhvi extends testCaseBase {
 
 	@Test
 
-	public void verifyloginwithValidCredentials() throws InterruptedException {
+	public void verifyloginwithValidCredentials() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 

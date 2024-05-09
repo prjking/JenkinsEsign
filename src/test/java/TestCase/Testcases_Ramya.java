@@ -24,7 +24,7 @@ public void VerifyLoginFunctionalityWithValidCredantials() {
 
 }
 @Test
-public void VerifyDocuments() throws InterruptedException {
+public void VerifyDocuments() throws Exception {
 	login.Signin();
 //documents.ApprovedCorrectdocument();
 	//documents.ApprovedDeletedocument();

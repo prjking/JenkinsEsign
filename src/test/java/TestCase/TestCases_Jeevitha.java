@@ -20,13 +20,13 @@ public class TestCases_Jeevitha extends testCaseBase {
 
 	@Test
 
-	public void verifyloginwithValidCredentials() throws InterruptedException {
+	public void verifyloginwithValidCredentials() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 
 	}
 @Test
-	public void Document() throws InterruptedException {
+	public void Document() throws Exception {
 	login.Signin();
 	login.VerifyLoginSucess();
 

@@ -26,7 +26,7 @@ public class TestCases_Meghana extends testCaseBase {
 
 	// login
 	@Test
-	public void verifyLoginWithInvalidCredentials() throws InterruptedException {
+	public void verifyLoginWithInvalidCredentials() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 	}
