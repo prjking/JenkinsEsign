@@ -12,7 +12,6 @@
           <include name="AdvancedQRCode"/>
           <include name="AdvancedQRReader"/>
           <include name="ContentHorizontalLine"/>
-          <include name="setup"/>
           <include name="AdvancedPayButtons"/>
           <include name="AdvancedAutoIncrementNumber"/>
           <include name="AdvancedFormula"/>
@@ -24,7 +23,6 @@
           <include name="AdvancedQuestion"/>
           <include name="AdvancedPaymentVariable"/>
           <include name="AdvancedStarRating"/>
-          <include name="tearDown"/>
         </methods>
       </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>

@@ -33,7 +33,6 @@ import TestBase.testCaseBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
-
 public class FormTemplate_Testcases extends testCaseBase {
 
 	Login login;
@@ -48,11 +47,10 @@ public class FormTemplate_Testcases extends testCaseBase {
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
 	TemplateScenarios templateScenarios;
-	EntityCases entityCases;
 	FormTemplate formTemplate;
 
 	@BeforeMethod
-	public void Start() throws Exception {
+	public void Start() {
 		setup();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
@@ -66,14 +64,10 @@ public class FormTemplate_Testcases extends testCaseBase {
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
 		templateScenarios = new TemplateScenarios(driver);
-		entityCases = new EntityCases(driver);
-		formTemplate = new FormTemplate(driver);
-	
-		
+		formTemplate =new FormTemplate(driver);
 
 	}
-	
-	    
+
 ////Basic Fields
 //	@Test(priority = 1)
 //	public void BasicFieldsSingleline() throws Exception {
@@ -385,14 +379,20 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	@Test(priority = 31)
 	public void ContentHorizontalLine() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.HorizontalLine();
 
 	}
 
 	@Test(priority = 32)
 	public void ContentDivision() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Division();
 
 	}
@@ -400,21 +400,30 @@ public class FormTemplate_Testcases extends testCaseBase {
 //Advanced Fields
 	@Test(priority = 33)
 	public void AdvancedAutoIncrementNumber() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.AutoIncrementNumber();
 
 	}
 
 	@Test(priority = 34)
 	public void AdvancedLocation() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Location();
 
 	}
 
 	@Test(priority = 35)
 	public void AdvancedCurrency() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Currency();
 		// formTemplate.CurrencyGlobalVariable();
 
@@ -422,70 +431,100 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	@Test(priority = 36)
 	public void AdvancedQuestion() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Question();
 
 	}
 
 	@Test(priority = 37, enabled = false)
 	public void AdvancedAuthorizedSignature() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.AuthorizedSignature();// check
 
 	}
 
 	@Test(priority = 38)
 	public void AdvancedEntity() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.EntityVariable();
 
 	}
 
 	@Test(priority = 39)
 	public void AdvancedFormula() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Formula();
 
 	}
 
 	@Test(priority = 40)
 	public void AdvancedAggregateFunction() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.AggregateFunction();
 
 	}
 
 	@Test(priority = 41, enabled = false)
 	public void AdvancedDataTable() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.DataTable();// same place
 
 	}
 
 	@Test(priority = 42)
 	public void AdvancedChildEntityTable() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.ChildEntityTable();
 
 	}
 
 	@Test(priority = 43)
 	public void AdvancedPayButtons() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.PayButtons();
 
 	}
 
 	@Test(priority = 44)
 	public void AdvancedPaymentVariable() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.PaymentVariable();
 
 	}
 
 	@Test(priority = 45)
 	public void AdvancedStarRating() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.StarRating();
 		// formTemplate.StarRatingGlobalVariable();
 
@@ -493,27 +532,39 @@ public class FormTemplate_Testcases extends testCaseBase {
 
 	@Test(priority = 46)
 	public void AdvancedConcatenate() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Concatenate();
 
 	}
 
 	@Test(priority = 47)
 	public void AdvancedAudio() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Audio();
 
 	}
 
 	@Test(priority = 48)
 	public void AdvancedQRCode() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.QRCode();
 	}
 
 	@Test(priority = 49)
 	public void AdvancedQRReader() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.QRReader();
 
 	}

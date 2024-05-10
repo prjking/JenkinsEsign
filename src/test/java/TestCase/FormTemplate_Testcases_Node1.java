@@ -74,7 +74,10 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 //Basic Fields
 	@Test(priority = 1)
 	public void BasicFieldsSingleline() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.SingleLine();
 		// formTemplate.closeingleline();
 		// formTemplate.SinglelineGlobalVariable();
@@ -83,56 +86,80 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 
 	@Test(priority = 2)
 	public void BasicFieldsMultiline() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Multiline();
 		// formTemplate.MultilineGlobalVariable();
 	}
 
 	@Test(priority = 3)
 	public void BasicFieldsSelect() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Select();
 		// formTemplate.SelectGlobalVariable();
 	}
 
 	@Test(priority = 4)
 	public void BasicFieldsNumber() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Number();
 		// formTemplate.NumberGlobalVariable();
 	}
 
 	@Test(priority = 5)
 	public void BasicFieldsMultipleSelect() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.MultipleSelect();
 		// formTemplate.MultipleGlobalVariable();
 	}
 
 	@Test(priority = 6)
 	public void BasicFieldsList() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.List();
 		// formTemplate.ListGlobalVariable();
 	}
 
 	@Test(priority = 7)
 	public void BasicFieldsDate() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Date();
 		// formTemplate.DateGlobalVariable();
 	}
 
 	@Test(priority = 8)
 	public void BasicFieldsTime() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Time();
 		// formTemplate.TimeGlobalVariable();
 	}
 
 	@Test(priority = 9)
 	public void BasicFieldsFixedTime() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.FixedTime();
 		// formTemplate.FixedTimeGlobalVariable();
 
@@ -140,7 +167,10 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 
 	@Test(priority = 10)
 	public void BasicFieldsTimerange() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Timerange();
 		// formTemplate.TimerangeGlobalVariable();
 
@@ -148,14 +178,20 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 
 	@Test(priority = 11)
 	public void BasicFieldsDateTime() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Date();
 
 	}
 
 	@Test(priority = 12)
 	public void BasicFieldsWeekDays() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.WeekDays();
 		// formTemplate.WeekDaysGlobalVariable();
 
@@ -163,14 +199,20 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 
 	@Test(priority = 13, enabled = false)
 	public void BasicFieldsDateTimeRange() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Date();
 
 	}
 
 	@Test(priority = 14, enabled = false)
 	public void BasicFieldsDateRange() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Date();
 
 	}

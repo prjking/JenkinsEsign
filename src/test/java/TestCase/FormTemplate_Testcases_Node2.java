@@ -74,21 +74,30 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 	@Test(priority = 15)
 
 	public void BasicFieldsYesORNo() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.YesorNo();
 
 	}
 
 	@Test(priority = 16)
 	public void BasicFieldsCheckbox() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.CheckBox();
 
 	}
 
 	@Test(priority = 17)
 	public void BasicFieldsCheckBoxGroup() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.CheckBoxGroup();
 		// formTemplate.CheckBoxGroupGlobalVariable();
 
@@ -96,21 +105,30 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 
 	@Test(priority = 18)
 	public void BasicFieldsDocument() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Document();
 
 	}
 
 	@Test(priority = 19)
 	public void BasicFieldsRadio() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Radio();
 
 	}
 
 	@Test(priority = 20)
 	public void BasicFieldsRadioGroup() throws Exception {
-
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.RadioGroup();
 		// formTemplate.RadioGroupGlobalVariable();
 
@@ -118,21 +136,30 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 
 	@Test(priority = 21)
 	public void BasicFieldsPhone() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Phone();
 
 	}
 
 	@Test(priority = 22)
 	public void BasicFieldsSignature() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Signature();
 
 	}
 
 	@Test(priority = 23)
 	public void BasicFieldsCaptcha() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Captcha();
 
 	}
@@ -140,49 +167,70 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 //Content Fields
 	@Test(priority = 24)
 	public void ContentHeading() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Heading();
 
 	}
 
 	@Test(priority = 25)
 	public void ContentHTML() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.HTML();
 
 	}
 
 	@Test(priority = 26)
 	public void ContentParagraph() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Paragraph();
 
 	}
 
 	@Test(priority = 27)
 	public void ContentSingleLineContent() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.SingleLineContent();
 
 	}
 
 	@Test(priority = 28)
 	public void ContentImage() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Image();
 
 	}
 
 	@Test(priority = 29)
 	public void ContentVideo() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.Video();
 
 	}
 
 	@Test(priority = 30)
 	public void ContentActionButton() throws Exception {
-		formTemplate.Common();
+		login.Signin();
+		MethodActions.Loadingmask();
+		formTemplate.Template();
+		formTemplate.Createtemp();
 		formTemplate.ActionButton();
 
 	}

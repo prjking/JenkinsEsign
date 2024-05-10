@@ -3,27 +3,28 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="TestCase.FormTemplate_Testcases_Node2">
+      <class name="TestCase.FormTemplate_Testcases">
         <methods>
-          <include name="BasicFieldsSignature"/>
-          <include name="ContentHeading"/>
-          <include name="ContentHTML"/>
-          <include name="ContentSingleLineContent"/>
-          <include name="BasicFieldsRadioGroup"/>
-          <include name="ContentVideo"/>
-          <include name="BasicFieldsPhone"/>
-          <include name="BasicFieldsCaptcha"/>
-          <include name="BasicFieldsCheckBoxGroup"/>
-          <include name="ContentImage"/>
-          <include name="ContentParagraph"/>
+          <include name="AdvancedChildEntityTable"/>
+          <include name="ContentDivision"/>
+          <include name="AdvancedConcatenate"/>
           <include name="Start"/>
-          <include name="BasicFieldsRadio"/>
-          <include name="ContentActionButton"/>
-          <include name="BasicFieldsCheckbox"/>
-          <include name="BasicFieldsYesORNo"/>
-          <include name="BasicFieldsDocument"/>
+          <include name="AdvancedQRCode"/>
+          <include name="AdvancedQRReader"/>
+          <include name="ContentHorizontalLine"/>
+          <include name="AdvancedPayButtons"/>
+          <include name="AdvancedAutoIncrementNumber"/>
+          <include name="AdvancedFormula"/>
+          <include name="AdvancedCurrency"/>
+          <include name="AdvancedEntity"/>
+          <include name="AdvancedLocation"/>
+          <include name="AdvancedAudio"/>
+          <include name="AdvancedAggregateFunction"/>
+          <include name="AdvancedQuestion"/>
+          <include name="AdvancedPaymentVariable"/>
+          <include name="AdvancedStarRating"/>
         </methods>
-      </class> <!-- TestCase.FormTemplate_Testcases_Node2 -->
+      </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

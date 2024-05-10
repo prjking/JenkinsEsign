@@ -27,7 +27,7 @@ public class Login {
 
 public void Signin() throws Exception {
  
-    if (!loginPerformed) {
+    
         Thread.sleep(10000);
         MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"),
                 "saikumar.basolutions@gmail.com");
@@ -40,9 +40,8 @@ public void Signin() throws Exception {
 
         Thread.sleep(10000);
 
-        loginPerformed = true;
     }
-}
+
 
 
 	public void Signinprj() throws InterruptedException {

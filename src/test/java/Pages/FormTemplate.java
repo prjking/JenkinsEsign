@@ -35,6 +35,7 @@ public class FormTemplate {
 	WebDriver driver;
 	MethodActions methodActions;
 	Login login;
+	FormTemplate formTemplate;
 
 	public FormTemplate(WebDriver driver) {
 		this.driver = driver;
@@ -62,14 +63,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//div[@class='last-row-in-form']//span[normalize-space()='Submit']"));
 
-	}
-
-	public void Common() throws Exception {
-		Thread.sleep(1000);
-		login.Signin();
-		MethodActions.Loadingmask();
-		Template();
-		Createtemp();
 	}
 
 	public void Validpopup() throws Exception {
