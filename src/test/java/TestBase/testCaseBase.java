@@ -68,13 +68,13 @@ public class testCaseBase {
 //
 		ChromeOptions options = new ChromeOptions();
 
-		// options.addArguments("--headless");
-		// options.addArguments("--window-size=1920,1080");
-		// options.addArguments("--disable-gpu");
+		options.addArguments("--headless");
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--disable-gpu");
 
-		// options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 
-		// options.addArguments("--no-sandbox");
+		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");
 //		driver.manage().window().maximize();
