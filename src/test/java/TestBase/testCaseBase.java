@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -65,12 +67,13 @@ public class testCaseBase {
 		// driver = new FirefoxDriver();
 //
 		ChromeOptions options = new ChromeOptions();
+
 		options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--disable-gpu");
-//
+
 		options.setBinary("/usr/bin/sgoogle-chrome-stable");
-//
+
 		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");

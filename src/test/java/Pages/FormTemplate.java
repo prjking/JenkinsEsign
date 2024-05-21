@@ -1,17 +1,6 @@
 package Pages;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -25,11 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-import com.github.dockerjava.api.model.Driver;
-
-import dev.failsafe.function.CheckedFunction;
 
 public class FormTemplate {
 	WebDriver driver;
@@ -1728,6 +1712,7 @@ public class FormTemplate {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void FieldDocument(String fieldType, String field, WebElement Document, WebElement targetElement,
 			boolean isYes, boolean type) throws Exception {
 
@@ -3439,6 +3424,7 @@ public class FormTemplate {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void Fieldimage(String fieldType, WebElement YesorNo, WebElement targetElement, boolean isYes, boolean Field)
 			throws Exception {
 
@@ -3540,6 +3526,7 @@ public class FormTemplate {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void FieldVideo(String fieldType, WebElement YesorNo, WebElement targetElement, boolean isYes, boolean Field)
 			throws Exception {
 
@@ -5387,4 +5374,5 @@ public class FormTemplate {
 		driver.close();
 
 	}
+
 }

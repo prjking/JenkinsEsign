@@ -54,7 +54,8 @@ public class MethodActions {
 
 	}
 
-	public static void Loadingmask() {
+	public static void Loadingmask() throws Exception {
+		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
 

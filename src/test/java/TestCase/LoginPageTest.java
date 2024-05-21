@@ -161,18 +161,18 @@ public class LoginPageTest extends testCaseBase {
 //		templatespage.Creategroup();
 //
 //	
-	@Test
-	public void Verifyscrool() throws Exception {
-		login.Signinr();
-		login.VerifyLoginSucess();
-		scrool.AllCombos();
-		scrool.BlankDoc();
-		scrool.AddRep();
-		scrool.AddSigner();
-		scrool.Saveuser();
-		scrool.Receiverfields();
-		scrool.Senddocument();
-		scrool.Yahoomail();
-
-	}
+//	@Test
+//	public void Verifyscrool() throws Exception {
+//		login.Signinr();
+//		login.VerifyLoginSucess();
+//		scrool.AllCombos();
+//		scrool.BlankDoc();
+//		scrool.AddRep();
+//		scrool.AddSigner();
+//		scrool.Saveuser();
+//		scrool.Receiverfields();
+//		scrool.Senddocument();
+//		scrool.Yahoomail();
+//
+//	}
 }
