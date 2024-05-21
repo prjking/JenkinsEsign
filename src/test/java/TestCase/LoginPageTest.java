@@ -7,12 +7,15 @@ import org.testng.annotations.Test;
 import Pages.Addrecipients;
 import Pages.Alldocuments;
 import Pages.Dashboard;
+import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
+import Pages.FormTemplate;
 import Pages.Login;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Scrool;
 import Pages.Signup;
+import Pages.TemplateScenarios;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import Reports.TestNGExtentReport;
@@ -31,7 +34,9 @@ public class LoginPageTest extends testCaseBase {
 	Signup signup;
 	Templatespage templatespage;
 	Dashboard dashboard;
-	Scrool scrool;
+	DocumentsScenarios documentsScenarios;
+	TemplateScenarios templateScenarios;
+	FormTemplate formTemplate;
 
 	@BeforeMethod
 	public void Start() {
@@ -46,7 +51,9 @@ public class LoginPageTest extends testCaseBase {
 		signup = new Signup(driver);
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
-		scrool = new Scrool(driver);
+		documentsScenarios = new DocumentsScenarios(driver);
+		templateScenarios = new TemplateScenarios(driver);
+		formTemplate =new FormTemplate(driver);
 
 	}
 
