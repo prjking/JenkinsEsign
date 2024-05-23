@@ -12,11 +12,13 @@ import Pages.Alldocuments;
 import Pages.Dashboard;
 import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
+import Pages.FormTemplate;
 import Pages.Login;
 import Pages.MethodActions;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Signup;
+import Pages.TemplateScenarios;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
@@ -35,6 +37,8 @@ public class Docscenarios extends testCaseBase {
 	Templatespage templatespage;
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
+	TemplateScenarios templateScenarios;
+	FormTemplate formTemplate;
 
 	@BeforeMethod
 	public void Start() {
@@ -50,6 +54,8 @@ public class Docscenarios extends testCaseBase {
 		templatespage = new Templatespage(driver);
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
+		templateScenarios = new TemplateScenarios(driver);
+		formTemplate =new FormTemplate(driver);
 
 	}
 
@@ -117,7 +123,7 @@ public class Docscenarios extends testCaseBase {
 
 	}
 
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6, enabled = true)
 	public void ValiddocumentsScenariosGdrive() throws Exception {
 
 		login.Signin();

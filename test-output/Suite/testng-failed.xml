@@ -3,27 +3,61 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="TestCase.FormTemplate_Testcases_Node2">
+      <class name="TestCase.TestCases_Meghana">
         <methods>
-          <include name="BasicFieldsSignature"/>
-          <include name="ContentHeading"/>
-          <include name="ContentHTML"/>
-          <include name="ContentSingleLineContent"/>
-          <include name="BasicFieldsRadioGroup"/>
-          <include name="ContentVideo"/>
-          <include name="BasicFieldsPhone"/>
-          <include name="BasicFieldsCaptcha"/>
-          <include name="BasicFieldsCheckBoxGroup"/>
-          <include name="ContentImage"/>
-          <include name="ContentParagraph"/>
+          <include name="uploadVedio"/>
+          <include name="validBlankDocRearrangeorderApproverSignerAndCC"/>
+          <include name="ValidRearrangingOrderCCndSigner"/>
+          <include name="uploadpdfFile"/>
+          <include name="BlankDocWithEnforcementWithAutofill"/>
+          <include name="BlankDocWithoutEnforcementWithoutAutofill"/>
+          <include name="ValidDocscenariosGdrive"/>
+          <include name="ReuploadingCompletedEsignsIDGeneratedDOC"/>
+          <include name="uploadPDFandTXT"/>
+          <include name="uploadPDFandPDF"/>
+          <include name="uploadDoc"/>
+          <include name="validBlankDocOtherSignerSenderSignerApprover"/>
+          <include name="ValidSignerndApproverOnedrive"/>
+          <include name="ValidBlankDocSignerApproverAndMultipleCC"/>
+          <include name="uploadPDFandJPG"/>
+          <include name="ValidBlankdocSignerndApprover"/>
+          <include name="ValidRearrangingOrderFirstApproverthenSigner"/>
+          <include name="ValidRearrangingOrderFirstOtherSignersandThenSender"/>
+          <include name="changeDocument"/>
+          <include name="attachmentDownloads"/>
+          <include name="quit"/>
+          <include name="validBlankDocRearrangeorderCCApproversigner"/>
+          <include name="contentFeildsCompanyProfile"/>
+          <include name="uploadPNG"/>
+          <include name="uploadDOCandTXT"/>
+          <include name="ValidBlankDocMultipleSigners"/>
+          <include name="uploadPDFandDOC"/>
+          <include name="uploadPDFandDoc"/>
+          <include name="uploadDocandDoc"/>
+          <include name="BlankDocWithEnforcement"/>
+          <include name="validBlankDocApproverSenderSignerOtherSigner"/>
+          <include name="validBlankDocMulsignerApproverCC"/>
+          <include name="validBlankDocRearrangeorderCCSignerApprover"/>
           <include name="Start"/>
-          <include name="BasicFieldsRadio"/>
-          <include name="ContentActionButton"/>
-          <include name="BasicFieldsCheckbox"/>
-          <include name="BasicFieldsYesORNo"/>
-          <include name="BasicFieldsDocument"/>
+          <include name="validRearrangeorderApproverCCSigner"/>
+          <include name="ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive"/>
+          <include name="ValidBlankDocSignerApproverAndCCWithoutEnforceSignature"/>
+          <include name="uploadDOCandJPG"/>
+          <include name="BlankDocWithtEnforcement"/>
+          <include name="uploadjpg"/>
+          <include name="validBlankDocSignerMulApproverAndMulCC"/>
+          <include name="BlankDocWithoEnforcementWithAutofill"/>
+          <include name="validBlankDocSenderSignerApproverOtherSigner"/>
+          <include name="validBlankDocOtherSignerApproverSenderSigner"/>
+          <include name="BlankDocWithEnforcementWithoutAutofill"/>
+          <include name="ValidDocscenarioOnedrive"/>
+          <include name="ValidOneDriveDocMultipleSigners"/>
+          <include name="uploadDOCandPNG"/>
+          <include name="validBlankDocRearrangeorderSignerCCApprover"/>
+          <include name="ValidBlankDocSignerMulApproverAndCC"/>
+          <include name="uploadTXT"/>
         </methods>
-      </class> <!-- TestCase.FormTemplate_Testcases_Node2 -->
+      </class> <!-- TestCase.TestCases_Meghana -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

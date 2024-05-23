@@ -9,6 +9,7 @@ import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -65,11 +66,8 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 		templateScenarios = new TemplateScenarios(driver);
 		entityCases = new EntityCases(driver);
 		formTemplate = new FormTemplate(driver);
-		
 
 	}
-
-	
 
 	@Test(priority = 15)
 
@@ -233,6 +231,12 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 		formTemplate.Createtemp();
 		formTemplate.ActionButton();
 
+	}
+
+	@AfterMethod
+	public void Close() throws Exception {
+		Thread.sleep(1000);
+		driver.close();
 	}
 
 }

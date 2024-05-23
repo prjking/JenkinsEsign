@@ -130,7 +130,7 @@ public class FormTemplate {
 		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "HYPER LINK");
 		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
 		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
-		driver.close();
+		
 	}
 
 	public void FieldSingleLine(String fieldType, WebElement singleline, WebElement targetElement, boolean isYes,
@@ -644,7 +644,7 @@ public class FormTemplate {
 		FieldMultiline("SENDER", Multiline, targetElement, false, "MULTI LINE TEXT");
 		FieldMultiline("RECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
 		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
-		driver.close();
+		
 	}
 
 	public void FieldMultiline(String fieldType, WebElement Multiline, WebElement targetElement, boolean isYes,
@@ -815,7 +815,7 @@ public class FormTemplate {
 		FieldSelect("SENDER", Select, targetElement, false, "MULTI SELECT");
 		FieldSelect("RECEIVER", Select, targetElement, false, "MULTI SELECT");
 		FieldSelect("SENDERORRECEIVER", Select, targetElement, false, "MULTI SELECT");
-		driver.close();
+		
 
 	}
 
@@ -942,7 +942,7 @@ public class FormTemplate {
 		FieldNumber("SENDER", Number, targetElement, false, "NUMBER");
 		FieldNumber("RECEIVER", Number, targetElement, false, "PHONE");
 		FieldNumber("SENDERORRECEIVER", Number, targetElement, false, "CURRENCY");
-		driver.close();
+		
 
 	}
 
@@ -1096,7 +1096,7 @@ public class FormTemplate {
 		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, false, "MULTI SELECT");
 		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
 		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
-		driver.close();
+		
 
 	}
 
@@ -1223,7 +1223,7 @@ public class FormTemplate {
 		FieldFixedTime("SENDER", FixedTime, targetElement, false);
 		FieldFixedTime("RECEIVER", FixedTime, targetElement, false);
 		FieldFixedTime("SENDERORRECEIVER", FixedTime, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -1338,7 +1338,7 @@ public class FormTemplate {
 		FieldWeekDays("SENDER", WeekDays, targetElement, false);
 		FieldWeekDays("RECEIVER", WeekDays, targetElement, false);
 		FieldWeekDays("SENDERORRECEIVER", WeekDays, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -1442,7 +1442,7 @@ public class FormTemplate {
 		FieldYesorNo("SENDER", YesorNo, targetElement, false, false);
 		FieldYesorNo("RECEIVER", YesorNo, targetElement, false, false);
 		FieldYesorNo("SENDERORRECEIVER", YesorNo, targetElement, false, false);
-		driver.close();
+		
 
 	}
 
@@ -1708,7 +1708,7 @@ public class FormTemplate {
 		FieldDocument("SENDER", "Doc", Document, targetElement, false, false);
 		FieldDocument("RECEIVER", "Doc", Document, targetElement, false, false);
 		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, false, false);
-		driver.close();
+		
 
 	}
 
@@ -1971,7 +1971,7 @@ public class FormTemplate {
 		addFieldTime("SENDER", Time, targetElement, false);
 		addFieldTime("RECEIVER", Time, targetElement, false);
 		addFieldTime("SENDERORRECEIVER", Time, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -2110,7 +2110,7 @@ public class FormTemplate {
 		FieldDate("SENDER", Date, dropLocation, false, "DATE RANGE");
 		FieldDate("RECEIVER", Date, dropLocation, false, "DATE RANGE");
 		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "DATE RANGE");
-		driver.close();
+		
 
 	}
 
@@ -2260,7 +2260,7 @@ public class FormTemplate {
 		FieldList("SENDER", List, targetElement, false);
 		FieldList("RECEIVER", List, targetElement, false);
 		FieldList("SENDERORRECEIVER", List, targetElement, false);
-		driver.close();
+		
 	}
 
 	public void FieldList(String fieldType, WebElement List, WebElement targetElement, boolean isYes) throws Exception {
@@ -2385,7 +2385,7 @@ public class FormTemplate {
 		FieldTimerange(TimeRange, targetElement, false, "SENDER");
 		FieldTimerange(TimeRange, targetElement, false, "RECEIVER");
 		FieldTimerange(TimeRange, targetElement, false, "SENDERORRECEIVER");
-		driver.close();
+		
 
 	}
 
@@ -2488,7 +2488,7 @@ public class FormTemplate {
 		FieldCheckbox("SENDER", Checkbox, targetElement, false);
 		FieldCheckbox("RECEIVER", Checkbox, targetElement, false);
 		FieldCheckbox("SENDERORRECEIVER", Checkbox, targetElement, false);
-		driver.close();
+		
 	}
 
 	public void FieldCheckbox(String fieldType, WebElement Checkbox, WebElement targetElement, boolean isYes)
@@ -2592,7 +2592,7 @@ public class FormTemplate {
 		FieldCheckBoxGroup("SENDER", CheckboxGroup, targetElement);
 		FieldCheckBoxGroup("RECEIVER", CheckboxGroup, targetElement);
 		FieldCheckBoxGroup("SENDERORRECEIVER", CheckboxGroup, targetElement);
-		driver.close();
+		
 
 	}
 
@@ -2687,7 +2687,7 @@ public class FormTemplate {
 		FieldRadio("SENDER", Radio, targetElement, false);
 		FieldRadio("RECEIVER", Radio, targetElement, false);
 		FieldRadio("SENDERORRECEIVER", Radio, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -2792,7 +2792,7 @@ public class FormTemplate {
 		FieldRadioGroup("SENDER", RadioGroup, targetElement, false);
 		FieldRadioGroup("RECEIVER", RadioGroup, targetElement, false);
 		FieldRadioGroup("SENDERORRECEIVER", RadioGroup, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -2928,7 +2928,7 @@ public class FormTemplate {
 		FieldPhone("SENDER", Phone, dropLocation, false, "CURRENCY");
 		FieldPhone("RECEIVER", Phone, dropLocation, false, "CURRENCY");
 		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, false, "CURRENCY");
-		driver.close();
+		
 
 	}
 
@@ -3064,7 +3064,7 @@ public class FormTemplate {
 		FieldSignature("SENDER", Signature, targetElement, false);
 		FieldSignature("RECEIVER", Signature, targetElement, false);
 		FieldSignature("SENDERORRECEIVER", Signature, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -3197,7 +3197,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 
@@ -3232,7 +3232,7 @@ public class FormTemplate {
 		FieldHeading("H4", Heading, dropLocation);
 		FieldHeading("H5", Heading, dropLocation);
 		FieldHeading("H6", Heading, dropLocation);
-		driver.close();
+		
 
 	}
 
@@ -3332,7 +3332,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Html Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 
@@ -3364,7 +3364,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 	// Add Single Line Content
@@ -3396,7 +3396,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 	// Image
@@ -3420,7 +3420,7 @@ public class FormTemplate {
 		Fieldimage("SENDER", Image, targetElement, false, false);
 		Fieldimage("RECEIVER", Image, targetElement, false, false);
 		Fieldimage("SENDERORRECEIVER", Image, targetElement, false, false);
-		driver.close();
+		
 
 	}
 
@@ -3522,7 +3522,7 @@ public class FormTemplate {
 		Fieldimage("SENDER", Video, targetElement, false, false);
 		Fieldimage("RECEIVER", Video, targetElement, false, false);
 		Fieldimage("SENDERORRECEIVER", Video, targetElement, false, false);
-		driver.close();
+		
 
 	}
 
@@ -3617,7 +3617,7 @@ public class FormTemplate {
 
 		wait.until(ExpectedConditions.elementToBeClickable(HorizontalLine));
 		builder.dragAndDrop(HorizontalLine, targetElement).perform();
-		driver.close();
+		
 
 	}
 
@@ -3634,7 +3634,7 @@ public class FormTemplate {
 
 		wait.until(ExpectedConditions.elementToBeClickable(Division));
 		builder.dragAndDrop(Division, targetElement).perform();
-		driver.close();
+		
 
 	}
 
@@ -3663,7 +3663,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select type']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		driver.close();
+		
 
 	}
 
@@ -3698,7 +3698,7 @@ public class FormTemplate {
 		FieldAutoIncrementNumber("SENDER", AutoIncrementNumber, targetElement, false);
 		FieldAutoIncrementNumber("RECEIVER", AutoIncrementNumber, targetElement, false);
 		FieldAutoIncrementNumber("SENDERORRECEIVER", AutoIncrementNumber, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -3810,7 +3810,7 @@ public class FormTemplate {
 		FieldLocation("SENDER", Location, targetElement, false);
 		FieldLocation("RECEIVER", Location, targetElement, false);
 		FieldLocation("SENDERORRECEIVER", Location, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -3938,7 +3938,7 @@ public class FormTemplate {
 		FieldCurrency("SENDER", Currency, dropLocation, false, "CURRENCY");
 		FieldCurrency("RECEIVER", Currency, dropLocation, false, "CURRENCY");
 		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, false, "CURRENCY");
-		driver.close();
+		
 
 	}
 
@@ -4100,7 +4100,7 @@ public class FormTemplate {
 		FieldQuestion("SENDER", Question, dropLocation, false, "TEXT");
 		FieldQuestion("RECEIVER", Question, dropLocation, false, "TEXT");
 		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, false, "TEXT");
-		driver.close();
+		
 
 	}
 
@@ -4237,7 +4237,7 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Authorized Signature Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 
@@ -4406,7 +4406,7 @@ public class FormTemplate {
 		FieldEntityVariable("SENDER", EntityVariable, dropLocation, false);
 		FieldEntityVariable("RECEIVER", EntityVariable, dropLocation, false);
 		FieldEntityVariable("SENDERORRECEIVER", EntityVariable, dropLocation, false);
-		driver.close();
+		
 
 	}
 
@@ -4556,7 +4556,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//i[@class='el-icon-plus']"));
 		System.out.println("Formula Seleceted Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		driver.close();
+		
 	}
 
 	// Aggregate Function
@@ -4580,7 +4580,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Template']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		driver.close();
+		
 	}
 
 	// DataTable
@@ -4608,7 +4608,7 @@ public class FormTemplate {
 		FieldDataTable("SENDER", DataTable, dropLocation);
 		FieldDataTable("RECEIVER", DataTable, dropLocation);
 		// FieldDataTable("SENDERORRECEIVER", DataTable, dropLocation);
-		driver.close();
+		
 	}
 
 	public void FieldDataTable(String fieldType, WebElement DataTable, WebElement targetElement) throws Exception {
@@ -4693,7 +4693,7 @@ public class FormTemplate {
 		FieldChildEntityTable("SENDER", ChildEntityTable, dropLocation);
 		FieldChildEntityTable("RECEIVER", ChildEntityTable, dropLocation);
 		FieldChildEntityTable("SENDERORRECEIVER", ChildEntityTable, dropLocation);
-		driver.close();
+		
 
 	}
 
@@ -4813,7 +4813,7 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Redirection URL']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		driver.close();
+		
 
 	}
 
@@ -4841,7 +4841,7 @@ public class FormTemplate {
 		FieldPaymentVariable("SENDER", PaymentVariable, dropLocation, "Gateway");
 		FieldPaymentVariable("RECEIVER", PaymentVariable, dropLocation, "Name");
 		FieldPaymentVariable("SENDERORRECEIVER", PaymentVariable, dropLocation, "Phone Number");
-		driver.close();
+		
 
 	}
 
@@ -4971,7 +4971,7 @@ public class FormTemplate {
 		FieldStarRating("SENDER", StarRating, targetElement, false);
 		FieldStarRating("RECEIVER", StarRating, targetElement, false);
 		FieldStarRating("SENDERORRECEIVER", StarRating, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -5075,7 +5075,7 @@ public class FormTemplate {
 		FieldConcatenate("SENDER", Concatenate, targetElement, false);
 		FieldConcatenate("RECEIVER", Concatenate, targetElement, false);
 		FieldConcatenate("SENDERORRECEIVER", Concatenate, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -5177,7 +5177,7 @@ public class FormTemplate {
 		FieldAudio("SENDER", Audio, targetElement, false);
 		FieldAudio("RECEIVER", Audio, targetElement, false);
 		FieldAudio("SENDERORRECEIVER", Audio, targetElement, false);
-		driver.close();
+		
 
 	}
 
@@ -5277,7 +5277,7 @@ public class FormTemplate {
 		FieldQRCode("SENDER", QRCode, targetElement);
 		FieldQRCode("RECEIVER", QRCode, targetElement);
 		FieldQRCode("SENDERORRECEIVER", QRCode, targetElement);
-		driver.close();
+		
 
 	}
 
@@ -5371,7 +5371,7 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		driver.close();
+		
 
 	}
 
