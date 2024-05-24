@@ -23,7 +23,6 @@ public class Login {
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
 	}
 
-
 	public void Signin() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"),
@@ -34,7 +33,6 @@ public class Login {
 
 		waitEle(By.xpath("//span[normalize-space()='Log In']"));
 		System.out.println("Login button clicked");
-
 		Thread.sleep(10000);
 
 	}
@@ -93,13 +91,14 @@ public class Login {
 		Assert.assertNotNull(welcomeMessage, "Welcome message element is not present Login Failed");
 		System.out.println("Login Successful");
 	}
+
 	public void SigninNSUI() throws InterruptedException {
-		
+
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
 				.sendKeys("pmmeghana200@outlook.com");
 		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Meghana@123");
 		waitEle(By.xpath("//span[text()=\"Log In\"]"));
 		Thread.sleep(10000);
- 
+
 	}
 }

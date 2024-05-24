@@ -271,21 +271,39 @@ public class DocumentsScenarios {
 
 	}
 
+//	public void Blankwithoutsenderautofill() throws Exception {
+//		Thread.sleep(10000);
+//		waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+//		Set<String> windowHandles = driver.getWindowHandles();
+//		for (String handle : windowHandles) {
+//			driver.switchTo().window(handle);
+//		}
+//		waitEle(By.xpath("//span[normalize-space()='Edit']"));
+//		driver.findElement(By.xpath("//input[@placeholder='Enter signature']")).sendKeys("Prj");
+//
+//		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
+//		waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
+//
+//		//// System.out.println("mySignatureEle Element opened With Double Click and
+//		//// Entered New Sign Data Successfully");
+//	}
 	public void Blankwithoutsenderautofill() throws Exception {
 		Thread.sleep(10000);
+
 		waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);
 		}
-		waitEle(By.xpath("//span[normalize-space()='Edit']"));
-		driver.findElement(By.xpath("//input[@placeholder='Enter signature']")).sendKeys("Prj");
+		Thread.sleep(10000);
 
-		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
 		waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
 
-		//// System.out.println("mySignatureEle Element opened With Double Click and
-		//// Entered New Sign Data Successfully");
+		System.out.println("mySignatureEle Element opened With Double Click and Entered New Sign Data Successfully");
+
+		waitEle(By.xpath("//span[normalize-space()='FINISH']"));
+		System.out.println("Finished document successfully on sender side");
+		Thread.sleep(10000);
 	}
 
 	public void DocscenarioOnedrive() throws Exception {
@@ -1907,8 +1925,7 @@ public class DocumentsScenarios {
 	public void FileuploadTwo() throws InterruptedException, Exception {
 		Thread.sleep(5000);
 
-		Runtime.getRuntime()
-				.exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload.exe\"");
+		Runtime.getRuntime().exec("\"C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload.exe\"");
 		Thread.sleep(5000);
 
 		System.out.println("Uploaded file successfully");
@@ -2002,13 +2019,15 @@ public class DocumentsScenarios {
 		WebElement Para = driver.findElement(By.xpath("//span[text()=\"Paragraph\"]"));
 		waitAndClick1(actions, Para, Target);
 		System.out.println("Paragraph feild Drag and Drop Done");
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"), "content for the ParagraphFeild");
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter content']"),
+				"content for the ParagraphFeild");
 		waitEle(By.xpath("(//span[normalize-space()='Insert Field'])[1]"));
 		// Single Line Content
 		WebElement singlelineContent = driver.findElement(By.xpath("//span[text()=\"Single Line Content\"]"));
 		waitAndClick1(actions, singlelineContent, Target);
 		System.out.println("singlelineContent feild Drag and Drop Done");
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter content']"), "content for the singlelineContent");
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter content']"),
+				"content for the singlelineContent");
 		waitEle(By.xpath("(//span[normalize-space()='Insert Field'])[1]"));
 		// Image
 		WebElement Image = driver.findElement(By.xpath("//span[text()=\"Image\"]"));

@@ -222,7 +222,7 @@ public class TestCases_Meghana extends testCaseBase {
 	// 5a
 	@Test(priority = 7)
 	public void uploadpdfFile() throws Exception {
-		String pdffile = "\"C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe\"";
+		String pdffile = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
 		login.SigninNSUI();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Fileuploads(pdffile);
@@ -232,7 +232,7 @@ public class TestCases_Meghana extends testCaseBase {
 
 	@Test(priority = 8)
 	public void uploadDoc() throws Exception {
-		String Wordfile = "\"C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\WordFile.exe\"";
+		String Wordfile = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
 		login.SigninNSUI();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Fileuploads(Wordfile);
@@ -242,7 +242,7 @@ public class TestCases_Meghana extends testCaseBase {
 
 	@Test(priority = 9)
 	public void uploadPNG() throws Exception {
-		String PNGfile = "\"C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\pngFile.exe\"";
+		String PNGfile = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\pngFile.exe";
 		login.SigninNSUI();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Fileuploads(PNGfile);
