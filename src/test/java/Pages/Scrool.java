@@ -380,4 +380,32 @@ public class Scrool {
 
 	}
 
+	public void autofill(boolean isYes) {
+		driver.get("https://dev.esigns.io/profilesettings/application-settings");
+		if (isYes) {
+
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//span[@class='el-checkbox__inner'])[2]")));
+			yesElement.click();
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", yesElement);
+			System.out.println("With Autofill");
+		}
+
+		else {
+
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+			WebElement noElement = wait2.until(ExpectedConditions.visibilityOfElementLocated(
+					By.xpath("(//div[@class='mb-1'])[1]//label//span[@class='el-checkbox__input is-checked']")));
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", noElement);
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", noElement);
+
+			System.out.println("Without Autofill");
+
+		}
+	}
 }

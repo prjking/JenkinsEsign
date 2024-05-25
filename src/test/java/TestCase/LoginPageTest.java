@@ -37,6 +37,7 @@ public class LoginPageTest extends testCaseBase {
 	DocumentsScenarios documentsScenarios;
 	TemplateScenarios templateScenarios;
 	FormTemplate formTemplate;
+	Scrool scrool;
 
 	@BeforeMethod
 	public void Start() {
@@ -54,6 +55,7 @@ public class LoginPageTest extends testCaseBase {
 		documentsScenarios = new DocumentsScenarios(driver);
 		templateScenarios = new TemplateScenarios(driver);
 		formTemplate =new FormTemplate(driver);
+		scrool =new Scrool(driver);
 
 	}
 
@@ -168,9 +170,9 @@ public class LoginPageTest extends testCaseBase {
 //		templatespage.Creategroup();
 //
 //	
-//	@Test
-//	public void Verifyscrool() throws Exception {
-//		login.Signinr();
+	@Test
+	public void Verifyscrool() throws Exception {
+		login.Signin();
 //		login.VerifyLoginSucess();
 //		scrool.AllCombos();
 //		scrool.BlankDoc();
@@ -180,6 +182,7 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.Receiverfields();
 //		scrool.Senddocument();
 //		scrool.Yahoomail();
-//
-//	}
+		scrool.autofill(true);
+
+	}
 }

@@ -58,8 +58,7 @@ public class testCaseBase {
 //    public void tearDown() {
 //        WebDriver driver = getDriver();
 //        if (driver != null) {
-	
-	
+
 //            driver.quit();
 //        }
 //        driverThreadLocal.remove();
@@ -91,9 +90,9 @@ public class testCaseBase {
 		driver.manage().window().maximize();
 		// driver.get("http://localhost:8008/signin");
 		// driver.get("https://preprod.esigns.io/signin");
-		 driver.get("https://dev.esigns.io/signin");
+		// driver.get("https://dev.esigns.io/signin");
 
-		//driver.get("https://nsui.esigns.io/signin");
+		driver.get("https://nsui.esigns.io/signin");
 
 	}
 

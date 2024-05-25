@@ -3,7 +3,7 @@
 <suite name="MyTestSuite">
 	<test name="Docscenarios Test Run">
 		<classes>
-			<class name="TestCase.Docscenarios_Meghana" />
+			<class name="TestCase.TestCases_Prudhvi1" />
 		</classes>
 	</test>
 </suite>
