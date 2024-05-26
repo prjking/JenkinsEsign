@@ -3,61 +3,62 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="TestCase.TestCases_Meghana">
+      <class name="TestCase.TestCases_Prudhvi1">
         <methods>
-          <include name="uploadVedio"/>
-          <include name="validBlankDocRearrangeorderApproverSignerAndCC"/>
           <include name="ValidRearrangingOrderCCndSigner"/>
           <include name="uploadpdfFile"/>
+          <include name="validBlankDocRearrangeorderApproverSignerAndCC"/>
+          <include name="uploadVedio"/>
+          <include name="uploadPDFandPDF"/>
+          <include name="ReuploadingCompletedEsignsIDGeneratedDOC"/>
+          <include name="uploadPDFandTXT"/>
           <include name="BlankDocWithEnforcementWithAutofill"/>
           <include name="BlankDocWithoutEnforcementWithoutAutofill"/>
           <include name="ValidDocscenariosGdrive"/>
-          <include name="ReuploadingCompletedEsignsIDGeneratedDOC"/>
-          <include name="uploadPDFandTXT"/>
-          <include name="uploadPDFandPDF"/>
-          <include name="uploadDoc"/>
-          <include name="validBlankDocOtherSignerSenderSignerApprover"/>
-          <include name="ValidSignerndApproverOnedrive"/>
           <include name="ValidBlankDocSignerApproverAndMultipleCC"/>
           <include name="uploadPDFandJPG"/>
           <include name="ValidBlankdocSignerndApprover"/>
           <include name="ValidRearrangingOrderFirstApproverthenSigner"/>
+          <include name="ValidSignerndApproverOnedrive"/>
+          <include name="uploadDoc"/>
+          <include name="validBlankDocOtherSignerSenderSignerApprover"/>
+          <include name="uploadPNG"/>
+          <include name="uploadDOCandTXT"/>
+          <include name="validBlankDocRearrangeorderCCApproversigner"/>
+          <include name="contentFeildsCompanyProfile"/>
+          <include name="quit"/>
           <include name="ValidRearrangingOrderFirstOtherSignersandThenSender"/>
           <include name="changeDocument"/>
           <include name="attachmentDownloads"/>
-          <include name="quit"/>
-          <include name="validBlankDocRearrangeorderCCApproversigner"/>
-          <include name="contentFeildsCompanyProfile"/>
-          <include name="uploadPNG"/>
-          <include name="uploadDOCandTXT"/>
-          <include name="ValidBlankDocMultipleSigners"/>
-          <include name="uploadPDFandDOC"/>
-          <include name="uploadPDFandDoc"/>
-          <include name="uploadDocandDoc"/>
-          <include name="BlankDocWithEnforcement"/>
+          <include name="validRearrangeorderApproverCCSigner"/>
+          <include name="ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive"/>
           <include name="validBlankDocApproverSenderSignerOtherSigner"/>
           <include name="validBlankDocMulsignerApproverCC"/>
           <include name="validBlankDocRearrangeorderCCSignerApprover"/>
           <include name="Start"/>
-          <include name="validRearrangeorderApproverCCSigner"/>
-          <include name="ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive"/>
-          <include name="ValidBlankDocSignerApproverAndCCWithoutEnforceSignature"/>
-          <include name="uploadDOCandJPG"/>
+          <include name="uploadDocandDoc"/>
+          <include name="BlankDocWithEnforcement"/>
+          <include name="ValidBlankDocMultipleSigners"/>
+          <include name="uploadPDFandDOC"/>
+          <include name="uploadPDFandDoc"/>
+          <include name="BlankDocWithEnforcementWithoutAutofill"/>
+          <include name="validBlankDocOtherSignerApproverSenderSigner"/>
           <include name="BlankDocWithtEnforcement"/>
           <include name="uploadjpg"/>
           <include name="validBlankDocSignerMulApproverAndMulCC"/>
           <include name="BlankDocWithoEnforcementWithAutofill"/>
           <include name="validBlankDocSenderSignerApproverOtherSigner"/>
-          <include name="validBlankDocOtherSignerApproverSenderSigner"/>
-          <include name="BlankDocWithEnforcementWithoutAutofill"/>
-          <include name="ValidDocscenarioOnedrive"/>
+          <include name="BasicfeildsCompanyProfile"/>
+          <include name="ValidBlankDocSignerApproverAndCCWithoutEnforceSignature"/>
+          <include name="uploadDOCandJPG"/>
           <include name="ValidOneDriveDocMultipleSigners"/>
           <include name="uploadDOCandPNG"/>
+          <include name="ValidDocscenarioOnedrive"/>
           <include name="validBlankDocRearrangeorderSignerCCApprover"/>
           <include name="ValidBlankDocSignerMulApproverAndCC"/>
           <include name="uploadTXT"/>
         </methods>
-      </class> <!-- TestCase.TestCases_Meghana -->
+      </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
