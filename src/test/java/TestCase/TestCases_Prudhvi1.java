@@ -110,8 +110,6 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.SubDocScenarios(doc);
 		documentsScenarios1.clickSubmit();
 		documentsScenarios1.Verifysubmit();
-		//documentsScenarios1.Viewdocument();
-		//documentsScenarios1.Blankwithoutsenderautofill();
 		recevierSide1.jeevithaOutlooklogin();
 		recevierSide1.clickEmail(doc);
 		recevierSide1.reviewandSign("Review & sign");
@@ -245,7 +243,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	public void uploadpdfFile() throws Exception {
        
 
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
+		String pdffile ="src/test/resources/meghana/PDFFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -256,7 +254,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 8)
 	public void uploadDoc() throws Exception {
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -267,7 +265,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 9)
 	public void uploadPNG() throws Exception {
-		String PNGfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\pngFile.exe";
+		String PNGfile = "src/test/resources/meghana/pngFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -278,7 +276,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 10)
 	public void uploadjpg() throws Exception {
-		String jpgfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\jpgFile.exe";
+		String jpgfile = "src/test/resources/meghana/jpgFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -289,7 +287,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 11)
 	public void uploadTXT() throws Exception {
-		String txtfile = "${WORKSPACE}\\meghana.pemma\\Downloads\\testinggg\\TXTFile.exe";
+		String txtfile = "src/test/resources/meghana/TXTFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -302,8 +300,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 12)
 	public void uploadPDFandDoc() throws Exception {
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -317,8 +315,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 13)
 	public void uploadDocandDoc() throws Exception {
-		String word2file = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\wordFile2.exe";
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
+		String word2file = "src/test/resources/meghana/wordFile2.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -332,8 +330,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 14)
 	public void uploadDOCandTXT() throws Exception {
-		String TXTfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\TXTFile.exe";
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
+		String TXTfile = "src/test/resources/meghana/TXTFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -347,8 +345,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 15)
 	public void uploadPDFandPDF() throws Exception {
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
-		String pdffile2 = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\fileupload1.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
+		String pdffile2 = "src/test/resources/meghana/fileupload1.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -362,8 +360,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 16)
 	public void uploadPDFandTXT() throws Exception {
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
-		String txtfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\TXTFile.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
+		String txtfile = "src/test/resources/meghana/TXTFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -377,8 +375,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 17)
 	public void uploadDOCandPNG() throws Exception {
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
-		String PNGfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\pngFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
+		String PNGfile = "src/test/resources/meghana/pngFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -392,8 +390,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 18)
 	public void uploadPDFandDOC() throws Exception {
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -407,8 +405,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 19)
 	public void uploadDOCandJPG() throws Exception {
-		String Wordfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\WordFile.exe";
-		String jpgfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\jpgFile.exe";
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
+		String jpgfile = "src/test/resources/meghana/jpgFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -422,8 +420,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// navigate users page
 	@Test(priority = 20)
 	public void uploadPDFandJPG() throws Exception {
-		String pdffile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\PDFFile.exe";
-		String jpgfile = "${WORKSPACE}\\Esign\\src\\test\\resources\\meghana\\jpgFile.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
+		String jpgfile = "src/test/resources/meghana/jpgFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -463,7 +461,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
+		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.DocscenarioOnedrive();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
@@ -496,7 +494,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
+		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.DocscenariosGdrive();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
@@ -535,7 +533,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
+		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
@@ -1223,7 +1221,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
+		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
@@ -1443,7 +1441,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 45)
 	public void uploadVedio() throws Exception {
-		String vediofile = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\vedio.exe\"";
+		String vediofile = "src/test/resources/meghana/vedio.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -1456,7 +1454,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	public void ReuploadingCompletedEsignsIDGeneratedDOC() throws Exception {
 		UUID uuid = UUID.randomUUID();
 		String doc = uuid.toString().replaceAll("-", "");
-		String file = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload1.exe";
+		String file = "src/test/resources/meghana/fileupload1.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -1481,7 +1479,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	public void changeDocument() throws InterruptedException, Exception {
 		UUID uuid = UUID.randomUUID();
 		String doc = uuid.toString().replaceAll("-", "");
-		String file = "C:\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload1.exe";
+		String file = "src/test/resources/meghana/fileupload1.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -1509,7 +1507,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 48)
 	public void attachmentDownloads() throws Exception {
-		String file = "${WORKSPACE}\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload1.exe";
+		String file = "src/test/resources/meghana/fileupload1.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -1567,9 +1565,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.Saveuser();
 		documentsScenarios1.DragBasicFeildsCompanyProfile();
 		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -120, 10, -90);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
 	}
 
 ////

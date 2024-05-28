@@ -737,9 +737,9 @@ public void autofilloff() throws Exception {
 				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		try {
-			driver.findElement(By.xpath(
-					"//label[@class=\"el-checkbox\"]//span[text()=\" Auto-complete sender if all fields filled\"]"))
-					.click();
+			waitEle(By.xpath(
+					"//label[@class=\"el-checkbox\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
+					
 			System.out.println("autofill is on");
 
 		} catch (Exception e) {
@@ -783,7 +783,7 @@ public void autofilloff() throws Exception {
 		Thread.sleep(5000);
 
 		Runtime.getRuntime()
-				.exec("${WORKSPACE}\\Work Space\\Esign\\src\\test\\resources\\meghana\\fileupload.exe");
+				.exec("src/test/resources/meghana/fileupload.exe");
 		Thread.sleep(5000);
 
 		System.out.println("Uploaded file successfully");
