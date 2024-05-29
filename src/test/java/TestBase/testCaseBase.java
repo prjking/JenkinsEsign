@@ -1,6 +1,7 @@
 package TestBase;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -70,10 +71,16 @@ public class testCaseBase {
 		ChromeOptions options = new ChromeOptions();
 //
 		options.addArguments("--headless");
-		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--disable-gpu");
-		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.addArguments("--disable-software-rasterizer");
+		options.addArguments("--window-size=1920,1080");
+		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--no-sandbox");
+		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
+		options.addArguments(
+				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
+		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");
 //		driver.manage().window().maximize();

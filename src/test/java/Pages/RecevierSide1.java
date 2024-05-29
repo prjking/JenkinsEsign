@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class RecevierSide1 {
 	static WebDriver driver;
@@ -159,6 +161,7 @@ public class RecevierSide1 {
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
 		System.out.println("Jeevitha login successfull");
+		
 	}
 
 	public void outlooksigninpage() throws InterruptedException {
@@ -167,11 +170,7 @@ public class RecevierSide1 {
 				"https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=150&ct=1714114815&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3den-us%26country%3dus%26RpsCsrfState%3d1425546c-12db-9db8-7947-044bdf3da8dc&id=292841&aadredir=1&whr=outlook.com&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c");
 	}
 
-	public void clickEmail(String s) throws Exception {
-		Thread.sleep(10000);
-		String xpath = String.format("//span[contains(text(), '%s')]", s);
-		waitEle(By.xpath(xpath));
-	}
+	
 
 	public void senderReviewandSign(String s) throws Exception {
 		waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
@@ -238,7 +237,7 @@ public class RecevierSide1 {
 						.keyUp(Keys.CONTROL) // Release Ctrl key
 						.build().perform();
 				waitEle(By.xpath("//div[@class=\"el-form-item__content\"]//span[text()=\"Submit\"]"));
-
+				System.out.println("Entered 6 letters code");
 			}
 		}
 
@@ -252,7 +251,12 @@ public class RecevierSide1 {
 			waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
 		}
 	}
-
+	public void clickEmail(String s) throws Exception {
+		Thread.sleep(10000);
+		String xpath = String.format("//span[contains(text(), '%s')]", s);
+		waitEle(By.xpath(xpath));
+		System.out.println("click on email done successfully");
+	}
 	public void clickFinish() throws Exception {
 		waitEle(By.xpath("//span[text()=\"FINISH\"]"));
 		System.out.println("Review and Sign successful");
@@ -269,6 +273,7 @@ public class RecevierSide1 {
 //
 //	waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
 		waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
+		System.out.println("signature done succcesfully");
 	}
 
 	public void signloginAccount() throws Exception {
@@ -534,28 +539,29 @@ public class RecevierSide1 {
 		Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
 		System.out.println("email received at cc");
 	}
+
 	public void receiverSideBasicFeildsFill() throws Exception {
-		//date Feild
+		// date Feild
 		waitEle(By.xpath("//input[@placeholder=\"Date\"]"));
 		waitEle(By.xpath("(//div[@class=\"el-picker-panel__content\"]//tr[@class=\"el-date-table__row\"])[1]//td[4]"));
-		//time
+		// time
 		waitEle(By.xpath("//input[@placeholder=\"Time\"]"));
 		waitEle(By.xpath("//button[text()=\"OK\"]"));
-		//select
+		// select
 		waitEle(By.xpath("//input[@placeholder=\"Select\"]"));
 		Thread.sleep(3000);
 		waitEle(By.xpath("//div[@x-placement]//span[text()=\"Computer science\"]"));
-		//fixedTime
+		// fixedTime
 		waitEle(By.xpath("//input[@placeholder=\"FixedTime\"]"));
 		waitEle(By.xpath("//div[@x-placement]//div[text()=\"01:00\"]"));
-		//Multiline
-		sendKeysToElement(By.xpath("//textarea[@placeholder=\"Multiline\"]"),"PemmaMohan ReddyMeghana");
-		//TimeRange
+		// Multiline
+		sendKeysToElement(By.xpath("//textarea[@placeholder=\"Multiline\"]"), "PemmaMohan ReddyMeghana");
+		// TimeRange
 		waitEle(By.xpath("placeholder=\"Start time\""));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath("//button[text()=\"OK\"]"));
-		//Signature
+		// Signature
 		waitEle(By.xpath("//button[text()=\" Sign \"]"));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
@@ -565,7 +571,8 @@ public class RecevierSide1 {
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
-		waitEle(By.xpath(""));waitEle(By.xpath(""));
+		waitEle(By.xpath(""));
+		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));
 		waitEle(By.xpath(""));

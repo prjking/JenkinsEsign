@@ -13,6 +13,7 @@ import Pages.Dashboard;
 import Pages.DocumentsScenarios1;
 import Pages.Dragdrop;
 import Pages.Entities;
+import Pages.FilePermission;
 import Pages.Login;
 import Pages.MethodActions;
 import Pages.RecevierSide1;
@@ -39,6 +40,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	DocumentsScenarios1 documentsScenarios1;
 	Entities entities;
 	Templatespage template;
+	FilePermission filePermission;
 
 	@BeforeMethod
 	public void Start() {
@@ -82,6 +84,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.Viewdocument();
 		documentsScenarios1.Blankwithoutsenderautofill();
 		recevierSide1.jeevithaOutlooklogin();
+		MethodActions.takeScreenshot(driver);
 		recevierSide1.clickEmail(doc);
 		recevierSide1.reviewandSign("Review & sign");
 		recevierSide1.signaturefill();
@@ -241,9 +244,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// 5a
 	@Test(priority = 7)
 	public void uploadpdfFile() throws Exception {
-       
-
-		String pdffile ="src/test/resources/meghana/PDFFile.exe";
+		String pdffile = "src/test/resources/meghana/PDFFile.exe";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();

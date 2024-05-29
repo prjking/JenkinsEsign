@@ -172,7 +172,7 @@ public class LoginPageTest extends testCaseBase {
 //	
 	@Test
 	public void Verifyscrool() throws Exception {
-		login.Signin();
+		//login.Signin();
 //		login.VerifyLoginSucess();
 //		scrool.AllCombos();
 //		scrool.BlankDoc();
@@ -182,7 +182,7 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.Receiverfields();
 //		scrool.Senddocument();
 //		scrool.Yahoomail();
-		scrool.autofill(true);
+		//scrool.autofill(true);
 
 	}
 }

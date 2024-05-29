@@ -7,7 +7,7 @@
         <methods>
           <include name="Start"/>
           <include name="quit"/>
-          <include name="ValidDocscenarioOnedrive"/>
+          <include name="BlankDocWithEnforcement"/>
         </methods>
       </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </classes>

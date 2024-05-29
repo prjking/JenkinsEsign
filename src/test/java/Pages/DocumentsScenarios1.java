@@ -1,9 +1,12 @@
 package Pages;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.logging.log4j.core.util.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -237,6 +240,8 @@ public class DocumentsScenarios1 {
 		waitEle(By.xpath("//span[text()=\"Finish Document\"]"));
 	}
 
+	
+
 	public void clickSubmit() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Thread.sleep(5000);
@@ -262,57 +267,56 @@ public class DocumentsScenarios1 {
 	}
 
 	public void DocscenarioOnedrive() throws Exception {
-			Thread.sleep(20000);
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			waitEle(By.xpath("//img[@src='/img/onedrive.cc38d634.svg']"));
-	 
-			Set<String> windowHandles = driver.getWindowHandles();
-			for (String handle : windowHandles) {
-				driver.switchTo().window(handle);
-			}
-			Thread.sleep(5000);
-			String Parentwindowid = driver.getWindowHandle();
-	 
-			waitEle(By.xpath("//button[normalize-space()='Connect OneDrive']"));
-			Thread.sleep(5000);
-	 
-			Set<String> allwindowhandles = driver.getWindowHandles();
-			for (String childwindow : allwindowhandles) {
-				if (!childwindow.endsWith(Parentwindowid)) {
-					driver.switchTo().window(childwindow);
-					driver.findElement(By.xpath("//input[@id='i0116']")).sendKeys("bsrv.prudhviraju@outlook.com");
-	 
-					waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
-	 
-					Thread.sleep(10000);
-	 
-					By password = By.xpath("//input[@id='i0118']");
-					WebElement Upload1 = wait.until(ExpectedConditions.elementToBeClickable(password));
-					Upload1.sendKeys("Prjking@99");
-	 
-					waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
-					try {
-						waitEle(By.xpath("//button[normalize-space()='Yes']"));
-					} catch (Exception e) {
-						// TODO: handle exception
-					}
-	 
-					Thread.sleep(5000);
-					Set<String> windowHandles1 = driver.getWindowHandles();
-					for (String handle : windowHandles1) {
-						driver.switchTo().window(handle);
-					}
-	 
-					waitEle(By.xpath("//span//span[normalize-space()='Getting started with OneDrive.pdf']"));
-	 
-					waitEle(By.xpath("//span[@class=\"fsp-footer__nav--right\"]"));
-	 
-					waitEle(By.xpath("//span[normalize-space()='Next']"));
-	 
+		Thread.sleep(20000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitEle(By.xpath("//img[@src='/img/onedrive.cc38d634.svg']"));
+
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(5000);
+		String Parentwindowid = driver.getWindowHandle();
+
+		waitEle(By.xpath("//button[normalize-space()='Connect OneDrive']"));
+		Thread.sleep(5000);
+
+		Set<String> allwindowhandles = driver.getWindowHandles();
+		for (String childwindow : allwindowhandles) {
+			if (!childwindow.endsWith(Parentwindowid)) {
+				driver.switchTo().window(childwindow);
+				driver.findElement(By.xpath("//input[@id='i0116']")).sendKeys("bsrv.prudhviraju@outlook.com");
+
+				waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+
+				Thread.sleep(10000);
+
+				By password = By.xpath("//input[@id='i0118']");
+				WebElement Upload1 = wait.until(ExpectedConditions.elementToBeClickable(password));
+				Upload1.sendKeys("Prjking@99");
+
+				waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+				try {
+					waitEle(By.xpath("//button[normalize-space()='Yes']"));
+				} catch (Exception e) {
+					// TODO: handle exception
 				}
+
+				Thread.sleep(5000);
+				Set<String> windowHandles1 = driver.getWindowHandles();
+				for (String handle : windowHandles1) {
+					driver.switchTo().window(handle);
+				}
+
+				waitEle(By.xpath("//span//span[normalize-space()='Getting started with OneDrive.pdf']"));
+
+				waitEle(By.xpath("//span[@class=\"fsp-footer__nav--right\"]"));
+
+				waitEle(By.xpath("//span[normalize-space()='Next']"));
+
 			}
 		}
-	 	
+	}
 
 	public void DocscenariosGdrive() throws Exception {
 		Thread.sleep(10000);
@@ -702,7 +706,7 @@ public class DocumentsScenarios1 {
 
 	}
 
-public void autofilloff() throws Exception {
+	public void autofilloff() throws Exception {
 		Thread.sleep(5000);
 		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
 		Thread.sleep(5000);
@@ -716,15 +720,16 @@ public void autofilloff() throws Exception {
 			waitEle(By.xpath(
 					"//label[@class=\"el-checkbox is-checked\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
 			System.out.println("autofill is off");
-			
+
 		} catch (Exception e) {
 			System.out.println("Autofill is already off");
 		}
- 
+
 		Thread.sleep(5000);
 		waitEle(By.xpath("//span[text()=\"Save Changes\"]"));
- 
+
 	}
+
 	public void autofillon() throws Exception {
 		Thread.sleep(10000);
 		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
@@ -739,7 +744,6 @@ public void autofilloff() throws Exception {
 		try {
 			waitEle(By.xpath(
 					"//label[@class=\"el-checkbox\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
-					
 			System.out.println("autofill is on");
 
 		} catch (Exception e) {
@@ -782,10 +786,10 @@ public void autofilloff() throws Exception {
 	public void FileuploadTwo() throws InterruptedException, Exception {
 		Thread.sleep(5000);
 
-		Runtime.getRuntime()
-				.exec("src/test/resources/meghana/fileupload.exe");
+		Runtime.getRuntime().exec("src/test/resources/meghana/fileupload.exe");
 		Thread.sleep(5000);
 
 		System.out.println("Uploaded file successfully");
 	}
+
 }
