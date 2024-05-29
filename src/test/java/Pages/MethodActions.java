@@ -160,16 +160,24 @@ public class MethodActions {
 		dragAndDrop.perform();
 	}
 
-	public static void setFilePermissions(String filePath, String permissions) {
-		try {
+ public static void setFilePermissions(String filePath, String permissions) {
+        try {
+        
+            Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
+            Files.setPosixFilePermissions(Paths.get(filePath), perms);
+            System.out.println("File permissions changed successfully for: " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Failed to change file permissions for: " + filePath);
+        } catch (UnsupportedOperationException e) {
+            e.printStackTrace();
+            System.err.println("POSIX file permissions not supported on this system.");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            System.err.println("Invalid permission string: " + permissions);
+        }
+    }
 
-			Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
-			Files.setPosixFilePermissions(Paths.get(filePath), perms);
-			System.out.println("File permissions changed successfully for: " + filePath);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println("Failed to change file permissions for: " + filePath);
-		}
-	}
+   
 
 }
