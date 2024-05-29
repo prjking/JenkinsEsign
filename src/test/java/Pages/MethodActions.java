@@ -2,6 +2,10 @@ package Pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -154,6 +158,18 @@ public class MethodActions {
 		Actions builder = new Actions(driver);
 		Action dragAndDrop = builder.clickAndHold(source).moveToElement(target).release(target).build();
 		dragAndDrop.perform();
+	}
+
+	public static void setFilePermissions(String filePath, String permissions) {
+		try {
+
+			Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
+			Files.setPosixFilePermissions(Paths.get(filePath), perms);
+			System.out.println("File permissions changed successfully for: " + filePath);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Failed to change file permissions for: " + filePath);
+		}
 	}
 
 }

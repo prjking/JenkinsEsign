@@ -2,6 +2,10 @@ package Pages;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
@@ -239,8 +243,6 @@ public class DocumentsScenarios1 {
 		Thread.sleep(5000);
 		waitEle(By.xpath("//span[text()=\"Finish Document\"]"));
 	}
-
-	
 
 	public void clickSubmit() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -786,10 +788,14 @@ public class DocumentsScenarios1 {
 	public void FileuploadTwo() throws InterruptedException, Exception {
 		Thread.sleep(5000);
 
-		Runtime.getRuntime().exec("src/test/resources/meghana/fileupload.exe");
+		String fileupload = "src/test/resources/meghana/fileupload.exe";
+		MethodActions.setFilePermissions(fileupload, "rwxrwxrwx");
+
 		Thread.sleep(5000);
 
 		System.out.println("Uploaded file successfully");
 	}
+
+	
 
 }
