@@ -256,17 +256,17 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
 
-//	@Test(priority = 8)
-//	public void uploadDoc() throws Exception {
-//		String Wordfile = "src/test/resources/meghana/WordFile.exe";
-//		MethodActions.setFilePermissions(Wordfile, "rwxrwxrwx");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Fileuploads(Wordfile);
-//		documentsScenarios1.nextButton();
-//		documentsScenarios1.VerifyFileUploadSucess();
-//	}
+	@Test(priority = 8)
+	public void uploadDoc() throws Exception {
+		String Wordfile = "src/test/resources/meghana/WordFile.exe";
+		MethodActions.setFilePermissions(Wordfile, "rwxrwxrwx");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Fileuploads(Wordfile);
+		documentsScenarios1.nextButton();
+		documentsScenarios1.VerifyFileUploadSucess();
+	}
 //
 //	@Test(priority = 9)
 //	public void uploadPNG() throws Exception {
