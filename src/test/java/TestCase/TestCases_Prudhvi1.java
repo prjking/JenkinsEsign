@@ -244,6 +244,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// 5a
 	@Test(priority = 7)
 	public void uploadpdfFile() throws Exception {
+	
+		//Run("FileUpload.exe resources/my_file.txt");
 		String pdffile = "src/test/resources/meghana/PDFFile.exe";
 		MethodActions.setFilePermissions(pdffile, "rwxrwxrwx");
 		login.SigninNSUI();
