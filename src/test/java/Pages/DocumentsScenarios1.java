@@ -1,14 +1,22 @@
 package Pages;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
+import org.openqa.selenium.Keys;
 
 import org.apache.logging.log4j.core.util.FileUtils;
 import org.openqa.selenium.By;
@@ -459,7 +467,7 @@ public class DocumentsScenarios1 {
 	}
 
 	public void nextButton() throws Exception {
-		Thread.sleep(5000);
+
 		try {
 			driver.findElement(By.xpath("//button[@class='el-button text-center upload-btn el-button--danger']"))
 					.click();
@@ -469,17 +477,33 @@ public class DocumentsScenarios1 {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	public void Fileuploads(String s) throws InterruptedException, Exception {
 		Thread.sleep(10000);
 		By Element = By.xpath("//h4[@class='fw-normal blue pb-2']");
-		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(10));
+		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
 		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
 		canc.click();
+		Thread.sleep(10000);
 		Runtime.getRuntime().exec(s);
+		Thread.sleep(10000);
 
 	}
 
+	public void uploadFileWithSendKeys(String imagePath) throws InterruptedException {
+		Thread.sleep(10000);
+		By element = By.xpath("//h4[@class='fw-normal blue pb-2']");
+		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(element));
+		canc.click();
+		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+		fileInput.sendKeys(imagePath);
+		
+	}
+	public void uploadFileTwoWithSendKeys(String imagePath) throws InterruptedException {
+		Thread.sleep(10000);
+		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+		fileInput.sendKeys(imagePath);
+	}
 	public void VerifyFileUploadSucess() {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -527,7 +551,7 @@ public class DocumentsScenarios1 {
 	}
 
 	public void viewDocandDownload() throws Exception {
-		waitEle(By.xpath("//span[contains(text(),\"View Document\")]"));
+		// waitEle(By.xpath("//span[contains(text(),\"View Document\")]"));
 		waitEle(By.xpath("//div[@class=\"el-notification__closeBtn el-icon-close\"]"));
 		waitEle(By.xpath("//span[contains(text(),\"Attachments \")]"));
 
@@ -783,17 +807,6 @@ public class DocumentsScenarios1 {
 		}
 
 		waitEle(By.xpath("//button[@class='el-button type-2 el-button--default']"));
-	}
-
-	public void FileuploadTwo() throws InterruptedException, Exception {
-		Thread.sleep(5000);
-
-		String fileupload = "src/test/resources/meghana/fileupload.exe";
-		MethodActions.setFilePermissions(fileupload, "rwxrwxrwx");
-
-		Thread.sleep(5000);
-
-		System.out.println("Uploaded file successfully");
 	}
 
 	
