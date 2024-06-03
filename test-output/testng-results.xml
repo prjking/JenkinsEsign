@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="41" total="42" passed="1" failed="0" skipped="0">
+<testng-results ignored="46" total="47" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-03T11:17:27 IST" name="Default suite" finished-at="2024-06-03T11:19:04 IST" duration-ms="97820">
+  <suite started-at="2024-06-03T12:31:53 IST" name="Default suite" finished-at="2024-06-03T12:33:01 IST" duration-ms="68057">
     <groups>
     </groups>
-    <test started-at="2024-06-03T11:17:27 IST" name="Default test" finished-at="2024-06-03T11:19:04 IST" duration-ms="97820">
+    <test started-at="2024-06-03T12:31:53 IST" name="Default test" finished-at="2024-06-03T12:33:01 IST" duration-ms="68057">
       <class name="TestCase.TestCases_Prudhvi1">
-        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:17:27 IST" name="Start" finished-at="2024-06-03T11:17:42 IST" duration-ms="14848" status="PASS">
+        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.TestCases_Prudhvi1@4218d6a3]" started-at="2024-06-03T12:31:53 IST" name="Start" finished-at="2024-06-03T12:32:31 IST" duration-ms="38253" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
-        <test-method signature="uploadDoc()[pri:8, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:17:42 IST" name="uploadDoc" finished-at="2024-06-03T11:19:04 IST" duration-ms="82473" status="PASS">
+        <test-method signature="ValidBlankDocMultipleSigners()[pri:24, instance:TestCase.TestCases_Prudhvi1@4218d6a3]" started-at="2024-06-03T12:32:31 IST" name="ValidBlankDocMultipleSigners" finished-at="2024-06-03T12:33:01 IST" duration-ms="29594" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <div class="icon-text">...</div> is not clickable at point (1850, 29). Other element would receive the click: <div class="el-loading-mask is-fullscreen" style="z-index: 2000;">...</div>
+  (Session info: chrome-headless-shell=125.0.6422.113)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [b05e2458858c857ba1e9dbc1b1efeaab, clickElement {id=f.F679EAF3DB0D279C7BDC21BC8814EB48.d.24E2D38D60C1BDD2F60D9B8FD35EB00C.e.25}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome-headless-shell, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53499}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53499/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome-headless-shell on windows (b05e2458858c857ba1e9dbc1b1efeaab)] -> xpath: (//div[@class="icon-text"])[1]]
+Session ID: b05e2458858c857ba1e9dbc1b1efeaab]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <div class="icon-text">...</div> is not clickable at point (1850, 29). Other element would receive the click: <div class="el-loading-mask is-fullscreen" style="z-index: 2000;">...</div>
+  (Session info: chrome-headless-shell=125.0.6422.113)
+Build info: version: '4.21.0', revision: '79ed462ef4'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [b05e2458858c857ba1e9dbc1b1efeaab, clickElement {id=f.F679EAF3DB0D279C7BDC21BC8814EB48.d.24E2D38D60C1BDD2F60D9B8FD35EB00C.e.25}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome-headless-shell, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53499}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53499/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome-headless-shell on windows (b05e2458858c857ba1e9dbc1b1efeaab)] -> xpath: (//div[@class="icon-text"])[1]]
+Session ID: b05e2458858c857ba1e9dbc1b1efeaab
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at Pages.DocumentsScenarios1.waitEle(DocumentsScenarios1.java:42)
+at Pages.DocumentsScenarios1.autofilloff(DocumentsScenarios1.java:675)
+at TestCase.TestCases_Prudhvi1.ValidBlankDocMultipleSigners(TestCases_Prudhvi1.java:589)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- uploadDoc -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:19:04 IST" name="quit" finished-at="2024-06-03T11:19:04 IST" duration-ms="304" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
+        </test-method> <!-- ValidBlankDocMultipleSigners -->
       </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

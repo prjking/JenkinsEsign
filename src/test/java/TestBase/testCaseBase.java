@@ -80,7 +80,7 @@ public class testCaseBase {
 		options.addArguments(
 				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		 options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");
 //		driver.manage().window().maximize();

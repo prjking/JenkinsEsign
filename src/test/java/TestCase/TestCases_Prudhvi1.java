@@ -27,7 +27,6 @@ import Reports.Testlistner;
 import TestBase.testCaseBase;
 import org.openqa.selenium.Keys;
 
-
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class TestCases_Prudhvi1 extends testCaseBase {
 	Login login;
@@ -68,188 +67,194 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// document with uploading blank doc for Sender & Receiver (Complete through
 	// login from
 	// sender & Complete through from mail receiver)
-//	@Test(priority = 1)
-//	public void BlankDocWithEnforcement() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		documentsScenarios1.Viewdocument();
-//		documentsScenarios1.Blankwithoutsenderautofill();
-//		recevierSide1.jeevithaOutlooklogin();
-//		MethodActions.takeScreenshot(driver);
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 1)
+	public void BlankDocWithEnforcement() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofilloff();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.Viewdocument();
+		documentsScenarios1.Blankwithoutsenderautofill();
+		recevierSide1.jeevithaOutlooklogin();
+		MethodActions.takeScreenshot(driver);
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
+
 //
 //	// yes
 //	// 3bsend document with uploading blank doc for Sender & Receiver(Complete
 //	// through
 //	// login from sender & Complete through from mail receiver & sender autofill
 //	// enabled)
-//	@Test(priority = 2)
-//	public void BlankDocWithEnforcementWithAutofill() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofillon();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		recevierSide1.jeevithaOutlooklogin();
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 2)
+	public void BlankDocWithEnforcementWithAutofill() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofillon();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		recevierSide1.jeevithaOutlooklogin();
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
+
 //
 //	// yes
 //	// 3c
-//	@Test(priority = 3)
-//	public void BlankDocWithEnforcementWithoutAutofill() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		documentsScenarios1.Viewdocument();
-//		documentsScenarios1.Blankwithoutsenderautofill();
-//		recevierSide1.jeevithaOutlooklogin();
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 3)
+	public void BlankDocWithEnforcementWithoutAutofill() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofilloff();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.Viewdocument();
+		documentsScenarios1.Blankwithoutsenderautofill();
+		recevierSide1.jeevithaOutlooklogin();
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
+
 //
 //	// yes
 //	// 4a
 //	// Blank Doc – Sender signer & Receiver signer (With enforcement)send document
 //	// with uploading blank doc for Sender & Receiver (Complete through login from
 //	// sender & Complete through from mail receiver)
-//	@Test(priority = 4)
-//	public void BlankDocWithtEnforcement() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Signorder();
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		documentsScenarios1.Viewdocument();
-//		documentsScenarios1.Blankwithoutsenderautofill();
-//		recevierSide1.jeevithaOutlooklogin();
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 4)
+	public void BlankDocWithtEnforcement() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofilloff();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Signorder();
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.Viewdocument();
+		documentsScenarios1.Blankwithoutsenderautofill();
+		recevierSide1.jeevithaOutlooklogin();
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
+
 //
 //	// yes
 //	// 4b
 //	// send document with uploading blank doc for Sender & Receiver(Complete through
 //	// login from sender & Complete through from mail receiver & sender autofill
 //	// enabled)
-//	@Test(priority = 5)
-//	public void BlankDocWithoEnforcementWithAutofill() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofillon();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Signorder();
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		documentsScenarios1.Viewdocument();
-//		recevierSide1.jeevithaOutlooklogin();
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 5)
+	public void BlankDocWithoEnforcementWithAutofill() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofillon();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Signorder();
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.Viewdocument();
+		recevierSide1.jeevithaOutlooklogin();
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
+
 //
 //	// 6yes
 //	// 4c
-//	@Test(priority = 6)
-//	public void BlankDocWithoutEnforcementWithoutAutofill() throws Exception {
-//		UUID uuid = UUID.randomUUID();
-//		String doc = uuid.toString().replaceAll("-", "");
-//		login.SigninNSUI();
-//		MethodActions.Loadingmask();
-//		documentsScenarios1.autofilloff();
-//		documentsScenarios1.DocScenario();
-//		documentsScenarios1.Blankloginaccount(doc);
-//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-//		documentsScenarios1.Signorder();
-//		documentsScenarios1.Saveuser();
-//		documentsScenarios1.SignatureAndFullNameFeilds();
-//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-//		documentsScenarios1.SubDocScenarios(doc);
-//		documentsScenarios1.clickSubmit();
-//		documentsScenarios1.Verifysubmit();
-//		documentsScenarios1.Viewdocument();
-//		documentsScenarios1.Blankwithoutsenderautofill();
-//		recevierSide1.jeevithaOutlooklogin();
-//		recevierSide1.clickEmail(doc);
-//		recevierSide1.reviewandSign("Review & sign");
-//		recevierSide1.signaturefill();
-//		recevierSide1.clickFinish();
-//		recevierSide1.VerifyDocCompleteReceiverEnd();
-//	}
+	@Test(priority = 6)
+	public void BlankDocWithoutEnforcementWithoutAutofill() throws Exception {
+		UUID uuid = UUID.randomUUID();
+		String doc = uuid.toString().replaceAll("-", "");
+		login.SigninNSUI();
+		MethodActions.Loadingmask();
+		documentsScenarios1.autofilloff();
+		documentsScenarios1.DocScenario();
+		documentsScenarios1.Blankloginaccount(doc);
+		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+		documentsScenarios1.Signorder();
+		documentsScenarios1.Saveuser();
+		documentsScenarios1.SignatureAndFullNameFeilds();
+		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+		documentsScenarios1.SubDocScenarios(doc);
+		documentsScenarios1.clickSubmit();
+		documentsScenarios1.Verifysubmit();
+		documentsScenarios1.Viewdocument();
+		documentsScenarios1.Blankwithoutsenderautofill();
+		recevierSide1.jeevithaOutlooklogin();
+		recevierSide1.clickEmail(doc);
+		recevierSide1.reviewandSign("Review & sign");
+		recevierSide1.signaturefill();
+		recevierSide1.clickFinish();
+		recevierSide1.VerifyDocCompleteReceiverEnd();
+	}
 
 	// 5a
 	@Test(priority = 7)
 	public void uploadpdfFile() throws Exception {
-		//String file = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + "meghana" + File.separator + "TESTING.pdf";
-String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
-
+		// String file = System.getProperty("user.dir") + File.separator + "src" +
+		// File.separator + "test" + File.separator + "resources" + File.separator +
+		// "meghana" + File.separator + "TESTING.pdf";
+		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -261,8 +266,10 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 
 	@Test(priority = 8)
 	public void uploadDoc() throws Exception {
-		String Wordfile = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + "meghana" + File.separator + "Test cases.docx";
-		//String Wordfile =  System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
+		// String Wordfile = System.getProperty("user.dir") + File.separator + "src" +
+		// File.separator + "test" + File.separator + "resources" + File.separator +
+		// "meghana" + File.separator + "Test cases.docx";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -270,10 +277,11 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 	@Test(priority = 9)
 	public void uploadPNG() throws Exception {
-		String PNGfile =  System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Screenshot.png";
+		String PNGfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Screenshot.png";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -281,10 +289,11 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 	@Test(priority = 10)
 	public void uploadjpg() throws Exception {
-		String jpgfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Sample-jpg-image-50kb.jpg";
+		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
 		MethodActions.setFilePermissions(jpgfile, "rwxrwxrwx");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
@@ -293,10 +302,13 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 	@Test(priority = 11)
 	public void uploadTXT() throws Exception {
-		String txtfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Documents scenarios.txt";
+		// String txtfile = System.getProperty("user.dir")
+		// +"\\src\\test\\resources\\meghana\\Documents scenarios.txt";
+		String txtfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
 		MethodActions.setFilePermissions(txtfile, "rwxrwxrwx");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
@@ -305,13 +317,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of PDF & DOC files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 12)
 	public void uploadPDFandDoc() throws Exception {
-		String pdffile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
-		String Wordfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
+		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -320,13 +333,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of DOC & DOC files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 13)
 	public void uploadDocandDoc() throws Exception {
-		String word2file = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Features.docx";
-		String Wordfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
+		String word2file = System.getProperty("user.dir") + "/src/test/resources/meghana/Features.docx";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/sTest cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -335,13 +349,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of DOC & TXT files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 14)
 	public void uploadDOCandTXT() throws Exception {
-		String TXTfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Documents scenarios.txt";
-		String Wordfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
+		String TXTfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -350,13 +365,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of PDF& PDF files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 15)
 	public void uploadPDFandPDF() throws Exception {
-		String pdffile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
-		String pdffile2 = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Evaluation form Ramya.pdf";
+		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+		String pdffile2 = System.getProperty("user.dir") + "/src/test/resources/meghana/Evaluation form Ramya.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -365,13 +381,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of PDF & TXT files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 16)
 	public void uploadPDFandTXT() throws Exception {
-		String pdffile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
-		String txtfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Documents scenarios.txt";
+		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+		String txtfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -380,13 +397,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of DOC & PNG files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 17)
 	public void uploadDOCandPNG() throws Exception {
-		String Wordfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
-		String PNGfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Screenshot.png";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
+		String PNGfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Screenshot.png";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -395,15 +413,16 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of PDF & DOC files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 18)
 	public void uploadPDFandDOC() throws Exception {
-		String pdffile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
-		
-		String Wordfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
-		
+		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
+
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -412,13 +431,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of DOC & JPG files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 19)
 	public void uploadDOCandJPG() throws Exception {
-		String Wordfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
-		String jpgfile = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Sample-jpg-image-50kb.jpg";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
+		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -427,13 +447,14 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
+
 //
 //	// When we upload combination of PDF & JPG files and click on next it needs to
 //	// navigate users page
 	@Test(priority = 20)
 	public void uploadPDFandJPG() throws Exception {
-		String pdffile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
-		String jpgfile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Sample-jpg-image-50kb";
+		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -476,6 +497,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCCTwo();
 
 	}
+
 //
 ////GoogleDrive-signerand CC WithOut EnforceSignatureOrderWithSenderAutofill-receiver Email Login
 //	@Test(priority = 22)
@@ -554,6 +576,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// BlankDoc-MultipleSigners and cc-Without enforce signature order & Without
 //	// sender autofill-receiver Email Login
@@ -592,6 +615,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 
 	}
+
 //
 ////Onedrive-DocMultipleSigners-Without enforce signature order & Without sender autofill-receiver Email Login
 	@Test(priority = 25)
@@ -630,6 +654,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 
 	}
+
 //
 //	// BlankDoc-RearrangingOrderFirstOtherSignersndThenSender-Without enforce
 //	// signature order & Without sender autofill-receiver Email Login
@@ -667,6 +692,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickFinish();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 //	// Onedrive-RearrangingOrderFirstOtherSignersndThenSenderOnedrive-Without
 //	// enforce signature order & Without sender autofill-receiver Email Login
@@ -708,6 +734,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 
 	}
+
 //
 //	// Blank DOc-SignerndApprover Without enforce signature order & Without sender
 //	// autofill-receiver Email Login
@@ -745,6 +772,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 
 	}
+
 //
 ////OneDrive-SignerndApproverOnedrive Without enforce signature order & Without sender autofill-receiver Email Login
 	@Test(priority = 29)
@@ -783,6 +811,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 
 	}
+
 //
 //	// Blank Doc-RearrangingOrderFirstApproverthenSigner Without enforce signature
 //	// order & Without sender autofill-receiver Email Login
@@ -820,6 +849,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickApprove();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 //	// 9.Blank Doc- (Signer , Approver & CC)Without enforce signature order &
 //	// Without sender autofill-receiver Email Login
@@ -860,6 +890,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// Blank Doc- (Signer, Multiple Approvers & CC)With/Without enforce signature
 //	// order & Without sender autofill--receiver Email Login
@@ -907,6 +938,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// Blank Doc- (Signer, Approvers& Multiple CC)With/Without enforce signature
 //	// order & Without sender autofill--receiver Email Login
@@ -950,6 +982,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// Blank Doc- (Signer, Multiple Approvers & Multiple CC)With/Without enforce
 //	// signature order & Without sender autofill--receiver Email Login
@@ -998,6 +1031,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 10.Blankdoc-Rearranging order first Approver and then Signer &&CC-Without
 //	// enforce signature order & Without sender autofill--receiver Email Login
@@ -1039,6 +1073,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 11.Rearranging order first CC and then Signer && Approver Without enforce
 //	// signature order & Without sender autofill--receiver Email Login
@@ -1080,6 +1115,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 12.Rearranging order first Approver and then CC && Signer--receiver Email
 //	// Login
@@ -1121,6 +1157,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 13. Blank Doc-Rearranging order first Signer and then CC && Approver-Without
 //	// enforce signature order & Without sender autofill--receiver Email Login
@@ -1161,6 +1198,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 14.Blank Doc-Rearranging order first CC and then Approver && Signer-Without
 //	// enforce signature order & Without sender autofill--receiver Email Login
@@ -1202,6 +1240,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 15.Blank Doc-Multiple signers , approver&& CC Without enforce signature
 //	// order& Without sender autofill-receiver Email Login
@@ -1248,6 +1287,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.validateAtCC(doc);
 
 	}
+
 //
 //	// 16.Rearranging order first Other Signers and then Sender Signer
 //	// &&Approver-Without enforce signature order & Without sender autofill-receiver
@@ -1293,6 +1333,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickApprove();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 //	// 17.Rearranging order first Approver and then Sender Signer && Other
 //	// Signers-receiver Email Login
@@ -1339,6 +1380,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickApprove();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 //	// 18.Rearranging order first Other Signers and then Approver && Sender
 //	// Signer--receiver Email Login
@@ -1384,6 +1426,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickApprove();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 //	// 19.Rearranging order first Sender Signer and then Approver && Other
 //	// Signers-receiver Email Login
@@ -1428,23 +1471,25 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickApprove();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 	@Test(priority = 45)
 	public void uploadVedio() throws Exception {
-		String vediofile =System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Demo.mp4";
+		String vediofile = System.getProperty("user.dir") + "/src/test/resources/meghana/Demo.mp4";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.uploadFileWithSendKeys(vediofile);
 		documentsScenarios1.nextButton();
 	}
+
 //
 //	// 3.Reuploading a completed Esigns ID Generated DOC
 	@Test(priority = 46)
 	public void ReuploadingCompletedEsignsIDGeneratedDOC() throws Exception {
 		UUID uuid = UUID.randomUUID();
 		String doc = uuid.toString().replaceAll("-", "");
-		String file = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Evaluation form Ramya.pdf";
+		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/Evaluation form Ramya.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -1463,14 +1508,16 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		recevierSide1.clickFinish();
 		recevierSide1.VerifyDocCompleteReceiverEnd();
 	}
+
 //
 ////	(All These in Change Document also)
 //	@Test(priority = 47)
 //	public void changeDocument() throws InterruptedException, Exception {
 //		UUID uuid = UUID.randomUUID();
 //		String doc = uuid.toString().replaceAll("-", "");
-//		String file = System.getProperty("user.dir") + "\\src\\test\\resources\\meghana\\TESTING.pdf";
-//		String pdffile = System.getProperty("user.dir") + "\\src\\test\\resources\\meghana\\TESTING.pdf";
+//		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+//        String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+//		
 //		login.SigninNSUI();
 //		login.VerifyLoginSucess();
 //		documentsScenarios1.DocScenario();
@@ -1493,13 +1540,13 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 //		recevierSide1.VerifyDocCompleteReceiverEnd();
 //
 //	}
-////
-//////	5.Attachment Downloads
-////
+//////
+////////	5.Attachment Downloads
+//////
 //	@Test(priority = 48)
 //	public void attachmentDownloads() throws Exception {
-//		String file = System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Evaluation form Ramya.pdf";
-//		String TESTING = System.getProperty("user.dir") + "\\src\\test\\resources\\meghana\\TESTING.pdf";
+//		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/Evaluation form Ramya.pdf";
+//		String TESTING = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
 //		login.SigninNSUI();
 //		MethodActions.Loadingmask();
 //		documentsScenarios1.DocScenario();
@@ -1538,6 +1585,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.clickSubmit();
 		documentsScenarios1.Verifysubmit();
 	}
+
 //
 	@Test(priority = 50)
 	public void BasicfeildsCompanyProfile() throws Exception {
@@ -1555,7 +1603,7 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Saveuser();
-		documentsScenarios1.DragBasicFeildsCompanyProfile();
+		documentsScenarios1.DragAndDropBasicFeildsInDocument();
 		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -120, 10, -90);
 		documentsScenarios1.SubDocScenarios(doc);
 		documentsScenarios1.clickSubmit();
@@ -1611,9 +1659,9 @@ String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TEST
 ////		recevierSide1.clickFinish();
 //	}
 
-	@AfterMethod
-	public void quit() {
-		driver.quit();
-	}
+//	@AfterMethod
+//	public void quit() {
+//		driver.quit();
+//	}
 
 }

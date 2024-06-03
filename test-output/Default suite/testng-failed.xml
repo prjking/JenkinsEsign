@@ -6,8 +6,7 @@
       <class name="TestCase.TestCases_Prudhvi1">
         <methods>
           <include name="Start"/>
-          <include name="quit"/>
-          <include name="uploadDoc"/>
+          <include name="ValidBlankDocMultipleSigners"/>
         </methods>
       </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </classes>

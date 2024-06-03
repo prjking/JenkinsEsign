@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
@@ -500,7 +499,10 @@ public class DocumentsScenarios1 {
 		
 	}
 	public void uploadFileTwoWithSendKeys(String imagePath) throws InterruptedException {
-		Thread.sleep(10000);
+		By element = By.xpath("//h4[@class='fw-normal blue pb-2']");
+		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(element));
+		canc.click();
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
 		fileInput.sendKeys(imagePath);
 	}
@@ -605,95 +607,31 @@ public class DocumentsScenarios1 {
 
 	}
 
-	public void DragBasicFeildsCompanyProfile() throws Exception {
-		Thread.sleep(10000);
+	public void DragAndDropBasicFeildsInDocument() throws Exception {
+		String feilds[] = { "Radio Group", "Date Range", "Sign", "Date Time", "Yes Or No", "Weekdays",
+				"Single Line Text", "Date", "Document", "Fixed Time", "List", "Time", "Number", "Multi Select",
+				"Phone no", "Select", "Multiline", "CheckBox" };
+		int l = feilds.length;
+		Thread.sleep(5000);
 		waitEle(By.xpath("//div[text()=\"templateBasicFeilds\"]"));
-		// Document
-		Actions actions = new Actions(driver);
-		WebElement Document = driver.findElement(By.xpath("//div[text()=\" Docume... \"]"));
-		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
-		waitAndClick(actions, Document, Target, 0, -80);
-		System.out.println("Document Field Drag and Drop Done");
-		// Radio Group
-		WebElement RadioGroup = driver.findElement(By.xpath("//div[text()=\" RadioG... \"]"));
-		waitAndClick(actions, RadioGroup, Target, -250, -30);
-		System.out.println("Radio Group Field Drag and Drop Done");
-		// multiline
-		WebElement multiline = driver.findElement(By.xpath("//div[text()=\" Multil... \"]"));
-		waitAndClick(actions, multiline, Target, 0, 0);
-		System.out.println("multiline Field Drag and Drop Done");
-		// sign
-		WebElement sign = driver.findElement(By.xpath("//div[text()=\" Sign \"]"));
-		waitAndClick(actions, sign, Target, 0, 30);
-		System.out.println("sign Field Drag and Drop Done");
-		// phoneno
-		WebElement phoneno = driver.findElement(By.xpath("//div[text()=\" Phonon... \"]"));
-		waitAndClick(actions, phoneno, Target, 0, 60);
-		System.out.println("phoneno Field Drag and Drop Done");
-		// captcha
-		WebElement captcha = driver.findElement(By.xpath("//div[text()=\" Captch... \"]"));
-		waitAndClick(actions, captcha, Target, 0, 90);
-		System.out.println("captcha Field Drag and Drop Done");
-		// singleLine
-		WebElement singleLine = driver.findElement(By.xpath("//div[text()=\" Single... \"]"));
-		waitAndClick(actions, singleLine, Target, 0, 120);
-		System.out.println("singleLine Field Drag and Drop Done");
-		// checkboxGroup
-		WebElement checkboxGroup = driver.findElement(By.xpath("(//div[text()=\" Checkb... \"])[1]"));
-		waitAndClick(actions, checkboxGroup, Target, 0, 180);
-		System.out.println("checkboxGroup Field Drag and Drop Done");
-		// Number
-		WebElement Number = driver.findElement(By.xpath("(//div[text()=\" Number \"])[1]"));
-		waitAndClick(actions, Number, Target, 0, 210);
-		System.out.println("Number Field Drag and Drop Done");
-		// Multiselect
-		WebElement Multiselect = driver.findElement(By.xpath("//div[text()=\" Multis... \"]"));
-		waitAndClick(actions, Multiselect, Target, 0, 240);
-		System.out.println("Multiselect Field Drag and Drop Done");
-		// Date
-		WebElement Date = driver.findElement(By.xpath("//div[text()=\" Date \"]"));
-		waitAndClick(actions, Date, Target, -250, -80);
-		System.out.println("Date Field Drag and Drop Done");
-		// Time
-		WebElement Time = driver.findElement(By.xpath("(//div[text()=\" Time \"])[1]"));
-		waitAndClick(actions, Time, Target, -250, 0);
-		System.out.println("Time Field Drag and Drop Done");
-		// FixedTime
-		WebElement FixedTime = driver.findElement(By.xpath("//div[text()=\" FixedT... \"]"));
-		waitAndClick(actions, FixedTime, Target, -250, 60);
-		System.out.println("FixedTime Field Drag and Drop Done");
-		// TimeRange
-		WebElement TimeRange = driver.findElement(By.xpath("//div[text()=\" TimeRa... \"]"));
-		waitAndClick(actions, TimeRange, Target, -250, 90);
-		System.out.println("TimeRange Field Drag and Drop Done");
-		// DateTime
-		WebElement DateTime = driver.findElement(By.xpath("//div[text()=\" DateTi... \"]"));
-		waitAndClick(actions, DateTime, Target, 250, 130);
-		System.out.println("DateTime Field Drag and Drop Done");
-		// DateRange
-		WebElement DateRange = driver.findElement(By.xpath("//div[text()=\" DateRa... \"]"));
-		waitAndClick(actions, DateRange, Target, 250, 160);
-		System.out.println("DateRange Field Drag and Drop Done");
-		// Weekday
-		WebElement Weekday = driver.findElement(By.xpath("//div[text()=\" Weekda... \"]"));
-		waitAndClick(actions, Weekday, Target, 250, 190);
-		System.out.println("Weekday Field Drag and Drop Done");
-		// yesOrNo
-		WebElement yesOrNo = driver.findElement(By.xpath("//div[text()=\" YesorN... \"]"));
-		waitAndClick(actions, yesOrNo, Target, 250, 100);
-		System.out.println("yesOrNo Field Drag and Drop Done");
-		// Checkbox
-		WebElement Checkbox = driver.findElement(By.xpath("(//div[text()=\" Checkb... \"])[2]"));
-		waitAndClick(actions, Checkbox, Target, 250, 40);
-		System.out.println("Checkbox Field Drag and Drop Done");
-		// Radio
-		WebElement Radio = driver.findElement(By.xpath("//div[text()=\" Radio \"]"));
-		waitAndClick(actions, Radio, Target, 250, 70);
-		System.out.println("Radio Field Drag and Drop Done");
-		// Select
-		WebElement Select = driver.findElement(By.xpath("(//div[text()=\" Select \"])[1]"));
-		waitAndClick(actions, Select, Target, -250, 30);
-		System.out.println("Select  Field Drag and Drop Done");
+		Thread.sleep(5000);
+		int i = 1;
+		for (int x = -250; x <= 250; x = x + 250) {
+			for (int y = -80; y <= 210; y = y + 50) {
+				String xpath = String.format("(//button[@class=\"el-tooltip field-element tooltip\"])[%d]", i++);
+				if (i <= l + 1) {
+					Actions actions = new Actions(driver);
+					WebElement ele = driver.findElement(By.xpath(xpath));
+					WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+					waitAndClick(actions, ele, Target, x, y);
+					System.out.printf("%s Field Drag and Drop Done\n", feilds[i - 2]);
+				} else {
+					break;
+				}
+ 
+			}
+		}
+ 
 	}
 
 	public void Viewdocument() throws Exception {
