@@ -2,20 +2,20 @@
 <testng-results ignored="41" total="42" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-03T11:12:48 IST" name="Default suite" finished-at="2024-06-03T11:14:19 IST" duration-ms="91414">
+  <suite started-at="2024-06-03T11:17:27 IST" name="Default suite" finished-at="2024-06-03T11:19:04 IST" duration-ms="97820">
     <groups>
     </groups>
-    <test started-at="2024-06-03T11:12:48 IST" name="Default test" finished-at="2024-06-03T11:14:19 IST" duration-ms="91414">
+    <test started-at="2024-06-03T11:17:27 IST" name="Default test" finished-at="2024-06-03T11:19:04 IST" duration-ms="97820">
       <class name="TestCase.TestCases_Prudhvi1">
-        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:12:48 IST" name="Start" finished-at="2024-06-03T11:12:58 IST" duration-ms="10049" status="PASS">
+        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:17:27 IST" name="Start" finished-at="2024-06-03T11:17:42 IST" duration-ms="14848" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
-        <test-method signature="uploadpdfFile()[pri:7, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:12:58 IST" name="uploadpdfFile" finished-at="2024-06-03T11:14:19 IST" duration-ms="80747" status="PASS">
+        <test-method signature="uploadDoc()[pri:8, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:17:42 IST" name="uploadDoc" finished-at="2024-06-03T11:19:04 IST" duration-ms="82473" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- uploadpdfFile -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:14:19 IST" name="quit" finished-at="2024-06-03T11:14:19 IST" duration-ms="437" status="PASS">
+        </test-method> <!-- uploadDoc -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:TestCase.TestCases_Prudhvi1@235834f2]" started-at="2024-06-03T11:19:04 IST" name="quit" finished-at="2024-06-03T11:19:04 IST" duration-ms="304" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

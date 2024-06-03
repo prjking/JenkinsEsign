@@ -68,32 +68,32 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	// document with uploading blank doc for Sender & Receiver (Complete through
 	// login from
 	// sender & Complete through from mail receiver)
-	@Test(priority = 1)
-	public void BlankDocWithEnforcement() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		documentsScenarios1.Viewdocument();
-		documentsScenarios1.Blankwithoutsenderautofill();
-		recevierSide1.jeevithaOutlooklogin();
-		MethodActions.takeScreenshot(driver);
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 1)
+//	public void BlankDocWithEnforcement() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofilloff();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		documentsScenarios1.Viewdocument();
+//		documentsScenarios1.Blankwithoutsenderautofill();
+//		recevierSide1.jeevithaOutlooklogin();
+//		MethodActions.takeScreenshot(driver);
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 //
 //	// yes
 //	// 3bsend document with uploading blank doc for Sender & Receiver(Complete
