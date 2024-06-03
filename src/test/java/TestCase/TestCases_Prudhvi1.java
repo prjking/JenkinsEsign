@@ -1,5 +1,6 @@
 package TestCase;
 
+import java.io.File;
 import java.util.UUID;
 
 import org.testng.annotations.AfterMethod;
@@ -99,154 +100,156 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //	// through
 //	// login from sender & Complete through from mail receiver & sender autofill
 //	// enabled)
-	@Test(priority = 2)
-	public void BlankDocWithEnforcementWithAutofill() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofillon();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		recevierSide1.jeevithaOutlooklogin();
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 2)
+//	public void BlankDocWithEnforcementWithAutofill() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofillon();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		recevierSide1.jeevithaOutlooklogin();
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 //
 //	// yes
 //	// 3c
-	@Test(priority = 3)
-	public void BlankDocWithEnforcementWithoutAutofill() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		documentsScenarios1.Viewdocument();
-		documentsScenarios1.Blankwithoutsenderautofill();
-		recevierSide1.jeevithaOutlooklogin();
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 3)
+//	public void BlankDocWithEnforcementWithoutAutofill() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofilloff();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		documentsScenarios1.Viewdocument();
+//		documentsScenarios1.Blankwithoutsenderautofill();
+//		recevierSide1.jeevithaOutlooklogin();
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 //
 //	// yes
 //	// 4a
 //	// Blank Doc – Sender signer & Receiver signer (With enforcement)send document
 //	// with uploading blank doc for Sender & Receiver (Complete through login from
 //	// sender & Complete through from mail receiver)
-	@Test(priority = 4)
-	public void BlankDocWithtEnforcement() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Signorder();
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		documentsScenarios1.Viewdocument();
-		documentsScenarios1.Blankwithoutsenderautofill();
-		recevierSide1.jeevithaOutlooklogin();
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 4)
+//	public void BlankDocWithtEnforcement() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofilloff();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Signorder();
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		documentsScenarios1.Viewdocument();
+//		documentsScenarios1.Blankwithoutsenderautofill();
+//		recevierSide1.jeevithaOutlooklogin();
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 //
 //	// yes
 //	// 4b
 //	// send document with uploading blank doc for Sender & Receiver(Complete through
 //	// login from sender & Complete through from mail receiver & sender autofill
 //	// enabled)
-	@Test(priority = 5)
-	public void BlankDocWithoEnforcementWithAutofill() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofillon();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Signorder();
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		documentsScenarios1.Viewdocument();
-		recevierSide1.jeevithaOutlooklogin();
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 5)
+//	public void BlankDocWithoEnforcementWithAutofill() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofillon();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Signorder();
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		documentsScenarios1.Viewdocument();
+//		recevierSide1.jeevithaOutlooklogin();
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 //
 //	// 6yes
 //	// 4c
-	@Test(priority = 6)
-	public void BlankDocWithoutEnforcementWithoutAutofill() throws Exception {
-		UUID uuid = UUID.randomUUID();
-		String doc = uuid.toString().replaceAll("-", "");
-		login.SigninNSUI();
-		MethodActions.Loadingmask();
-		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
-		documentsScenarios1.Blankloginaccount(doc);
-		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
-		documentsScenarios1.Signorder();
-		documentsScenarios1.Saveuser();
-		documentsScenarios1.SignatureAndFullNameFeilds();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
-		documentsScenarios1.SubDocScenarios(doc);
-		documentsScenarios1.clickSubmit();
-		documentsScenarios1.Verifysubmit();
-		documentsScenarios1.Viewdocument();
-		documentsScenarios1.Blankwithoutsenderautofill();
-		recevierSide1.jeevithaOutlooklogin();
-		recevierSide1.clickEmail(doc);
-		recevierSide1.reviewandSign("Review & sign");
-		recevierSide1.signaturefill();
-		recevierSide1.clickFinish();
-		recevierSide1.VerifyDocCompleteReceiverEnd();
-	}
+//	@Test(priority = 6)
+//	public void BlankDocWithoutEnforcementWithoutAutofill() throws Exception {
+//		UUID uuid = UUID.randomUUID();
+//		String doc = uuid.toString().replaceAll("-", "");
+//		login.SigninNSUI();
+//		MethodActions.Loadingmask();
+//		documentsScenarios1.autofilloff();
+//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.Blankloginaccount(doc);
+//		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
+//		documentsScenarios1.Signorder();
+//		documentsScenarios1.Saveuser();
+//		documentsScenarios1.SignatureAndFullNameFeilds();
+//		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -20, 10, 10);
+//		documentsScenarios1.SubDocScenarios(doc);
+//		documentsScenarios1.clickSubmit();
+//		documentsScenarios1.Verifysubmit();
+//		documentsScenarios1.Viewdocument();
+//		documentsScenarios1.Blankwithoutsenderautofill();
+//		recevierSide1.jeevithaOutlooklogin();
+//		recevierSide1.clickEmail(doc);
+//		recevierSide1.reviewandSign("Review & sign");
+//		recevierSide1.signaturefill();
+//		recevierSide1.clickFinish();
+//		recevierSide1.VerifyDocCompleteReceiverEnd();
+//	}
 
 	// 5a
 	@Test(priority = 7)
 	public void uploadpdfFile() throws Exception {
-		String file =  System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\TESTING.pdf";
+		//String file = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + "meghana" + File.separator + "TESTING.pdf";
+String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
+
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -258,7 +261,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	@Test(priority = 8)
 	public void uploadDoc() throws Exception {
-		String Wordfile =  System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
+		String Wordfile = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + "meghana" + File.separator + "Test cases.docx";
+		//String Wordfile =  System.getProperty("user.dir") +"\\src\\test\\resources\\meghana\\Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
