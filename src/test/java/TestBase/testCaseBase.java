@@ -66,21 +66,21 @@ public class testCaseBase {
 //    }
 	public void setup() {
 
-		// driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
 //
-		ChromeOptions options = new ChromeOptions();
+	ChromeOptions options = new ChromeOptions();
 //
-		options.addArguments("--headless");
-		options.addArguments("--disable-gpu");
-		options.addArguments("--disable-software-rasterizer");
-		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
-		options.addArguments(
-				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
-		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+//		options.addArguments("--headless");
+//		options.addArguments("--disable-gpu");
+//		options.addArguments("--disable-software-rasterizer");
+//		options.addArguments("--window-size=1920,1080");
+//		options.addArguments("--disable-dev-shm-usage");
+//		options.addArguments("--no-sandbox");
+//		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
+//		options.addArguments(
+//				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
+//		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+//		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");
 //		driver.manage().window().maximize();
@@ -97,9 +97,9 @@ public class testCaseBase {
 		driver.manage().window().maximize();
 		// driver.get("http://localhost:8008/signin");
 		// driver.get("https://preprod.esigns.io/signin");
-		// driver.get("https://dev.esigns.io/signin");
+		 driver.get("https://dev.esigns.io/signin");
 
-		driver.get("https://nsui.esigns.io/signin");
+		//driver.get("https://nsui.esigns.io/signin");
 
 	}
 

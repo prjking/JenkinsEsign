@@ -70,185 +70,155 @@ public class FormTemplate {
 
 	// Single-Line
 	public void SingleLine() throws Exception {
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+	    Thread.sleep(20000);  // Combined the two sleep calls into one
+	    MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
-		WebElement SingleLine = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
+	    WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
+	    Dimension dropSize = dropLocation.getSize();
+	    int dropWidth = dropSize.getWidth();
+	    int dropHeight = dropSize.getHeight();
+	    System.out.println("Drop Location Width: " + dropWidth + " Height: " + dropHeight);
+	    WebElement singleLine = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		Actions builder = new Actions(driver);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+	    Actions builder = new Actions(driver);
 
-		wait.until(ExpectedConditions.elementToBeClickable(SingleLine));
+	    wait.until(ExpectedConditions.elementToBeClickable(singleLine));
+	    MethodActions.waitAndClick(builder, singleLine, dropLocation);
 
-		Dimension dropSize = dropLocation.getSize();
+	    // Coordinates for different placements (x, y)
+	    int[][] coordinates = {
+	        {150, 300}, {150, 400}, {150, 500}, // SENDER
+	        {300, 500}, {400, 500}, {500, 500}, // RECEIVER
+	        {700, 500}, {800, 500}, {900, 500}, // SENDERORRECEIVER
+	        {500, 600}, {500, 700}, {500, 800}  // NO
+	    };
 
-		int targetX = dropLocation.getLocation().getX() + (dropSize.getWidth() / 2);
-		int targetY = dropLocation.getLocation().getY() + (dropSize.getHeight() / 2);
+	    String[] fieldTypes = {"SENDER", "RECEIVER", "SENDERORRECEIVER"};
+	    String[] fieldCategories = {"PASSWORD", "EMAIL", "TEXT", "MASKED", "HYPER LINK"};
 
-		builder.dragAndDropBy(SingleLine, targetX, targetY).perform();
+	    int index = 0;
 
-		// Yes
+	    for (String fieldType : fieldTypes) {
+	        for (String field : fieldCategories) {
+	            FieldSingleLine(fieldType, singleLine, dropLocation, true, field, coordinates[index][0], coordinates[index][1]);
+	            index++;
+	        }
+	    }
 
-		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "PASSWORD");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "PASSWORD");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "PASSWORD");
+	    index = 0;
 
-		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "EMAIL");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "EMAIL");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "EMAIL");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "TEXT");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "TEXT");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "TEXT");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "MASKED");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "MASKED");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "MASKED");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, true, "HYPER LINK");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, true, "HYPER LINK");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, true, "HYPER LINK");
-
-		// No
-		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "PASSWORD");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "PASSWORD");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "PASSWORD");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "EMAIL");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "EMAIL");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "EMAIL");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "TEXT");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "TEXT");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "TEXT");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "MASKED");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "MASKED");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "MASKED");
-
-		FieldSingleLine("SENDER", SingleLine, dropLocation, false, "HYPER LINK");
-		FieldSingleLine("RECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
-		FieldSingleLine("SENDERORRECEIVER", SingleLine, dropLocation, false, "HYPER LINK");
-		
+	    for (String fieldType : fieldTypes) {
+	        for (String field : fieldCategories) {
+	            FieldSingleLine(fieldType, singleLine, dropLocation, false, field, coordinates[index][0], coordinates[index][1]);
+	            index++;
+	        }
+	    }
 	}
 
-	public void FieldSingleLine(String fieldType, WebElement singleline, WebElement targetElement, boolean isYes,
-			String field) throws Exception {
-		int index;
-		String label;
-		Thread.sleep(10000);
-		switch (fieldType) {
-		case "SENDER":
-			index = 1;
-			label = "SENDER";
-			break;
-		case "RECEIVER":
-			index = 2;
-			label = "RECEIVER";
-			break;
-		case "SENDERORRECEIVER":
-			index = 3;
-			label = "SENDER OR RECEIVER";
-			break;
-		default:
-			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
-		}
-		Thread.sleep(10000);
-		WebDriverWait waitsource = new WebDriverWait(driver, Duration.ofMinutes(1));
-		waitsource.until(ExpectedConditions.elementToBeClickable(singleline));
-		MethodActions.dragAndDrop(singleline, targetElement);
+	public void FieldSingleLine(String fieldType, WebElement singleLine, WebElement targetElement, boolean isYes, String field, int targetX, int targetY) throws Exception {
+	    int index;
+	    String label;
+	    Thread.sleep(10000);
 
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-		} catch (Exception e) {
+	    switch (fieldType) {
+	        case "SENDER":
+	            index = 1;
+	            label = "SENDER";
+	            break;
+	        case "RECEIVER":
+	            index = 2;
+	            label = "RECEIVER";
+	            break;
+	        case "SENDERORRECEIVER":
+	            index = 3;
+	            label = "SENDER OR RECEIVER";
+	            break;
+	        default:
+	            throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+	    }
 
-		}
-		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
-				MethodActions.generateUniqueString());
-		if (isYes) {
+	    Thread.sleep(10000);
+	    WebDriverWait waitSource = new WebDriverWait(driver, Duration.ofMinutes(1));
+	    waitSource.until(ExpectedConditions.elementToBeClickable(singleLine));
 
-			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement yesElement = wait1.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-			yesElement.click();
+	    Actions builder = new Actions(driver);
+	    builder.dragAndDropBy(singleLine, targetX - singleLine.getLocation().getX(), targetY - singleLine.getLocation().getY()).perform();
 
-			System.out.println("With Field Required! Yes");
-		}
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+	    } catch (Exception e) {
+	        // Handle exception if needed
+	    }
 
-		else {
+	    MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"), MethodActions.generateUniqueString());
+	    MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"), MethodActions.generateUniqueString());
 
-			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-			WebElement noElement = wait2.until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-			noElement.click();
-			System.out.println("With Field Required! NO");
+	    if (isYes) {
+	        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+	        WebElement yesElement = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+	        yesElement.click();
+	        System.out.println("With Field Required! Yes");
+	    } else {
+	        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+	        WebElement noElement = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+	        noElement.click();
+	        System.out.println("With Field Required! NO");
+	    }
 
-		}
+	    Thread.sleep(10000);
+	    Wait<WebDriver> wait11 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1)).pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
+	    WebElement del = wait11.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='el-select filledby']//input")));
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-		Thread.sleep(10000);
-		Wait<WebDriver> wait11 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
-				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class);
+	    Thread.sleep(1000);
 
-		WebElement del = wait11
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='el-select filledby']//input")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+	    Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1)).pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-		Thread.sleep(1000);
+	    Thread.sleep(1000);
+	    MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
-		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
-				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
-
-		WebElement element = wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
-		Thread.sleep(1000);
-
-		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
-
-		switch (field) {
-		case "PASSWORD":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-			System.out.println("Single Line With PASSWORD " + label + " Selected Successfully");
-			break;
-		case "EMAIL":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-			System.out.println("Single Line With EMAIL " + label + " Selected Successfully");
-			break;
-		case "TEXT":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-			System.out.println("Single Line With TEXT " + label + " Selected Successfully");
-			break;
-		case "MASKED":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-			System.out.println("Single Line With MASKED " + label + " Selected Successfully");
-			break;
-		case "HYPER LINK":
-			Thread.sleep(10000);
-			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-			System.out.println("Single Line With HYPER LINK " + label + " Selected Successfully");
-			break;
-		default:
-
-			break;
-		}
-		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+	    switch (field) {
+	        case "PASSWORD":
+	            Thread.sleep(10000);
+	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+	            System.out.println("Single Line With PASSWORD " + label + " Selected Successfully");
+	            break;
+	        case "EMAIL":
+	            Thread.sleep(10000);
+	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+	            System.out.println("Single Line With EMAIL " + label + " Selected Successfully");
+	            break;
+	        case "TEXT":
+	            Thread.sleep(10000);
+	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+	            System.out.println("Single Line With TEXT " + label + " Selected Successfully");
+	            break;
+	        case "MASKED":
+	            Thread.sleep(10000);
+	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
+	            System.out.println("Single Line With MASKED " + label + " Selected Successfully");
+	            break;
+	        case "HYPER LINK":
+	            Thread.sleep(10000);
+	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+	            System.out.println("Single Line With HYPER LINK " + label + " Selected Successfully");
+	            break;
+	        default:
+	            break;
+	    }
+	    MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 	}
+
 
 	public void closeingleline() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		MethodActions.dragAndDrop(sourceElement, targetElement);
 		MethodActions.waitEle(By.xpath("//button[@class='close-button']"));
 		System.out.println("Single Line Text Field - Closed  Button  by clicking X");
@@ -259,7 +229,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Point targetLocation = targetElement.getLocation();
 		int xOffset = 50;
@@ -287,7 +257,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement sourceElement = driver.findElement(By.xpath("//span[text()='Multi Line Text']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(sourceElement).moveToElement(targetElement).release().build().perform();
@@ -305,7 +275,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement Select = driver.findElement(By.xpath("//span[text()='Select']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Select).moveToElement(targetElement).release().build().perform();
@@ -324,7 +294,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement Number = driver.findElement(By.xpath("//span[text()='Number']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Number).moveToElement(targetElement).release().build().perform();
@@ -342,7 +312,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()='Multiple Select']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(MultipleSelect).moveToElement(targetElement).release().build().perform();
@@ -360,7 +330,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement List = driver.findElement(By.xpath("//span[text()='List']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(List).moveToElement(targetElement).release().build().perform();
@@ -379,7 +349,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement Date = driver.findElement(By.xpath("//span[text()='Date']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Date).moveToElement(targetElement).release().build().perform();
@@ -398,7 +368,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement Time = driver.findElement(By.xpath("//span[text()='Time']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(Time).moveToElement(targetElement).release().build().perform();
@@ -417,7 +387,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement TimeRange = driver.findElement(By.xpath("//span[text()='Time Range']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		Thread.sleep(10000);
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(TimeRange).moveToElement(targetElement).release().build().perform();
@@ -434,7 +404,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement WeekDays = driver.findElement(By.xpath("//span[text()='Week Days']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(WeekDays).moveToElement(targetElement).release().build().perform();
@@ -451,7 +421,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement WeekDays = driver.findElement(By.xpath("//span[text()='Week Days']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		Thread.sleep(10000);
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(WeekDays).moveToElement(targetElement).release().build().perform();
@@ -468,7 +438,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement RadioGroup = driver.findElement(By.xpath("//span[text()='Radio Group']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		Thread.sleep(10000);
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(RadioGroup).moveToElement(targetElement).release().build().perform();
@@ -484,7 +454,7 @@ public class FormTemplate {
 	public void CurrencyGlobalVariable() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
 		Thread.sleep(10000);
@@ -504,7 +474,7 @@ public class FormTemplate {
 	public void StarRatingGlobalVariable() throws Exception {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement StarRating = driver.findElement(By.xpath("//span[text()=\"Star Rating\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", StarRating);
 		Thread.sleep(10000);
@@ -525,7 +495,7 @@ public class FormTemplate {
 		Thread.sleep(10000);
 		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement FixedTime = driver.findElement(By.xpath("//span[text()='Fixed Time']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 
 		Actions actions = new Actions(driver);
 		actions.clickAndHold(FixedTime).moveToElement(targetElement).release().build().perform();
@@ -568,7 +538,7 @@ public class FormTemplate {
 	public void Multiline() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Multiline = driver.findElement(By.xpath("//span[text()=\"Multi Line Text\"]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
@@ -780,7 +750,7 @@ public class FormTemplate {
 
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Select = driver.findElement(By.xpath("//span[text()=\"Select\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -922,7 +892,7 @@ public class FormTemplate {
 	public void Number() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Number = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
@@ -1060,7 +1030,7 @@ public class FormTemplate {
 	public void MultipleSelect() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement MultipleSelect = driver.findElement(By.xpath("//span[text()=\"Multiple Select\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1203,7 +1173,7 @@ public class FormTemplate {
 	public void FixedTime() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement FixedTime = driver.findElement(By.xpath("//span[text()=\"Fixed Time\"]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
@@ -1317,7 +1287,7 @@ public class FormTemplate {
 	public void WeekDays() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement WeekDays = driver.findElement(By.xpath("//span[text()=\"Week Days\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1426,7 +1396,7 @@ public class FormTemplate {
 	public void YesorNo() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement YesorNo = driver.findElement(By.xpath("//span[text()=\"Yes or No\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -1545,7 +1515,7 @@ public class FormTemplate {
 	public void Document() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Document = driver.findElement(By.xpath("//span[text()=\"Document\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Document);
 		Thread.sleep(10000);
@@ -1945,7 +1915,7 @@ public class FormTemplate {
 	public void Time() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Time = driver.findElement(By.xpath("//span[text()=\"Time\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2059,7 +2029,7 @@ public class FormTemplate {
 	public void Date() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Date = driver.findElement(By.xpath("//span[text()=\"Date\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2233,7 +2203,7 @@ public class FormTemplate {
 	public void List() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement List = driver.findElement(By.xpath("//span[text()=\"List\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -2366,7 +2336,7 @@ public class FormTemplate {
 	public void Timerange() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement TimeRange = driver.findElement(By.xpath("//span[text()=\"Time Range\"]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder = new Actions(driver);
@@ -2469,7 +2439,7 @@ public class FormTemplate {
 	public void CheckBox() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Checkbox = driver.findElement(By.xpath("//span[text()=\"Checkbox\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Checkbox);
 		Thread.sleep(10000);
@@ -2577,7 +2547,7 @@ public class FormTemplate {
 	public void CheckBoxGroup() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement CheckboxGroup = driver.findElement(By.xpath("//span[text()=\"Checkbox Group\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", CheckboxGroup);
 		Thread.sleep(10000);
@@ -2668,7 +2638,7 @@ public class FormTemplate {
 	public void Radio() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Radio = driver.findElement(By.xpath("//span[text()=\"Radio\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Radio);
 		Thread.sleep(10000);
@@ -2773,7 +2743,7 @@ public class FormTemplate {
 	public void RadioGroup() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement RadioGroup = driver.findElement(By.xpath("//span[text()=\"Radio Group\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", RadioGroup);
 		Thread.sleep(10000);
@@ -2884,7 +2854,7 @@ public class FormTemplate {
 	public void Phone() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Phone = driver.findElement(By.xpath("//span[text()=\"Phone\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Phone);
 		Thread.sleep(10000);
@@ -3046,7 +3016,7 @@ public class FormTemplate {
 	public void Signature() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Signature = driver.findElement(By.xpath("//span[text()=\"Signature\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Signature);
 		Thread.sleep(10000);
@@ -3169,7 +3139,7 @@ public class FormTemplate {
 	public void Captcha() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Captcha = driver.findElement(By.xpath("//span[text()=\"Captcha\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Captcha);
 		Thread.sleep(10000);
@@ -3206,7 +3176,7 @@ public class FormTemplate {
 	public void Heading() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Heading = driver.findElement(By.xpath("//span[text()=\"Heading\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Heading);
 		Thread.sleep(10000);
@@ -3304,7 +3274,7 @@ public class FormTemplate {
 	public void HTML() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement HTML = driver.findElement(By.xpath("//span[text()=\"HTML\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", HTML);
 		Thread.sleep(10000);
@@ -3340,7 +3310,7 @@ public class FormTemplate {
 	public void Paragraph() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Paragraph = driver.findElement(By.xpath("//span[text()=\"Paragraph\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Paragraph);
 		Thread.sleep(10000);
@@ -3372,7 +3342,7 @@ public class FormTemplate {
 	public void SingleLineContent() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement SingleLineContent = driver.findElement(By.xpath("//span[text()=\"Single Line Content\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", SingleLineContent);
 		Thread.sleep(10000);
@@ -3404,7 +3374,7 @@ public class FormTemplate {
 	public void Image() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Image = driver.findElement(By.xpath("//span[text()=\"Image\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -3506,7 +3476,7 @@ public class FormTemplate {
 	public void Video() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Video = driver.findElement(By.xpath("//span[text()=\"Video\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -3608,7 +3578,7 @@ public class FormTemplate {
 	public void HorizontalLine() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement HorizontalLine = driver.findElement(By.xpath("//span[text()=\"Horizontal Line\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", HorizontalLine);
 		Thread.sleep(10000);
@@ -3625,7 +3595,7 @@ public class FormTemplate {
 	public void Division() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Division = driver.findElement(By.xpath("//span[text()=\"Division\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Division);
 		Thread.sleep(10000);
@@ -3642,7 +3612,7 @@ public class FormTemplate {
 	public void ActionButton() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Content Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement ActionButton = driver.findElement(By.xpath("//span[text()=\"Action Button\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ActionButton);
 		Thread.sleep(10000);
@@ -3674,7 +3644,7 @@ public class FormTemplate {
 
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement AutoIncrementNumber = driver.findElement(By.xpath("//span[text()=\"Auto Increment Number\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -3786,7 +3756,7 @@ public class FormTemplate {
 	public void Location() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Location = driver.findElement(By.xpath("//span[text()=\"Location\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -3894,7 +3864,7 @@ public class FormTemplate {
 	public void Currency() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
 		Thread.sleep(10000);
@@ -4056,7 +4026,7 @@ public class FormTemplate {
 	public void Question() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Question = driver.findElement(By.xpath("//span[text()=\"Question\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Question);
 		Thread.sleep(10000);
@@ -4213,7 +4183,7 @@ public class FormTemplate {
 	public void AuthorizedSignature() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement AuthorizedSignature = driver.findElement(By.xpath("//span[text()=\"Authorized Signature\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", AuthorizedSignature);
 		Thread.sleep(10000);
@@ -4245,7 +4215,7 @@ public class FormTemplate {
 	public void Entity() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Entity = driver.findElement(By.xpath("//span[text()=\"Entity\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Entity);
 		Thread.sleep(10000);
@@ -4373,7 +4343,7 @@ public class FormTemplate {
 	public void EntityVariable() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement target = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement target = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Entity = driver.findElement(By.xpath("//span[text()=\"Entity\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Entity);
 		Thread.sleep(10000);
@@ -4386,7 +4356,7 @@ public class FormTemplate {
 		FieldEntity("SENDER", Entity, target, true);
 
 		Thread.sleep(10000);
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement EntityVariable = driver.findElement(By.xpath("//span[text()=\"Entity Variable\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -4526,7 +4496,7 @@ public class FormTemplate {
 	public void Formula() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
-		WebElement targetElement1 = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement1 = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Number = driver.findElement(By.xpath("//span[text()=\"Number\"]"));
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
 		Actions builder1 = new Actions(driver);
@@ -4536,7 +4506,7 @@ public class FormTemplate {
 		FieldNumber("SENDER", Number, targetElement1, true, "NUMBER");
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Formula = driver.findElement(By.xpath("//span[text()=\"Formula\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Formula);
 		Thread.sleep(10000);
@@ -4563,7 +4533,7 @@ public class FormTemplate {
 	public void AggregateFunction() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement AggregateFunction = driver.findElement(By.xpath("//span[text()=\"Aggregate Function\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", AggregateFunction);
 		Thread.sleep(10000);
@@ -4587,7 +4557,7 @@ public class FormTemplate {
 	public void DataTable() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement DataTable = driver.findElement(By.xpath("//span[text()=\"Data Table\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", DataTable);
 		Thread.sleep(10000);
@@ -4671,7 +4641,7 @@ public class FormTemplate {
 	public void ChildEntityTable() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement ChildEntityTable = driver.findElement(By.xpath("//span[text()=\"Child Entity Table\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ChildEntityTable);
 		Thread.sleep(10000);
@@ -4763,7 +4733,7 @@ public class FormTemplate {
 	public void PayButtons() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Currency = driver.findElement(By.xpath("//span[text()=\"Currency\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Currency);
 		Thread.sleep(10000);
@@ -4776,7 +4746,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//span[text()=\"INR\"]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
 		Thread.sleep(10000);
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement PayButtons = driver.findElement(By.xpath("//span[text()=\"Pay Buttons\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", PayButtons);
 		Thread.sleep(10000);
@@ -4821,7 +4791,7 @@ public class FormTemplate {
 	public void PaymentVariable() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement dropLocation = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement PaymentVariable = driver.findElement(By.xpath("//span[text()=\"Payment Variable\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", PaymentVariable);
 		Thread.sleep(10000);
@@ -4950,7 +4920,7 @@ public class FormTemplate {
 	public void StarRating() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement StarRating = driver.findElement(By.xpath("//span[text()=\"Star Rating\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -5056,7 +5026,7 @@ public class FormTemplate {
 	public void Concatenate() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Concatenate = driver.findElement(By.xpath("//span[text()=\"Concatenate\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Concatenate);
 		Thread.sleep(10000);
@@ -5158,7 +5128,7 @@ public class FormTemplate {
 	public void Audio() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement Audio = driver.findElement(By.xpath("//span[text()=\"Audio\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -5263,7 +5233,7 @@ public class FormTemplate {
 	public void QRCode() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement QRCode = driver.findElement(By.xpath("//span[text()=\"QR Code\"]"));
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -5357,7 +5327,7 @@ public class FormTemplate {
 	public void QRReader() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("//div[text()='Advanced Fields']"));
-		WebElement targetElement = driver.findElement(By.xpath("//div[@class='base-parent']"));
+		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 		WebElement QRReader = driver.findElement(By.xpath("//span[text()=\"QR Reader\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", QRReader);
 		Thread.sleep(10000);

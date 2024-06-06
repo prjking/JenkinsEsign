@@ -1,6 +1,7 @@
 package TestCase;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.UUID;
 
 import org.testng.annotations.AfterMethod;
@@ -25,7 +26,11 @@ import Pages.Uploaddocuments;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import TestBase.testCaseBase;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class TestCases_Prudhvi1 extends testCaseBase {
@@ -294,7 +299,6 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	@Test(priority = 10)
 	public void uploadjpg() throws Exception {
 		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
-		MethodActions.setFilePermissions(jpgfile, "rwxrwxrwx");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -308,8 +312,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	public void uploadTXT() throws Exception {
 		// String txtfile = System.getProperty("user.dir")
 		// +"\\src\\test\\resources\\meghana\\Documents scenarios.txt";
+		// File.separator + "test" + File.separator + "resources" + File.separator +
+		// "meghana" + File.separator + "Test cases.docx";
 		String txtfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
-		MethodActions.setFilePermissions(txtfile, "rwxrwxrwx");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();
@@ -339,8 +344,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //	// navigate users page
 	@Test(priority = 13)
 	public void uploadDocandDoc() throws Exception {
-		String word2file = System.getProperty("user.dir") + "/src/test/resources/meghana/Features.docx";
-		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/sTest cases.docx";
+		String word2file = System.getProperty("user.dir") + "/src/test/resources/meghana/Feautures.docx";
+		String Wordfile =System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.DocScenario();

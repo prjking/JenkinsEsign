@@ -490,12 +490,15 @@ public class DocumentsScenarios1 {
 
 	public void uploadFileWithSendKeys(String imagePath) throws InterruptedException {
 		Thread.sleep(10000);
-		By element = By.xpath("//h4[@class='fw-normal blue pb-2']");
-		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
-		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(element));
-		canc.click();
-		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-		fileInput.sendKeys(imagePath);
+		File uploadFile = new File(imagePath);
+		 
+	    WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
+	    fileInput.sendKeys(uploadFile.getAbsolutePath());
+	    
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].value = '';", fileInput);
+	    
+	  
 		
 	}
 	public void uploadFileTwoWithSendKeys(String imagePath) throws InterruptedException {
