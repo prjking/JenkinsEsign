@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.FormTemplate_Testcases_Node1">
+      <class name="TestCase.TestCases_Prudhvi1">
         <methods>
           <include name="Start"/>
-          <include name="Close"/>
-          <include name="BasicFieldsSingleline"/>
+          <include name="BlankDocWithEnforcement"/>
         </methods>
-      </class> <!-- TestCase.FormTemplate_Testcases_Node1 -->
+      </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

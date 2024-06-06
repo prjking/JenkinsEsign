@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="13" total="14" passed="0" failed="1" skipped="0">
+<testng-results ignored="46" total="47" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-06T16:12:24 IST" name="Default suite" finished-at="2024-06-06T16:23:50 IST" duration-ms="685603">
+  <suite started-at="2024-06-06T16:31:17 IST" name="Default suite" finished-at="2024-06-06T16:37:32 IST" duration-ms="375288">
     <groups>
     </groups>
-    <test started-at="2024-06-06T16:12:24 IST" name="Default test" finished-at="2024-06-06T16:23:50 IST" duration-ms="685603">
-      <class name="TestCase.FormTemplate_Testcases_Node1">
-        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.FormTemplate_Testcases_Node1@145f66e3]" started-at="2024-06-06T16:12:25 IST" name="Start" finished-at="2024-06-06T16:12:33 IST" duration-ms="8821" status="PASS">
+    <test started-at="2024-06-06T16:31:17 IST" name="Default test" finished-at="2024-06-06T16:37:32 IST" duration-ms="375288">
+      <class name="TestCase.TestCases_Prudhvi1">
+        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.TestCases_Prudhvi1@4218d6a3]" started-at="2024-06-06T16:31:17 IST" name="Start" finished-at="2024-06-06T16:31:25 IST" duration-ms="8064" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
-        <test-method signature="BasicFieldsSingleline()[pri:1, instance:TestCase.FormTemplate_Testcases_Node1@145f66e3]" started-at="2024-06-06T16:12:33 IST" name="BasicFieldsSingleline" finished-at="2024-06-06T16:23:49 IST" duration-ms="675340" status="FAIL">
-          <exception class="org.openqa.selenium.interactions.MoveTargetOutOfBoundsException">
+        <test-method signature="BlankDocWithEnforcement()[pri:1, instance:TestCase.TestCases_Prudhvi1@4218d6a3]" started-at="2024-06-06T16:31:25 IST" name="BlankDocWithEnforcement" finished-at="2024-06-06T16:37:32 IST" duration-ms="366939" status="FAIL">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[move target out of bounds
+              <![CDATA[disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
   (Session info: chrome=125.0.6422.113)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f76a42eb0a48b357a266a672bd98e3ba, actions {actions=[org.openqa.selenium.interactions.Sequence@53a7a60c]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51478}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51478/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f76a42eb0a48b357a266a672bd98e3ba]]>
+Command: [5310f80149031a8c9ae77d4cb568aca1, findElement {value=//span[contains(text(), 'c61478f04e1840089cc8aa08aa3474b7')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51782}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51782/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5310f80149031a8c9ae77d4cb568aca1]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: move target out of bounds
+              <![CDATA[org.openqa.selenium.WebDriverException: disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
   (Session info: chrome=125.0.6422.113)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f76a42eb0a48b357a266a672bd98e3ba, actions {actions=[org.openqa.selenium.interactions.Sequence@53a7a60c]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51478}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51478/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f76a42eb0a48b357a266a672bd98e3ba
+Command: [5310f80149031a8c9ae77d4cb568aca1, findElement {value=//span[contains(text(), 'c61478f04e1840089cc8aa08aa3474b7')], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51782}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51782/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5310f80149031a8c9ae77d4cb568aca1
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -42,12 +44,18 @@ at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.ja
 at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:604)
-at org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:603)
-at org.openqa.selenium.interactions.Actions.perform(Actions.java:568)
-at Pages.FormTemplate.FieldSingleLine(FormTemplate.java:146)
-at Pages.FormTemplate.SingleLine(FormTemplate.java:104)
-at TestCase.FormTemplate_Testcases_Node1.BasicFieldsSingleline(FormTemplate_Testcases_Node1.java:78)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at Pages.RecevierSide1.waitEle(RecevierSide1.java:30)
+at Pages.RecevierSide1.clickEmail(RecevierSide1.java:257)
+at TestCase.TestCases_Prudhvi1.BlankDocWithEnforcement(TestCases_Prudhvi1.java:95)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -76,15 +84,11 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.interactions.MoveTargetOutOfBoundsException -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- BasicFieldsSingleline -->
-        <test-method is-config="true" signature="Close()[pri:0, instance:TestCase.FormTemplate_Testcases_Node1@145f66e3]" started-at="2024-06-06T16:23:49 IST" name="Close" finished-at="2024-06-06T16:23:50 IST" duration-ms="1154" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Close -->
-      </class> <!-- TestCase.FormTemplate_Testcases_Node1 -->
+        </test-method> <!-- BlankDocWithEnforcement -->
+      </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

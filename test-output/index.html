@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-2115729458\testng-customsuite.xml</span>
+                    <span>C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse--1853302969\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="TestCase.FormTemplate_Testcases_Node1" class="method navigator-link" hash-for-method="BasicFieldsSingleline">BasicFieldsSingleline</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="TestCase.TestCases_Prudhvi1" class="method navigator-link" hash-for-method="BlankDocWithEnforcement">BlankDocWithEnforcement</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -122,22 +122,23 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">TestCase.FormTemplate_Testcases_Node1</span>
+              <span class="class-name">TestCase.TestCases_Prudhvi1</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="BasicFieldsSingleline">
-                  </a> <!-- BasicFieldsSingleline -->
-                  <span class="method-name">BasicFieldsSingleline</span>
-                  <div class="stack-trace">org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: move target out of bounds
+                  <a name="BlankDocWithEnforcement">
+                  </a> <!-- BlankDocWithEnforcement -->
+                  <span class="method-name">BlankDocWithEnforcement</span>
+                  <div class="stack-trace">org.openqa.selenium.WebDriverException: disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
   (Session info: chrome=125.0.6422.113)
 Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f76a42eb0a48b357a266a672bd98e3ba, actions {actions=[org.openqa.selenium.interactions.Sequence@53a7a60c]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51478}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51478/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f76a42eb0a48b357a266a672bd98e3ba
+Command: [5310f80149031a8c9ae77d4cb568aca1, findElement {value=//span[contains(text(), &apos;c61478f04e1840089cc8aa08aa3474b7&apos;)], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51782}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51782/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5310f80149031a8c9ae77d4cb568aca1
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -148,12 +149,18 @@ Session ID: f76a42eb0a48b357a266a672bd98e3ba
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:604)
-	at org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:603)
-	at org.openqa.selenium.interactions.Actions.perform(Actions.java:568)
-	at Pages.FormTemplate.FieldSingleLine(FormTemplate.java:146)
-	at Pages.FormTemplate.SingleLine(FormTemplate.java:104)
-	at TestCase.FormTemplate_Testcases_Node1.BasicFieldsSingleline(FormTemplate_Testcases_Node1.java:78)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	at Pages.RecevierSide1.waitEle(RecevierSide1.java:30)
+	at Pages.RecevierSide1.clickEmail(RecevierSide1.java:257)
+	at TestCase.TestCases_Prudhvi1.BlankDocWithEnforcement(TestCases_Prudhvi1.java:95)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -189,7 +196,7 @@ Session ID: f76a42eb0a48b357a266a672bd98e3ba
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-2115729458\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse--1853302969\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -198,11 +205,11 @@ Session ID: f76a42eb0a48b357a266a672bd98e3ba
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;TestCase.FormTemplate_Testcases_Node1&quot;&gt;
+      &lt;class name=&quot;TestCase.TestCases_Prudhvi1&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;BasicFieldsSingleline&quot;/&gt;
+          &lt;include name=&quot;BlankDocWithEnforcement&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- TestCase.FormTemplate_Testcases_Node1 --&gt;
+      &lt;/class&gt; &lt;!-- TestCase.TestCases_Prudhvi1 --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -244,14 +251,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'BasicFieldsSingleline')
-data.setCell(0, 2, 'TestCase.FormTemplate_Testcases_Node1')
-data.setCell(0, 3, 675340);
+data.setCell(0, 1, 'BlankDocWithEnforcement')
+data.setCell(0, 2, 'TestCase.TestCases_Prudhvi1')
+data.setCell(0, 3, 366939);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 11 minutes</span>
+              <span class="suite-total-time">Total running time: 6 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -266,37 +273,103 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">13 ignored methods</span>
+            <span class="header-content">46 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">TestCase.FormTemplate_Testcases_Node1</span>
+              <span class="ignored-class-name">TestCase.TestCases_Prudhvi1</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">BasicFieldsTimerange</span>
+                <span class="ignored-method-name">validRearrangeorderApproverCCSigner</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsWeekDays</span>
+                <span class="ignored-method-name">ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsMultipleSelect</span>
+                <span class="ignored-method-name">validBlankDocMulsignerApproverCC</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsDateRange</span>
+                <span class="ignored-method-name">validBlankDocApproverSenderSignerOtherSigner</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsTime</span>
+                <span class="ignored-method-name">ValidRearrangingOrderCCndSigner</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsDateTimeRange</span>
+                <span class="ignored-method-name">uploadpdfFile</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsMultiline</span>
+                <span class="ignored-method-name">validBlankDocRearrangeorderCCSignerApprover</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsList</span>
+                <span class="ignored-method-name">validBlankDocRearrangeorderApproverSignerAndCC</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsSelect</span>
+                <span class="ignored-method-name">uploadDocandDoc</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsDate</span>
+                <span class="ignored-method-name">uploadVedio</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsDateTime</span>
+                <span class="ignored-method-name">ValidBlankDocMultipleSigners</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsFixedTime</span>
+                <span class="ignored-method-name">uploadPDFandDOC</span>
                 <br/>
-                <span class="ignored-method-name">BasicFieldsNumber</span>
+                <span class="ignored-method-name">uploadPDFandDoc</span>
+                <br/>
+                <span class="ignored-method-name">uploadPDFandPDF</span>
+                <br/>
+                <span class="ignored-method-name">BlankDocWithEnforcementWithoutAutofill</span>
+                <br/>
+                <span class="ignored-method-name">ReuploadingCompletedEsignsIDGeneratedDOC</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocOtherSignerApproverSenderSigner</span>
+                <br/>
+                <span class="ignored-method-name">uploadPDFandTXT</span>
+                <br/>
+                <span class="ignored-method-name">BlankDocWithtEnforcement</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocSignerMulApproverAndMulCC</span>
+                <br/>
+                <span class="ignored-method-name">uploadjpg</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocSenderSignerApproverOtherSigner</span>
+                <br/>
+                <span class="ignored-method-name">BlankDocWithoEnforcementWithAutofill</span>
+                <br/>
+                <span class="ignored-method-name">BlankDocWithEnforcementWithAutofill</span>
+                <br/>
+                <span class="ignored-method-name">BlankDocWithoutEnforcementWithoutAutofill</span>
+                <br/>
+                <span class="ignored-method-name">BasicfeildsCompanyProfile</span>
+                <br/>
+                <span class="ignored-method-name">ValidBlankDocSignerApproverAndCCWithoutEnforceSignature</span>
+                <br/>
+                <span class="ignored-method-name">uploadDOCandJPG</span>
+                <br/>
+                <span class="ignored-method-name">ValidOneDriveDocMultipleSigners</span>
+                <br/>
+                <span class="ignored-method-name">ValidBlankDocSignerApproverAndMultipleCC</span>
+                <br/>
+                <span class="ignored-method-name">uploadPDFandJPG</span>
+                <br/>
+                <span class="ignored-method-name">uploadDOCandPNG</span>
+                <br/>
+                <span class="ignored-method-name">ValidBlankdocSignerndApprover</span>
+                <br/>
+                <span class="ignored-method-name">ValidRearrangingOrderFirstApproverthenSigner</span>
+                <br/>
+                <span class="ignored-method-name">ValidSignerndApproverOnedrive</span>
+                <br/>
+                <span class="ignored-method-name">uploadDoc</span>
+                <br/>
+                <span class="ignored-method-name">ValidDocscenarioOnedrive</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocOtherSignerSenderSignerApprover</span>
+                <br/>
+                <span class="ignored-method-name">uploadPNG</span>
+                <br/>
+                <span class="ignored-method-name">uploadDOCandTXT</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocRearrangeorderSignerCCApprover</span>
+                <br/>
+                <span class="ignored-method-name">uploadTXT</span>
+                <br/>
+                <span class="ignored-method-name">validBlankDocRearrangeorderCCApproversigner</span>
+                <br/>
+                <span class="ignored-method-name">ValidBlankDocSignerMulApproverAndCC</span>
+                <br/>
+                <span class="ignored-method-name">contentFeildsCompanyProfile</span>
+                <br/>
+                <span class="ignored-method-name">ValidRearrangingOrderFirstOtherSignersandThenSender</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -308,7 +381,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">TestCase.FormTemplate_Testcases_Node1</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">TestCase.TestCases_Prudhvi1</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">Start</span>
                 <span class="method-start">0 ms</span>
@@ -316,13 +389,9 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">BasicFieldsSingleline</span>
-                <span class="method-start">8823 ms</span>
+                <span class="method-name">BlankDocWithEnforcement</span>
+                <span class="method-start">8078 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">Close</span>
-                <span class="method-start">684174 ms</span>
-              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
