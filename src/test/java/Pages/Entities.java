@@ -1942,7 +1942,7 @@ public class Entities {
 	public void Screenshot() throws Exception {
 
 		Thread.sleep(10000);
-		MethodActions.takeScreenshot(driver);
+		//MethodActions.takeScreenshot(driver2);
 
 	}
 }

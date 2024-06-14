@@ -74,8 +74,7 @@ public class DocumentsScenarios {
 			// System.out.println("Element not clickable or not found: ");
 		}
 		Thread.sleep(10000);
-		waitEle(By
-				.xpath("//button[@class='el-button scaling-button el-button--primary is-plain create-btn px-4 ml-2']"));
+		waitEle(By.xpath("//span[@class='create-doc']"));
 
 	}
 
@@ -90,7 +89,8 @@ public class DocumentsScenarios {
 
 		}
 
-		waitEle(By.xpath("//img[@src='/img/Blank.e1a6da04.svg']"));
+		waitEle(By.xpath("(//img[@class='el-tooltip upload-icon'])[1]"));
+
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);

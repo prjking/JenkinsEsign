@@ -69,7 +69,7 @@ public class Entitytest_Case extends testCaseBase {
 		entityCases.clickOnLayout();
 		entityCases.layoutChart();
 		entityCases.SelectChart();
-		MethodActions.takeScreenshot(driver);
+		//MethodActions.takeScreenshot(driver);
 
 	}
 
@@ -82,7 +82,7 @@ public class Entitytest_Case extends testCaseBase {
 		entityCases.EyeIcon();
 		entityCases.LayoutOptions();
 		entityCases.Validdata();
-		MethodActions.takeScreenshot(driver);
+		//MethodActions.takeScreenshot(driver);
 	}
 
 //	@Test

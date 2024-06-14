@@ -125,6 +125,12 @@ public class DocumentsScenarios1 {
 		sen.sendKeys(s);
 	}
 
+	public void blankurl() throws Exception {
+		Thread.sleep(10000);
+		driver.get("https://nsui.esigns.io/documents/upload");
+
+	}
+
 	public void DocScenario() throws Exception {
 //		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -154,8 +160,8 @@ public class DocumentsScenarios1 {
 
 			System.out.println("Element not clickable or not found: ");
 		}
-		waitEle(By
-				.xpath("//button[@class='el-button scaling-button el-button--primary is-plain create-btn px-4 ml-2']"));
+		Thread.sleep(1000);
+		waitEle(By.xpath("//span[@class='create-doc']"));
 		System.out.println("Click on create Document Done Successfully");
 
 	}
@@ -192,7 +198,9 @@ public class DocumentsScenarios1 {
 		String xpath = String.format("//div[@id='user_%d']//input[@placeholder='Select contact type']", id);
 		waitEle(By.xpath(xpath));
 		String con = String.format("//div[@x-placement]//ul//li[normalize-space()='%s']", contactType);
-		waitEle(By.xpath(con));
+		WebElement ele = driver.findElement(By.xpath(con));
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", ele);
 		System.out.println("Selected contact type Successfully");
 		String xpath2 = String.format("//div[@id='user_%d']//input[@placeholder='Search with Email']", id);
 		waitEle(By.xpath(xpath2));
@@ -384,7 +392,51 @@ public class DocumentsScenarios1 {
 			}
 		}
 	}
-
+	public void autofilloff() throws Exception {
+		Thread.sleep(5000);
+		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
+		Thread.sleep(5000);
+		waitEle(By.xpath("//li[text()=\" Settings \"]"));
+		Thread.sleep(5000);
+		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
+		WebElement element = driver
+				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		try {
+			waitEle(By.xpath(
+					"//label[@class=\"el-checkbox is-checked\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
+			System.out.println("autofill is off");
+ 
+		} catch (Exception e) {
+			System.out.println("Autofill is already off");
+		}
+ 
+		Thread.sleep(5000);
+		waitEle(By.xpath("//span[text()=\"Save Changes\"]"));
+ 
+	}
+ 
+	public void autofillon() throws Exception {
+		Thread.sleep(10000);
+		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
+		Thread.sleep(5000);
+		waitEle(By.xpath("//li[text()=\" Settings \"]"));
+		Thread.sleep(5000);
+		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
+		Thread.sleep(5000);
+		WebElement element = driver
+				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		try {
+			waitEle(By.xpath(
+					"//label[@class=\"el-checkbox\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
+			System.out.println("autofill is on");
+ 
+		} catch (Exception e) {
+			System.out.println("Autofill is already on");
+		}
+		waitEle(By.xpath("//span[text()=\"Save Changes\"]"));
+	}
 	public void DradAndDropSigAndFullName(int n, int x1, int y1, int x2, int y2) throws Exception {
 
 		Thread.sleep(10000);
@@ -491,16 +543,15 @@ public class DocumentsScenarios1 {
 	public void uploadFileWithSendKeys(String imagePath) throws InterruptedException {
 		Thread.sleep(10000);
 		File uploadFile = new File(imagePath);
-		 
-	    WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
-	    fileInput.sendKeys(uploadFile.getAbsolutePath());
-	    
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
-	    js.executeScript("arguments[0].value = '';", fileInput);
-	    
-	  
-		
+
+		WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
+		fileInput.sendKeys(uploadFile.getAbsolutePath());
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].value = '';", fileInput);
+
 	}
+
 	public void uploadFileTwoWithSendKeys(String imagePath) throws InterruptedException {
 		By element = By.xpath("//h4[@class='fw-normal blue pb-2']");
 		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -509,6 +560,7 @@ public class DocumentsScenarios1 {
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
 		fileInput.sendKeys(imagePath);
 	}
+
 	public void VerifyFileUploadSucess() {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -631,10 +683,10 @@ public class DocumentsScenarios1 {
 				} else {
 					break;
 				}
- 
+
 			}
 		}
- 
+
 	}
 
 	public void Viewdocument() throws Exception {
@@ -673,50 +725,39 @@ public class DocumentsScenarios1 {
 
 	}
 
-	public void autofilloff() throws Exception {
-		Thread.sleep(5000);
-		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//li[text()=\" Settings \"]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
-		WebElement element = driver
-				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		try {
-			waitEle(By.xpath(
-					"//label[@class=\"el-checkbox is-checked\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
-			System.out.println("autofill is off");
-
-		} catch (Exception e) {
-			System.out.println("Autofill is already off");
-		}
-
-		Thread.sleep(5000);
-		waitEle(By.xpath("//span[text()=\"Save Changes\"]"));
-
-	}
-
-	public void autofillon() throws Exception {
+	public void autoFill(String dataValofChkBx) throws Exception {
 		Thread.sleep(10000);
-		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//li[text()=\" Settings \"]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
-		Thread.sleep(5000);
-		WebElement element = driver
-				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		try {
-			waitEle(By.xpath(
-					"//label[@class=\"el-checkbox\"]//span[text()=\" Auto-complete sender if all fields filled\"]"));
-			System.out.println("autofill is on");
+		driver.get("https://nsui.esigns.io/profilesettings/application-settings");
+		Thread.sleep(10000);
 
-		} catch (Exception e) {
-			System.out.println("Autofill is already on");
+		WebElement element = driver
+				.findElement(By.xpath("//span[text()=' Auto-complete sender if all fields filled']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+		boolean isChecked = driver.findElement(By.xpath("(//span[@class='el-checkbox__inner'])[2]")).isSelected();
+
+		if (dataValofChkBx != null && dataValofChkBx.equalsIgnoreCase("Y")) {
+			if (!isChecked) {
+
+				driver.findElement(By.xpath("(//span[@class='el-checkbox__inner'])[2]")).click();
+				System.out.println("Checkbox checked.");
+			} else {
+				System.out.println("Checkbox already checked.");
+			}
+		} else if (dataValofChkBx != null && dataValofChkBx.equalsIgnoreCase("N")) {
+			if (isChecked) {
+				// Checkbox is already checked, click it to uncheck
+				driver.findElement(By.xpath("(//span[@class='el-checkbox__inner'])[2]")).click();
+				System.out.println("Checkbox unchecked.");
+			} else {
+				System.out.println("Checkbox already unchecked.");
+			}
+		} else {
+			throw new IllegalArgumentException("Invalid dataValofChkBx value: " + dataValofChkBx);
 		}
-		waitEle(By.xpath("//span[text()=\"Save Changes\"]"));
+
+		waitEle(By.xpath("//span[text()='Save Changes']"));
+
 	}
 
 	public void Updateafterdocumentcompletionfromsettings() throws Exception {
@@ -749,7 +790,5 @@ public class DocumentsScenarios1 {
 
 		waitEle(By.xpath("//button[@class='el-button type-2 el-button--default']"));
 	}
-
-	
 
 }

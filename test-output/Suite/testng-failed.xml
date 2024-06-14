@@ -1,64 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite thread-count="3" parallel="classes" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="3" parallel="classes" name="Test(failed)">
     <classes>
-      <class name="TestCase.TestCases_Prudhvi1">
+      <class name="TestCase.FormTemplate_Testcases_Node1">
         <methods>
-          <include name="ValidRearrangingOrderCCndSigner"/>
-          <include name="uploadpdfFile"/>
-          <include name="validBlankDocRearrangeorderApproverSignerAndCC"/>
-          <include name="uploadVedio"/>
-          <include name="uploadPDFandPDF"/>
-          <include name="ReuploadingCompletedEsignsIDGeneratedDOC"/>
-          <include name="uploadPDFandTXT"/>
-          <include name="BlankDocWithEnforcementWithAutofill"/>
-          <include name="BlankDocWithoutEnforcementWithoutAutofill"/>
-          <include name="ValidDocscenariosGdrive"/>
-          <include name="ValidBlankDocSignerApproverAndMultipleCC"/>
-          <include name="uploadPDFandJPG"/>
-          <include name="ValidBlankdocSignerndApprover"/>
-          <include name="ValidRearrangingOrderFirstApproverthenSigner"/>
-          <include name="ValidSignerndApproverOnedrive"/>
-          <include name="uploadDoc"/>
-          <include name="validBlankDocOtherSignerSenderSignerApprover"/>
-          <include name="uploadPNG"/>
-          <include name="uploadDOCandTXT"/>
-          <include name="validBlankDocRearrangeorderCCApproversigner"/>
-          <include name="contentFeildsCompanyProfile"/>
-          <include name="quit"/>
-          <include name="ValidRearrangingOrderFirstOtherSignersandThenSender"/>
-          <include name="changeDocument"/>
-          <include name="attachmentDownloads"/>
-          <include name="validRearrangeorderApproverCCSigner"/>
-          <include name="ValidRearrangingOrderFirstOtherSignersndThenSenderOnedrive"/>
-          <include name="validBlankDocApproverSenderSignerOtherSigner"/>
-          <include name="validBlankDocMulsignerApproverCC"/>
-          <include name="validBlankDocRearrangeorderCCSignerApprover"/>
+          <include name="BasicFieldsTimerange"/>
+          <include name="BasicFieldsWeekDays"/>
+          <include name="Close"/>
+          <include name="BasicFieldsMultipleSelect"/>
+          <include name="BasicFieldsTime"/>
+          <include name="BasicFieldsMultiline"/>
+          <include name="BasicFieldsList"/>
           <include name="Start"/>
-          <include name="uploadDocandDoc"/>
-          <include name="BlankDocWithEnforcement"/>
-          <include name="ValidBlankDocMultipleSigners"/>
-          <include name="uploadPDFandDOC"/>
-          <include name="uploadPDFandDoc"/>
-          <include name="BlankDocWithEnforcementWithoutAutofill"/>
-          <include name="validBlankDocOtherSignerApproverSenderSigner"/>
-          <include name="BlankDocWithtEnforcement"/>
-          <include name="uploadjpg"/>
-          <include name="validBlankDocSignerMulApproverAndMulCC"/>
-          <include name="BlankDocWithoEnforcementWithAutofill"/>
-          <include name="validBlankDocSenderSignerApproverOtherSigner"/>
-          <include name="BasicfeildsCompanyProfile"/>
-          <include name="ValidBlankDocSignerApproverAndCCWithoutEnforceSignature"/>
-          <include name="uploadDOCandJPG"/>
-          <include name="ValidOneDriveDocMultipleSigners"/>
-          <include name="uploadDOCandPNG"/>
-          <include name="ValidDocscenarioOnedrive"/>
-          <include name="validBlankDocRearrangeorderSignerCCApprover"/>
-          <include name="ValidBlankDocSignerMulApproverAndCC"/>
-          <include name="uploadTXT"/>
+          <include name="BasicFieldsSelect"/>
+          <include name="BasicFieldsSingleline"/>
+          <include name="BasicFieldsDate"/>
+          <include name="BasicFieldsDateTime"/>
+          <include name="BasicFieldsFixedTime"/>
+          <include name="BasicFieldsNumber"/>
         </methods>
-      </class> <!-- TestCase.TestCases_Prudhvi1 -->
+      </class> <!-- TestCase.FormTemplate_Testcases_Node1 -->
+      <class name="TestCase.FormTemplate_Testcases">
+        <methods>
+          <include name="AdvancedChildEntityTable"/>
+          <include name="ContentDivision"/>
+          <include name="AdvancedConcatenate"/>
+          <include name="Start"/>
+          <include name="AdvancedQRCode"/>
+          <include name="AdvancedQRReader"/>
+          <include name="ContentHorizontalLine"/>
+          <include name="AdvancedPayButtons"/>
+          <include name="AdvancedAutoIncrementNumber"/>
+          <include name="AdvancedFormula"/>
+          <include name="AdvancedCurrency"/>
+          <include name="AdvancedEntity"/>
+          <include name="AdvancedLocation"/>
+          <include name="AdvancedAudio"/>
+          <include name="AdvancedAggregateFunction"/>
+          <include name="AdvancedQuestion"/>
+          <include name="AdvancedPaymentVariable"/>
+          <include name="AdvancedStarRating"/>
+          <include name="Close"/>
+        </methods>
+      </class> <!-- TestCase.FormTemplate_Testcases -->
+      <class name="TestCase.FormTemplate_Testcases_Node2">
+        <methods>
+          <include name="BasicFieldsSignature"/>
+          <include name="ContentHeading"/>
+          <include name="ContentHTML"/>
+          <include name="ContentSingleLineContent"/>
+          <include name="BasicFieldsRadioGroup"/>
+          <include name="ContentVideo"/>
+          <include name="BasicFieldsPhone"/>
+          <include name="Close"/>
+          <include name="BasicFieldsCaptcha"/>
+          <include name="BasicFieldsCheckBoxGroup"/>
+          <include name="ContentImage"/>
+          <include name="ContentParagraph"/>
+          <include name="Start"/>
+          <include name="BasicFieldsRadio"/>
+          <include name="ContentActionButton"/>
+          <include name="BasicFieldsCheckbox"/>
+          <include name="BasicFieldsYesORNo"/>
+          <include name="BasicFieldsDocument"/>
+        </methods>
+      </class> <!-- TestCase.FormTemplate_Testcases_Node2 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

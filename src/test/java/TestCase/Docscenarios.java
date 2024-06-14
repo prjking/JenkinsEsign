@@ -2,11 +2,16 @@ package TestCase;
 
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import io.restassured.response.Response;
 import Pages.Addrecipients;
 import Pages.Alldocuments;
 import Pages.Dashboard;
@@ -24,7 +29,6 @@ import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
-
 public class Docscenarios extends testCaseBase {
 	Login login;
 	Alldocuments alldocuments;
@@ -55,23 +59,77 @@ public class Docscenarios extends testCaseBase {
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
 		templateScenarios = new TemplateScenarios(driver);
-		formTemplate =new FormTemplate(driver);
-
+		formTemplate = new FormTemplate(driver);
 	}
 
+//	public static class LoginDataProvider {
+//		@DataProvider(name = "loginData")
+//		public static Object[][] provideLoginData() {
+//			return new Object[][] { { "saikumar.basolutions@gmail.com", "Nimble#2022", true },
+//					{ "invalidUser@abc.com", "invalidPass", false }, { "", "Nimble#2022", false },
+//					{ "saikumar.basolutions@gmail.com", "", false }, { "invalidUser@abc.com", "Nimble#2022", false },
+//
+//					{ "saikumar.basolutions@gmail.com", "invalidPass", false } };
+//		}
+//	}
+//
+//	@Test(dataProvider = "loginData", dataProviderClass = LoginDataProvider.class, priority = 1)
+//	public void ValiddocumentsScenarios(String username, String password, boolean expectedResult) throws Exception {
+//		boolean loginResult = login.Signindata(username, password);
+//		Assert.assertEquals(loginResult, expectedResult,
+//				"Login result does not match the expected result for credentials: " + username + "/" + password);
+//
+//		if (loginResult) {
+//			documentsScenarios.DocScenario();
+//			documentsScenarios.Blankdocloginaccount();
+//			documentsScenarios.Recipients();
+//			documentsScenarios.Saveuser();
+//			documentsScenarios.EssentialFields();
+//			documentsScenarios.Senddoc();
+//			documentsScenarios.Blankwithoutsenderautofill();
+//		} else {
+//			System.out
+//					.println("Login failed, skipping document scenarios for credentials: " + username + "/" + password);
+//		}
+//	}
 	@Test(priority = 1)
 	public void ValiddocumentsScenarios() throws Exception {
+//		String putEndpoint = "https://dev.esigns.io//api/resource/123";
+//		Map<String, String> putHeaders = new HashMap<>();
+//		putHeaders.put("Content-Type", "application/json");
+//		String putBody = "{\"key\": \"value\"}";
+//		Response putResponse = putAPIRequest(putEndpoint, putHeaders, putBody);
+//		int putStatusCode = putResponse.getStatusCode();
+//		System.out.println("PUT Request Status Code: " + putStatusCode);
+//
+//		String deleteEndpoint = "https://dev.esigns.io//api/resource/123";
+//		Map<String, String> deleteHeaders = new HashMap<>();
+//		deleteHeaders.put("Authorization", "Bearer token");
+//		Response deleteResponse = deleteAPIRequest(deleteEndpoint, deleteHeaders);
+//		int deleteStatusCode = deleteResponse.getStatusCode();
+//		System.out.println("DELETE Request Status Code: " + deleteStatusCode);
 		login.Signin();
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.Recipients();
 		documentsScenarios.Saveuser();
-		documentsScenarios.EssentialFields();
+		documentsScenarios.EssentialFields1();
 		documentsScenarios.Senddoc();
 		documentsScenarios.Blankwithoutsenderautofill();
-		Assert.assertEquals(true, true);
-
 	}
+
+//	@Test(priority = 1)
+//	public void ValiddocumentsScenarios() throws Exception {
+//		login.Signin();
+//		documentsScenarios.DocScenario();
+//		documentsScenarios.Blankdocloginaccount();
+//		documentsScenarios.Recipients();
+//		documentsScenarios.Saveuser();
+//		documentsScenarios.EssentialFields1();
+//		documentsScenarios.Senddoc();
+//		documentsScenarios.Blankwithoutsenderautofill();
+//
+//	}
 
 	@Test(priority = 2, enabled = false)
 	public void ValidBlankdocView() throws Exception {
@@ -88,7 +146,6 @@ public class Docscenarios extends testCaseBase {
 		documentsScenarios.EssentialFields1();
 		documentsScenarios.Senddoc();
 		documentsScenarios.Blankwithoutsenderautofill();
-		Assert.assertEquals(true, true);
 
 	}
 
@@ -103,7 +160,6 @@ public class Docscenarios extends testCaseBase {
 		documentsScenarios.EssentialFields1();
 		documentsScenarios.Senddoc();
 		documentsScenarios.Blankwithoutsenderautofill();
-		Assert.assertEquals(true, true);
 
 	}
 

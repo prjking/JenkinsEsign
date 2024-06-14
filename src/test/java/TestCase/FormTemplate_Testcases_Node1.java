@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -214,10 +213,10 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 
 	}
 
-	@AfterMethod
-	public void Close() throws Exception {
-		Thread.sleep(1000);
-		driver.close();
-	}
+//	@AfterMethod
+//	public void Close() throws Exception {
+//		Thread.sleep(1000);
+//		driver.close();
+//	}
 
 }

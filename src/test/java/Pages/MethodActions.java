@@ -9,7 +9,6 @@ import java.nio.file.attribute.PosixFilePermissions;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -121,7 +120,8 @@ public class MethodActions {
 			TakesScreenshot screenshot = (TakesScreenshot) driver;
 			File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
 			String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-			String filename = "C:\\Work Space\\Esign\\src\\test\\Screenshots\\screenshot_" + timestamp + ".png";
+			String userDir = System.getProperty("user.dir");
+			String filename = userDir + "/src/test/Screenshots/" + timestamp + ".png";
 			FileUtils.copyFile(screenshotFile, new File(filename));
 		} catch (IOException e) {
 			System.out.println("Failed to take screenshot: " + e.getMessage());
@@ -160,24 +160,22 @@ public class MethodActions {
 		dragAndDrop.perform();
 	}
 
- public static void setFilePermissions(String filePath, String permissions) {
-        try {
-        
-            Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
-            Files.setPosixFilePermissions(Paths.get(filePath), perms);
-            System.out.println("File permissions changed successfully for: " + filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Failed to change file permissions for: " + filePath);
-        } catch (UnsupportedOperationException e) {
-            e.printStackTrace();
-            System.err.println("POSIX file permissions not supported on this system.");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            System.err.println("Invalid permission string: " + permissions);
-        }
-    }
+	public static void setFilePermissions(String filePath, String permissions) {
+		try {
 
-   
+			Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
+			Files.setPosixFilePermissions(Paths.get(filePath), perms);
+			System.out.println("File permissions changed successfully for: " + filePath);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("Failed to change file permissions for: " + filePath);
+		} catch (UnsupportedOperationException e) {
+			e.printStackTrace();
+			System.err.println("POSIX file permissions not supported on this system.");
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			System.err.println("Invalid permission string: " + permissions);
+		}
+	}
 
 }

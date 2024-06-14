@@ -79,7 +79,7 @@ public class EntitiesScenariosTestRamya extends testCaseBase {
 		entities.BusinessEntity();
 		entities.Businessentityindex();
 		entities.CheckSharedfileinEntity();
-		MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 
 	}
 
@@ -93,7 +93,7 @@ public class EntitiesScenariosTestRamya extends testCaseBase {
 		entities.IndividualEntity();
 		entities.Businessentityindex();
 		entities.CheckSharedfileinEntity();
-		MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 
 	}
 
@@ -117,7 +117,7 @@ public class EntitiesScenariosTestRamya extends testCaseBase {
 		MethodActions.Loadingmask();
 		entities.Entity();
 		entities.ValidEntityField();
-		MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 
 	}
 

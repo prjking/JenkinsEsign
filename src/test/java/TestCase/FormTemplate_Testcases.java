@@ -6,10 +6,7 @@ import org.testng.annotations.Listeners;
 
 import java.net.URL;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -31,8 +28,6 @@ import Pages.TemplateScenarios;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class FormTemplate_Testcases extends testCaseBase {
 

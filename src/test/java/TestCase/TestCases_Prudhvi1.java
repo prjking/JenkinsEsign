@@ -48,25 +48,26 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	Entities entities;
 	Templatespage template;
 	FilePermission filePermission;
+	MethodActions methodActions;
 
 	@BeforeMethod
-	public void Start() {
+	public void start() {
 		setup();
-		login = new Login(driver);
-		alldocuments = new Alldocuments(driver);
-		uploaddocuments = new Uploaddocuments(driver);
-		addrecipients = new Addrecipients(driver);
-		dragdrop = new Dragdrop(driver);
-		reviewaNdSend = new ReviewaNdSend(driver);
-		recevierSide1 = new RecevierSide1(driver);
-		signup = new Signup(driver);
-		templatespage = new Templatespage(driver);
-		dashboard = new Dashboard(driver);
-		documentsScenarios1 = new DocumentsScenarios1(driver);
-		entities = new Entities(driver);
-		template = new Templatespage(driver);
-
-	}
+        login = new Login(driver);
+        alldocuments = new Alldocuments(driver);
+        uploaddocuments = new Uploaddocuments(driver);
+        addrecipients = new Addrecipients(driver);
+        dragdrop = new Dragdrop(driver);
+        reviewaNdSend = new ReviewaNdSend(driver);
+        recevierSide1 = new RecevierSide1(driver);
+        signup = new Signup(driver);
+        templatespage = new Templatespage(driver);
+        dashboard = new Dashboard(driver);
+        documentsScenarios1 = new DocumentsScenarios1(driver);
+        entities = new Entities(driver);
+        template = new Templatespage(driver);
+        methodActions =new MethodActions(driver);
+    }
 
 	// 3a,Blank Doc – Sender signer & Receiver signer (With enforcement)send
 	// document with uploading blank doc for Sender & Receiver (Complete through
@@ -77,6 +78,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		UUID uuid = UUID.randomUUID();
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
+		login.VerifyLoginSucess();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
@@ -139,7 +141,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Saveuser();
@@ -171,7 +173,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Signorder();
@@ -204,7 +206,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofillon();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Signorder();
@@ -232,8 +234,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.autofillon();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Signorder();
@@ -262,9 +264,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(file);
-		MethodActions.takeScreenshot(driver);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
 	}
@@ -277,7 +278,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
@@ -289,7 +290,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String PNGfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Screenshot.png";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(PNGfile);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
@@ -301,7 +302,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(jpgfile);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
@@ -317,7 +318,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String txtfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(txtfile);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.VerifyFileUploadSucess();
@@ -332,7 +333,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(pdffile);
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.nextButton();
@@ -348,7 +349,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String Wordfile =System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(word2file);
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.nextButton();
@@ -364,7 +365,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.uploadFileWithSendKeys(TXTfile);
 		documentsScenarios1.nextButton();
@@ -380,7 +381,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String pdffile2 = System.getProperty("user.dir") + "/src/test/resources/meghana/Evaluation form Ramya.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(pdffile);
 		documentsScenarios1.uploadFileWithSendKeys(pdffile2);
 		documentsScenarios1.nextButton();
@@ -396,7 +397,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String txtfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Documents scenarios.txt";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(pdffile);
 		documentsScenarios1.uploadFileWithSendKeys(txtfile);
 		documentsScenarios1.nextButton();
@@ -412,7 +413,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String PNGfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Screenshot.png";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.uploadFileWithSendKeys(PNGfile);
 		documentsScenarios1.nextButton();
@@ -430,7 +431,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(pdffile);
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.nextButton();
@@ -446,7 +447,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(Wordfile);
 		documentsScenarios1.uploadFileWithSendKeys(jpgfile);
 		documentsScenarios1.nextButton();
@@ -462,7 +463,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(pdffile);
 		documentsScenarios1.uploadFileWithSendKeys(jpgfile);
 		documentsScenarios1.nextButton();
@@ -512,7 +513,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		login.SigninNSUI();
 //		MethodActions.Loadingmask();
 //		documentsScenarios1.autofilloff();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 //		documentsScenarios1.DocscenariosGdrive();
 //		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 //		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -551,7 +552,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -592,7 +593,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -630,7 +631,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.DocscenarioOnedrive();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -670,7 +671,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -709,7 +710,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.DocscenarioOnedrive();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -750,7 +751,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -787,7 +788,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.DocscenarioOnedrive();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -827,7 +828,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -866,7 +867,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -907,7 +908,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -955,7 +956,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -999,7 +1000,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1048,7 +1049,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		login.VerifyLoginSucess();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1089,7 +1090,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1131,7 +1132,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1173,7 +1174,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1214,7 +1215,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
@@ -1256,7 +1257,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -1304,7 +1305,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -1349,7 +1350,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -1395,7 +1396,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -1442,7 +1443,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.autofilloff();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Recipient(2, "Receiver", "meghanan180894@outlook.com", "SIGNER");
@@ -1483,7 +1484,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String vediofile = System.getProperty("user.dir") + "/src/test/resources/meghana/Demo.mp4";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(vediofile);
 		documentsScenarios1.nextButton();
 	}
@@ -1497,7 +1498,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String file = System.getProperty("user.dir") + "/src/test/resources/meghana/Evaluation form Ramya.pdf";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.uploadFileWithSendKeys(file);
 		documentsScenarios1.nextButton();
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
@@ -1525,7 +1526,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		
 //		login.SigninNSUI();
 //		login.VerifyLoginSucess();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 //		documentsScenarios1.Fileuploads(file);
 //		documentsScenarios1.nextButton();
 //		documentsScenarios1.Recipient(1, "Receiver","jeevithapatnana200@outlook.com", "SIGNER");
@@ -1554,7 +1555,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		String TESTING = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
 //		login.SigninNSUI();
 //		MethodActions.Loadingmask();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 //		documentsScenarios1.uploadFileWithSendKeys(file);
 //		documentsScenarios1.nextButton();
 //		documentsScenarios1.Saveuser();
@@ -1580,7 +1581,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		entities.submit();
 //		entities.contentFeildsDragAndDrop();
 //		entities.companyProfile();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Saveuser();
@@ -1604,7 +1605,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		entities.submit();
 //		entities.basicFeilds();
 //		entities.companyProfile();
-		documentsScenarios1.DocScenario();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Saveuser();
@@ -1628,7 +1629,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 ////		entities.submit();
 ////		entities.advancedFeilds();
 ////		entities.companyProfile();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 //		documentsScenarios1.Blankloginaccount(doc);
 //		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 //		documentsScenarios1.Saveuser();
@@ -1647,7 +1648,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		login.SigninNSUI();
 //		login.VerifyLoginSucess();
 //		documentsScenarios1.Updateafterdocumentcompletionfromsettings();
-//		documentsScenarios1.DocScenario();
+//		documentsScenarios1.blankurl();
 //		documentsScenarios1.Blankloginaccount(doc);
 //		documentsScenarios1.Recipient(1, "individualEntity", "jeevithapatnana200@outlook.com", "SIGNER");
 //		documentsScenarios1.Saveuser();

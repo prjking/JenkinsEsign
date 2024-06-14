@@ -43,7 +43,7 @@ public class BugTestcase extends testCaseBase {
 	Bug bug;
 
 	@BeforeMethod
-	public void Start() {
+	public void start() {
 		setup();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
@@ -73,7 +73,7 @@ public class BugTestcase extends testCaseBase {
 		bug.entity4004();
 		bug.confirmButton();
 		bug.validSuccessBug4004();
-		MethodActions.takeScreenshot(driver);
+	//	MethodActions.takeScreenshot(driver2);
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class BugTestcase extends testCaseBase {
 		bug.Feild5423();
 		bug.Save();
 		bug.veiwAction5423();
-		MethodActions.takeScreenshot(driver);
+		//MethodActions.takeScreenshot(driver);
 	}
 
 	@Test

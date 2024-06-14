@@ -5,23 +5,15 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class testCaseBase {
 	protected WebDriver driver;
@@ -66,21 +58,28 @@ public class testCaseBase {
 //    }
 	public void setup() {
 
-		//driver = new FirefoxDriver();
+		// driver = new FirefoxDriver();
 //
-	ChromeOptions options = new ChromeOptions();
-//
+		ChromeOptions options = new ChromeOptions();
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("profile.managed_default_content_settings.images", 2);
+		prefs.put("profile.default_content_setting_values.popups", 2);
+		// options.setExperimentalOption("prefs", prefs);
+		// options.addArguments("--disk-cache-size=0");
+		// options.addArguments("--media-cache-size=0");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--disable-software-rasterizer");
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--no-sandbox");
+
 		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
 		options.addArguments(
 				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+//      options.addArguments("--incognito");
 		driver = new ChromeDriver(options);
 //		options.addArguments("start-maximized");
 //		driver.manage().window().maximize();
@@ -102,6 +101,22 @@ public class testCaseBase {
 		driver.get("https://nsui.esigns.io/signin");
 
 	}
+
+//	public Response putAPIRequest(String endpoint, Map<String, String> headers, String body) {
+//		return RestAssured.given().headers(headers).body(body).put(endpoint);
+//	}
+//
+//	public Response deleteAPIRequest(String endpoint, Map<String, String> headers) {
+//		return RestAssured.given().headers(headers).delete(endpoint);
+//	}
+//
+//	public Response getAPIResponse(String endpoint) {
+//		return RestAssured.get(endpoint);
+//	}
+//
+//	public Response postAPIRequest(String endpoint, Map<String, String> headers, String body) {
+//		return RestAssured.given().headers(headers).body(body).post(endpoint);
+//	}
 
 	public void waitEle(By by) throws Exception {
 		Thread.sleep(3000);
