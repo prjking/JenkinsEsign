@@ -331,6 +331,7 @@ public class Recieverside2 {
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		System.out.println("Email login Sucessfull");
 	}
 	public void Meghanaesignslogin() throws Exception {
 	

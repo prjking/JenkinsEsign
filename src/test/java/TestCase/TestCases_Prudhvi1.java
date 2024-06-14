@@ -1665,9 +1665,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 ////		recevierSide1.clickFinish();
 //	}
 
-//	@AfterMethod
-//	public void quit() {
-//		driver.quit();
-//	}
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+	}
 
 }

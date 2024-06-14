@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="83" total="84" passed="1" failed="0" skipped="0">
+<testng-results ignored="46" total="47" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-14T12:33:04 IST" name="Default suite" finished-at="2024-06-14T12:47:52 IST" duration-ms="887794">
+  <suite started-at="2024-06-14T16:11:00 IST" name="Default suite" finished-at="2024-06-14T16:12:12 IST" duration-ms="71904">
     <groups>
     </groups>
-    <test started-at="2024-06-14T12:33:04 IST" name="Default test" finished-at="2024-06-14T12:47:52 IST" duration-ms="887794">
-      <class name="TestCase.TestCases_Prudhvi2">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:TestCase.TestCases_Prudhvi2@7586beff]" started-at="2024-06-14T12:33:04 IST" name="initialize" finished-at="2024-06-14T12:33:11 IST" duration-ms="6839" status="PASS">
+    <test started-at="2024-06-14T16:11:00 IST" name="Default test" finished-at="2024-06-14T16:12:12 IST" duration-ms="71904">
+      <class name="TestCase.TestCases_Prudhvi1">
+        <test-method is-config="true" signature="start()[pri:0, instance:TestCase.TestCases_Prudhvi1@13c9d689]" started-at="2024-06-14T16:11:00 IST" name="start" finished-at="2024-06-14T16:11:11 IST" duration-ms="10402" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initialize -->
-        <test-method signature="VerifyAppSigSenderorderWOEWOA()[pri:30, instance:TestCase.TestCases_Prudhvi2@7586beff]" started-at="2024-06-14T12:33:11 IST" name="VerifyAppSigSenderorderWOEWOA" finished-at="2024-06-14T12:47:52 IST" duration-ms="880738" status="PASS">
+        </test-method> <!-- start -->
+        <test-method signature="uploadPNG()[pri:9, instance:TestCase.TestCases_Prudhvi1@13c9d689]" started-at="2024-06-14T16:11:11 IST" name="uploadPNG" finished-at="2024-06-14T16:12:11 IST" duration-ms="60669" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerifyAppSigSenderorderWOEWOA -->
-      </class> <!-- TestCase.TestCases_Prudhvi2 -->
+        </test-method> <!-- uploadPNG -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:TestCase.TestCases_Prudhvi1@13c9d689]" started-at="2024-06-14T16:12:11 IST" name="quit" finished-at="2024-06-14T16:12:12 IST" duration-ms="510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- TestCase.TestCases_Prudhvi1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

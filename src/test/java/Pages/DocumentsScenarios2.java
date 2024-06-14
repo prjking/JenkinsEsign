@@ -421,6 +421,7 @@ public class DocumentsScenarios2 {
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		Thread.sleep(3000);
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		System.out.println("Email login Sucessfull");
 //		System.out.printf("%s Login successfull", email);
 	}
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,13 +59,13 @@ public class testCaseBase {
 //    }
 	public void setup() {
 
-		// driver = new FirefoxDriver();
+		// WebDriver driver = new FirefoxDriver();
 //
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<>();
 		prefs.put("profile.managed_default_content_settings.images", 2);
 		prefs.put("profile.default_content_setting_values.popups", 2);
-		// options.setExperimentalOption("prefs", prefs);
+		options.setExperimentalOption("prefs", prefs);
 		// options.addArguments("--disk-cache-size=0");
 		// options.addArguments("--media-cache-size=0");
 		options.addArguments("--headless");
@@ -97,6 +98,8 @@ public class testCaseBase {
 		// driver.get("http://localhost:8008/signin");
 		// driver.get("https://preprod.esigns.io/signin");
 		// driver.get("https://dev.esigns.io/signin");
+
+		// Navigate to a web page
 
 		driver.get("https://nsui.esigns.io/signin");
 
