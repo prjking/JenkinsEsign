@@ -343,7 +343,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		documentsScenarios2.Blankwithoutsenderautofill();
 		recieverside2.prudhvioutlooklogin();
 		recieverside2.clickEmail(a);
-		recieverside2.reviewSigner();
+		recieverside2.reviewandSignApprover();
 		recieverside2.reviewandSign("Prudvi");
 		recieverside2.Approvedocument();
 		documentsScenarios2.Outlooklogin("ramyasibbala200@outlook.com", "Meghana@123");

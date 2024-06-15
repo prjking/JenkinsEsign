@@ -460,7 +460,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	@Test(priority = 20)
 	public void uploadPDFandJPG() throws Exception {
 		String pdffile = System.getProperty("user.dir") + "/src/test/resources/meghana/TESTING.pdf";
-		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb";
+		String jpgfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Sample-jpg-image-50kb.jpg";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.blankurl();
