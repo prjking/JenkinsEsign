@@ -234,7 +234,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
-		documentsScenarios1.autofillon();
+		documentsScenarios1.autofilloff();
 		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
@@ -481,6 +481,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.autofilloff();
 		documentsScenarios1.DocScenario();
 		documentsScenarios1.DocscenarioOnedrive();
+		MethodActions.takeScreenshot(driver);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "prudhvib200@outlook.com", " CC ");
 		documentsScenarios1.Signorder();
@@ -1095,8 +1096,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
 		documentsScenarios1.Recipient(3, "Receiver", "prudhvib200@outlook.com", "CC");
-		documentsScenarios1.Rearranges(2, 1);
-		documentsScenarios1.Rearranges(3, 2);
+		documentsScenarios1.Rearranges(3, 1);
 		documentsScenarios1.Signorder();
 		documentsScenarios1.Saveuser();
 		documentsScenarios1.SignatureAndFullNameFeilds();
@@ -1220,8 +1220,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		documentsScenarios1.Recipient(2, "Receiver", "ramyasibbala200@outlook.com", " APPROVER ");
 		documentsScenarios1.Recipient(3, "Receiver", "prudhvib200@outlook.com", "CC");
-		documentsScenarios1.Rearranges(3, 2);
-		documentsScenarios1.Rearranges(3, 2);
+		documentsScenarios1.Rearranges(3, 1);
+		documentsScenarios1.Rearranges(2, 3);
 		documentsScenarios1.Signorder();
 		documentsScenarios1.Saveuser();
 		documentsScenarios1.SignatureAndFullNameFeilds();
@@ -1581,7 +1581,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //		entities.submit();
 //		entities.contentFeildsDragAndDrop();
 //		entities.companyProfile();
-//		documentsScenarios1.blankurl();
+		documentsScenarios1.blankurl();
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Saveuser();
@@ -1595,10 +1595,12 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 //
 	@Test(priority = 50)
 	public void BasicfeildsCompanyProfile() throws Exception {
+		String feilds[] = { "RadioG...", "DateRa...", "Sign", "DateTi...", "YesorN...", "Weekda...", "Single...",
+				"Date", "Docume...", "FixedT...", "list", "Time", "Number", "Multis...", "Phonon...", "Select",
+				"Multil...", "Checkb..." };
 		UUID uuid = UUID.randomUUID();
 		String doc = uuid.toString().replaceAll("-", "");
 		login.SigninNSUI();
-		MethodActions.Loadingmask();
 //		entities.FormTemplate();
 //		entities.CreateFormtemplate(doc);
 //		entities.templateBasicFeilds();
@@ -1609,12 +1611,13 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.Blankloginaccount(doc);
 		documentsScenarios1.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", "SIGNER");
 		documentsScenarios1.Saveuser();
-		documentsScenarios1.DragAndDropBasicFeildsInDocument();
-		documentsScenarios1.DradAndDropSigAndFullName(2, 10, -120, 10, -90);
+		documentsScenarios1.DragAndDropFeildsInDocument("templateBasicFeilds", feilds);
+		documentsScenarios1.DradAndDropSigAndFullName(2, -250, -120, 0, -120);
 		documentsScenarios1.SubDocScenarios(doc);
 		documentsScenarios1.clickSubmit();
 		documentsScenarios1.Verifysubmit();
 	}
+ 
 
 ////
 //	@Test(priority = 51, enabled = false)
@@ -1665,9 +1668,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 ////		recevierSide1.clickFinish();
 //	}
 
-	@AfterMethod
-	public void quit() {
-		driver.quit();
-	}
+//	@AfterMethod
+//	public void quit() {
+//		driver.quit();
+//	}
 
 }

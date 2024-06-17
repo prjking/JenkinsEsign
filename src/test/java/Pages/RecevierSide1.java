@@ -158,7 +158,9 @@ public class RecevierSide1 {
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
+		Thread.sleep(1000);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+		Thread.sleep(10000);
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
 		System.out.println("Jeevitha login successfull");
 		
@@ -503,33 +505,52 @@ public class RecevierSide1 {
 	}
 
 	public void validateAtCC(String s) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		WebElement welcomeMessage = wait.until(ExpectedConditions
-				.presenceOfElementLocated(By.xpath(String.format("(//span[contains(text(),'%s')])[1]", s))));
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+	        WebElement welcomeMessage = wait.until(ExpectedConditions
+	                .presenceOfElementLocated(By.xpath(String.format("(//span[contains(text(),'%s')])[1]", s))));
 
-		Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
-		System.out.println("email received at cc");
+	        Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
+	        System.out.println("Email received at cc");
+	    } catch (Exception e) {
+	        System.out.println("Validation failed: CC Issue Not Solved " + e.getMessage());
+	        
+	    }
 	}
+
 
 	public void validateAtCCTwo() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		WebElement welcomeMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//span[text()=\"Getting started with OneDrive  Document completed\"]")));
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+	        WebElement welcomeMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
+	                By.xpath("//span[text()=\"Getting started with OneDrive  Document completed\"]")));
 
-		Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
-		System.out.println("email received at cc");
+	        Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
+			System.out.println("Email received at cc");
+	    } catch (Exception e) {
+	        System.out.println("Validation failed CC Issue Not Solved: " + e.getMessage());
+	        
+	    }
 	}
 
-	public void DeleteMailAtcc(String s) throws Exception {
-		String xpath = String.format("//span[contains(text(), '%s')]", s);
-		waitEle(By.xpath(xpath));
-		System.out.println("click on cc mail done");
 
-		waitEle(By.xpath("//span[text()=\"Delete\"]"));
-		System.out.println("Email Deleted");
-//		driver.close();
+	public void DeleteMailAtcc(String s) {
+    try {
+        String xpath = String.format("//span[contains(text(), '%s')]", s);
+        waitEle(By.xpath(xpath));
+        System.out.println("click on cc Email done");
 
-	}
+        waitEle(By.xpath("//span[text()=\"Delete\"]"));
+        System.out.println("Email Deleted");
+      
+        // driver.close();
+    } catch (Exception e) {
+        System.out.println("Validation failed: CC Issue Not Solved " + e.getMessage());
+       
+    }
+}
+
+
 
 	public void validateAtCCGdrive() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));

@@ -973,10 +973,10 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		String file1 = System.getProperty("user.dir") + "/src/test/resources/ramya/blank1.pdf";
 		login.RamyaNsui();
 		login.VerifyLoginSucess();
-		documentsScenarios2.PCOnedoc();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.uploadFileWithSendKeys(file);
 		documentsScenarios2.uploadFileWithSendKeys(file1);
+		documentsScenarios2.PCOnedoc();
 		documentsScenarios2.Nextbt();
 		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
@@ -989,11 +989,12 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 	@Test(priority = 89)
 	public void VerifyProcessWithOutSingledoc() throws Throwable {
 		String file = System.getProperty("user.dir") + "/src/test/resources/ramya/blank.pdf";
+		String file1 = System.getProperty("user.dir") + "/src/test/resources/ramya/blank1.pdf";
 		login.RamyaNsui();
 		login.VerifyLoginSucess();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.uploadFileWithSendKeys(file);
-		documentsScenarios2.UploadMultipledocuments();
+		documentsScenarios2.uploadFileWithSendKeys(file1);
 		documentsScenarios2.Nextbt();
 		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
@@ -1023,7 +1024,8 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		recieverside2.prudhvioutlooklogin();
 		recieverside2.clickEmail(a);
 		recieverside2.reviewSigner();
-		recieverside2.reviewandSign("Jeevitha");
+		recieverside2.reviewandSign("Prudhvi");
+		recieverside2.FinishDocumentRecieverside();
 	}
 
 // Verify settings before sending document
@@ -1035,9 +1037,9 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		documentsScenarios2.autofilloff();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.BlankDoc(a);
-		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "APPROVER");
+		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
-		documentsScenarios2.Settings();
+		documentsScenarios2.Documentsettings();
 		documentsScenarios2.DradAndDropSigAndFullName(1, 10, 130, 10, 160);
 		documentsScenarios2.DradAndDropSigAndFullName(2, 10, 50, 10, 80);
 		recieverside2.SubDocScenarios(a);
@@ -1057,14 +1059,15 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 	@Test(priority = 92)
 	public void VerifyChangeDoc() throws Exception {
 		String a = "VerifyChangeDoc";
+		String file = System.getProperty("user.dir") + "/src/test/resources/ramya/blank1.pdf";
 		login.RamyaNsui();
 		login.VerifyLoginSucess();
 		documentsScenarios2.autofilloff();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.BlankDoc(a);
-		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "APPROVER");
+		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
-		documentsScenarios2.changedoc();
+		documentsScenarios2.changedoc(file);
 		documentsScenarios2.DradAndDropSigAndFullName(1, 10, 130, 10, 160);
 		documentsScenarios2.DradAndDropSigAndFullName(2, 10, 50, 10, 80);
 		recieverside2.SubDocScenarios(a);
@@ -1075,7 +1078,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		recieverside2.prudhvioutlooklogin();
 		recieverside2.clickEmail(a);
 		recieverside2.reviewSigner();
-		recieverside2.reviewandSign("Prudvi");
+		recieverside2.reviewandSign("Prudhvi");
 		recieverside2.FinishDocumentRecieverside();
 	}
 
@@ -1104,7 +1107,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		documentsScenarios2.autofilloff();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.BlankDoc(a);
-		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "APPROVER");
+		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
 		documentsScenarios2.Addpages();
 		documentsScenarios2.DradAndDropSigAndFullName(1, 10, 130, 10, 160);
@@ -1132,7 +1135,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		documentsScenarios2.autofilloff();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.BlankDoc(a);
-		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "APPROVER");
+		documentsScenarios2.RecipientSigner(1, "Receiver", "prudhvib200@outlook.com", "SIGNER");
 		documentsScenarios2.Saveuser();
 		documentsScenarios2.DradAndDropSigAndFullName(1, 10, 130, 10, 160);
 		documentsScenarios2.DradAndDropSigAndFullName(2, 10, 50, 10, 80);

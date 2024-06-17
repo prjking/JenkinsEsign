@@ -280,7 +280,7 @@ public class DocumentsScenarios2 {
 	}
 
 	@SuppressWarnings("deprecation")
-	public void changedoc() throws Exception {
+	public void changedoc(String imagePath) throws Exception {
 
 		Thread.sleep(10000);
 
@@ -290,11 +290,20 @@ public class DocumentsScenarios2 {
 
 		waitEle(By.xpath("//ul[@x-placement]//a[2]"));
 
-		waitEle(By.xpath("//img[@src='/img/attachment-filling.da0448d7.svg']"));
-
-		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
-
 		Thread.sleep(10000);
+		File uploadFile = new File(imagePath);
+
+		WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
+		fileInput.sendKeys(uploadFile.getAbsolutePath());
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].value = '';", fileInput);
+
+//		waitEle(By.xpath("//img[@src='/img/attachment-filling.da0448d7.svg']"));
+//
+//		Runtime.getRuntime().exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\fileupload.exe");
+//
+//		Thread.sleep(10000);
 
 		waitEle(By.xpath("(//button[@class='el-button el-button--primary'])[8]"));
 
@@ -315,13 +324,13 @@ public class DocumentsScenarios2 {
 	}
 
 	@SuppressWarnings("deprecation")
-	public void UploadMultipledocuments() throws Exception {
-		waitEle(By.xpath("//h4[@class='fw-normal blue pb-2']"));
-		Runtime.getRuntime()
-				.exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\multiple document.exe");
-
-		Thread.sleep(10000);
-	}
+//	public void UploadMultipledocuments() throws Exception {
+//		waitEle(By.xpath("//h4[@class='fw-normal blue pb-2']"));
+//		Runtime.getRuntime()
+//				.exec("C:\\Users\\ramya.sibbala\\OneDrive - Nimble Accounting\\Documents\\multiple document.exe");
+//
+//		Thread.sleep(10000);
+//	}
 
 	public void PCOnedoc() throws Exception {
 
@@ -388,7 +397,7 @@ public class DocumentsScenarios2 {
 		WebElement sen = wait.until(ExpectedConditions.elementToBeClickable(ele));
 		sen.sendKeys("Test Sample");
 
-		By ele2 = By.xpath("//textarea[@placeholder=\"Type your message here\"]");
+		By ele2 = By.xpath("//textarea[@placeholder=\"Type your text here\"]");
 		WebElement sen2 = wait.until(ExpectedConditions.elementToBeClickable(ele2));
 		sen2.sendKeys("Test Sample");
 		Thread.sleep(5000);
@@ -680,12 +689,14 @@ public class DocumentsScenarios2 {
 		} catch (Exception e) {
 
 		}
+		Thread.sleep(10000);
+//		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
+//		Thread.sleep(5000);
+//		waitEle(By.xpath("//li[text()=\" Settings \"]"));
+//		Thread.sleep(5000);
+//		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
+		driver.get("https://nsui.esigns.io/profilesettings/application-settings");
 		Thread.sleep(5000);
-		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//li[text()=\" Settings \"]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
 		WebElement element = driver
 				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -705,11 +716,12 @@ public class DocumentsScenarios2 {
 
 	public void autofillon() throws Exception {
 		Thread.sleep(10000);
-		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//li[text()=\" Settings \"]"));
-		Thread.sleep(5000);
-		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
+//		waitEle(By.xpath("(//div[@class=\"icon-text\"])[1]"));
+//		Thread.sleep(5000);
+//		waitEle(By.xpath("//li[text()=\" Settings \"]"));
+//		Thread.sleep(5000);
+//		waitEle(By.xpath("//a[text()=\"Application Settings\"]"));
+		driver.get("https://nsui.esigns.io/profilesettings/application-settings");
 		Thread.sleep(5000);
 		WebElement element = driver
 				.findElement(By.xpath("//span[text()=\" Auto-complete sender if all fields filled\"]"));
@@ -1848,6 +1860,26 @@ public class DocumentsScenarios2 {
 		return Success.isDisplayed();
 	}
 
+	public void Documentsettings() throws Exception {
+
+		Thread.sleep(10000);
+
+		waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+
+		Thread.sleep(10000);
+
+		waitEle(By.xpath("//ul[@x-placement]//a[1]"));
+
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+		Thread.sleep(10000);
+
+		waitEle(By.xpath("//button[@class='el-button type-2 el-button--default']"));
+
+	}
+
 	public void DraftDeletedocument() throws Exception {
 		Perform();
 		Thread.sleep(10000);
@@ -2579,7 +2611,7 @@ public class DocumentsScenarios2 {
 		}
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//i[@class='el-icon-download'])[41]"));
+		waitEle(By.xpath("//td[@class='el-table_3_column_17   el-table__cell']"));
 
 		System.out.println("Download Document Successful");
 		Thread.sleep(10000);
@@ -2612,6 +2644,9 @@ public class DocumentsScenarios2 {
 		waitEle(By.xpath("//input[@class='el-select__input']"));
 
 		waitEle(By.xpath("//ul//li[text()=' ramyasibbala200@outlook.com ']"));
+		Thread.sleep(1000);
+
+		waitEle(By.xpath("//input[@class='el-select__input']"));
 
 		waitEle(By.xpath("//span[normalize-space()='Send']"));
 
