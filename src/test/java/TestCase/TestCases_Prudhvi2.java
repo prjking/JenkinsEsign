@@ -1739,9 +1739,9 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 //	documentsScenarios2.enteringdatatoentity();
 //	recieverside2.FinishDocumentrecieverside2();
 //}
-//	@AfterMethod
-//	public void quit() {
-//		driver.close();
-//		
-//	}
+	@AfterMethod
+	public void quit() {
+		driver.close();
+		
+	}
 }
