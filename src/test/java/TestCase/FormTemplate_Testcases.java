@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 
 import java.net.URL;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -28,6 +29,7 @@ import Pages.TemplateScenarios;
 import Pages.Templatespage;
 import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
+
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class FormTemplate_Testcases extends testCaseBase {
 
@@ -45,9 +47,16 @@ public class FormTemplate_Testcases extends testCaseBase {
 	TemplateScenarios templateScenarios;
 	FormTemplate formTemplate;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//	driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);

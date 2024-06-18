@@ -30,17 +30,18 @@ public class FormTemplate {
 
 	public void Template() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.Loadingmask();
-		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
-		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form Template']"));
+//		MethodActions.Loadingmask();
+//		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
+//		Thread.sleep(10000);
+//		MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form Template']"));
+		driver.get("https://dev.esigns.io/template/create?key=45651");
 
 	}
 
 	public void Createtemp() throws Exception {
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//div[@class='right-create-button']"));
-		MethodActions.switchToNewWindow();
+		// MethodActions.waitEle(By.xpath("//div[@class='right-create-button']"));
+		// MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Template Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Template Description']"),
@@ -70,149 +71,160 @@ public class FormTemplate {
 
 	// Single-Line
 	public void SingleLine() throws Exception {
-	    Thread.sleep(20000);  // Combined the two sleep calls into one
-	    MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		Thread.sleep(20000); // Combined the two sleep calls into one
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 
-	    WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
-	    Dimension dropSize = dropLocation.getSize();
-	    int dropWidth = dropSize.getWidth();
-	    int dropHeight = dropSize.getHeight();
-	    System.out.println("Drop Location Width: " + dropWidth + " Height: " + dropHeight);
-	    WebElement singleLine = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
+		WebElement dropLocation = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
+		Dimension dropSize = dropLocation.getSize();
+		int dropWidth = dropSize.getWidth();
+		int dropHeight = dropSize.getHeight();
+		System.out.println("Drop Location Width: " + dropWidth + " Height: " + dropHeight);
+		WebElement singleLine = driver.findElement(By.xpath("//span[text()='Single Line Text']"));
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	    Actions builder = new Actions(driver);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Actions builder = new Actions(driver);
 
-	    wait.until(ExpectedConditions.elementToBeClickable(singleLine));
-	    MethodActions.waitAndClick(builder, singleLine, dropLocation);
+		wait.until(ExpectedConditions.elementToBeClickable(singleLine));
+		MethodActions.waitAndClick(builder, singleLine, dropLocation);
 
-	    // Coordinates for different placements (x, y)
-	    int[][] coordinates = {
-	        {150, 300}, {150, 400}, {150, 500}, // SENDER
-	        {300, 500}, {400, 500}, {500, 500}, // RECEIVER
-	        {700, 500}, {800, 500}, {900, 500}, // SENDERORRECEIVER
-	        {500, 600}, {500, 700}, {500, 800}  // NO
-	    };
+		// Coordinates for different placements (x, y)
+		int[][] coordinates = { { 150, 300 }, { 150, 400 }, { 150, 500 }, // SENDER
+				{ 300, 500 }, { 400, 500 }, { 500, 500 }, // RECEIVER
+				{ 700, 500 }, { 800, 500 }, { 900, 500 }, // SENDERORRECEIVER
+				{ 500, 600 }, { 500, 700 }, { 500, 800 } // NO
+		};
 
-	    String[] fieldTypes = {"SENDER", "RECEIVER", "SENDERORRECEIVER"};
-	    String[] fieldCategories = {"PASSWORD", "EMAIL", "TEXT", "MASKED", "HYPER LINK"};
+		String[] fieldTypes = { "SENDER", "RECEIVER", "SENDERORRECEIVER" };
+		String[] fieldCategories = { "PASSWORD", "EMAIL", "TEXT", "MASKED", "HYPER LINK" };
 
-	    int index = 0;
+		int index = 0;
 
-	    for (String fieldType : fieldTypes) {
-	        for (String field : fieldCategories) {
-	            FieldSingleLine(fieldType, singleLine, dropLocation, true, field, coordinates[index][0], coordinates[index][1]);
-	            index++;
-	        }
-	    }
+		for (String fieldType : fieldTypes) {
+			for (String field : fieldCategories) {
+				FieldSingleLine(fieldType, singleLine, dropLocation, true, field, coordinates[index][0],
+						coordinates[index][1]);
+				index++;
+			}
+		}
 
-	    index = 0;
+		index = 0;
 
-	    for (String fieldType : fieldTypes) {
-	        for (String field : fieldCategories) {
-	            FieldSingleLine(fieldType, singleLine, dropLocation, false, field, coordinates[index][0], coordinates[index][1]);
-	            index++;
-	        }
-	    }
+		for (String fieldType : fieldTypes) {
+			for (String field : fieldCategories) {
+				FieldSingleLine(fieldType, singleLine, dropLocation, false, field, coordinates[index][0],
+						coordinates[index][1]);
+				index++;
+			}
+		}
 	}
 
-	public void FieldSingleLine(String fieldType, WebElement singleLine, WebElement targetElement, boolean isYes, String field, int targetX, int targetY) throws Exception {
-	    int index;
-	    String label;
-	    Thread.sleep(10000);
+	public void FieldSingleLine(String fieldType, WebElement singleLine, WebElement targetElement, boolean isYes,
+			String field, int targetX, int targetY) throws Exception {
+		int index;
+		String label;
+		Thread.sleep(10000);
 
-	    switch (fieldType) {
-	        case "SENDER":
-	            index = 1;
-	            label = "SENDER";
-	            break;
-	        case "RECEIVER":
-	            index = 2;
-	            label = "RECEIVER";
-	            break;
-	        case "SENDERORRECEIVER":
-	            index = 3;
-	            label = "SENDER OR RECEIVER";
-	            break;
-	        default:
-	            throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
-	    }
+		switch (fieldType) {
+		case "SENDER":
+			index = 1;
+			label = "SENDER";
+			break;
+		case "RECEIVER":
+			index = 2;
+			label = "RECEIVER";
+			break;
+		case "SENDERORRECEIVER":
+			index = 3;
+			label = "SENDER OR RECEIVER";
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid fieldType: " + fieldType);
+		}
 
-	    Thread.sleep(10000);
-	    WebDriverWait waitSource = new WebDriverWait(driver, Duration.ofMinutes(1));
-	    waitSource.until(ExpectedConditions.elementToBeClickable(singleLine));
+		Thread.sleep(10000);
+		WebDriverWait waitSource = new WebDriverWait(driver, Duration.ofMinutes(1));
+		waitSource.until(ExpectedConditions.elementToBeClickable(singleLine));
 
-	    Actions builder = new Actions(driver);
-	    builder.dragAndDropBy(singleLine, targetX - singleLine.getLocation().getX(), targetY - singleLine.getLocation().getY()).perform();
+		Actions builder = new Actions(driver);
+		builder.dragAndDropBy(singleLine, targetX - singleLine.getLocation().getX(),
+				targetY - singleLine.getLocation().getY()).perform();
 
-	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
-	    } catch (Exception e) {
-	        // Handle exception if needed
-	    }
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dialog-overlay']")));
+		} catch (Exception e) {
+			// Handle exception if needed
+		}
 
-	    MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"), MethodActions.generateUniqueString());
-	    MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"), MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Field Title']"),
+				MethodActions.generateUniqueString());
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
+				MethodActions.generateUniqueString());
 
-	    if (isYes) {
-	        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
-	        WebElement yesElement = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
-	        yesElement.click();
-	        System.out.println("With Field Required! Yes");
-	    } else {
-	        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
-	        WebElement noElement = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
-	        noElement.click();
-	        System.out.println("With Field Required! NO");
-	    }
+		if (isYes) {
+			WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement yesElement = wait1.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='Yes']")));
+			yesElement.click();
+			System.out.println("With Field Required! Yes");
+		} else {
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(1));
+			WebElement noElement = wait2.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//span[@class='el-radio__label' and text()='No']")));
+			noElement.click();
+			System.out.println("With Field Required! NO");
+		}
 
-	    Thread.sleep(10000);
-	    Wait<WebDriver> wait11 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1)).pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
-	    WebElement del = wait11.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='el-select filledby']//input")));
-	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
+		Thread.sleep(10000);
+		Wait<WebDriver> wait11 = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
+		WebElement del = wait11
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='el-select filledby']//input")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", del);
 
-	    Thread.sleep(1000);
+		Thread.sleep(1000);
 
-	    Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1)).pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
-	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
-	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofMinutes(1))
+				.pollingEvery(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+		WebElement element = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@x-placement]//ul//li[" + index + "] ")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 
-	    Thread.sleep(1000);
-	    MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
+		Thread.sleep(1000);
+		MethodActions.Javascriptclick(By.xpath("//div[@class='el-select input_type']"));
 
-	    switch (field) {
-	        case "PASSWORD":
-	            Thread.sleep(10000);
-	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
-	            System.out.println("Single Line With PASSWORD " + label + " Selected Successfully");
-	            break;
-	        case "EMAIL":
-	            Thread.sleep(10000);
-	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
-	            System.out.println("Single Line With EMAIL " + label + " Selected Successfully");
-	            break;
-	        case "TEXT":
-	            Thread.sleep(10000);
-	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
-	            System.out.println("Single Line With TEXT " + label + " Selected Successfully");
-	            break;
-	        case "MASKED":
-	            Thread.sleep(10000);
-	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
-	            System.out.println("Single Line With MASKED " + label + " Selected Successfully");
-	            break;
-	        case "HYPER LINK":
-	            Thread.sleep(10000);
-	            MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
-	            System.out.println("Single Line With HYPER LINK " + label + " Selected Successfully");
-	            break;
-	        default:
-	            break;
-	    }
-	    MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
+		switch (field) {
+		case "PASSWORD":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[1]"));
+			System.out.println("Single Line With PASSWORD " + label + " Selected Successfully");
+			break;
+		case "EMAIL":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[2]"));
+			System.out.println("Single Line With EMAIL " + label + " Selected Successfully");
+			break;
+		case "TEXT":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[3]"));
+			System.out.println("Single Line With TEXT " + label + " Selected Successfully");
+			break;
+		case "MASKED":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[4]"));
+			System.out.println("Single Line With MASKED " + label + " Selected Successfully");
+			break;
+		case "HYPER LINK":
+			Thread.sleep(10000);
+			MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//ul//li[5]"));
+			System.out.println("Single Line With HYPER LINK " + label + " Selected Successfully");
+			break;
+		default:
+			break;
+		}
+		MethodActions.waitEle(By.xpath("//button[@class='el-button el-button--primary']"));
 	}
-
 
 	public void closeingleline() throws Exception {
 		Thread.sleep(10000);
@@ -614,7 +626,7 @@ public class FormTemplate {
 		FieldMultiline("SENDER", Multiline, targetElement, false, "MULTI LINE TEXT");
 		FieldMultiline("RECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
 		FieldMultiline("SENDERORRECEIVER", Multiline, targetElement, false, "MULTI LINE TEXT");
-		
+
 	}
 
 	public void FieldMultiline(String fieldType, WebElement Multiline, WebElement targetElement, boolean isYes,
@@ -785,7 +797,6 @@ public class FormTemplate {
 		FieldSelect("SENDER", Select, targetElement, false, "MULTI SELECT");
 		FieldSelect("RECEIVER", Select, targetElement, false, "MULTI SELECT");
 		FieldSelect("SENDERORRECEIVER", Select, targetElement, false, "MULTI SELECT");
-		
 
 	}
 
@@ -912,7 +923,6 @@ public class FormTemplate {
 		FieldNumber("SENDER", Number, targetElement, false, "NUMBER");
 		FieldNumber("RECEIVER", Number, targetElement, false, "PHONE");
 		FieldNumber("SENDERORRECEIVER", Number, targetElement, false, "CURRENCY");
-		
 
 	}
 
@@ -1066,7 +1076,6 @@ public class FormTemplate {
 		FieldMultipleSelect("SENDER", MultipleSelect, targetElement, false, "MULTI SELECT");
 		FieldMultipleSelect("RECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
 		FieldMultipleSelect("SENDERORRECEIVER", MultipleSelect, targetElement, false, "MULTI SELECT");
-		
 
 	}
 
@@ -1193,7 +1202,6 @@ public class FormTemplate {
 		FieldFixedTime("SENDER", FixedTime, targetElement, false);
 		FieldFixedTime("RECEIVER", FixedTime, targetElement, false);
 		FieldFixedTime("SENDERORRECEIVER", FixedTime, targetElement, false);
-		
 
 	}
 
@@ -1308,7 +1316,6 @@ public class FormTemplate {
 		FieldWeekDays("SENDER", WeekDays, targetElement, false);
 		FieldWeekDays("RECEIVER", WeekDays, targetElement, false);
 		FieldWeekDays("SENDERORRECEIVER", WeekDays, targetElement, false);
-		
 
 	}
 
@@ -1412,7 +1419,6 @@ public class FormTemplate {
 		FieldYesorNo("SENDER", YesorNo, targetElement, false, false);
 		FieldYesorNo("RECEIVER", YesorNo, targetElement, false, false);
 		FieldYesorNo("SENDERORRECEIVER", YesorNo, targetElement, false, false);
-		
 
 	}
 
@@ -1678,7 +1684,6 @@ public class FormTemplate {
 		FieldDocument("SENDER", "Doc", Document, targetElement, false, false);
 		FieldDocument("RECEIVER", "Doc", Document, targetElement, false, false);
 		FieldDocument("SENDERORRECEIVER", "Doc", Document, targetElement, false, false);
-		
 
 	}
 
@@ -1941,7 +1946,6 @@ public class FormTemplate {
 		addFieldTime("SENDER", Time, targetElement, false);
 		addFieldTime("RECEIVER", Time, targetElement, false);
 		addFieldTime("SENDERORRECEIVER", Time, targetElement, false);
-		
 
 	}
 
@@ -2080,7 +2084,6 @@ public class FormTemplate {
 		FieldDate("SENDER", Date, dropLocation, false, "DATE RANGE");
 		FieldDate("RECEIVER", Date, dropLocation, false, "DATE RANGE");
 		FieldDate("SENDERORRECEIVER", Date, dropLocation, false, "DATE RANGE");
-		
 
 	}
 
@@ -2230,7 +2233,7 @@ public class FormTemplate {
 		FieldList("SENDER", List, targetElement, false);
 		FieldList("RECEIVER", List, targetElement, false);
 		FieldList("SENDERORRECEIVER", List, targetElement, false);
-		
+
 	}
 
 	public void FieldList(String fieldType, WebElement List, WebElement targetElement, boolean isYes) throws Exception {
@@ -2355,7 +2358,6 @@ public class FormTemplate {
 		FieldTimerange(TimeRange, targetElement, false, "SENDER");
 		FieldTimerange(TimeRange, targetElement, false, "RECEIVER");
 		FieldTimerange(TimeRange, targetElement, false, "SENDERORRECEIVER");
-		
 
 	}
 
@@ -2458,7 +2460,7 @@ public class FormTemplate {
 		FieldCheckbox("SENDER", Checkbox, targetElement, false);
 		FieldCheckbox("RECEIVER", Checkbox, targetElement, false);
 		FieldCheckbox("SENDERORRECEIVER", Checkbox, targetElement, false);
-		
+
 	}
 
 	public void FieldCheckbox(String fieldType, WebElement Checkbox, WebElement targetElement, boolean isYes)
@@ -2562,7 +2564,6 @@ public class FormTemplate {
 		FieldCheckBoxGroup("SENDER", CheckboxGroup, targetElement);
 		FieldCheckBoxGroup("RECEIVER", CheckboxGroup, targetElement);
 		FieldCheckBoxGroup("SENDERORRECEIVER", CheckboxGroup, targetElement);
-		
 
 	}
 
@@ -2657,7 +2658,6 @@ public class FormTemplate {
 		FieldRadio("SENDER", Radio, targetElement, false);
 		FieldRadio("RECEIVER", Radio, targetElement, false);
 		FieldRadio("SENDERORRECEIVER", Radio, targetElement, false);
-		
 
 	}
 
@@ -2762,7 +2762,6 @@ public class FormTemplate {
 		FieldRadioGroup("SENDER", RadioGroup, targetElement, false);
 		FieldRadioGroup("RECEIVER", RadioGroup, targetElement, false);
 		FieldRadioGroup("SENDERORRECEIVER", RadioGroup, targetElement, false);
-		
 
 	}
 
@@ -2898,7 +2897,6 @@ public class FormTemplate {
 		FieldPhone("SENDER", Phone, dropLocation, false, "CURRENCY");
 		FieldPhone("RECEIVER", Phone, dropLocation, false, "CURRENCY");
 		FieldPhone("SENDERORRECEIVER", Phone, dropLocation, false, "CURRENCY");
-		
 
 	}
 
@@ -3034,7 +3032,6 @@ public class FormTemplate {
 		FieldSignature("SENDER", Signature, targetElement, false);
 		FieldSignature("RECEIVER", Signature, targetElement, false);
 		FieldSignature("SENDERORRECEIVER", Signature, targetElement, false);
-		
 
 	}
 
@@ -3167,7 +3164,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 
@@ -3202,7 +3198,6 @@ public class FormTemplate {
 		FieldHeading("H4", Heading, dropLocation);
 		FieldHeading("H5", Heading, dropLocation);
 		FieldHeading("H6", Heading, dropLocation);
-		
 
 	}
 
@@ -3302,7 +3297,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Html Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 
@@ -3334,7 +3328,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 	// Add Single Line Content
@@ -3366,7 +3359,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Captch Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 	// Image
@@ -3390,7 +3382,6 @@ public class FormTemplate {
 		Fieldimage("SENDER", Image, targetElement, false, false);
 		Fieldimage("RECEIVER", Image, targetElement, false, false);
 		Fieldimage("SENDERORRECEIVER", Image, targetElement, false, false);
-		
 
 	}
 
@@ -3492,7 +3483,6 @@ public class FormTemplate {
 		Fieldimage("SENDER", Video, targetElement, false, false);
 		Fieldimage("RECEIVER", Video, targetElement, false, false);
 		Fieldimage("SENDERORRECEIVER", Video, targetElement, false, false);
-		
 
 	}
 
@@ -3587,7 +3577,6 @@ public class FormTemplate {
 
 		wait.until(ExpectedConditions.elementToBeClickable(HorizontalLine));
 		builder.dragAndDrop(HorizontalLine, targetElement).perform();
-		
 
 	}
 
@@ -3604,7 +3593,6 @@ public class FormTemplate {
 
 		wait.until(ExpectedConditions.elementToBeClickable(Division));
 		builder.dragAndDrop(Division, targetElement).perform();
-		
 
 	}
 
@@ -3633,7 +3621,6 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select type']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		
 
 	}
 
@@ -3668,7 +3655,6 @@ public class FormTemplate {
 		FieldAutoIncrementNumber("SENDER", AutoIncrementNumber, targetElement, false);
 		FieldAutoIncrementNumber("RECEIVER", AutoIncrementNumber, targetElement, false);
 		FieldAutoIncrementNumber("SENDERORRECEIVER", AutoIncrementNumber, targetElement, false);
-		
 
 	}
 
@@ -3780,7 +3766,6 @@ public class FormTemplate {
 		FieldLocation("SENDER", Location, targetElement, false);
 		FieldLocation("RECEIVER", Location, targetElement, false);
 		FieldLocation("SENDERORRECEIVER", Location, targetElement, false);
-		
 
 	}
 
@@ -3908,7 +3893,6 @@ public class FormTemplate {
 		FieldCurrency("SENDER", Currency, dropLocation, false, "CURRENCY");
 		FieldCurrency("RECEIVER", Currency, dropLocation, false, "CURRENCY");
 		FieldCurrency("SENDERORRECEIVER", Currency, dropLocation, false, "CURRENCY");
-		
 
 	}
 
@@ -4070,7 +4054,6 @@ public class FormTemplate {
 		FieldQuestion("SENDER", Question, dropLocation, false, "TEXT");
 		FieldQuestion("RECEIVER", Question, dropLocation, false, "TEXT");
 		FieldQuestion("SENDERORRECEIVER", Question, dropLocation, false, "TEXT");
-		
 
 	}
 
@@ -4207,7 +4190,6 @@ public class FormTemplate {
 				MethodActions.generateUniqueString());
 		System.out.println("Authorized Signature Field Selected Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 
@@ -4376,7 +4358,6 @@ public class FormTemplate {
 		FieldEntityVariable("SENDER", EntityVariable, dropLocation, false);
 		FieldEntityVariable("RECEIVER", EntityVariable, dropLocation, false);
 		FieldEntityVariable("SENDERORRECEIVER", EntityVariable, dropLocation, false);
-		
 
 	}
 
@@ -4526,7 +4507,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//i[@class='el-icon-plus']"));
 		System.out.println("Formula Seleceted Sucessfully");
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		
+
 	}
 
 	// Aggregate Function
@@ -4550,7 +4531,7 @@ public class FormTemplate {
 		MethodActions.waitEle(By.xpath("//input[@placeholder='Select Template']"));
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		
+
 	}
 
 	// DataTable
@@ -4578,7 +4559,7 @@ public class FormTemplate {
 		FieldDataTable("SENDER", DataTable, dropLocation);
 		FieldDataTable("RECEIVER", DataTable, dropLocation);
 		// FieldDataTable("SENDERORRECEIVER", DataTable, dropLocation);
-		
+
 	}
 
 	public void FieldDataTable(String fieldType, WebElement DataTable, WebElement targetElement) throws Exception {
@@ -4663,7 +4644,6 @@ public class FormTemplate {
 		FieldChildEntityTable("SENDER", ChildEntityTable, dropLocation);
 		FieldChildEntityTable("RECEIVER", ChildEntityTable, dropLocation);
 		FieldChildEntityTable("SENDERORRECEIVER", ChildEntityTable, dropLocation);
-		
 
 	}
 
@@ -4783,7 +4763,6 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Redirection URL']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//span[text()='Insert Field']"));
-		
 
 	}
 
@@ -4811,7 +4790,6 @@ public class FormTemplate {
 		FieldPaymentVariable("SENDER", PaymentVariable, dropLocation, "Gateway");
 		FieldPaymentVariable("RECEIVER", PaymentVariable, dropLocation, "Name");
 		FieldPaymentVariable("SENDERORRECEIVER", PaymentVariable, dropLocation, "Phone Number");
-		
 
 	}
 
@@ -4941,7 +4919,6 @@ public class FormTemplate {
 		FieldStarRating("SENDER", StarRating, targetElement, false);
 		FieldStarRating("RECEIVER", StarRating, targetElement, false);
 		FieldStarRating("SENDERORRECEIVER", StarRating, targetElement, false);
-		
 
 	}
 
@@ -5045,7 +5022,6 @@ public class FormTemplate {
 		FieldConcatenate("SENDER", Concatenate, targetElement, false);
 		FieldConcatenate("RECEIVER", Concatenate, targetElement, false);
 		FieldConcatenate("SENDERORRECEIVER", Concatenate, targetElement, false);
-		
 
 	}
 
@@ -5147,7 +5123,6 @@ public class FormTemplate {
 		FieldAudio("SENDER", Audio, targetElement, false);
 		FieldAudio("RECEIVER", Audio, targetElement, false);
 		FieldAudio("SENDERORRECEIVER", Audio, targetElement, false);
-		
 
 	}
 
@@ -5247,7 +5222,6 @@ public class FormTemplate {
 		FieldQRCode("SENDER", QRCode, targetElement);
 		FieldQRCode("RECEIVER", QRCode, targetElement);
 		FieldQRCode("SENDERORRECEIVER", QRCode, targetElement);
-		
 
 	}
 
@@ -5341,7 +5315,6 @@ public class FormTemplate {
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Description Here']"),
 				MethodActions.generateUniqueString());
 		MethodActions.waitEle(By.xpath("//span[contains(text(),'Insert Field')]"));
-		
 
 	}
 

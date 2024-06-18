@@ -3,6 +3,8 @@ package TestCase;
 
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
+
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -41,9 +43,16 @@ public class Entitytest_Case extends testCaseBase {
 	TemplateScenarios templateScenarios;
 	EntityCases entityCases;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
@@ -69,7 +78,7 @@ public class Entitytest_Case extends testCaseBase {
 		entityCases.clickOnLayout();
 		entityCases.layoutChart();
 		entityCases.SelectChart();
-		//MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 
 	}
 
@@ -82,7 +91,7 @@ public class Entitytest_Case extends testCaseBase {
 		entityCases.EyeIcon();
 		entityCases.LayoutOptions();
 		entityCases.Validdata();
-		//MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 	}
 
 //	@Test

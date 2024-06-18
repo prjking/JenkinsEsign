@@ -6,6 +6,7 @@ import Reports.Testlistner;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.BeforeMethod;
@@ -44,9 +45,16 @@ public class Docscenarios extends testCaseBase {
 	TemplateScenarios templateScenarios;
 	FormTemplate formTemplate;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nsui.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);

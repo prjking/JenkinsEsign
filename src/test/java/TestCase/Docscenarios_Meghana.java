@@ -1,6 +1,9 @@
 package TestCase;
+
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
+
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -33,9 +36,16 @@ public class Docscenarios_Meghana extends testCaseBase {
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);

@@ -2,6 +2,8 @@ package TestCase;
 
 import java.io.File;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.testng.annotations.AfterMethod;
@@ -29,6 +31,9 @@ import TestBase.testCaseBase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -50,24 +55,31 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	FilePermission filePermission;
 	MethodActions methodActions;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nsui.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void start() {
-		setup();
-        login = new Login(driver);
-        alldocuments = new Alldocuments(driver);
-        uploaddocuments = new Uploaddocuments(driver);
-        addrecipients = new Addrecipients(driver);
-        dragdrop = new Dragdrop(driver);
-        reviewaNdSend = new ReviewaNdSend(driver);
-        recevierSide1 = new RecevierSide1(driver);
-        signup = new Signup(driver);
-        templatespage = new Templatespage(driver);
-        dashboard = new Dashboard(driver);
-        documentsScenarios1 = new DocumentsScenarios1(driver);
-        entities = new Entities(driver);
-        template = new Templatespage(driver);
-        methodActions =new MethodActions(driver);
-    }
+		setupDriver();
+		login = new Login(driver);
+		alldocuments = new Alldocuments(driver);
+		uploaddocuments = new Uploaddocuments(driver);
+		addrecipients = new Addrecipients(driver);
+		dragdrop = new Dragdrop(driver);
+		reviewaNdSend = new ReviewaNdSend(driver);
+		recevierSide1 = new RecevierSide1(driver);
+		signup = new Signup(driver);
+		templatespage = new Templatespage(driver);
+		dashboard = new Dashboard(driver);
+		documentsScenarios1 = new DocumentsScenarios1(driver);
+		entities = new Entities(driver);
+		template = new Templatespage(driver);
+		methodActions = new MethodActions(driver);
+	}
 
 	// 3a,Blank Doc – Sender signer & Receiver signer (With enforcement)send
 	// document with uploading blank doc for Sender & Receiver (Complete through
@@ -346,7 +358,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 	@Test(priority = 13)
 	public void uploadDocandDoc() throws Exception {
 		String word2file = System.getProperty("user.dir") + "/src/test/resources/meghana/Feautures.docx";
-		String Wordfile =System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
+		String Wordfile = System.getProperty("user.dir") + "/src/test/resources/meghana/Test cases.docx";
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		documentsScenarios1.blankurl();
@@ -1617,7 +1629,6 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		documentsScenarios1.clickSubmit();
 		documentsScenarios1.Verifysubmit();
 	}
- 
 
 ////
 //	@Test(priority = 51, enabled = false)
@@ -1668,9 +1679,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 ////		recevierSide1.clickFinish();
 //	}
 
-//	@AfterMethod
-//	public void quit() {
-//		driver.quit();
-//	}
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+	}
 
 }

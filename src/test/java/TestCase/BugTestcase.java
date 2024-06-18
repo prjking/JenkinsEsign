@@ -1,5 +1,6 @@
 package TestCase;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -42,9 +43,16 @@ public class BugTestcase extends testCaseBase {
 	FormTemplate formTemplate;
 	Bug bug;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nsui.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
@@ -73,7 +81,7 @@ public class BugTestcase extends testCaseBase {
 		bug.entity4004();
 		bug.confirmButton();
 		bug.validSuccessBug4004();
-	//	MethodActions.takeScreenshot(driver2);
+		// MethodActions.takeScreenshot(driver2);
 	}
 
 	@Test
@@ -86,7 +94,7 @@ public class BugTestcase extends testCaseBase {
 		bug.Feild5423();
 		bug.Save();
 		bug.veiwAction5423();
-		//MethodActions.takeScreenshot(driver);
+		// MethodActions.takeScreenshot(driver);
 	}
 
 	@Test

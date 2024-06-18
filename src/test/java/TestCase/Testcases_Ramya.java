@@ -1,5 +1,6 @@
 package TestCase;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -10,16 +11,23 @@ import TestBase.testCaseBase;
 public class Testcases_Ramya extends testCaseBase {
 	Login login;
 	Documents documents;
+	
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//	driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
 @BeforeMethod
 public void initialize() {
-	setup();
+	setupDriver();
 	login = new Login(driver);
 	documents = new Documents(driver);
 
 }
 @Test
 public void VerifyLoginFunctionalityWithValidCredantials() {
-	setup();
+	setupDriver();
 	login = new Login(driver);
 
 }

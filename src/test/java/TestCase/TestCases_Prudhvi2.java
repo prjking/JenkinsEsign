@@ -24,9 +24,16 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 	DocumentsScenarios2 documentsScenarios2;
 	Recieverside2 recieverside2;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//	driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nsui.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void initialize() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		documentsScenarios2 = new DocumentsScenarios2(driver);
 		recieverside2 = new Recieverside2(driver);
@@ -471,7 +478,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		login.VerifyLoginSucess();
 		documentsScenarios2.DraftStatus();
 		documentsScenarios2.VerifyDraft();
-		
+
 		documentsScenarios2.DraftSaveAsTemplate();
 		documentsScenarios2.ValidDraftSaveasTemplate();
 	}
@@ -483,7 +490,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		login.VerifyLoginSucess();
 		documentsScenarios2.DraftStatus();
 		documentsScenarios2.VerifyDraft();
-		
+
 		documentsScenarios2.DraftrenameDocument();
 		documentsScenarios2.ValidDraftRenameDocument();
 	}
@@ -1476,7 +1483,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		documentsScenarios2.Viewdocument();
 		documentsScenarios2.OtherOptions();
 		documentsScenarios2.otheroptionsdelete();
-		//documentsScenarios2.Blankwithoutsenderautofill();
+		// documentsScenarios2.Blankwithoutsenderautofill();
 //	recieverside2.prudhvioutlooklogin();
 //	recieverside2.clickEmail(a);
 //	recieverside2.reviewandSignSigner();

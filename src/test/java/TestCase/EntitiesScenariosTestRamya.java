@@ -1,5 +1,6 @@
 package TestCase;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,9 +17,16 @@ public class EntitiesScenariosTestRamya extends testCaseBase {
 	Login login;
 	Entities entities;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+	
 	@BeforeMethod
 	public void initialize() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		entities = new Entities(driver);
 	}

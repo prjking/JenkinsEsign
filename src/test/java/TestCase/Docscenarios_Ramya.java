@@ -1,5 +1,6 @@
 package TestCase;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ import Pages.Uploaddocuments;
 import TestBase.testCaseBase;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
+
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 
 public class Docscenarios_Ramya extends testCaseBase {
@@ -33,9 +35,16 @@ public class Docscenarios_Ramya extends testCaseBase {
 	Dashboard dashboard;
 	DocumentsScenarios documentsScenarios;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
@@ -53,7 +62,6 @@ public class Docscenarios_Ramya extends testCaseBase {
 	@Test(priority = 30)
 	public void VerifyAppSigSenderorderWOEWOA() throws Exception {
 		login.Signin();
-
 		documentsScenarios.DocScenario();
 		documentsScenarios.Blankdocloginaccount();
 		documentsScenarios.AddMultipleSigners();
@@ -248,6 +256,3 @@ public class Docscenarios_Ramya extends testCaseBase {
 	}
 
 }
-
-
-

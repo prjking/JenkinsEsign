@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-failed">Default suite</span>
+              <span class="suite-name border-skipped">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-1599420610\testng-customsuite.xml</span>
+                    <span>C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-1421671772\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,  1 skipped,  </span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods skipped suite-Default_suite"> (hide)</a> <!-- hide-methods skipped suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods skipped suite-Default_suite"> (show)</a> <!-- show-methods skipped suite-Default_suite -->
                     </span>
-                    <div class="method-list-content failed suite-Default_suite">
+                    <div class="method-list-content skipped suite-Default_suite">
                       <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="TestCase.TestCases_Prudhvi2" class="method navigator-link" hash-for-method="VerifyChangeDoc">VerifyChangeDoc</a> <!-- method navigator-link -->
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="TestCase.Template_Testcase" class="method navigator-link" hash-for-method="ValidBlankTemplate">ValidBlankTemplate</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Default_suite -->
+                    </div> <!-- method-list-content skipped suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,32 +119,38 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-failed">
+          <div class="suite-Default_suite-class-skipped">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">TestCase.TestCases_Prudhvi2</span>
+              <img src="skipped.png"/>
+              <span class="class-name">TestCase.Template_Testcase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="VerifyChangeDoc">
-                  </a> <!-- VerifyChangeDoc -->
-                  <span class="method-name">VerifyChangeDoc</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //img[@class=&apos;arrows&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+                  <a name="ValidBlankTemplate">
+                  </a> <!-- ValidBlankTemplate -->
+                  <span class="method-name">ValidBlankTemplate</span>
+                  <div class="stack-trace">org.openqa.selenium.remote.NoSuchDriverException: Unable to obtain: chromedriver, error chrome must exist: C:\usr\bin\sgoogle-chrome-stable
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location/
 Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.176, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51078}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51078/devtoo..., se:cdpVersion: 125.0.6422.176, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: aa849644a04db469f7808fa2ad7007a0
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at Pages.DocumentsScenarios2.waitEle(DocumentsScenarios2.java:31)
-	at Pages.DocumentsScenarios2.changedoc(DocumentsScenarios2.java:289)
-	at TestCase.TestCases_Prudhvi2.VerifyChangeDoc(TestCases_Prudhvi2.java:1070)
+Driver info: driver.version: ChromeDriver
+	at org.openqa.selenium.remote.service.DriverFinder.getBinaryPaths(DriverFinder.java:121)
+	at org.openqa.selenium.remote.service.DriverFinder.getDriverPath(DriverFinder.java:55)
+	at org.openqa.selenium.chrome.ChromeDriver.generateExecutor(ChromeDriver.java:99)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:88)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:83)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:72)
+	at TestCase.Template_Testcase.setupDriver(Template_Testcase.java:46)
+	at TestCase.Template_Testcase.Start(Template_Testcase.java:54)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
 	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
 	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
 	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
@@ -167,16 +173,21 @@ Session ID: aa849644a04db469f7808fa2ad7007a0
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: java.lang.IllegalStateException: chrome must exist: C:\usr\bin\sgoogle-chrome-stable
+	at org.openqa.selenium.internal.Require$FileStateChecker.isFile(Require.java:346)
+	at org.openqa.selenium.internal.Require$FileStateChecker.isExecutable(Require.java:368)
+	at org.openqa.selenium.remote.service.DriverFinder.getBinaryPaths(DriverFinder.java:104)
+	... 37 more
 
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-failed -->
+          </div> <!-- suite-Default_suite-class-skipped -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-1599420610\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\prudhvi.buddharaju\AppData\Local\Temp\testng-eclipse-1421671772\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -185,11 +196,11 @@ Session ID: aa849644a04db469f7808fa2ad7007a0
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;TestCase.TestCases_Prudhvi2&quot;&gt;
+      &lt;class name=&quot;TestCase.Template_Testcase&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;VerifyChangeDoc&quot;/&gt;
+          &lt;include name=&quot;ValidBlankTemplate&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- TestCase.TestCases_Prudhvi2 --&gt;
+      &lt;/class&gt; &lt;!-- TestCase.Template_Testcase --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -231,14 +242,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'VerifyChangeDoc')
-data.setCell(0, 2, 'TestCase.TestCases_Prudhvi2')
-data.setCell(0, 3, 310115);
+data.setCell(0, 1, 'ValidBlankTemplate')
+data.setCell(0, 2, 'TestCase.Template_Testcase')
+data.setCell(0, 3, 0);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 minutes</span>
+              <span class="suite-total-time">Total running time: 0 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -253,177 +264,39 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">83 ignored methods</span>
+            <span class="header-content">14 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">TestCase.TestCases_Prudhvi2</span>
+              <span class="ignored-class-name">TestCase.Template_Testcase</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">VerifyWaitingForOthersDeletedocument</span>
+                <span class="ignored-method-name">ValidObserveStatofTheTemplate</span>
                 <br/>
-                <span class="ignored-method-name">VerifyArchivedUndodocument</span>
+                <span class="ignored-method-name">ValidChangeowner</span>
                 <br/>
-                <span class="ignored-method-name">VerifySigSenderCCorderWOEWOA</span>
+                <span class="ignored-method-name">ValidSendtoContact</span>
                 <br/>
-                <span class="ignored-method-name">VerifyMultpleCCSender</span>
+                <span class="ignored-method-name">ValidViewdata</span>
                 <br/>
-                <span class="ignored-method-name">VerifyOtheroptionsdownload</span>
+                <span class="ignored-method-name">validCreatingNewContact</span>
                 <br/>
-                <span class="ignored-method-name">VerifyDraftDocumentSettings</span>
+                <span class="ignored-method-name">ValidBulksend</span>
                 <br/>
-                <span class="ignored-method-name">VerifyDraftrenamedocument</span>
+                <span class="ignored-method-name">ValidGetlinkaccessToall</span>
                 <br/>
-                <span class="ignored-method-name">VerifySettings</span>
+                <span class="ignored-method-name">ValidShareWithNew</span>
                 <br/>
-                <span class="ignored-method-name">VerifyBuldDeleteDocuments</span>
+                <span class="ignored-method-name">ValidDuplicate</span>
                 <br/>
-                <span class="ignored-method-name">VerifyCompletedSharewithothers</span>
+                <span class="ignored-method-name">ValidExcel</span>
                 <br/>
-                <span class="ignored-method-name">VerifyAddPages</span>
+                <span class="ignored-method-name">ValidInactiveTemplate</span>
                 <br/>
-                <span class="ignored-method-name">VerifyApprovedDocumentSettings</span>
+                <span class="ignored-method-name">ValidPDFfilling</span>
                 <br/>
-                <span class="ignored-method-name">VerifySenderMultipleCC</span>
+                <span class="ignored-method-name">ValidEditTheTemplate</span>
                 <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersDocumentsettings</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentVoiddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyLockFields</span>
-                <br/>
-                <span class="ignored-method-name">VerfySaveAsDraft</span>
-                <br/>
-                <span class="ignored-method-name">VerifySenderCCSignerWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedRenameDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedDownloaddocuement</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentCorrectDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyVoidClonedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApproverSenderapprove</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionshistory</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedClonedocument</span>
-                <br/>
-                <span class="ignored-method-name">Verifychatandlogs</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionssettings</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDeclinedDocumentSettings</span>
-                <br/>
-                <span class="ignored-method-name">VerifyPdfAutoFillreceiver</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersVoiddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifYVoidSaveastemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedSaveastemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifyLoginFunctionalityWithValidCredantials</span>
-                <br/>
-                <span class="ignored-method-name">VerifyAppSigSenderorderWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">VerifyOtheroptionsdeletedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedResendDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedDeletedocuement</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionssaveastem</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDelineddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyMultpleApproverSender</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApproverSenderDecline</span>
-                <br/>
-                <span class="ignored-method-name">VerifyProcessWithOutSingledoc</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDocForSingleSender</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentDeletedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifySendersigCCorderWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDaftsentdocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyotheroptionsCorrectdoc</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedCorrectdocumentDocuments</span>
-                <br/>
-                <span class="ignored-method-name">VerifySingerCCSenderWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDraftDeleteDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedApprovedDeleteDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyArchivedPermanentdelete</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionsprintandsign</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersCorrectdocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentsavetoTemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedRenamedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedVoidDocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDeclinedDeclinedRenamedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCopylink</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDeclinedVoiddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyApprovedSaveAsTemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCCSignerSenderWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">VerifyClonedocumentForsinglesender</span>
-                <br/>
-                <span class="ignored-method-name">VerifyProcessSingleDoc</span>
-                <br/>
-                <span class="ignored-method-name">VerifySenderMultipleApprovers</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDeletePages</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersSaveastemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitformeWaitforme</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCompletedSenttomail</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDraftSaveAsTemplate</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentRenamedocument</span>
-                <br/>
-                <span class="ignored-method-name">SplitSinglelineText</span>
-                <br/>
-                <span class="ignored-method-name">VerifyVoidDeletedocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersResenddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyArchivedRenamedocuments</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentdocumentsettings</span>
-                <br/>
-                <span class="ignored-method-name">VerifyCCSenderSingerWOEWOA</span>
-                <br/>
-                <span class="ignored-method-name">Verifychangeuser</span>
-                <br/>
-                <span class="ignored-method-name">VerifyWaitingForOthersRenamedocument</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionsvoiddoc</span>
-                <br/>
-                <span class="ignored-method-name">Verifyotheroptionsfinishlater</span>
-                <br/>
-                <span class="ignored-method-name">VerifySentResenddocument</span>
-                <br/>
-                <span class="ignored-method-name">VerifyDeclinedDeletedocument</span>
+                <span class="ignored-method-name">ValidRenameTemplate</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -435,16 +308,16 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">TestCase.TestCases_Prudhvi2</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">TestCase.Template_Testcase</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">initialize</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">Start</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">VerifyChangeDoc</span>
-                <span class="method-start">7053 ms</span>
+                <span class="method-name">ValidBlankTemplate</span>
+                <span class="method-start">584 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

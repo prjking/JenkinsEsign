@@ -7,6 +7,7 @@ import org.testng.annotations.Listeners;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -48,9 +49,16 @@ public class FormTemplate_Testcases_Node2 extends testCaseBase {
 	EntityCases entityCases;
 	FormTemplate formTemplate;
 
+	public void setupDriver() {
+		driver = new ChromeDriver(getChromeOptions());
+		//	driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://dev.esigns.io/signin");
+	}
+
 	@BeforeMethod
 	public void Start() throws Exception {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
