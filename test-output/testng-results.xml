@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="46" total="47" passed="1" failed="0" skipped="0">
+<testng-results ignored="83" total="84" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-17T15:59:34 IST" name="Default suite" finished-at="2024-06-17T16:10:44 IST" duration-ms="669750">
+  <suite started-at="2024-06-18T11:32:11 IST" name="Default suite" finished-at="2024-06-18T11:34:39 IST" duration-ms="147689">
     <groups>
     </groups>
-    <test started-at="2024-06-17T15:59:34 IST" name="Default test" finished-at="2024-06-17T16:10:44 IST" duration-ms="669750">
-      <class name="TestCase.TestCases_Prudhvi1">
-        <test-method is-config="true" signature="start()[pri:0, instance:TestCase.TestCases_Prudhvi1@2b71e916]" started-at="2024-06-17T15:59:35 IST" name="start" finished-at="2024-06-17T15:59:42 IST" duration-ms="7805" status="PASS">
+    <test started-at="2024-06-18T11:32:11 IST" name="Default test" finished-at="2024-06-18T11:34:39 IST" duration-ms="147689">
+      <class name="TestCase.TestCases_Prudhvi2">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:TestCase.TestCases_Prudhvi2@5542c4ed]" started-at="2024-06-18T11:32:11 IST" name="initialize" finished-at="2024-06-18T11:32:19 IST" duration-ms="7989" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- start -->
-        <test-method signature="validRearrangeorderApproverCCSigner()[pri:37, instance:TestCase.TestCases_Prudhvi1@2b71e916]" started-at="2024-06-17T15:59:42 IST" name="validRearrangeorderApproverCCSigner" finished-at="2024-06-17T16:10:44 IST" duration-ms="661737" status="PASS">
+        </test-method> <!-- initialize -->
+        <test-method signature="VerifyDaftsentdocument()[pri:42, instance:TestCase.TestCases_Prudhvi2@5542c4ed]" started-at="2024-06-18T11:32:19 IST" name="VerifyDaftsentdocument" finished-at="2024-06-18T11:34:39 IST" duration-ms="139422" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validRearrangeorderApproverCCSigner -->
-      </class> <!-- TestCase.TestCases_Prudhvi1 -->
+        </test-method> <!-- VerifyDaftsentdocument -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:TestCase.TestCases_Prudhvi2@5542c4ed]" started-at="2024-06-18T11:34:39 IST" name="quit" finished-at="2024-06-18T11:34:39 IST" duration-ms="60" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- TestCase.TestCases_Prudhvi2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

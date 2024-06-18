@@ -346,7 +346,12 @@ public class Recieverside2 {
 		Thread.sleep(1000);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		Thread.sleep(10000);
+		try {
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		System.out.println("Email login Sucessfull");
 	}
 

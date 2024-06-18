@@ -125,8 +125,13 @@ public class RecevierSide1 {
 		Thread.sleep(3000);
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), password);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
-		Thread.sleep(3000);
+		try {
+		Thread.sleep(10000);
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		}
+		catch (Exception e) {
+			
+		}
 		System.out.printf("%s Login successfull", email);
 	}
 
@@ -146,7 +151,13 @@ public class RecevierSide1 {
 		} catch (Exception e) {
 			waitEle(By.xpath("//input[@id=\"idSIButton9\"]"));
 		}
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		try {
+			Thread.sleep(10000);
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+			}
+			catch (Exception e) {
+				
+			}
 		System.out.println("Jeevitha login successfull");
 	}
 
@@ -160,8 +171,13 @@ public class RecevierSide1 {
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
 		Thread.sleep(1000);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
-		Thread.sleep(10000);
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		try {
+			Thread.sleep(10000);
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+			}
+			catch (Exception e) {
+				
+			}
 		System.out.println("Jeevitha login successfull");
 		
 	}
@@ -384,7 +400,12 @@ public class RecevierSide1 {
 
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+		try {
 		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		Thread.sleep(10000);
 		waitEle(By.xpath("//span[text()=\"Test Sample\"]"));
 		VerifyClickonEmailSucess();

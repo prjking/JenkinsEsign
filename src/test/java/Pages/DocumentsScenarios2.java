@@ -397,9 +397,10 @@ public class DocumentsScenarios2 {
 		WebElement sen = wait.until(ExpectedConditions.elementToBeClickable(ele));
 		sen.sendKeys("Test Sample");
 
-		By ele2 = By.xpath("//textarea[@placeholder=\"Type your text here\"]");
+		By ele2 = By.xpath("//textarea[@placeholder='Type your text here' or @placeholder='Type your message here']");
 		WebElement sen2 = wait.until(ExpectedConditions.elementToBeClickable(ele2));
 		sen2.sendKeys("Test Sample");
+
 		Thread.sleep(5000);
 		WebElement element = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Send Document']")));
@@ -428,8 +429,12 @@ public class DocumentsScenarios2 {
 		Thread.sleep(3000);
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), password);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
-		Thread.sleep(3000);
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		Thread.sleep(10000);
+		try {
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		System.out.println("Email login Sucessfull");
 //		System.out.printf("%s Login successfull", email);
 	}

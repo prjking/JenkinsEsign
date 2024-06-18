@@ -66,8 +66,8 @@ public class testCaseBase {
 		prefs.put("profile.managed_default_content_settings.images", 2);
 		prefs.put("profile.default_content_setting_values.popups", 2);
 		options.setExperimentalOption("prefs", prefs);
-		options.addArguments("--disk-cache-size=0");
-		options.addArguments("--media-cache-size=0");
+		//options.addArguments("--disk-cache-size=0");
+		//options.addArguments("--media-cache-size=0");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--disable-software-rasterizer");
