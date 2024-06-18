@@ -126,11 +126,10 @@ public class RecevierSide1 {
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), password);
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		try {
-		Thread.sleep(10000);
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
-		}
-		catch (Exception e) {
-			
+			Thread.sleep(10000);
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		} catch (Exception e) {
+
 		}
 		System.out.printf("%s Login successfull", email);
 	}
@@ -154,10 +153,9 @@ public class RecevierSide1 {
 		try {
 			Thread.sleep(10000);
 			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
-			}
-			catch (Exception e) {
-				
-			}
+		} catch (Exception e) {
+
+		}
 		System.out.println("Jeevitha login successfull");
 	}
 
@@ -174,12 +172,11 @@ public class RecevierSide1 {
 		try {
 			Thread.sleep(10000);
 			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
-			}
-			catch (Exception e) {
-				
-			}
+		} catch (Exception e) {
+
+		}
 		System.out.println("Jeevitha login successfull");
-		
+
 	}
 
 	public void outlooksigninpage() throws InterruptedException {
@@ -187,8 +184,6 @@ public class RecevierSide1 {
 		driver.get(
 				"https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=150&ct=1714114815&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3den-us%26country%3dus%26RpsCsrfState%3d1425546c-12db-9db8-7947-044bdf3da8dc&id=292841&aadredir=1&whr=outlook.com&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c");
 	}
-
-	
 
 	public void senderReviewandSign(String s) throws Exception {
 		waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
@@ -269,12 +264,14 @@ public class RecevierSide1 {
 			waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
 		}
 	}
+
 	public void clickEmail(String s) throws Exception {
 		Thread.sleep(10000);
 		String xpath = String.format("//span[contains(text(), '%s')]", s);
 		waitEle(By.xpath(xpath));
 		System.out.println("click on email done successfully");
 	}
+
 	public void clickFinish() throws Exception {
 		waitEle(By.xpath("//span[text()=\"FINISH\"]"));
 		System.out.println("Review and Sign successful");
@@ -401,9 +398,8 @@ public class RecevierSide1 {
 		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		try {
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
-		}
-		catch (Exception e) {
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		Thread.sleep(10000);
@@ -525,53 +521,40 @@ public class RecevierSide1 {
 		System.out.println("FullName Drag and Drop Done");
 	}
 
-	public void validateAtCC(String s) {
-	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	        WebElement welcomeMessage = wait.until(ExpectedConditions
-	                .presenceOfElementLocated(By.xpath(String.format("(//span[contains(text(),'%s')])[1]", s))));
+	public void validateAtCC(String s) throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement welcomeMessage = wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath(String.format("(//span[contains(text(),'%s')])[1]", s))));
 
-	        Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
-	        System.out.println("Email received at cc");
-	    } catch (Exception e) {
-	        System.out.println("Validation failed: CC Issue Not Solved " + e.getMessage());
-	        
-	    }
+		Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
+		System.out.println("Email received at cc");
+
 	}
 
+	public void validateAtCCTwo() throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement welcomeMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
+				By.xpath("//span[text()=\"Getting started with OneDrive  Document completed\"]")));
 
-	public void validateAtCCTwo() {
-	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	        WebElement welcomeMessage = wait.until(ExpectedConditions.presenceOfElementLocated(
-	                By.xpath("//span[text()=\"Getting started with OneDrive  Document completed\"]")));
+		Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
+		System.out.println("Email received at cc");
 
-	        Assert.assertNotNull(welcomeMessage, "Not signed by all the signers");
-			System.out.println("Email received at cc");
-	    } catch (Exception e) {
-	        System.out.println("Validation failed CC Issue Not Solved: " + e.getMessage());
-	        
-	    }
 	}
 
+	public void DeleteMailAtcc(String s) throws Exception {
+		Thread.sleep(10000);
+		String xpath = String.format("//span[contains(text(), '%s')]", s);
+		waitEle(By.xpath(xpath));
+		System.out.println("click on cc Email done");
 
-	public void DeleteMailAtcc(String s) {
-    try {
-        String xpath = String.format("//span[contains(text(), '%s')]", s);
-        waitEle(By.xpath(xpath));
-        System.out.println("click on cc Email done");
+		waitEle(By.xpath("//span[text()=\"Delete\"]"));
+		System.out.println("Email Deleted");
 
-        waitEle(By.xpath("//span[text()=\"Delete\"]"));
-        System.out.println("Email Deleted");
-      
-        // driver.close();
-    } catch (Exception e) {
-        System.out.println("Validation failed: CC Issue Not Solved " + e.getMessage());
-       
-    }
-}
+		// driver.close();
 
-
+	}
 
 	public void validateAtCCGdrive() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));

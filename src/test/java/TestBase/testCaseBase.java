@@ -43,31 +43,18 @@ public class testCaseBase {
 //        driver.get("https://dev.esigns.io/signin");
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 //    }
-//
-//    public WebDriver getDriver() {
-//        return driverThreadLocal.get();
-//    }
-//
-//    @AfterMethod
-//    public void tearDown() {
-//        WebDriver driver = getDriver();
-//        if (driver != null) {
 
-//            driver.quit();
-//        }
-//        driverThreadLocal.remove();
-//    }
 	public void setup() {
 
 		// WebDriver driver = new FirefoxDriver();
-//
+
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<>();
 		prefs.put("profile.managed_default_content_settings.images", 2);
 		prefs.put("profile.default_content_setting_values.popups", 2);
 		options.setExperimentalOption("prefs", prefs);
-		//options.addArguments("--disk-cache-size=0");
-		//options.addArguments("--media-cache-size=0");
+		 options.addArguments("--disk-cache-size=0");
+		 options.addArguments("--media-cache-size=0");
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--disable-software-rasterizer");
@@ -82,44 +69,15 @@ public class testCaseBase {
 		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 //      options.addArguments("--incognito");
 		driver = new ChromeDriver(options);
-//		options.addArguments("start-maximized");
-//		driver.manage().window().maximize();
-//		String hubUrl = "http://192.168.0.107:4444";
-//		DesiredCapabilities ds = new DesiredCapabilities();
-//		ds.setCapability("browserName", "chrome");
-//		try {
-//			driver = new RemoteWebDriver(new URL(hubUrl), ds);
-//		} catch (MalformedURLException e) {
-//			e.printStackTrace();
-//		}
 
-//		assert driver != null;
 		driver.manage().window().maximize();
 		// driver.get("http://localhost:8008/signin");
 		// driver.get("https://preprod.esigns.io/signin");
 		// driver.get("https://dev.esigns.io/signin");
 
-		// Navigate to a web page
-
 		driver.get("https://nsui.esigns.io/signin");
 
 	}
-
-//	public Response putAPIRequest(String endpoint, Map<String, String> headers, String body) {
-//		return RestAssured.given().headers(headers).body(body).put(endpoint);
-//	}
-//
-//	public Response deleteAPIRequest(String endpoint, Map<String, String> headers) {
-//		return RestAssured.given().headers(headers).delete(endpoint);
-//	}
-//
-//	public Response getAPIResponse(String endpoint) {
-//		return RestAssured.get(endpoint);
-//	}
-//
-//	public Response postAPIRequest(String endpoint, Map<String, String> headers, String body) {
-//		return RestAssured.given().headers(headers).body(body).post(endpoint);
-//	}
 
 	public void waitEle(By by) throws Exception {
 		Thread.sleep(3000);

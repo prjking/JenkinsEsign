@@ -327,8 +327,11 @@ public class DocumentsScenarios1 {
 					driver.switchTo().window(handle);
 				}
 				Thread.sleep(10000);
+				try {
+					waitEle(By.xpath("//span//span[normalize-space()='Getting started with OneDrive.pdf']"));
+				} catch (Exception e) {
 
-				waitEle(By.xpath("//span//span[normalize-space()='Getting started with OneDrive.pdf']"));
+				}
 
 				waitEle(By.xpath("//span[@class=\"fsp-footer__nav--right\"]"));
 

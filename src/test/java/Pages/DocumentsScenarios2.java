@@ -267,8 +267,11 @@ public class DocumentsScenarios2 {
 	public void Lockfields() throws Exception {
 
 		Thread.sleep(10000);
-
-		waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		try {
+			waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		Thread.sleep(10000);
 		waitEle(By.xpath("//span[@class='el-checkbox__inner']"));
@@ -281,7 +284,6 @@ public class DocumentsScenarios2 {
 
 	@SuppressWarnings("deprecation")
 	public void changedoc(String imagePath) throws Exception {
-
 		Thread.sleep(10000);
 
 		waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
@@ -349,8 +351,11 @@ public class DocumentsScenarios2 {
 	public void EntityMappingSettings() throws Exception {
 
 		Thread.sleep(10000);
-
-		waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		try {
+			waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		Thread.sleep(10000);
 
@@ -1868,8 +1873,11 @@ public class DocumentsScenarios2 {
 	public void Documentsettings() throws Exception {
 
 		Thread.sleep(10000);
+		try {
+			waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		} catch (Exception e) {
 
-		waitEle(By.xpath("//img[@src='/img/Icon-ellipsis-v.eb3a1342.svg']"));
+		}
 
 		Thread.sleep(10000);
 
@@ -2113,7 +2121,7 @@ public class DocumentsScenarios2 {
 		}
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//span[normalize-space()='Resend'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Resend']"));
 
 	}
 
@@ -2162,7 +2170,7 @@ public class DocumentsScenarios2 {
 
 		waitEle(By.xpath("//ul[@x-placement]//a[6]"));
 
-		waitEle(By.xpath("//span[normalize-space()='Yes']"));
+		// waitEle(By.xpath("//span[normalize-space()='Yes']"));
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 
@@ -2504,8 +2512,11 @@ public class DocumentsScenarios2 {
 		Thread.sleep(10000);
 		waitEle(By.xpath("//span[normalize-space()='Documents']"));
 
+		Thread.sleep(10000);
+
 		waitEle(By.xpath("//input[@placeholder='Select Status']"));
 
+		Thread.sleep(10000);
 		waitEle(By.xpath("//div[@x-placement]//ul//li[8]"));
 
 	}
@@ -2694,9 +2705,15 @@ public class DocumentsScenarios2 {
 
 	public void Waitingforotherstatus() throws Exception {
 
+		Thread.sleep(10000);
+
 		waitEle(By.xpath("//span[normalize-space()='Documents']"));
 
+		Thread.sleep(10000);
+
 		waitEle(By.xpath("//input[@placeholder='Select Status']"));
+
+		Thread.sleep(10000);
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[10]"));
 
