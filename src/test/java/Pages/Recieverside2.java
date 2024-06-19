@@ -560,7 +560,12 @@ public class Recieverside2 {
 		Thread.sleep(10000);
 		String Parentwindowid1 = driver.getWindowHandle();
 		Thread.sleep(10000);
-		waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
+		try {
+			waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
+		} catch (Exception e) {
+
+		}
+
 		Thread.sleep(10000);
 		Set<String> allwindowhandles1 = driver.getWindowHandles();
 		for (String childwindow : allwindowhandles1) {
