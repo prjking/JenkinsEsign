@@ -590,7 +590,12 @@ public class Recieverside2 {
 			waitEle(By.xpath("//span[text()=\"Continue\"]"));
 		} catch (Exception e) {
 			Thread.sleep(10000);
-			waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+			try {
+				waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+
 		}
 	}
 
