@@ -324,8 +324,14 @@ public class Recieverside2 {
 
 	public void clickEmail(String s) throws Exception {
 		Thread.sleep(10000);
-		String xpath = String.format("//span[contains(text(), '%s')]", s);
-		waitEle(By.xpath(xpath));
+		try {
+			String xpath = String.format("//span[contains(text(), '%s')]", s);
+			waitEle(By.xpath(xpath));
+
+		} catch (Exception e) {
+
+		}
+
 	}
 
 	public void prudhvioutlooklogin() throws Exception {
@@ -347,9 +353,8 @@ public class Recieverside2 {
 		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
 		Thread.sleep(10000);
 		try {
-		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
-		}
-		catch (Exception e) {
+			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		System.out.println("Email login Sucessfull");

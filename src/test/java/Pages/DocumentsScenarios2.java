@@ -1955,7 +1955,7 @@ public class DocumentsScenarios2 {
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);
 		}
-
+		Thread.sleep(10000);
 		waitEle(By.xpath("(//span[normalize-space()='Resend'])[1]"));
 
 		waitEle(By.xpath("//button[@class='close-button']"));
