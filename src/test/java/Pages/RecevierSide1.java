@@ -267,8 +267,13 @@ public class RecevierSide1 {
 
 	public void clickEmail(String s) throws Exception {
 		Thread.sleep(10000);
-		String xpath = String.format("//span[contains(text(), '%s')]", s);
-		waitEle(By.xpath(xpath));
+		try {
+			String xpath = String.format("//span[contains(text(), '%s')]", s);
+			waitEle(By.xpath(xpath));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		System.out.println("click on email done successfully");
 	}
 

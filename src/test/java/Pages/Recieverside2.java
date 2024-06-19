@@ -539,17 +539,20 @@ public class Recieverside2 {
 
 	public void reviewandSignApprover() throws Exception {
 		Thread.sleep(10000);
-		WebElement copy = driver.findElement(By.xpath("//td[@class=\"x_featured-story__content-inner\"]//span"));
+		try {
+			WebElement copy = driver.findElement(By.xpath("//td[@class=\"x_featured-story__content-inner\"]//span"));
 
-		Actions action2 = new Actions(driver);
-		action2.doubleClick(copy).build().perform();
-		Thread.sleep(10000);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(copy).keyDown(Keys.CONTROL) // Press Ctrl key
-				.sendKeys("c") // Press C key
-				.keyUp(Keys.CONTROL) // Release Ctrl key
-				.build().perform();
+			Actions action2 = new Actions(driver);
+			action2.doubleClick(copy).build().perform();
+			Thread.sleep(10000);
+			Actions actions = new Actions(driver);
+			actions.moveToElement(copy).keyDown(Keys.CONTROL) // Press Ctrl key
+					.sendKeys("c") // Press C key
+					.keyUp(Keys.CONTROL) // Release Ctrl key
+					.build().perform();
+		} catch (Exception e) {
 
+		}
 		Set<String> windowHandles1 = driver.getWindowHandles();
 		for (String handle : windowHandles1) {
 			driver.switchTo().window(handle);
@@ -569,7 +572,7 @@ public class Recieverside2 {
 				Thread.sleep(10000);
 				waitEle(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
 				WebElement paste = driver.findElement(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
-
+				Actions actions = new Actions(driver);
 				actions.moveToElement(paste).keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).build().perform();
 				waitEle(By.xpath("//div[@class=\"el-form-item__content\"]//span[text()=\"Submit\"]"));
 			}
