@@ -443,8 +443,9 @@ public class Recieverside2 {
 			driver.switchTo().window(handle);
 		}
 		Thread.sleep(10000);
-		Javascriptclick(By.xpath("//span[normalize-space()='Edit']"));
-		Thread.sleep(1000);
+		
+		MethodActions.Javascriptclick(By.xpath("//span[normalize-space()='Edit']"));
+		Thread.sleep(10000);
 		sendKeysToElement(By.xpath("//input[@placeholder='Enter signature']"), Sign);
 
 		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
@@ -593,7 +594,7 @@ public class Recieverside2 {
 			try {
 				waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
 			} catch (Exception e2) {
-				// TODO: handle exception
+				
 			}
 
 		}
