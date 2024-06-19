@@ -559,6 +559,7 @@ public class Recieverside2 {
 		}
 		Thread.sleep(10000);
 		String Parentwindowid1 = driver.getWindowHandle();
+		Thread.sleep(10000);
 		waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
 		Thread.sleep(10000);
 		Set<String> allwindowhandles1 = driver.getWindowHandles();
@@ -580,6 +581,7 @@ public class Recieverside2 {
 		try {
 			Thread.sleep(10000);
 			waitEle(By.xpath("//span[@class=\"el-checkbox__inner\"]"));
+			Thread.sleep(5000);
 			waitEle(By.xpath("//span[text()=\"Continue\"]"));
 		} catch (Exception e) {
 			Thread.sleep(10000);
