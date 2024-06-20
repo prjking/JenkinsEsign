@@ -212,7 +212,7 @@ public class RecevierSide1 {
 
 	public void reviewandSign(String s) throws Exception {
 		Thread.sleep(10000);
-		
+
 		try {
 			WebElement copy = driver.findElement(By.xpath("//td[@class=\"x_featured-story__content-inner\"]//span"));
 
@@ -265,7 +265,12 @@ public class RecevierSide1 {
 
 		} catch (Exception e) {
 			Thread.sleep(10000);
-			waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+			try {
+				waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
+			} catch (Exception e2) {
+
+			}
+
 		}
 	}
 

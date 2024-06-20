@@ -443,7 +443,7 @@ public class Recieverside2 {
 			driver.switchTo().window(handle);
 		}
 		Thread.sleep(10000);
-		
+
 		MethodActions.Javascriptclick(By.xpath("//span[normalize-space()='Edit']"));
 		Thread.sleep(10000);
 		sendKeysToElement(By.xpath("//input[@placeholder='Enter signature']"), Sign);
@@ -478,28 +478,32 @@ public class Recieverside2 {
 			driver.switchTo().window(handle);
 		}
 		Thread.sleep(10000);
-		String Parentwindowid1 = driver.getWindowHandle();
-		waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
-		Thread.sleep(10000);
-		Set<String> allwindowhandles1 = driver.getWindowHandles();
-		for (String childwindow : allwindowhandles1) {
-			if (!childwindow.endsWith(Parentwindowid1)) {
-				driver.switchTo().window(childwindow);
-				Thread.sleep(1000);
-				driver.switchTo().window(Parentwindowid1).close();
-				driver.switchTo().window(childwindow);
+		try {
+			String Parentwindowid1 = driver.getWindowHandle();
+			waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
+			Thread.sleep(10000);
+			Set<String> allwindowhandles1 = driver.getWindowHandles();
+			for (String childwindow : allwindowhandles1) {
+				if (!childwindow.endsWith(Parentwindowid1)) {
+					driver.switchTo().window(childwindow);
+					Thread.sleep(1000);
+					driver.switchTo().window(Parentwindowid1).close();
+					driver.switchTo().window(childwindow);
 
-				Thread.sleep(1000);
-				waitEle(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
-				WebElement paste = driver.findElement(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
+					Thread.sleep(1000);
+					waitEle(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
+					WebElement paste = driver.findElement(By.xpath("//input[@placeholder=\"Enter 6 letters code\"]"));
 
-				actions.moveToElement(paste).keyDown(Keys.CONTROL) // Press Ctrl key
-						.sendKeys("v") // Press v key
-						.keyUp(Keys.CONTROL) // Release Ctrl key
-						.build().perform();
-				waitEle(By.xpath("//div[@class=\"el-form-item__content\"]//span[text()=\"Submit\"]"));
+					actions.moveToElement(paste).keyDown(Keys.CONTROL) // Press Ctrl key
+							.sendKeys("v") // Press v key
+							.keyUp(Keys.CONTROL) // Release Ctrl key
+							.build().perform();
+					waitEle(By.xpath("//div[@class=\"el-form-item__content\"]//span[text()=\"Submit\"]"));
 
+				}
 			}
+		} catch (Exception e) {
+			
 		}
 
 		try {
@@ -594,7 +598,7 @@ public class Recieverside2 {
 			try {
 				waitEle(By.xpath("//span[normalize-space()='NEXT FIELD']"));
 			} catch (Exception e2) {
-				
+
 			}
 
 		}
