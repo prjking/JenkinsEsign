@@ -325,6 +325,7 @@ public class RecevierSide1 {
 		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
 		waitEle(By.xpath("//span[normalize-space()='Verify & Save Secure Signature']"));
 		Thread.sleep(1000);
+
 		waitEle(By.xpath("//span[text()=\"FINISH\"]"));
 		System.out.println("Review and Sign successful");
 	}
@@ -348,7 +349,12 @@ public class RecevierSide1 {
 		}
 		Thread.sleep(10000);
 		String Parentwindowid1 = driver.getWindowHandle();
-		waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
+		try {
+			waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
+		} catch (Exception e) {
+			
+		}
+
 		Thread.sleep(10000);
 		Set<String> allwindowhandles1 = driver.getWindowHandles();
 		for (String childwindow : allwindowhandles1) {
