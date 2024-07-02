@@ -355,7 +355,7 @@ public class Recieverside2 {
 		try {
 			waitEle(By.xpath("//button[@id=\"declineButton\"]"));
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		System.out.println("Email login Sucessfull");
 	}
@@ -402,7 +402,12 @@ public class Recieverside2 {
 		}
 		Thread.sleep(10000);
 		String Parentwindowid1 = driver.getWindowHandle();
-		waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
+		try {
+			waitEle(By.xpath("//a[text()=\"Review & sign\"]"));
+		} catch (Exception e) {
+
+		}
+
 		Thread.sleep(10000);
 		Set<String> allwindowhandles1 = driver.getWindowHandles();
 		for (String childwindow : allwindowhandles1) {
@@ -503,7 +508,7 @@ public class Recieverside2 {
 				}
 			}
 		} catch (Exception e) {
-			
+
 		}
 
 		try {

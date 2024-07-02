@@ -23,7 +23,7 @@ import TestBase.testCaseBase;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 
-public class Docscenarios_Meghana extends testCaseBase {
+public class Docscenarios_Meghana_wl extends testCaseBase {
 	Login login;
 	Alldocuments alldocuments;
 	Uploaddocuments uploaddocuments;
@@ -40,8 +40,8 @@ public class Docscenarios_Meghana extends testCaseBase {
 		driver = new ChromeDriver(getChromeOptions());
 		//driver =new ChromeDriver();
 		driver.manage().window().maximize();
-		//driver.get("http://wl.esigns.io/");
-		driver.get("https://dev.esigns.io/signin");
+		driver.get("http://wl.esigns.io/");
+		//driver.get("https://dev.esigns.io/signin");
 	}
 
 	@BeforeMethod

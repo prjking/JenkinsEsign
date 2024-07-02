@@ -29,6 +29,8 @@ public class Login {
 	public void waitEle(By by) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+		
+		
 	}
 
 	public void Signin() throws Exception {
@@ -38,7 +40,6 @@ public class Login {
 		System.out.println("Email entered successfully");
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Password']"), "Nimble#2022");
 		System.out.println("Password entered successfully");
-
 		waitEle(By.xpath("//span[normalize-space()='Log In']"));
 		System.out.println("Login button clicked");
 		Thread.sleep(10000);

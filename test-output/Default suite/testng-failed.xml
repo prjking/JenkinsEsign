@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.Template_Testcase">
+      <class name="TestCase.FormTemplate_Testcases">
         <methods>
           <include name="Start"/>
-          <include name="ValidBlankTemplate"/>
+          <include name="ContentHorizontalLine"/>
+          <include name="Close"/>
         </methods>
-      </class> <!-- TestCase.Template_Testcase -->
+      </class> <!-- TestCase.FormTemplate_Testcases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -30,18 +30,19 @@ public class FormTemplate {
 
 	public void Template() throws Exception {
 		Thread.sleep(10000);
-//		MethodActions.Loadingmask();
-//		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
-//		Thread.sleep(10000);
-//		MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form Template']"));
-		driver.get("https://dev.esigns.io/template/create?key=45651");
+		MethodActions.Loadingmask();
+		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
+		Thread.sleep(10000);
+		MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form Template']"));
+		//driver.get("https://dev.esigns.io/template/create?key=45651");
+		
 
 	}
 
 	public void Createtemp() throws Exception {
 		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[@class='right-create-button']"));
-		// MethodActions.switchToNewWindow();
+		 MethodActions.waitEle(By.xpath("//button[text()=' Create Template ']"));
+		 MethodActions.switchToNewWindow();
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Template Title']"),
 				MethodActions.generateUniqueString());
 		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Template Description']"),

@@ -48,10 +48,11 @@ public class FormTemplate_Testcases extends testCaseBase {
 	FormTemplate formTemplate;
 
 	public void setupDriver() {
-		driver = new ChromeDriver(getChromeOptions());
-		//	driver =new ChromeDriver();
+		//driver = new ChromeDriver(getChromeOptions());
+			driver =new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://dev.esigns.io/signin");
+		//driver.get("https://dev.esigns.io/signin");
+		driver.get("http://wl.esigns.io/");
 	}
 
 	@BeforeMethod
