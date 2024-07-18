@@ -10,7 +10,7 @@ import Pages.Login;
 import Pages.MethodActions;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
-import Resources.ScreenRecorderUtil;
+//import Resources.ScreenRecorderUtil;
 import TestBase.testCaseBase;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
@@ -18,7 +18,7 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 	Login login;
 	Formtemplates_globalvariable formtemplates_globalvariable;
 	FormTemplate formTemplate;
-	ScreenRecorderUtil screenRecorderUtil;
+	//ScreenRecorderUtil screenRecorderUtil;
 
 	public void setupDriver() {
 		driver = new ChromeDriver(getChromeOptions());
