@@ -2,16 +2,11 @@ package Pages;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -158,24 +153,6 @@ public class MethodActions {
 		Actions builder = new Actions(driver);
 		Action dragAndDrop = builder.clickAndHold(source).moveToElement(target).release(target).build();
 		dragAndDrop.perform();
-	}
-
-	public static void setFilePermissions(String filePath, String permissions) {
-		try {
-
-			Set<PosixFilePermission> perms = PosixFilePermissions.fromString(permissions);
-			Files.setPosixFilePermissions(Paths.get(filePath), perms);
-			System.out.println("File permissions changed successfully for: " + filePath);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.err.println("Failed to change file permissions for: " + filePath);
-		} catch (UnsupportedOperationException e) {
-			e.printStackTrace();
-			System.err.println("POSIX file permissions not supported on this system.");
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			System.err.println("Invalid permission string: " + permissions);
-		}
 	}
 
 }

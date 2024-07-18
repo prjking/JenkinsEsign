@@ -29,8 +29,7 @@ public class Login {
 	public void waitEle(By by) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
-		
-		
+
 	}
 
 	public void Signin() throws Exception {

@@ -56,7 +56,7 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 	}
 	
 	@BeforeMethod
-	public void Start() throws Exception {
+	public void Start() {
 		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
@@ -84,7 +84,7 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 		formTemplate.Createtemp();
 		formTemplate.SingleLine();
 		// formTemplate.closeingleline();
-		// formTemplate.SinglelineGlobalVariable();
+		 formTemplate.SinglelineGlobalVariable();
 		// formTemplate.StyleSettings();
 	}
 
@@ -114,8 +114,8 @@ public class FormTemplate_Testcases_Node1 extends testCaseBase {
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
-		formTemplate.Number();
-		// formTemplate.NumberGlobalVariable();
+		//formTemplate.Number();
+		formTemplate.NumberGlobalVariable();
 	}
 
 	@Test(priority = 5)

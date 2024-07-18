@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -19,6 +20,11 @@ import java.util.Map;
 public class testCaseBase {
 	protected WebDriver driver;
 
+	public void setupDriver() {
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://wl.esigns.io/");
+	}
 //	  private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 //
 //    @BeforeMethod
@@ -65,6 +71,7 @@ public class testCaseBase {
 		return options;
 	}
 
+//	
 	public void waitEle(By by) throws Exception {
 		Thread.sleep(3000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));

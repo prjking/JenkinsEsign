@@ -14,9 +14,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Recieverside2 {
 	static WebDriver driver;
+	MethodActions methodActions;
 
 	public Recieverside2(WebDriver driver) {
 		Recieverside2.driver = driver;
+		methodActions = new MethodActions(driver);
 	}
 
 	public void waitEle(By by) {

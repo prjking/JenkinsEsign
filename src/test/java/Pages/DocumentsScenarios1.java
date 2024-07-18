@@ -31,11 +31,12 @@ import org.testng.Assert;
 
 public class DocumentsScenarios1 {
 	static WebDriver driver;
+	MethodActions methodActions;
 
 	public DocumentsScenarios1(WebDriver driver) {
 
 		DocumentsScenarios1.driver = driver;
-
+		methodActions = new MethodActions(driver);
 	}
 
 	public void waitEle(By by) throws Exception {

@@ -31,22 +31,22 @@ public class FormTemplate {
 	public void Template() throws Exception {
 		Thread.sleep(10000);
 		MethodActions.Loadingmask();
-		MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
+		// MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
 		Thread.sleep(10000);
-		MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form Template']"));
-		//driver.get("https://dev.esigns.io/template/create?key=45651");
-		
+		driver.get("https://nsui.esigns.io/template");
+		// MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form
+		// Template']"));
+		// driver.get("https://dev.esigns.io/template/create?key=45651");
 
 	}
 
 	public void Createtemp() throws Exception {
 		Thread.sleep(10000);
-		 MethodActions.waitEle(By.xpath("//button[text()=' Create Template ']"));
-		 MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//button[text()=' Create Template ']"));
+		MethodActions.switchToNewWindow();
+		MethodActions.waitEle(By.xpath("//div[@class='icons plus-symbol']"));
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Template Title']"),
-				MethodActions.generateUniqueString());
-		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Enter Template Description']"),
-				MethodActions.generateUniqueString());
+				MethodActions.generateUniqueString() + " Global Variables ");
 		MethodActions.waitEle(By.xpath("//div[@class='last-row-in-form']//span[normalize-space()='Submit']"));
 
 	}
@@ -305,7 +305,7 @@ public class FormTemplate {
 
 	public void NumberGlobalVariable() throws Exception {
 		Thread.sleep(10000);
-		// MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
+		MethodActions.waitEle(By.xpath("//div[text()='Basic Fields']"));
 		WebElement Number = driver.findElement(By.xpath("//span[text()='Number']"));
 		WebElement targetElement = driver.findElement(By.xpath("//div[@class=\"form-builder\"]"));
 

@@ -15,11 +15,12 @@ import org.testng.Assert;
 
 public class DocumentsScenarios {
 	WebDriver driver;
+	MethodActions methodActions;
 
 	public DocumentsScenarios(WebDriver driver) {
 
 		this.driver = driver;
-
+		methodActions = new MethodActions(driver);
 	}
 
 	public void waitEle(By by) throws Exception {

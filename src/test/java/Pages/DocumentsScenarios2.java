@@ -18,10 +18,11 @@ import dev.failsafe.internal.util.Assert;
 public class DocumentsScenarios2 {
 
 	WebDriver driver;
-
+	MethodActions methodActions;
 	public DocumentsScenarios2(WebDriver driver) {
 
 		this.driver = driver;
+		methodActions = new MethodActions(driver);
 
 	}
 
