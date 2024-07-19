@@ -22,7 +22,7 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 	ScreenRecorderUtil screenRecorderUtil;
 
 	public void setupDriver() {
-		//driver = new ChromeDriver(getChromeOptions());
+		// driver = new ChromeDriver(getChromeOptions());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
@@ -44,14 +44,14 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
-		 ScreenRecorderUtil.stopRecord();
+		// ScreenRecorderUtil.stopRecord();
 		formTemplate.Createtemp();
 		formtemplates_globalvariable.GlobalVariableActions();
 		formtemplates_globalvariable.blankdoc();
 		formtemplates_globalvariable.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		formtemplates_globalvariable.companyProfile();
-		// formtemplates_globalvariable.addrecevier();
-		// ScreenRecorderUtil.stopRecord();
+		formtemplates_globalvariable.addrecevier();
+		ScreenRecorderUtil.stopRecord();
 
 	}
 
