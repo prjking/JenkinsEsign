@@ -10,6 +10,7 @@ import Pages.Login;
 import Pages.MethodActions;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
+import Resources.ScreenRecorderUtil;
 //import Resources.ScreenRecorderUtil;
 import TestBase.testCaseBase;
 
@@ -18,11 +19,11 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 	Login login;
 	Formtemplates_globalvariable formtemplates_globalvariable;
 	FormTemplate formTemplate;
-	//ScreenRecorderUtil screenRecorderUtil;
+	ScreenRecorderUtil screenRecorderUtil;
 
 	public void setupDriver() {
-		driver = new ChromeDriver(getChromeOptions());
-		//driver = new ChromeDriver();
+		//driver = new ChromeDriver(getChromeOptions());
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 
@@ -39,11 +40,11 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 
 	@Test
 	public void validglobalvariable() throws Exception {
-		// ScreenRecorderUtil.startRecord("testRecording");
+		ScreenRecorderUtil.startRecord("testRecording");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
-		// ScreenRecorderUtil.stopRecord();
+		 ScreenRecorderUtil.stopRecord();
 		formTemplate.Createtemp();
 		formtemplates_globalvariable.GlobalVariableActions();
 		formtemplates_globalvariable.blankdoc();

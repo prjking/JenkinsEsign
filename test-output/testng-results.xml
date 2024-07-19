@@ -2,30 +2,54 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-18T19:07:12 IST" name="Default suite" finished-at="2024-07-18T19:11:11 IST" duration-ms="239727">
+  <suite started-at="2024-07-19T11:54:03 IST" name="Default suite" finished-at="2024-07-19T11:56:05 IST" duration-ms="121645">
     <groups>
     </groups>
-    <test started-at="2024-07-18T19:07:12 IST" name="Default test" finished-at="2024-07-18T19:11:11 IST" duration-ms="239727">
+    <test started-at="2024-07-19T11:54:03 IST" name="Default test" finished-at="2024-07-19T11:56:05 IST" duration-ms="121645">
       <class name="TestCase.FormtemplatesGlobalvariable_Testcase">
-        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.FormtemplatesGlobalvariable_Testcase@74235045]" started-at="2024-07-18T19:07:12 IST" name="Start" finished-at="2024-07-18T19:07:19 IST" duration-ms="7349" status="PASS">
+        <test-method is-config="true" signature="Start()[pri:0, instance:TestCase.FormtemplatesGlobalvariable_Testcase@74235045]" started-at="2024-07-19T11:54:04 IST" name="Start" finished-at="2024-07-19T11:56:05 IST" duration-ms="121130" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Start -->
-        <test-method signature="validglobalvariable()[pri:0, instance:TestCase.FormtemplatesGlobalvariable_Testcase@74235045]" started-at="2024-07-18T19:07:19 IST" name="validglobalvariable" finished-at="2024-07-18T19:11:11 IST" duration-ms="232102" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="validglobalvariable()[pri:0, instance:TestCase.FormtemplatesGlobalvariable_Testcase@74235045]" started-at="2024-07-19T11:56:05 IST" name="validglobalvariable" finished-at="2024-07-19T11:56:05 IST" duration-ms="185" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //button[@class='el-button el-button--primary'] (tried for 60 second(s) with 500 milliseconds interval)]]>
+              <![CDATA[no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.128)
+Build info: version: '4.22.0', revision: 'c5f3146703*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ad60931e6dfc0df2e102aef9df1508f4, findElement {value=//input[@placeholder='Ex: johnwesley@abc.com'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64752}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64752/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ad60931e6dfc0df2e102aef9df1508f4]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //button[@class='el-button el-button--primary'] (tried for 60 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-at Pages.MethodActions.waitEle(MethodActions.java:33)
-at Pages.Formtemplates_globalvariable.waitForElements(Formtemplates_globalvariable.java:85)
-at Pages.Formtemplates_globalvariable.performGlobalVariableActions(Formtemplates_globalvariable.java:75)
-at Pages.Formtemplates_globalvariable.executeGlobalVariableActions(Formtemplates_globalvariable.java:58)
-at Pages.Formtemplates_globalvariable.GlobalVariableActions(Formtemplates_globalvariable.java:31)
-at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:48)
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.128)
+Build info: version: '4.22.0', revision: 'c5f3146703*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ad60931e6dfc0df2e102aef9df1508f4, findElement {value=//input[@placeholder='Ex: johnwesley@abc.com'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64752}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64752/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ad60931e6dfc0df2e102aef9df1508f4
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+at Pages.Login.SigninNSUI(Login.java:135)
+at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:44)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -52,38 +76,9 @@ at org.testng.TestNG.run(TestNG.java:1031)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=126.0.6478.128)
-Build info: version: '4.22.0', revision: 'c5f3146703*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [a0ac6fe2893ddb2212060ae78c567507, findElement {using=xpath, value=//button[@class='el-button el-button--primary']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61368}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61368/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: a0ac6fe2893ddb2212060ae78c567507
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
-at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:627)
-at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:624)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-... 32 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validglobalvariable -->
