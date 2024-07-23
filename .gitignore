@@ -9,3 +9,4 @@ src/test/Screenshots/high-number-folder/
 # Exclude specific file patterns
 *.mov
 *.avi
+/target/
