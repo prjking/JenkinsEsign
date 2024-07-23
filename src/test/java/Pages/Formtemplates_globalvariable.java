@@ -125,7 +125,17 @@ public class Formtemplates_globalvariable {
 
 	public void companyProfile() throws Exception {
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		Thread.sleep(5000);
+		MethodActions.waitEle(By.xpath("//input[@placeholder='SENDER']"));
+		Thread.sleep(5000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 
+		WebElement Sign = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+		Actions actions = new Actions(driver);
+		waitAndClick(actions, Sign, Target, 90, -180);
 		Thread.sleep(5000);
 		String[] fields = { "Field1", "Field2", "Field3", "Field4", "Field5", "Field6", "Field7", "Field8", "Field9",
 				"Field10", "Field11", "Field12", "Field13", "Field14", "Field15", "Field16", "Field17", "Field18",
@@ -150,14 +160,13 @@ public class Formtemplates_globalvariable {
 			int x = coordinates[i][0];
 			int y = coordinates[i][1];
 
-			Actions actions = new Actions(driver);
 			actions.clickAndHold(element).moveToElement(target, x, y).release().build().perform();
 
 		}
 	}
 
 	public void addrecevier() throws Exception {
-		Thread.sleep(5000);
+
 		Thread.sleep(5000);
 		MethodActions.waitEle(By.xpath("(//input[@type='checkbox'])[3]"));
 		MethodActions.waitEle(By.xpath("//div[@class='el-select__tags']//input[1]"));
@@ -171,13 +180,6 @@ public class Formtemplates_globalvariable {
 		Thread.sleep(5000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 		Thread.sleep(5000);
-		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='SENDER']")));
-        
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		MethodActions.waitEle(By.xpath("//input[@placeholder='SENDER']"));
-		Thread.sleep(5000);
-		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 		MethodActions.waitEle(By.xpath("//span[text()='Send Document']"));
 
 	}
@@ -187,4 +189,5 @@ public class Formtemplates_globalvariable {
 		actions.clickAndHold(sourceElement).moveToElement(targetElement, xOffset, yOffset).release().build().perform();
 
 	}
+
 }
