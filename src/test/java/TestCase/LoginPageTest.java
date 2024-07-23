@@ -1,6 +1,11 @@
 package TestCase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -12,6 +17,7 @@ import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
 import Pages.FormTemplate;
 import Pages.Login;
+import Pages.MethodActions;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Scrool;
@@ -41,12 +47,21 @@ public class LoginPageTest extends testCaseBase {
 	Scrool scrool;
 
 	public void setupDriver() {
-		driver = new ChromeDriver(getChromeOptions());
-		//	driver =new ChromeDriver();
+//		 driver = new ChromeDriver(getChromeOptions());
+		ChromeOptions options = new ChromeOptions();
+		Map<String, Object> prefs = new HashMap<>();
+		Map<String, Object> profile = new HashMap<>();
+		Map<String, Object> contentSettings = new HashMap<>();
+		contentSettings.put("notifications", 1);
+		contentSettings.put("clipboard", 1);
+		profile.put("managed_default_content_settings", contentSettings);
+		prefs.put("profile", profile);
+		options.setExperimentalOption("prefs", prefs);
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}
-	
+
 	@BeforeMethod
 	public void Start() {
 		setupDriver();
@@ -62,8 +77,8 @@ public class LoginPageTest extends testCaseBase {
 		dashboard = new Dashboard(driver);
 		documentsScenarios = new DocumentsScenarios(driver);
 		templateScenarios = new TemplateScenarios(driver);
-		formTemplate =new FormTemplate(driver);
-		scrool =new Scrool(driver);
+		formTemplate = new FormTemplate(driver);
+		scrool = new Scrool(driver);
 
 	}
 
@@ -132,8 +147,8 @@ public class LoginPageTest extends testCaseBase {
 
 	@Test
 	public void Review() throws Exception {
-		login.Signin();
-		//login.VerifyLoginSucess();
+		// login.Signin();
+		// login.VerifyLoginSucess();
 //		alldocuments.Createdocument();
 //		alldocuments.Validdocument();
 //		// uploaddocuments.Fileupload();
@@ -180,7 +195,7 @@ public class LoginPageTest extends testCaseBase {
 //	
 	@Test
 	public void Verifyscrool() throws Exception {
-		//login.Signin();
+		// login.Signin();
 //		login.VerifyLoginSucess();
 //		scrool.AllCombos();
 //		scrool.BlankDoc();
@@ -190,7 +205,16 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.Receiverfields();
 //		scrool.Senddocument();
 //		scrool.Yahoomail();
-		//scrool.autofill(true);
+		// scrool.autofill(true);
+
+	}
+
+	@Test
+	public void addbuilder() throws Exception {
+		scrool.Signinram();
+		scrool.Addformbuilder();
+		scrool.ViewFormbuilder();
+	
 
 	}
 }

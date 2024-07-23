@@ -1,14 +1,23 @@
 package Pages;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -408,4 +417,160 @@ public class Scrool {
 
 		}
 	}
+
+	public void Signinram() throws InterruptedException {
+		Thread.sleep(10000);
+//		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+//				.sendKeys("N180959@rguktn.ac.in");
+//		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramya@1234");
+//		driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("ramya.sibbala@nimbleaccounting.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramyasri@123");
+		driver.findElement(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--danger']")).click();
+		Thread.sleep(10000);
+
+	}
+
+	public void Addformbuilder() throws Exception {
+		Thread.sleep(10000);
+		driver.get("https://nsui.esigns.io/formBuilders/add");
+
+		// waitEle(By.xpath("//span[normalize-space()='Add Form Builder']"));
+
+		sendKeysToElement(By.xpath("//input[@placeholder='Form builder name']"), MethodActions.generateUniqueString());
+
+		waitEle(By.xpath("//input[@placeholder='Select user type']"));
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Anyone']"));
+
+		Thread.sleep(10000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebElement element = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Select Group']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[normalize-space()='QA']"));
+
+		waitEle(By.xpath("//i[@class='el-select__caret el-input__icon el-icon-arrow-up is-reverse']"));
+
+		waitEle(By.xpath("//span[normalize-space()='Save and Next']"));
+
+		waitEle(By.xpath("(//div[normalize-space()='Contact details'])[1]"));
+
+		waitEle(By.xpath("(//div[normalize-space()='templateBasicFeilds'])[1]"));
+
+		waitEle(By.xpath("//span[normalize-space()='Save Steps']"));
+
+		waitEle(By.xpath("//span[normalize-space()='Approval Settings']"));
+
+		waitEle(By.xpath("(//span[@class='el-checkbox__input'])[3]"));
+
+		waitEle(By.xpath("//input[@placeholder='Select user type']"));
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Application Users']"));
+
+		waitEle(By.xpath("//input[@placeholder='Select application user type']"));
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[normalize-space()='Receiver']"));
+		Thread.sleep(1000);
+
+		waitEle(By.xpath("//input[@placeholder='Select preferred user']"));
+
+		Thread.sleep(1000);
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[normalize-space()='jeevitha.patnana@nimbleaccounting.com']"));
+
+		Thread.sleep(1000);
+
+		WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//i[@class='el-select__caret el-input__icon el-icon-arrow-up is-reverse']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+
+		waitEle(By.xpath("//span[normalize-space()='Save Form builder']"));
+
+	}
+
+	public void ViewFormbuilder() throws Exception {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement actionsElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"(//div[@class='el-table el-table--fit el-table--scrollable-x el-table--enable-row-transition']//tr[1]//span[text()=' Actions '])[1]")));
+		actionsElement.click();
+
+		WebElement dropdownLink = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@x-placement]//a[1]")));
+		dropdownLink.click();
+
+		Thread.sleep(10000);
+		WebElement copyElement = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='el-icon-copy-document']")));
+		copyElement.click();
+		Thread.sleep(2000);
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("var input = document.createElement('input');" + "document.body.appendChild(input);"
+				+ "input.value = window.getSelection().toString();" + "input.select();"
+				+ "document.execCommand('copy');" + "document.body.removeChild(input);");
+
+		String clipboardData = (String) js.executeScript(
+				"return navigator.clipboard.readText().then(text => text).catch(err => 'Clipboard access denied');");
+
+		System.out.println("Copied data: " + clipboardData);
+		
+		driver.switchTo().newWindow(WindowType.TAB);
+		Thread.sleep(5000);
+		driver.get(clipboardData);
+		
+	}
+
+//	private static Map<String, Object> getClipBoardSettingsMap(int settingValue) throws JsonProcessingException {
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("last_modified", String.valueOf(System.currentTimeMillis()));
+//		map.put("setting", settingValue);
+//
+//		Map<String, Object> cbPreference = new HashMap<>();
+//		cbPreference.put("[*.],*", map);
+//
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		String json = objectMapper.writeValueAsString(cbPreference);
+//		Logger.info("clipboardSettingJson: " + json);
+//
+//		return cbPreference;
+//	}
+
+//		  WebElement urlElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='el-icon-copy-document']")));
+//	        
+//	      
+//	        urlElement.click();
+//	        
+//	        
+//	        Thread.sleep(5000);
+//
+//	       
+//	        driver.switchTo().newWindow(WindowType.TAB);
+//	        Thread.sleep(5000);
+//	       
+//	        JavascriptExecutor js = (JavascriptExecutor) driver;
+//	        String script = "navigator.clipboard.readText().then(text => { if (text) window.location.href = text; });";
+//	        js.executeScript(script);
+//
+//	       
+//	        Thread.sleep(5000); // Adjust as needed
+
+//		WebElement copyElement = wait
+//				.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='el-icon-copy-document']")));
+//
+//		copyElement.click();
+//
+//		
+//		Thread.sleep(2000); 
+//
+//		
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		String clipboardData = (String) js.executeScript("return navigator.clipboard.readText().then(text => text);");
+//
+//		
+//		System.out.println("Copied data: " + clipboardData);
+
 }

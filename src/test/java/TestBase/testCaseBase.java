@@ -53,9 +53,14 @@ public class testCaseBase {
 	public ChromeOptions getChromeOptions() {
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<>();
+		Map<String, Object> clipboardSettings = new HashMap<>();
+		clipboardSettings.put("setting", 1);
+		prefs.put("profile.content_settings.exceptions.clipboard", clipboardSettings);
 		prefs.put("profile.managed_default_content_settings.images", 2);
 		prefs.put("profile.default_content_setting_values.popups", 2);
+
 		options.setExperimentalOption("prefs", prefs);
+
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--disable-software-rasterizer");
@@ -64,9 +69,11 @@ public class testCaseBase {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
 		options.addArguments(
-				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36");
+				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36"); // Set
+																																					// user
+																																					// agent
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		// options.setBinary("/usr/bin/sgoogle-chrome-stable");
 //      options.addArguments("--incognito");
 		return options;
 	}
