@@ -40,7 +40,7 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 
 	@Test
 	public void validglobalvariable() throws Exception {
-		ScreenRecorderUtil.startRecord("testRecording");
+	//	ScreenRecorderUtil.startRecord("testRecording");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
@@ -51,7 +51,7 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 		formtemplates_globalvariable.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		formtemplates_globalvariable.companyProfile();
 		formtemplates_globalvariable.addrecevier();
-		ScreenRecorderUtil.stopRecord();
+	//	ScreenRecorderUtil.stopRecord();
 
 	}
 
