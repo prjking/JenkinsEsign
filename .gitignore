@@ -10,3 +10,4 @@ src/test/Screenshots/high-number-folder/
 *.mov
 *.avi
 
+target/
