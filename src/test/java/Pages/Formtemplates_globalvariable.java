@@ -127,7 +127,7 @@ public class Formtemplates_globalvariable {
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		Thread.sleep(5000);
-		MethodActions.waitEle(By.xpath("//input[@placeholder='SENDER']"));
+		MethodActions.Javascriptclick(By.xpath("//input[@placeholder='SENDER']"));
 		Thread.sleep(5000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 
