@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Jul 23 12:50:30 IST 2024</td>
+<td>Started on:</td><td>Tue Jul 23 14:50:04 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>575 seconds (575065 ms)</td>
+<tr><td>Total time:</td><td>449 seconds (449573 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,32 +76,20 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable()'><b>validglobalvariable</b><br>Test class: TestCase.FormtemplatesGlobalvariable_Testcase</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@placeholder=&apos;SENDER&apos;]&quot;}
-  (Session info: chrome=126.0.6478.128)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[@x-placement]//li[1] (tried for 60 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.22.0&apos;, revision: &apos;c5f3146703*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bde3c02b76656171413e5220a998d32a, findElement {using=xpath, value=//input[@placeholder=&apos;SENDER&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58228}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58228/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bde3c02b76656171413e5220a998d32a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at Pages.MethodActions.Javascriptclick(MethodActions.java:46)
-	at Pages.Formtemplates_globalvariable.companyProfile(Formtemplates_globalvariable.java:130)
-	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:52)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59632}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59632/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0809109ca75ae3ebb190b4f8926865de
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at Pages.MethodActions.waitEle(MethodActions.java:33)
+	at Pages.Formtemplates_globalvariable.waitForElements(Formtemplates_globalvariable.java:85)
+	at Pages.Formtemplates_globalvariable.performGlobalVariableActions(Formtemplates_globalvariable.java:75)
+	at Pages.Formtemplates_globalvariable.executeGlobalVariableActions(Formtemplates_globalvariable.java:58)
+	at Pages.Formtemplates_globalvariable.GlobalVariableActions(Formtemplates_globalvariable.java:31)
+	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:49)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -128,33 +116,21 @@ Session ID: bde3c02b76656171413e5220a998d32a
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1430358188", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1430358188'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@placeholder=&apos;SENDER&apos;]&quot;}
-  (Session info: chrome=126.0.6478.128)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+</pre></div><a href='#' onClick='toggleBox("stack-trace1400324426", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1400324426'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[@x-placement]//li[1] (tried for 60 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.22.0&apos;, revision: &apos;c5f3146703*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bde3c02b76656171413e5220a998d32a, findElement {using=xpath, value=//input[@placeholder=&apos;SENDER&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58228}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58228/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bde3c02b76656171413e5220a998d32a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at Pages.MethodActions.Javascriptclick(MethodActions.java:46)
-	at Pages.Formtemplates_globalvariable.companyProfile(Formtemplates_globalvariable.java:130)
-	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:52)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59632}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59632/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0809109ca75ae3ebb190b4f8926865de
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at Pages.MethodActions.waitEle(MethodActions.java:33)
+	at Pages.Formtemplates_globalvariable.waitForElements(Formtemplates_globalvariable.java:85)
+	at Pages.Formtemplates_globalvariable.performGlobalVariableActions(Formtemplates_globalvariable.java:75)
+	at Pages.Formtemplates_globalvariable.executeGlobalVariableActions(Formtemplates_globalvariable.java:58)
+	at Pages.Formtemplates_globalvariable.GlobalVariableActions(Formtemplates_globalvariable.java:31)
+	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:49)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -182,7 +158,7 @@ Session ID: bde3c02b76656171413e5220a998d32a
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>562</td>
+<td>320</td>
 <td>TestCase.FormtemplatesGlobalvariable_Testcase@1a677343</td></tr>
 </table><p>
 </body>

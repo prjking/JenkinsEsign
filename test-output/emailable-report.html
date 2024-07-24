@@ -9,36 +9,24 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">575,065</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">449,573</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">TestCase.FormtemplatesGlobalvariable_Testcase</td><td><a href="#m0">validglobalvariable</a></td><td rowspan="1">1721719242679</td><td rowspan="1">562914</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">TestCase.FormtemplatesGlobalvariable_Testcase</td><td><a href="#m0">validglobalvariable</a></td><td rowspan="1">1721726533071</td><td rowspan="1">320623</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">TestCase.FormtemplatesGlobalvariable_Testcase#validglobalvariable</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@placeholder=&apos;SENDER&apos;]&quot;}
-  (Session info: chrome=126.0.6478.128)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+<h2>Default test</h2><h3 id="m0">TestCase.FormtemplatesGlobalvariable_Testcase#validglobalvariable</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[@x-placement]//li[1] (tried for 60 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.22.0&apos;, revision: &apos;c5f3146703*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bde3c02b76656171413e5220a998d32a, findElement {using=xpath, value=//input[@placeholder=&apos;SENDER&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58228}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58228/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bde3c02b76656171413e5220a998d32a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at Pages.MethodActions.Javascriptclick(MethodActions.java:46)
-	at Pages.Formtemplates_globalvariable.companyProfile(Formtemplates_globalvariable.java:130)
-	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:52)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.128, chrome: {chromedriverVersion: 126.0.6478.182 (5b5d8292ddf..., userDataDir: C:\Users\PRUDHV~1.BUD\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59632}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59632/devtoo..., se:cdpVersion: 126.0.6478.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0809109ca75ae3ebb190b4f8926865de
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at Pages.MethodActions.waitEle(MethodActions.java:33)
+	at Pages.Formtemplates_globalvariable.waitForElements(Formtemplates_globalvariable.java:85)
+	at Pages.Formtemplates_globalvariable.performGlobalVariableActions(Formtemplates_globalvariable.java:75)
+	at Pages.Formtemplates_globalvariable.executeGlobalVariableActions(Formtemplates_globalvariable.java:58)
+	at Pages.Formtemplates_globalvariable.GlobalVariableActions(Formtemplates_globalvariable.java:31)
+	at TestCase.FormtemplatesGlobalvariable_Testcase.validglobalvariable(FormtemplatesGlobalvariable_Testcase.java:49)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
