@@ -18,7 +18,6 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 	Login login;
 	Formtemplates_globalvariable formtemplates_globalvariable;
 	FormTemplate formTemplate;
-//	ScreenRecorderUtil screenRecorderUtil;
 
 	public void setupDriver() {
 		// driver = new ChromeDriver(getChromeOptions());
@@ -39,18 +38,16 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 
 	@Test
 	public void validglobalvariable() throws Exception {
-		// ScreenRecorderUtil.startRecord("testRecording");
 		login.SigninNSUI();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
-		// ScreenRecorderUtil.stopRecord();
 		formTemplate.Createtemp();
 		formtemplates_globalvariable.GlobalVariableActions();
 		formtemplates_globalvariable.blankdoc();
 		formtemplates_globalvariable.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		formtemplates_globalvariable.companyProfile();
 		formtemplates_globalvariable.addrecevier();
-		// ScreenRecorderUtil.stopRecord();
+
 
 	}
 
