@@ -47,17 +47,17 @@ public class LoginPageTest extends testCaseBase {
 	Scrool scrool;
 
 	public void setupDriver() {
-//		 driver = new ChromeDriver(getChromeOptions());
-		ChromeOptions options = new ChromeOptions();
-		Map<String, Object> prefs = new HashMap<>();
-		Map<String, Object> profile = new HashMap<>();
-		Map<String, Object> contentSettings = new HashMap<>();
-		contentSettings.put("notifications", 1);
-		contentSettings.put("clipboard", 1);
-		profile.put("managed_default_content_settings", contentSettings);
-		prefs.put("profile", profile);
-		options.setExperimentalOption("prefs", prefs);
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver(getChromeOptions());
+//		ChromeOptions options = new ChromeOptions();
+//		Map<String, Object> prefs = new HashMap<>();
+//		Map<String, Object> profile = new HashMap<>();
+//		Map<String, Object> contentSettings = new HashMap<>();
+//		contentSettings.put("notifications", 1);
+//		contentSettings.put("clipboard", 1);
+//		profile.put("managed_default_content_settings", contentSettings);
+//		prefs.put("profile", profile);
+//		options.setExperimentalOption("prefs", prefs);
+//		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}
@@ -195,7 +195,7 @@ public class LoginPageTest extends testCaseBase {
 //	
 	@Test
 	public void Verifyscrool() throws Exception {
-		// login.Signin();
+		login.Signin();
 //		login.VerifyLoginSucess();
 //		scrool.AllCombos();
 //		scrool.BlankDoc();
@@ -209,18 +209,18 @@ public class LoginPageTest extends testCaseBase {
 
 	}
 
-	@Test
-	public void addbuilder() throws Exception {
-		scrool.Signinram();
-		scrool.Addformbuilder();
-		scrool.ViewFormbuilder();
-		scrool.Addmail("Ramya","Sibbala","ramyas200@outlook.com");
-		scrool.DatatoFormbuilder();
-		scrool.Finishformbuilder();
-		scrool.prudhvioutlooklogin();
-		scrool.clickEmail("Approval request");
-		scrool.Reviewandapproveformbuilder();
-                                                                                               	
-
-	}
+//	@Test
+//	public void addbuilder() throws Exception {
+//		scrool.Signinram();
+//		scrool.Addformbuilder();
+//		scrool.ViewFormbuilder();
+//		scrool.Addmail("Ramya","Sibbala","ramyas200@outlook.com");
+//		scrool.DatatoFormbuilder();
+//		scrool.Finishformbuilder();
+//		scrool.prudhvioutlooklogin();
+//		scrool.clickEmail("Approval request");
+//		scrool.Reviewandapproveformbuilder();
+//                                                                                               	
+//
+//	}
 }
