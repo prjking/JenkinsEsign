@@ -18,9 +18,11 @@ import java.awt.Toolkit;
 
 public class RecevierSide1 {
 	static WebDriver driver;
+	MethodActions methodActions;
 
 	public RecevierSide1(WebDriver driver) {
-		this.driver = driver;
+		RecevierSide1.driver = driver;
+		methodActions = new MethodActions(driver);
 
 	}
 
@@ -352,7 +354,7 @@ public class RecevierSide1 {
 		try {
 			waitEle(By.xpath("//a[text()=\"Review & Approve\"]"));
 		} catch (Exception e) {
-			
+
 		}
 
 		Thread.sleep(10000);

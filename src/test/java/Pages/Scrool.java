@@ -4,7 +4,9 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -517,11 +519,183 @@ public class Scrool {
 				"return navigator.clipboard.readText().then(text => text).catch(err => 'Clipboard access denied');");
 
 		System.out.println("Copied data: " + clipboardData);
-		
+
 		driver.switchTo().newWindow(WindowType.TAB);
 		Thread.sleep(5000);
 		driver.get(clipboardData);
-		
+
+	}
+
+	public void Addmail(String F, String L, String s) throws Exception {
+
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter mail']"), s);
+
+		MethodActions.waitEle(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--primary']"));
+		try {
+			Thread.sleep(10000);
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter first name']"), F);
+
+			MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter last name']"), L);
+
+			MethodActions.waitEle(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--primary']"));
+		} catch (Exception e) {
+			Thread.sleep(10000);
+		}
+
+		MethodActions.waitEle(By.xpath("//span[normalize-space()='Continue']"));
+	}
+
+	public void DatatoFormbuilder() throws Exception {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+		MethodActions.waitEle(By.xpath("(//span[normalize-space()='Next'])[2]"));
+
+		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Single line text']"), "Ramya");
+
+		MethodActions.sendKeysToElement(By.xpath("//textarea[@placeholder='Multiline']"),
+				"This is for testing purpose");
+
+		Thread.sleep(1000);
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[2]"));
+
+		Thread.sleep(1000);
+
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[normalize-space()='1']"));
+
+		Thread.sleep(1000);
+
+		MethodActions.waitEle(By.xpath("(//input[@placeholder='Select'])[4]"));
+
+		Thread.sleep(1000);
+
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[normalize-space()='list']"));
+
+		Thread.sleep(1000);
+
+		MethodActions.waitEle(By.xpath("//input[@placeholder='FixedTime']"));
+
+		Thread.sleep(1000);
+
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//div[normalize-space()='01:30']"));
+
+//		waitEle(By.xpath("(//input[@placeholder='Start date'])[2]"));
+
+		Thread.sleep(1000);
+
+		WebElement element1 = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='A']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+
+	}
+
+	public void Finishformbuilder() throws Exception {
+
+		Thread.sleep(1000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+		WebElement element1 = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Finish']")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+
+	}
+
+	public void Reviewandapproveformbuilder() throws Exception {
+
+		String Parentwindowid1 = driver.getWindowHandle();
+
+//		String parentWindowHandle = driver.getWindowHandle();
+		MethodActions.waitEle(By.xpath("//a[text()='Review & Approve']"));
+
+		Set<String> allwindowhandles1 = driver.getWindowHandles();
+		for (String childwindow : allwindowhandles1) {
+			if (!childwindow.endsWith(Parentwindowid1)) {
+				driver.switchTo().window(childwindow);
+				Thread.sleep(1000);
+				driver.switchTo().window(Parentwindowid1).close();
+
+				driver.switchTo().window(childwindow);
+				Thread.sleep(2000);
+
+				String currentWindowHandle = driver.getWindowHandle();
+
+				Set<String> allWindowHandles = driver.getWindowHandles();
+
+				driver.close();
+
+				allWindowHandles.remove(currentWindowHandle);
+
+				for (String windowHandle : allWindowHandles) {
+
+					driver.switchTo().window(windowHandle);
+					break;
+				}
+
+				// driver.close();
+				// driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+//
+//				List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+//
+//				if (windowHandles.size() == 3) {
+//
+//					String centerWindowHandle = windowHandles.get(1);
+//					driver.switchTo().window(centerWindowHandle);
+//
+//				} else {
+//
+//				}
+
+//				try {
+//					
+//					((JavascriptExecutor) driver).executeScript("window.open();");
+//					Set<String> windowHandles = driver.getWindowHandles();
+//					String newTabHandle = windowHandles.stream().skip(windowHandles.size() - 1)
+//							.findFirst().orElseThrow(() -> new RuntimeException("No new tab found"));
+//
+//					driver.switchTo().window(newTabHandle);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+
+				Thread.sleep(10000);
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+
+				WebElement element = wait
+						.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Next']")));
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='Approve']"));
+
+				MethodActions.waitEle(By.xpath("//span[normalize-space()='OK']"));
+//		driver.get("https://nsui.esigns.io/public/fb/formbuilder-1/669f5168da989782b1d5cf22/669f518fda989782b1d5d169/status/completed");
+
+			}
+		}
+	}
+
+	public void prudhvioutlooklogin() throws Exception {
+
+		Thread.sleep(10000);
+		driver.get(
+				"https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=150&ct=1714114815&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3den-us%26country%3dus%26RpsCsrfState%3d1425546c-12db-9db8-7947-044bdf3da8dc&id=292841&aadredir=1&whr=outlook.com&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c");
+//			switchEmail();
+		Thread.sleep(10000);
+		sendKeysToElement(By.xpath("//input[@id=\"i0116\"]"), "prudhvib200@outlook.com");
+		try {
+			waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+		} catch (Exception e) {
+			waitEle(By.xpath("//input[@id=\"idSIButton9\"]"));
+		}
+
+		sendKeysToElement(By.xpath("//input[@placeholder=\"Password\"]"), "Meghana@123");
+		waitEle(By.xpath("//button[@id=\"idSIButton9\"]"));
+		waitEle(By.xpath("//button[@id=\"declineButton\"]"));
+	}
+
+	public void clickEmail(String s) throws Exception {
+		Thread.sleep(10000);
+		String xpath = String.format("(//span[contains(text(), '%s')])[1]", s);
+		waitEle(By.xpath(xpath));
 	}
 
 //	private static Map<String, Object> getClipBoardSettingsMap(int settingValue) throws JsonProcessingException {

@@ -1,6 +1,7 @@
 package Pages;
 
 import java.time.Duration;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -127,7 +128,7 @@ public class Formtemplates_globalvariable {
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		Thread.sleep(5000);
-		MethodActions.Javascriptclick(By.xpath("//input[@placeholder='SENDER']"));
+		MethodActions.Javascriptclick(By.xpath("//input[@placeholder='Select a Recipient']"));
 		Thread.sleep(5000);
 		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[2]"));
 
@@ -143,6 +144,11 @@ public class Formtemplates_globalvariable {
 
 		int numberOfElements = fields.length;
 		String targetXPath = "//*[@id=\"svg\"]";
+
+		Thread.sleep(10000);
+		MethodActions.Javascriptclick(By.xpath("//input[@placeholder='Select a Recipient']"));
+		Thread.sleep(5000);
+		MethodActions.waitEle(By.xpath("//div[@x-placement]//li[1]"));
 
 		Thread.sleep(10000);
 		MethodActions.waitEle(By.xpath("(//div[@role='button']//i)[2]"));
@@ -183,6 +189,8 @@ public class Formtemplates_globalvariable {
 		MethodActions.waitEle(By.xpath("//span[text()='Send Document']"));
 
 	}
+
+	
 
 	public void waitAndClick(Actions actions, WebElement sourceElement, WebElement targetElement, int xOffset,
 			int yOffset) {

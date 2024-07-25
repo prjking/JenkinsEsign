@@ -214,6 +214,12 @@ public class LoginPageTest extends testCaseBase {
 		scrool.Signinram();
 		scrool.Addformbuilder();
 		scrool.ViewFormbuilder();
+		scrool.Addmail("Ramya","Sibbala","ramyas200@outlook.com");
+		scrool.DatatoFormbuilder();
+		scrool.Finishformbuilder();
+		scrool.prudhvioutlooklogin();
+		scrool.clickEmail("Approval request");
+		scrool.Reviewandapproveformbuilder();
                                                                                                	
 
 	}
