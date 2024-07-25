@@ -9,7 +9,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-bom</artifactId>
+				<artifactId>cucumber-bom</artifactId>s
 				<version>7.17.0</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -195,11 +195,6 @@
 			<groupId>com.github.stephenc.monte</groupId>
 			<artifactId>monte-screen-recorder</artifactId>
 			<version>0.7.7.0</version>
-		</dependency>
-		<dependency>
-			<groupId>Test</groupId>
-			<artifactId>Test</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

@@ -47,8 +47,8 @@ public class LoginPageTest extends testCaseBase {
 	Scrool scrool;
 
 	public void setupDriver() {
-		// WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver(getChromeOptions());
+		driver = new ChromeDriver(getChromeOptions());
+		//WebDriver driver = new ChromeDriver(getChromeOptions());
 //		ChromeOptions options = new ChromeOptions();
 //		Map<String, Object> prefs = new HashMap<>();
 //		Map<String, Object> profile = new HashMap<>();
@@ -60,7 +60,7 @@ public class LoginPageTest extends testCaseBase {
 //		options.setExperimentalOption("prefs", prefs);
 		// driver = new ChromeDriver(Opions);
 		driver.manage().window().maximize();
-		driver.get("https://nsui.esigns.io/signin");
+		driver.get("https://dev.esigns.io/signin");
 	}
 
 	@BeforeMethod
