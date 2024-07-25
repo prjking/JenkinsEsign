@@ -3,12 +3,96 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.LoginPageTest">
+      <class name="TestCase.TestCases_Prudhvi2">
         <methods>
-          <include name="addbuilder"/>
-          <include name="Start"/>
+          <include name="VerifyWaitingForOthersDeletedocument"/>
+          <include name="VerifyArchivedUndodocument"/>
+          <include name="VerifySigSenderCCorderWOEWOA"/>
+          <include name="VerifyMultpleCCSender"/>
+          <include name="VerifyOtheroptionsdownload"/>
+          <include name="VerifyDraftDocumentSettings"/>
+          <include name="VerifyDraftrenamedocument"/>
+          <include name="VerifySettings"/>
+          <include name="VerifyBuldDeleteDocuments"/>
+          <include name="VerifyCompletedSharewithothers"/>
+          <include name="VerifyAddPages"/>
+          <include name="VerifyApprovedDocumentSettings"/>
+          <include name="VerifySenderMultipleCC"/>
+          <include name="VerifyWaitingForOthersDocumentsettings"/>
+          <include name="VerifyLockFields"/>
+          <include name="VerifySentVoiddocument"/>
+          <include name="VerfySaveAsDraft"/>
+          <include name="VerifySenderCCSignerWOEWOA"/>
+          <include name="VerifyApprovedRenameDocument"/>
+          <include name="VerifyCompletedDownloaddocuement"/>
+          <include name="VerifySentCorrectDocument"/>
+          <include name="VerifyApproverSenderapprove"/>
+          <include name="VerifyVoidClonedocument"/>
+          <include name="Verifyotheroptionshistory"/>
+          <include name="VerifyCompletedClonedocument"/>
+          <include name="Verifychatandlogs"/>
+          <include name="Verifyotheroptionssettings"/>
+          <include name="VerifyDeclinedDocumentSettings"/>
+          <include name="VerifyPdfAutoFillreceiver"/>
+          <include name="VerifyWaitingForOthersVoiddocument"/>
+          <include name="VerifYVoidSaveastemplate"/>
+          <include name="VerifyCompletedSaveastemplate"/>
+          <include name="VerifyLoginFunctionalityWithValidCredantials"/>
+          <include name="initialize"/>
+          <include name="VerifyAppSigSenderorderWOEWOA"/>
+          <include name="VerifyOtheroptionsdeletedocument"/>
+          <include name="quit"/>
+          <include name="VerifyApprovedResendDocument"/>
+          <include name="VerifyCompletedDeletedocuement"/>
+          <include name="Verifyotheroptionssaveastem"/>
+          <include name="VerifyDelineddocument"/>
+          <include name="VerifyMultpleApproverSender"/>
+          <include name="VerifyApproverSenderDecline"/>
+          <include name="VerifyDocForSingleSender"/>
+          <include name="VerifyProcessWithOutSingledoc"/>
+          <include name="VerifySentDeletedocument"/>
+          <include name="VerifySendersigCCorderWOEWOA"/>
+          <include name="VerifyDaftsentdocument"/>
+          <include name="VerifyotheroptionsCorrectdoc"/>
+          <include name="VerifyApprovedCorrectdocumentDocuments"/>
+          <include name="VerifySingerCCSenderWOEWOA"/>
+          <include name="VerifyApprovedApprovedDeleteDocument"/>
+          <include name="VerifyDraftDeleteDocument"/>
+          <include name="VerifyArchivedPermanentdelete"/>
+          <include name="VerifyWaitingForOthersCorrectdocument"/>
+          <include name="Verifyotheroptionsprintandsign"/>
+          <include name="VerifySentsavetoTemplate"/>
+          <include name="VerifyCompletedRenamedocument"/>
+          <include name="VerifyApprovedVoidDocument"/>
+          <include name="VerifyDeclinedDeclinedRenamedocument"/>
+          <include name="VerifyCopylink"/>
+          <include name="VerifyDeclinedVoiddocument"/>
+          <include name="VerifyApprovedSaveAsTemplate"/>
+          <include name="VerifyCCSignerSenderWOEWOA"/>
+          <include name="VerifyClonedocumentForsinglesender"/>
+          <include name="VerifyProcessSingleDoc"/>
+          <include name="VerifyDeletePages"/>
+          <include name="VerifySenderMultipleApprovers"/>
+          <include name="VerifyWaitingForOthersSaveastemplate"/>
+          <include name="VerifyWaitformeWaitforme"/>
+          <include name="VerifyCompletedSenttomail"/>
+          <include name="VerifyDraftSaveAsTemplate"/>
+          <include name="SplitSinglelineText"/>
+          <include name="VerifySentRenamedocument"/>
+          <include name="VerifyVoidDeletedocument"/>
+          <include name="VerifyWaitingForOthersResenddocument"/>
+          <include name="VerifyArchivedRenamedocuments"/>
+          <include name="VerifySentdocumentsettings"/>
+          <include name="VerifyCCSenderSingerWOEWOA"/>
+          <include name="Verifychangeuser"/>
+          <include name="VerifyWaitingForOthersRenamedocument"/>
+          <include name="Verifyotheroptionsvoiddoc"/>
+          <include name="VerifySentResenddocument"/>
+          <include name="Verifyotheroptionsfinishlater"/>
+          <include name="VerifyDeclinedDeletedocument"/>
+          <include name="VerifyChangeDoc"/>
         </methods>
-      </class> <!-- TestCase.LoginPageTest -->
+      </class> <!-- TestCase.TestCases_Prudhvi2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -68,15 +68,21 @@ public class testCaseBase {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--enable-features=NetworkService,NetworkServiceInProcess");
+		options.addArguments("--disable-extensions");
+		options.addArguments("--remote-debugging-port=9222");
+		options.addArguments("--verbose");
+		options.addArguments("--log-level=3");
 		options.addArguments(
-				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36"); // Set
-																																					// user
-																																					// agent
+				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.72 Safari/537.36");
+		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+		options.setBinary("/usr/bin/google-chrome-stable"); // Verify this path
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 //      options.addArguments("--incognito");
 		return options;
 	}
+
+
 
 //	
 	public void waitEle(By by) throws Exception {

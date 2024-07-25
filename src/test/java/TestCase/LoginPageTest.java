@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import Pages.Addrecipients;
 import Pages.Alldocuments;
 import Pages.Dashboard;
@@ -17,7 +17,6 @@ import Pages.DocumentsScenarios;
 import Pages.Dragdrop;
 import Pages.FormTemplate;
 import Pages.Login;
-import Pages.MethodActions;
 import Pages.RecevierSide;
 import Pages.ReviewaNdSend;
 import Pages.Scrool;
@@ -28,6 +27,7 @@ import Pages.Uploaddocuments;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import TestBase.testCaseBase;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class LoginPageTest extends testCaseBase {
@@ -47,7 +47,8 @@ public class LoginPageTest extends testCaseBase {
 	Scrool scrool;
 
 	public void setupDriver() {
-		driver = new ChromeDriver(getChromeOptions());
+		// WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver(getChromeOptions());
 //		ChromeOptions options = new ChromeOptions();
 //		Map<String, Object> prefs = new HashMap<>();
 //		Map<String, Object> profile = new HashMap<>();
@@ -57,7 +58,7 @@ public class LoginPageTest extends testCaseBase {
 //		profile.put("managed_default_content_settings", contentSettings);
 //		prefs.put("profile", profile);
 //		options.setExperimentalOption("prefs", prefs);
-//		driver = new ChromeDriver(options);
+		// driver = new ChromeDriver(Opions);
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}
@@ -145,10 +146,10 @@ public class LoginPageTest extends testCaseBase {
 //
 //	}
 
-	@Test
-	public void Review() throws Exception {
-		// login.Signin();
-		// login.VerifyLoginSucess();
+//	@Test
+	// public void Review() throws Exception {
+	// login.Signin();
+	// login.VerifyLoginSucess();
 //		alldocuments.Createdocument();
 //		alldocuments.Validdocument();
 //		// uploaddocuments.Fileupload();
@@ -162,7 +163,7 @@ public class LoginPageTest extends testCaseBase {
 //		// dragdrop.image();
 //		dragdrop.send();
 //		reviewaNdSend.submit();
-	}
+	// }
 
 //	@Test
 //	public void ValidRecevierSide() throws Exception {
