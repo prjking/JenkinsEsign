@@ -73,7 +73,7 @@ public class testCaseBase {
 																																					// user
 																																					// agent
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		// options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.setBinary("/usr/bin/sgoogle-chrome-stable");
 //      options.addArguments("--incognito");
 		return options;
 	}
