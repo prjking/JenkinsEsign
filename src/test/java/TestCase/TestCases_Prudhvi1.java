@@ -57,7 +57,7 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 
 	public void setupDriver() {
 		driver = new ChromeDriver(getChromeOptions());
-		//driver = new ChromeDriver();
+		// driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}
@@ -1679,9 +1679,9 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 ////		recevierSide1.clickFinish();
 //	}
 
-//	@AfterMethod
-//	public void quit() {
-//		driver.quit();
-//	}
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+	}
 
 }

@@ -187,7 +187,7 @@ public class DocumentsScenarios1 {
 		WebElement Docnameen = wait.until(ExpectedConditions.elementToBeClickable(Docname1));
 		Docnameen.sendKeys(s);
 
-		driver.findElement(By.xpath("(//span[normalize-space()='Continue'])[2]")).click();
+		driver.findElement(By.xpath("//span[normalize-space()='Continue']")).click();
 		WebElement doc = wait
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='fw-bold fs-24']")));
 		Assert.assertNotNull(doc, "Add Recepient element is not present Create document failed");
@@ -483,14 +483,14 @@ public class DocumentsScenarios1 {
 
 	public void SignatureAndFullNameFeilds() throws Exception {
 		Thread.sleep(10000);
+		MethodActions.Loadingmask();
+		Thread.sleep(5000);
 		Actions actions1 = new Actions(driver);
-
 		WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
-
 		WebElement signElement = driver.findElement(By.xpath("//button[@id='signatureEle']"));
 		waitAndClick(actions1, signElement, targetElement, 10, -100);
 		System.out.println("Signature Element Drag and Drop Done");
-
+		Thread.sleep(10000);
 		WebElement fullNameElement = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
 		waitAndClick(actions1, fullNameElement, targetElement, 10, -70);
 		System.out.println("FullName Drag and Drop Done");

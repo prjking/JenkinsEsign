@@ -26,8 +26,8 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 
 	public void setupDriver() {
 
-		driver = new ChromeDriver(getChromeOptions());
-		// driver =new ChromeDriver();
+		 driver = new ChromeDriver(getChromeOptions());
+		//driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}

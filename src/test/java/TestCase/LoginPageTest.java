@@ -48,7 +48,7 @@ public class LoginPageTest extends testCaseBase {
 
 	public void setupDriver() {
 		driver = new ChromeDriver(getChromeOptions());
-		//WebDriver driver = new ChromeDriver(getChromeOptions());
+		
 //		ChromeOptions options = new ChromeOptions();
 //		Map<String, Object> prefs = new HashMap<>();
 //		Map<String, Object> profile = new HashMap<>();

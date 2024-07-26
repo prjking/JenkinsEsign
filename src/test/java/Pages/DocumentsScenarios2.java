@@ -129,7 +129,7 @@ public class DocumentsScenarios2 {
 
 		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
 
-		waitEle(By.xpath("(//span[normalize-space()='Continue'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Continue']"));
 
 	}
 
