@@ -42,7 +42,7 @@ public class RepeatableTemplate_Testcase extends testCaseBase {
 		login.SigninNSUI();
 		repeatableTemplate.entity();
 		repeatableTemplate.ClickCreateEntity();
-		repeatableTemplate.CreateEntityFromScratch("Start from scratch", "INDIVIDUAL");
+		repeatableTemplate.CreateEntityFromScratch("Start from scratch", "INDIVIDUAL", null);
 		repeatableTemplate.addtemplate(" Basic Fields ");
 		repeatableTemplate.DocScenario();
 		repeatableTemplate.Blankloginaccount(" ");

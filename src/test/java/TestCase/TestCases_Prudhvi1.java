@@ -28,6 +28,7 @@ import Pages.Uploaddocuments;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import TestBase.testCaseBase;
+import utils.RetryAnalyzer;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -1047,6 +1048,8 @@ public class TestCases_Prudhvi1 extends testCaseBase {
 		recevierSide1.signaturefill();
 		recevierSide1.clickApprove();
 		recevierSide1.Outlooklogin("prudhvib200@outlook.com", "Meghana@123");
+		recevierSide1.validateAtCC(doc);
+		recevierSide1.Outlooklogin("ramyas200@outlook.com", "Meghana@123");
 		recevierSide1.validateAtCC(doc);
 
 	}

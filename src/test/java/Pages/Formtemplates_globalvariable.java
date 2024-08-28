@@ -28,7 +28,7 @@ public class Formtemplates_globalvariable {
 		// Basic Fields
 		String[] basicFieldsElementTypes = { "Single Line Text", "Multi Line Text", "Select", "Number",
 				"Multiple Select", "List", "Date", "Time", "Time Range", "Date Time", "Week Days", "Date Time Range",
-				"Date Range", "Checkbox Group", "Radio Group" };
+				"Date Range", "Checkbox Group", "Radio Group" ,"Currency", "Star Rating"  };
 		executeGlobalVariableActions("Basic Fields", basicFieldsElementTypes, -350, -180);
 		MethodActions.waitEle(By.xpath("//div[text()=\"Basic Fields\"]"));
 		// Content Fields
@@ -37,8 +37,8 @@ public class Formtemplates_globalvariable {
 		MethodActions.waitEle(By.xpath("//div[text()=\"Content Fields\"]"));
 
 		// Advanced Fields
-		String[] advancedFieldsElementTypes = { "Currency", "Star Rating" };
-		executeGlobalVariableActions("Advanced Fields", advancedFieldsElementTypes, -550, -280);
+//		String[] advancedFieldsElementTypes = { };
+//		executeGlobalVariableActions("Advanced Fields", advancedFieldsElementTypes, -550, -280);
 		MethodActions.waitEle(By.xpath("//span[normalize-space()='Save']"));
 		MethodActions.waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[2]"));
 		MethodActions.waitEle(By.xpath("//button[text()=' Add to company profile ']"));
@@ -116,7 +116,9 @@ public class Formtemplates_globalvariable {
 
 	public void blankdoc() throws Exception {
 		Thread.sleep(5000);
-		driver.get("https://nsui.esigns.io/documents/upload");
+		//driver.get("https://nsui.esigns.io/documents/upload");
+		driver.get("https://preprod.esigns.io/documents/upload");
+
 		Thread.sleep(5000);
 		MethodActions.waitEle(By.xpath("(//img[@class='el-tooltip upload-icon'])[1]"));
 		MethodActions.sendKeysToElement(By.xpath("//input[@placeholder='Enter Document name']"),

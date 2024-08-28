@@ -55,7 +55,7 @@ public class RepeatableTemplate {
 
 	}
 
-	public void CreateEntityFromScratch(String s, String ET) throws Exception {
+	public void CreateEntityFromScratch(String Name, String s, String ET) throws Exception {
 		Thread.sleep(5000);
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -139,7 +139,7 @@ public class RepeatableTemplate {
 
 		actions.moveToElement(elementToHover).perform();
 
-		MethodActions.waitEle(By.xpath("//ul[@x-placement=\"bottom-end\"] //li[normalize-space()='View']"));
+		MethodActions.waitEle(By.xpath("//ul[@x-placement] //li[normalize-space()='View']"));
 		System.out.println("Click on View Action Done successfully");
 	}
 

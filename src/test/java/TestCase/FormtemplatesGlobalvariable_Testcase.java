@@ -12,6 +12,7 @@ import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 //import Resources.ScreenRecorderUtil;
 import TestBase.testCaseBase;
+import utils.RetryAnalyzer;
 
 @Listeners({ TestNGExtentReport.class, Testlistner.class })
 public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
@@ -20,10 +21,10 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 	FormTemplate formTemplate;
 
 	public void setupDriver() {
-	//	 driver = new ChromeDriver(getChromeOptions());
+		// driver = new ChromeDriver(getChromeOptions());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://nsui.esigns.io/signin");
+		driver.get("https://preprod.esigns.io/signin");
 
 	}
 
@@ -36,9 +37,9 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 
 	}
 
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void validglobalvariable() throws Exception {
-		login.SigninNSUI();
+		login.SigninprodMeghana();
 		MethodActions.Loadingmask();
 		formTemplate.Template();
 		formTemplate.Createtemp();
@@ -47,7 +48,6 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 		formtemplates_globalvariable.Recipient(1, "Receiver", "jeevithapatnana200@outlook.com", " SIGNER ");
 		formtemplates_globalvariable.companyProfile();
 		formtemplates_globalvariable.addrecevier();
-
 
 	}
 

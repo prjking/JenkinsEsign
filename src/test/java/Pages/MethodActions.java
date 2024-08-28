@@ -155,4 +155,15 @@ public class MethodActions {
 		dragAndDrop.perform();
 	}
 
+	public static void uploadFileWithSendKeys(String imagePath) throws InterruptedException {
+		Thread.sleep(10000);
+		File uploadFile = new File(imagePath);
+
+		WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
+		fileInput.sendKeys(uploadFile.getAbsolutePath());
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].value = '';", fileInput);
+	}
+
 }

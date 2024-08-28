@@ -19,6 +19,7 @@ public class DocumentsScenarios2 {
 
 	WebDriver driver;
 	MethodActions methodActions;
+
 	public DocumentsScenarios2(WebDriver driver) {
 
 		this.driver = driver;
@@ -63,7 +64,7 @@ public class DocumentsScenarios2 {
 	}
 
 	public void blankurl() throws Exception {
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		driver.get("https://nsui.esigns.io/documents/upload");
 
 	}
@@ -219,7 +220,7 @@ public class DocumentsScenarios2 {
 
 		waitEle(By.xpath("//input[@placeholder='Enter email']"));
 
-		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+		waitEle(By.xpath("//div[@x-placement]//li[normalize-space()='prudhvib200@outlook.com']"));
 
 		waitEle(By.xpath("(//button[@class='el-button el-button--primary'])[2]"));
 	}
@@ -308,7 +309,7 @@ public class DocumentsScenarios2 {
 //
 //		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//button[@class='el-button el-button--primary'])[8]"));
+		waitEle(By.xpath("//span[normalize-space()='Continue']"));
 
 		Thread.sleep(10000);
 
@@ -534,7 +535,7 @@ public class DocumentsScenarios2 {
 
 		sendKeysToElement(By.xpath("(//input[@class='el-input__inner'])[11]"), "3");
 
-		waitEle(By.xpath("(//button[@class='el-button el-button--primary'])[4]"));
+		waitEle(By.xpath("(//span[normalize-space()='Save'])[2]"));
 	}
 
 	public void DradAndDropSigAndSingleline(int n, int x1, int y1, int x2, int y2) throws Exception {
@@ -673,6 +674,7 @@ public class DocumentsScenarios2 {
 			driver.switchTo().window(handle);
 		}
 		Thread.sleep(10000);
+
 		waitEle(By.xpath("//span[normalize-space()='Edit']"));
 		driver.findElement(By.xpath("//input[@placeholder='Enter signature']")).sendKeys("Meghana");
 
@@ -936,7 +938,7 @@ public class DocumentsScenarios2 {
 			System.out.println("Checkbox was already checked. No action taken.");
 		}
 
-		waitEle(By.xpath("//button[@class='el-button type-2 el-button--default']"));
+		waitEle(By.xpath("//span[normalize-space()='Save Changes']"));
 
 		System.out.println("clicked on settings");
 	}
@@ -955,7 +957,7 @@ public class DocumentsScenarios2 {
 
 		System.out.println("clicked on history");
 
-		waitEle(By.xpath("(//button[@class='el-dialog__headerbtn'])[19]"));
+		waitEle(By.xpath("//span//span[normalize-space()='Download History']"));
 	}
 
 	public void Otheroptionsdownload() throws Exception {
@@ -1841,7 +1843,7 @@ public class DocumentsScenarios2 {
 		document3.sendKeys("Rename2");
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//span[normalize-space()='Confirm'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Confirm']"));
 
 	}
 
@@ -1890,7 +1892,7 @@ public class DocumentsScenarios2 {
 		}
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("//button[@class='el-button type-2 el-button--default']"));
+		waitEle(By.xpath("//span[normalize-space()='Save Changes']"));
 
 	}
 
@@ -2019,7 +2021,7 @@ public class DocumentsScenarios2 {
 		WebElement document3 = wait.until(ExpectedConditions.elementToBeClickable(Element3));
 		document3.sendKeys("Rename");
 
-		waitEle(By.xpath("(//span[normalize-space()='Confirm'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Confirm']"));
 
 	}
 
@@ -2605,7 +2607,7 @@ public class DocumentsScenarios2 {
 		document3.sendKeys("test");
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//span[normalize-space()='Confirm'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Confirm']"));
 
 	}
 
@@ -2818,7 +2820,7 @@ public class DocumentsScenarios2 {
 		WebElement document3 = wait.until(ExpectedConditions.elementToBeClickable(Element3));
 		document3.sendKeys("hfsdbjhdk");
 
-		waitEle(By.xpath("(//span[normalize-space()='Confirm'])[2]"));
+		waitEle(By.xpath("//span[normalize-space()='Confirm']"));
 
 	}
 
@@ -2881,10 +2883,10 @@ public class DocumentsScenarios2 {
 
 		Thread.sleep(10000);
 
-		waitEle(By.xpath("(//span[@class='el-checkbox__inner'])[1]"));
+		MethodActions.Javascriptclick(By.xpath(
+				"//div[contains(@class,'el-table__fixed-header-wrapper')]//span[contains(@class,'el-checkbox__inner')]"));
 
-		waitEle(By.xpath(
-				"//button[@class='el-button el-dropdown-link px-2 el-button--default el-button--mini el-dropdown-selfdefine ']"));
+		waitEle(By.xpath("//button[contains(@role,'button')]//span[contains(text(),'Delete')]"));
 
 		waitEle(By.xpath("//ul[@x-placement]//li[1]"));
 

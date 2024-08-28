@@ -12,6 +12,7 @@ import Pages.Documents;
 import Pages.DocumentsScenarios2;
 import Pages.Entities;
 import Pages.Login;
+import Pages.MethodActions;
 import Pages.Recieverside2;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
@@ -26,8 +27,8 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 
 	public void setupDriver() {
 
-		 driver = new ChromeDriver(getChromeOptions());
-		//driver = new ChromeDriver();
+		// driver = new ChromeDriver(getChromeOptions());
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io/signin");
 	}
@@ -1513,6 +1514,7 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		login.RamyaNsui();
 		login.VerifyLoginSucess();
 		documentsScenarios2.clickondocuments();
+		MethodActions.Loadingmask();
 		documentsScenarios2.BuldDelete();
 	}
 
@@ -1564,7 +1566,6 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 		String a = "Verifychangeuser";
 		login.RamyaNsui();
 		login.VerifyLoginSucess();
-		documentsScenarios2.autofilloff();
 		documentsScenarios2.autofilloff();
 		documentsScenarios2.blankurl();
 		documentsScenarios2.BlankDoc(a);
@@ -1740,9 +1741,9 @@ public class TestCases_Prudhvi2 extends testCaseBase {
 //	documentsScenarios2.enteringdatatoentity();
 //	recieverside2.FinishDocumentrecieverside2();
 //}
-	@AfterMethod
-	public void quit() {
-		driver.close();
-
-	}
+//	@AfterMethod
+//	public void quit() {
+//		driver.close();
+//
+//	}
 }

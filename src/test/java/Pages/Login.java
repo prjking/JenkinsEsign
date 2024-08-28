@@ -83,7 +83,14 @@ public class Login {
 		Thread.sleep(10000);
 
 	}
+	public void SigninprodMeghana() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("pmmeghana200@outlook.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Meghana@123");
+		waitEle(By.xpath("//span[normalize-space()='Log In']"));
+		Thread.sleep(10000);
 
+	}
 	public void SigninRamya() throws InterruptedException {
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']")).sendKeys("N180959@rguktn.ac.in");
