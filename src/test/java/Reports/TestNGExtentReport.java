@@ -6,7 +6,9 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
 import Pages.MethodActions;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -25,8 +27,9 @@ public class TestNGExtentReport implements ITestListener {
         // Initialize ExtentReports
         extent = new ExtentReports();
 
-        // Common setup for ExtentReports
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/src/test/Reports/");
+        
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(
+                System.getProperty("user.dir") + "/test-output/ExtentReport_" +".html");
         htmlReporter.config().setDocumentTitle("TestNG Extent Report");
         htmlReporter.config().setReportName("TestNG Extent Report");
         htmlReporter.config().setTheme(Theme.DARK);
@@ -46,24 +49,14 @@ public class TestNGExtentReport implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
+        
         test = extent.createTest(result.getMethod().getMethodName()).assignCategory(result.getTestContext().getName());
         test.assignAuthor("Author Name");
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
-        String reportName = "extent_" + result.getMethod().getMethodName() + "_" + timestamp + ".html";
-        String reportPath = System.getProperty("user.dir") + "/src/test/Reports/" + reportName;
-        
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(reportPath);
-        htmlReporter.config().setDocumentTitle("TestNG Extent Report - " + result.getMethod().getMethodName());
-        htmlReporter.config().setReportName("TestNG Extent Report");
-        htmlReporter.config().setTheme(Theme.DARK);
-        htmlReporter.config().setEncoding("utf-8");
-        htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
-        extent.attachReporter(htmlReporter);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        test.log(Status.PASS, "Test Passed");
+        test.log(Status.PASS, "Test Passed Successfully");
     }
 
     @Override
@@ -71,6 +64,7 @@ public class TestNGExtentReport implements ITestListener {
         test.log(Status.FAIL, "Test Failed");
         test.log(Status.FAIL, result.getThrowable());
 
+       
         WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
         if (driver != null) {
             String screenshotPath = captureScreenshot(driver, result.getMethod().getMethodName());
@@ -88,13 +82,18 @@ public class TestNGExtentReport implements ITestListener {
     }
 
     private String captureScreenshot(WebDriver driver, String screenshotName) {
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
-        String screenshotPath = System.getProperty("user.dir") + "/src/test/Reports/" + screenshotName + "_" + timestamp + ".png";
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String screenshotPath = System.getProperty("user.dir") + "/test-output/" + screenshotName + "_" + timestamp + ".png";
         try {
-            MethodActions.takeScreenshot(driver); // Ensure this method saves the screenshot at screenshotPath
+           
+            MethodActions.takeScreenshot(driver); 
         } catch (Exception e) {
             test.log(Status.FAIL, "Failed to capture screenshot: " + e.getMessage());
         }
         return screenshotPath;
+    }
+
+    private String getTimestamp() {
+        return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
     }
 }

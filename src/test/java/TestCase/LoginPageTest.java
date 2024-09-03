@@ -61,7 +61,7 @@ public class LoginPageTest extends testCaseBase {
 		// driver = new ChromeDriver(Opions);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		//driver.get("https://dev.esigns.io/signin");
+		driver.get("https://dev.esigns.io/signin");
 	}
 
 	@BeforeMethod
