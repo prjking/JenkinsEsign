@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.Relationships_cases">
+      <class name="TestCase.globalVariableTestcase_meghana">
         <methods>
-          <include name="validmanual"/>
-          <include name="initialize"/>
+          <include name="Start"/>
+          <include name="clickGlobalVariableButton"/>
         </methods>
-      </class> <!-- TestCase.Relationships_cases -->
+      </class> <!-- TestCase.globalVariableTestcase_meghana -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

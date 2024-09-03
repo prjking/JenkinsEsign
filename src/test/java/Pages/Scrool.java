@@ -434,6 +434,20 @@ public class Scrool {
 
 	}
 
+	public void Signinjp() throws InterruptedException {
+		Thread.sleep(10000);
+//		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+//				.sendKeys("N180959@rguktn.ac.in");
+//		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Ramya@1234");
+//		driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("jeevithapatnana06@gmail.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Nimble#20233");
+		driver.findElement(By.xpath("//button[@class='el-button type-2 w-100 fs-6 el-button--danger']")).click();
+		Thread.sleep(10000);
+
+	}
+
 	public void Addformbuilder() throws Exception {
 		Thread.sleep(10000);
 		driver.get("https://nsui.esigns.io/formBuilders/add");
@@ -698,6 +712,144 @@ public class Scrool {
 		waitEle(By.xpath(xpath));
 	}
 
+	public void FineDueNotificationEntityActions() throws Exception {
+
+		driver.get("https://nsui.esigns.io/entity/66b1f53c47ad681aec31f308/edit?key=76981");
+		SigninNSUI("jeevithapatnana06@gmail.com", "Nimble#2023");
+		Thread.sleep(10000);
+		// ClickEntityAction("Fine");
+		EntityWorkflowConditionStep("DueNotification", "Template-Fine", "Overdue", "Notification",
+				"jeevithapatnana06@gmail.com", "Due-Notification", "@");
+	}
+
+	public void SigninNSUI(String Email, String Password) throws Exception {
+
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']")).sendKeys(Email);
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys(Password);
+		waitEle(By.xpath("//span[text()=\"Log In\"]"));
+		Thread.sleep(10000);
+
+	}
+
+	public void ClickEntityAction(String EntityName) throws Exception {
+		Thread.sleep(20000);
+		String xpath = String.format(
+				"//div[@class='el-table__fixed']//div[contains(text(),'%s')]/ancestor::tr//span[normalize-space()=\"Actions\"]",
+				EntityName);
+		Thread.sleep(10000);
+		WebElement elementToHover = driver.findElement(By.xpath(xpath));
+		Actions actions = new Actions(driver);
+		actions.moveToElement(elementToHover).perform();
+		waitEle(By.xpath("//ul[@x-placement] //li[normalize-space()='Edit']"));
+		System.out.println("Click on Edit Action Done successfully");
+	}
+
+	public void EntityWorkflowConditionStep(String Name, String WhenPoint, String Condition, String ActionType,
+			String Email, String Subject, String Text) throws Exception {
+		Thread.sleep(1000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@class=\"el-step__main\"]//div[contains(text(), 'Actions')]"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//span[normalize-space()='Add new action']"));
+		sendKeysToElement(By.xpath("//input[@placeholder='Enter Action Name']"), Name);
+		Thread.sleep(10000);
+		waitEle(By.xpath("//button[@class=\"btn btn-outline-primary btn-sm\"]//i"));
+		Thread.sleep(1000);
+		WebElement element = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder=\"When point\"]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+		String SelectField1 = String.format("//div[@x-placement]//ul//li//span[contains(text(), '%s')]", WhenPoint);
+		waitEle(By.xpath(SelectField1));
+		System.out.println("point Select done Successfully");
+		waitEle(By.xpath("//span[normalize-space()='Condition step']"));
+		Thread.sleep(1000);
+		WebElement element1 = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder=\"Condition\"]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element1);
+
+		String SelectField2 = String.format("//div[@x-placement]//ul//li[contains(text(), '%s')]", Condition);
+		waitEle(By.xpath(SelectField2));
+		System.out.println("Condition Select done Successfully");
+		Thread.sleep(1000);
+		waitEle(By.xpath("//button[@class=\"el-button left-add el-button--default el-button--mini is-circle\"]"));
+		Thread.sleep(1000);
+		WebElement element2 = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder=\"Action type\"]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element2);
+
+		String SelectField3 = String.format("//div[@x-placement]//ul//li//span[contains(text(), '%s')]", ActionType);
+		waitEle(By.xpath(SelectField3));
+		System.out.println("Action Select done Successfully");
+		Thread.sleep(3000);
+		waitEle(By.xpath("//button[@class=\"el-button email-config-button el-button--default\"]"));
+		Thread.sleep(2000);
+		waitEle(By.xpath("//div[@class=\"el-col el-col-12\"]//p[text()=' Email Subject ']"));
+		System.out.println("Email Select done Successfully");
+		sendKeysToElement(By.xpath("//textarea[@placeholder=\"Enter Subject\"]"), Subject);
+		Thread.sleep(5000);
+		WebElement element3 = wait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder=\"User Types Emails\"]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element3);
+
+		String SelectField4 = String.format("//div[@x-placement]//ul//li//span[contains(text(), '%s')]", Email);
+		waitEle(By.xpath(SelectField4));
+//		Thread.sleep(2000);
+//		waitEle(By.xpath("//div[@class=\"el-col el-col-12\"]//p[text()=' Email Subject ']"));
+//		System.out.println("Email Select done Successfully");
+//		sendKeysToElement(By.xpath("//textarea[@placeholder=\"Enter Subject\"]"), Subject);
+		WebElement iframeElement = driver.findElement(By.xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']"));
+		driver.switchTo().frame(iframeElement);
+		Thread.sleep(3000);
+		waitEle(By.xpath("//body/p"));
+		sendKeysToElement(By.xpath("//body/p"), Text);
+		Thread.sleep(10000);
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.ARROW_DOWN).perform(); // Move down to the first item
+		actions.sendKeys(Keys.ARROW_DOWN).perform(); // Move to the second item (if needed)
+		actions.sendKeys(Keys.ARROW_DOWN).perform();
+		actions.sendKeys(Keys.ENTER).perform();
+//		WebElement element4 = wait.until(
+//		ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder=\"User Types Email\"]")));
+//	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element4);
+//		WebElement fieldElement = driver.findElement(By.xpath("//ul[contains(@class,'cke_autocomplete_panel')]//li[contains(@role, 'option')]//strong[normalize-space()='Fine - Fine Calculation']"));
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", fieldElement);
+//		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		WebElement clickableElement = wait1.until(ExpectedConditions.elementToBeClickable(fieldElement));
+//		clickableElement.click();
+		// waitEle(By.xpath("//li//strong[normalize-space()='Fine - Fine
+		// Calculation']"));
+		// waitEle(SelectField5);
+		System.out.println("field Select done Successfully");
+		// ul[@id="cke_83"]//li[@id="cke_1727"]
+		Thread.sleep(10000);
+//		WebElement scrollbar = driver.findElement(By.xpath("//div[@class=\"scrollable-container\"]"));
+//
+//		Actions actions1 = new Actions(driver);
+//
+//		actions1.clickAndHold(scrollbar).perform();
+//
+//		int offset = 100;
+//		actions.moveByOffset(0, offset).perform();
+//
+//		actions.release().perform();
+//		System.out.println("ScrollDown done successfully");
+		driver.switchTo().defaultContent();
+
+		WebElement save = driver
+				.findElement(By.xpath("//div[@class=\"dialog-footer\"]//span[normalize-space()='Save']"));
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", save);
+		save.click();
+
+		// waitEle(By.xpath("//div[@class=\"dialog-footer\"]//span[normalize-space()='Save']"));
+
+		System.out.println("Email configuration done successfully");
+		Thread.sleep(3000);
+		waitEle(By.xpath("//span[normalize-space()='Done']"));
+
+	}
 //	private static Map<String, Object> getClipBoardSettingsMap(int settingValue) throws JsonProcessingException {
 //		Map<String, Object> map = new HashMap<>();
 //		map.put("last_modified", String.valueOf(System.currentTimeMillis()));

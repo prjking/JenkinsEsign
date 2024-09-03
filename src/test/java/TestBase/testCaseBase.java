@@ -60,6 +60,7 @@ public class testCaseBase {
 		prefs.put("profile.default_content_setting_values.popups", 2);
 
 		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--remote-debugging-port=9222");
 
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");

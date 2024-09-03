@@ -671,9 +671,16 @@ public class Relationships {
 
 	}
 
-	public void assignCommonActions(int buttonIndex, int listItemIndex) throws Exception {
-		Thread.sleep(3000);
-		MethodActions.waitEle(By.xpath("(//ul[@class='action-buttons']//button)[" + buttonIndex + "]"));
+	public void assignCommonActions(int Index, int listItemIndex) throws Exception {
+		Thread.sleep(1000);
+		
+		
+		  
+		MethodActions.Javascriptclick(By.xpath("(//div[@class='el-table__fixed-body-wrapper']//i[@class='fa fa-eye'])["+Index+"]"));
+		
+
+		
+		
 		Thread.sleep(3000);
 		MethodActions.waitEle(By.xpath("(//div[@class='el-tabs__nav is-top']//div)[2]"));
 		Thread.sleep(3000);
@@ -681,20 +688,23 @@ public class Relationships {
 		Thread.sleep(3000);
 		MethodActions.waitEle(By.xpath("//div[@class='el-select__tags']//input[1]"));
 		Thread.sleep(3000);
-		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//li[" + listItemIndex + "]"));
+		MethodActions.Javascriptclick(By.xpath("//div[@x-placement]//li["+listItemIndex+"]"));
 		MethodActions.Javascriptclick(By.xpath("(//span[@class='dialog-footer']//button)[2]"));
 		MethodActions.waitEle(By.xpath("(//i[@class='el-icon-back'])[2]"));
 	}
 
 	public void assign1() throws Exception {
+		Thread.sleep(10000);
 		assignCommonActions(1, 1);
 	}
 
 	public void assign2() throws Exception {
+		Thread.sleep(10000);
 		assignCommonActions(2, 2);
 	}
 
 	public void assign3() throws Exception {
+		Thread.sleep(10000);
 		assignCommonActions(3, 1);
 	}
 

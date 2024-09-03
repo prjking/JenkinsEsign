@@ -155,6 +155,16 @@ public class Login {
 		Thread.sleep(10000);
 
 	}
+	
+public void SigninNSUI(String Email,String Password) throws InterruptedException {
+		
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys(Email);
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys(Password);
+		waitEle(By.xpath("//span[text()=\"Log In\"]"));
+		Thread.sleep(10000);
+ 
+	}
 //	public void jen() throws InterruptedException {
 //  Thread.sleep(10000);
 //

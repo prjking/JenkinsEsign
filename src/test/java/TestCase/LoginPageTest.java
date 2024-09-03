@@ -61,7 +61,7 @@ public class LoginPageTest extends testCaseBase {
 		// driver = new ChromeDriver(Opions);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://dev.esigns.io/signin");
+		//driver.get("https://dev.esigns.io/signin");
 	}
 
 	@BeforeMethod
@@ -213,7 +213,7 @@ public class LoginPageTest extends testCaseBase {
 
 	@Test
 	public void addbuilder() throws Exception {
-		scrool.Signinram();
+	//	scrool.Signinjp();
 //		scrool.Addformbuilder();
 //		scrool.ViewFormbuilder();
 //		scrool.Addmail("Ramya","Sibbala","ramyas200@outlook.com");
@@ -222,6 +222,7 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.prudhvioutlooklogin();
 //		scrool.clickEmail("Approval request");
 //		scrool.Reviewandapproveformbuilder();
+		scrool.FineDueNotificationEntityActions();
 //                                                                                               	
 //
 	}
