@@ -1,0 +1,103 @@
+[1725362011.895][INFO]: Starting ChromeDriver 128.0.6613.119 (6e439cfca4deda5954b0c74cde9b521c03cb31ad-refs/branch-heads/6613@{#1464}) on port 12952
+[1725362011.895][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[1725362011.902][INFO]: ChromeDriver was started successfully on port 12952
+[1725362012.045][INFO]: [229c135f25d4eb12944b3ed4ab7fa570] COMMAND InitSession {
+   "capabilities": {
+      "firstMatch": [ {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [ "--headless", "--disable-gpu", "--disable-software-rasterizer", "--window-size=1920,1080", "--disable-dev-shm-usage", "--no-sandbox", "--enable-features=NetworkService,NetworkServiceInProcess", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36" ],
+            "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            "extensions": [  ],
+            "prefs": {
+               "profile.content_settings.exceptions.clipboard": {
+                  "setting": 1
+               },
+               "profile.default_content_setting_values.popups": 2,
+               "profile.managed_default_content_settings.images": 2
+            }
+         },
+         "pageLoadStrategy": "normal"
+      } ]
+   }
+}
+[1725362012.046][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "exceptions": {
+            "clipboard": {
+               "setting": 1
+            }
+         },
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1,
+         "popups": 2
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "managed_default_content_settings": {
+         "images": 2
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1725362012.048][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1725362012.051][INFO]: ChromeDriver supports communication with Chrome via pipes. This is more reliable and more secure.
+[1725362012.051][INFO]: Use the --remote-debugging-pipe Chrome switch instead of the default --remote-debugging-port to enable this communication mode.
+[1725362012.054][INFO]: Launching chrome: "C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-pre-commit-input --disable-background-networking --disable-backgrounding-occluded-windows --disable-client-side-phishing-detection --disable-default-apps --disable-dev-shm-usage --disable-gpu --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-software-rasterizer --disable-sync --enable-automation --enable-features=NetworkService,NetworkServiceInProcess --enable-logging --headless --log-level=0 --no-first-run --no-sandbox --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36" --user-data-dir="C:\Users\PRUDHV~1.BUD\AppData\Local\Temp\scoped_dir30168_1056863555" --window-size=1920,1080 data:,
+[1725362012.823][INFO]: [229c135f25d4eb12944b3ed4ab7fa570] RESPONSE InitSession ERROR session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+[1725362012.823][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[1725362012.824][DEBUG]: Log type 'browser' lost 0 entries on destruction

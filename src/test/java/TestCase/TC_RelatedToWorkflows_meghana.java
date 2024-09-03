@@ -27,7 +27,7 @@ public class TC_RelatedToWorkflows_meghana extends testCaseBase {
 		driver = new ChromeDriver(getChromeOptions());
 		// driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://nsui.esigns.io/entity");
+		driver.get("https://nsui.esigns.io");
 	}
 
 	@BeforeMethod
@@ -39,6 +39,7 @@ public class TC_RelatedToWorkflows_meghana extends testCaseBase {
 		documentsScenarios1 = new DocumentsScenarios1(driver);
 		entities = new Entities(driver);
 		login.SigninNSUI("pmmeghana200@outlook.com", "Meghana@123");
+		login.VerifyLoginSucess();
 
 	}
 

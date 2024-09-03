@@ -3,66 +3,28 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="TestCase.TC_RelatedToWorkflows_meghana">
+      <class name="TestCase.globalVariableTestcase_meghana">
         <methods>
-          <include name="search"/>
-          <include name="actionViewWFDataBack"/>
-          <include name="clickWF"/>
-          <include name="Sendworkflow"/>
-          <include name="WfResponseInprogressViewWFActionvoidDocument"/>
-          <include name="WfResponseInprogressViewWFActionHistory"/>
-          <include name="actionViewWFDataSendWf"/>
-          <include name="verifyClickOnWFTitle"/>
-          <include name="verifyUserPageAddRecipient"/>
-          <include name="WfResponseCompletedViewWF"/>
-          <include name="verifyBuildPageviewTempSettings"/>
+          <include name="timeRange"/>
+          <include name="time"/>
+          <include name="multiSelect"/>
+          <include name="dateTimeRange"/>
+          <include name="multiLineText"/>
+          <include name="addToEntity"/>
+          <include name="singleLineText"/>
+          <include name="Date"/>
+          <include name="Weekdays"/>
+          <include name="ClickNewVariable"/>
+          <include name="Number"/>
+          <include name="dateRange"/>
           <include name="Start"/>
-          <include name="WfResponseInProgressViewWFDelete"/>
-          <include name="WfResponseInprogressViewWFActionDownloadHistory"/>
-          <include name="WfResponseInprogressViewWFActionDeleteDocument"/>
-          <include name="WfResponseCompletedViewWFDelete"/>
-          <include name="WfResponseInprogressBackButton"/>
-          <include name="actionViewWFDataSearch"/>
-          <include name="WfResponseInProgressViewWFActionResend"/>
-          <include name="WfResponseCompletedBulkDelete"/>
-          <include name="verifyBuildPageviewTempViewTempUser"/>
-          <include name="active"/>
-          <include name="WfResponseCompletedViewWFHistory"/>
-          <include name="StatusDraft"/>
-          <include name="actionViewWFDataStatusDraft"/>
-          <include name="WfResponseInprogressViewWFActionCorrectDocument"/>
-          <include name="actionViewWFDataStatusCompleted"/>
-          <include name="WfResponseCompletedViewWFDownload"/>
-          <include name="verifyBuildPageviewTempRename"/>
-          <include name="StatusDraftActionsPermanentDelete"/>
-          <include name="WfResponseInProgressDelete"/>
-          <include name="WfResponseInProgressViewWF"/>
-          <include name="inactive"/>
-          <include name="actionInactive"/>
-          <include name="WfResponseInProgressResend"/>
-          <include name="StatusCompleted"/>
-          <include name="verifyBuildPageviewTempDelete"/>
-          <include name="StatusDraftActionsSendWF"/>
-          <include name="verifyUserPageSelectRecipient"/>
-          <include name="preview"/>
-          <include name="verifyBuildPageviewTempSave"/>
-          <include name="actionRename"/>
-          <include name="wf"/>
-          <include name="WfResponseDraftBack"/>
-          <include name="clickCreateWF"/>
-          <include name="StatusInProgress"/>
-          <include name="WfResponseCompletedActionDelete"/>
-          <include name="actionEdit"/>
-          <include name="WfResponseCompletedViewWFClone"/>
-          <include name="verifyBuildPage"/>
-          <include name="actionViewWFData"/>
-          <include name="verifyUserPageAddRecipientNextButton"/>
-          <include name="WfResponseDraftBulkDelete"/>
-          <include name="WfResponseInProgressViewWFActionView"/>
-          <include name="actionViewWFBulkData"/>
-          <include name="actionViewWFDataStatusSent"/>
+          <include name="select"/>
+          <include name="dateTime"/>
+          <include name="fixedTime"/>
+          <include name="aa"/>
+          <include name="clickGlobalVariableButton"/>
         </methods>
-      </class> <!-- TestCase.TC_RelatedToWorkflows_meghana -->
+      </class> <!-- TestCase.globalVariableTestcase_meghana -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -22,9 +22,9 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 
 	public void setupDriver() {
 		driver = new ChromeDriver(getChromeOptions());
-		// driver = new ChromeDriver();
+	//	 driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://nsui.esigns.io/entity");
+		driver.get("https://nsui.esigns.io");
 	}
 
 	@BeforeMethod
@@ -35,7 +35,8 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 		entitiesMeghana = new EntitiesMeghana(driver);
 		documentsScenarios1 = new DocumentsScenarios1(driver);
 		recevierSide1 = new RecevierSide1(driver);
-		login.SigninNSUI("pmmeghana200@outlook.com", "Meghana@123");
+		//login.SigninNSUI("pmmeghana200@outlook.com", "Meghana@123");
+		//login.VerifyLoginSucess();
 
 	}
 
