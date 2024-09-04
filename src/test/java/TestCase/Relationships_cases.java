@@ -1,6 +1,7 @@
 package TestCase;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -156,10 +157,15 @@ public class Relationships_cases extends testCaseBase {
 		relationships.url();
 		repeatableTemplate.ClickEntityAction("Student333");
 		relationships.assign1();
-		
+
 		relationships.assign2();
 		relationships.assign3();
 
 	}
 
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+
+	}
 }

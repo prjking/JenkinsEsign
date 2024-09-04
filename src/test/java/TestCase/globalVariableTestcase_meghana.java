@@ -1,7 +1,9 @@
 package TestCase;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Pages.DocumentsScenarios1;
@@ -11,8 +13,10 @@ import Pages.Login;
 import Pages.RecevierSide;
 import Pages.RecevierSide1;
 import Pages.globalVariables_meghana;
+import Reports.TestNGExtentReport;
+import Reports.Testlistner;
 import TestBase.testCaseBase;
-
+@Listeners({ TestNGExtentReport.class, Testlistner.class, })
 public class globalVariableTestcase_meghana extends testCaseBase {
 	Login login;
 	globalVariables_meghana GlobalVariables_meghana;
@@ -226,4 +230,11 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 		GlobalVariables_meghana.companyProfile("gv");
 	}
 
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+		
+		
+	}
+	
 }

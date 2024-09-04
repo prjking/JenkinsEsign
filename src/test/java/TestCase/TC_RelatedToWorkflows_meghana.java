@@ -1,7 +1,9 @@
 package TestCase;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Pages.Dashboard;
@@ -14,7 +16,9 @@ import Pages.RecevierSide1;
 import TestBase.testCaseBase;
 import Pages.clickWorkflow;
 import Pages.clickWorkflow_meghana;
-
+import Reports.TestNGExtentReport;
+import Reports.Testlistner;
+@Listeners({ TestNGExtentReport.class, Testlistner.class, })
 public class TC_RelatedToWorkflows_meghana extends testCaseBase {
 	Login login;
 	DocumentsScenarios1 documentsScenarios1;
@@ -651,6 +655,12 @@ public class TC_RelatedToWorkflows_meghana extends testCaseBase {
 		WF.SpanButton("Settings");
 		documentsScenarios1.SettingsExpirationAndRemainder(1);
 
+	}
+	@AfterMethod
+	public void quit() {
+		driver.quit();
+		
+		
 	}
 
 }
