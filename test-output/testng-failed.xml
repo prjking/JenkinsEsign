@@ -5,8 +5,8 @@
     <classes>
       <class name="TestCase.LoginPageTest">
         <methods>
+          <include name="addbuilder"/>
           <include name="Start"/>
-          <include name="Verifyscrool"/>
         </methods>
       </class> <!-- TestCase.LoginPageTest -->
     </classes>

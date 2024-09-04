@@ -47,7 +47,7 @@ public class LoginPageTest extends testCaseBase {
 	Scrool scrool;
 
 	public void setupDriver() {
-		 driver = new ChromeDriver(getChromeOptions());
+	//	 driver = new ChromeDriver(getChromeOptions());
 
 //		ChromeOptions options = new ChromeOptions();
 //		Map<String, Object> prefs = new HashMap<>();
@@ -59,7 +59,7 @@ public class LoginPageTest extends testCaseBase {
 //		prefs.put("profile", profile);
 //		options.setExperimentalOption("prefs", prefs);
 		// driver = new ChromeDriver(Opions);
-	//	driver = new ChromeDriver();
+	driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://dev.esigns.io/signin");
 	}
@@ -211,8 +211,8 @@ public class LoginPageTest extends testCaseBase {
 
 	}
 
-//	@Test
-//	public void addbuilder() throws Exception {
+@Test
+	public void addbuilder() throws Exception {
 	//	scrool.Signinjp();
 //		scrool.Addformbuilder();
 //		scrool.ViewFormbuilder();
@@ -222,8 +222,8 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.prudhvioutlooklogin();
 //		scrool.clickEmail("Approval request");
 //		scrool.Reviewandapproveformbuilder();
-	//	scrool.FineDueNotificationEntityActions();
+		scrool.FineDueNotificationEntityActions();
 //                                                                                               	
 //
-	//}
+	}
 }
