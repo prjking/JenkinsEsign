@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase.globalVariableTestcase_meghana">
+      <class name="TestCase.LoginPageTest">
         <methods>
           <include name="Start"/>
-          <include name="clickGlobalVariableButton"/>
+          <include name="Verifyscrool"/>
         </methods>
-      </class> <!-- TestCase.globalVariableTestcase_meghana -->
+      </class> <!-- TestCase.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

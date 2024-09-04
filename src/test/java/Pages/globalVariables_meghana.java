@@ -74,9 +74,10 @@ public class globalVariables_meghana {
 
 	public void clickGlobalVariable() throws Exception {
 		Thread.sleep(10000);
+		driver.get("https://nsui.esigns.io/global-variables");
 
-		waitEle(By.xpath("//div[@class='icon-text']"));
-		Javascriptclick(By.xpath("//li[normalize-space()='Global Variables']"));
+//		waitEle(By.xpath("//div[@class='icon-text']"));
+//		Javascriptclick(By.xpath("//li[normalize-space()='Global Variables']"));
 
 		System.out.println("Clicked on Global Variables in profile completed");
 	}
