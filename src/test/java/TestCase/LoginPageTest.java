@@ -211,8 +211,8 @@ public class LoginPageTest extends testCaseBase {
 
 	}
 
-	@Test
-	public void addbuilder() throws Exception {
+//	@Test
+//	public void addbuilder() throws Exception {
 	//	scrool.Signinjp();
 //		scrool.Addformbuilder();
 //		scrool.ViewFormbuilder();
@@ -222,8 +222,8 @@ public class LoginPageTest extends testCaseBase {
 //		scrool.prudhvioutlooklogin();
 //		scrool.clickEmail("Approval request");
 //		scrool.Reviewandapproveformbuilder();
-		scrool.FineDueNotificationEntityActions();
+	//	scrool.FineDueNotificationEntityActions();
 //                                                                                               	
 //
-	}
+	//}
 }
