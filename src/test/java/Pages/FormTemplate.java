@@ -34,7 +34,7 @@ public class FormTemplate {
 		// MethodActions.waitEle(By.xpath("//div[@class='icon-text']"));
 		Thread.sleep(10000);
 		//driver.get("https://nsui.esigns.io/template");
-		driver.get("https://preprod.esigns.io/template");
+		driver.get("https://nsui.esigns.io/template");
 
 		// MethodActions.waitEle(By.xpath("//ul[@x-placement]//li[normalize-space()='Form
 		// Template']"));

@@ -952,34 +952,88 @@ public class clickWorkflow_meghana {
 	}
 
 	public void WFResponseDraft() throws Exception {
-		try {
-			waitEle(By.xpath("(//span[@class=\"mr-1 el-tag el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
-		} catch (Exception e) {
-			waitEle(By.xpath("//li[normalize-space()='2']"));
-			waitEle(By.xpath("(//span[@class=\"mr-1 el-tag el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
+
+		boolean isElementFound = false;
+		while (!isElementFound) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+				WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//span[@class=\"mr-1 el-tag el-tag--mini el-tag--light\"]//span[text()=1])[1]")));
+				element.click();
+				isElementFound = true;
+				System.out.println("Element found!");
+
+			} catch (Exception e) {
+				try {
+					WebElement nextButton = driver
+							.findElement(By.xpath("//*[@id='MainLayout']//button[@class='btn-next']"));
+					nextButton.click();
+					System.out.println("Element not found, clicking Next.");
+					Thread.sleep(2000);
+
+				} catch (Exception nextButtonException) {
+					System.out.println("Next button not found or failed to click it.");
+					throw nextButtonException;
+				}
+			}
 		}
 	}
 
 	public void WFResponseInProgress() throws Exception {
-		try {
-			waitEle(By.xpath(
-					"(//span[@class=\"mr-1 el-tag el-tag--warning el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
-		} catch (Exception e) {
-			waitEle(By.xpath("//li[normalize-space()='2']"));
-			waitEle(By.xpath(
-					"(//span[@class=\"mr-1 el-tag el-tag--warning el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
+		boolean isElementFound = false;
+		while (!isElementFound) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+				WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+						"(//span[@class='mr-1 el-tag el-tag--warning el-tag--mini el-tag--light']//span[text()=1])[1]")));
+				element.click();
+				isElementFound = true;
+				System.out.println("Element found!");
+
+			} catch (Exception e) {
+				try {
+					WebElement nextButton = driver
+							.findElement(By.xpath("//*[@id='MainLayout']//button[@class='btn-next']"));
+					nextButton.click();
+					System.out.println("Element not found, clicking Next.");
+					Thread.sleep(2000);
+
+				} catch (Exception nextButtonException) {
+					System.out.println("Next button not found or failed to click it.");
+					throw nextButtonException;
+				}
+			}
 		}
 	}
 
 	public void WFResponseCompleted() throws Exception {
-		try {
-			waitEle(By.xpath(
-					"(//span[@class=\"el-tag el-tag--success el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
-		} catch (Exception e) {
 
-			waitEle(By.xpath("//li[normalize-space()='2']"));
-			waitEle(By.xpath(
-					"(//span[@class=\"el-tag el-tag--success el-tag--mini el-tag--light\"]//span[text()=1])[1]"));
+		boolean isElementFound = false;
+		while (!isElementFound) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+				WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+						"(//span[@class=\"el-tag el-tag--success el-tag--mini el-tag--light\"]//span[text()=1])[1]")));
+				element.click();
+				isElementFound = true;
+				System.out.println("Element found!");
+
+			} catch (Exception e) {
+				try {
+					WebElement nextButton = driver
+							.findElement(By.xpath("//*[@id='MainLayout']//button[@class='btn-next']"));
+					nextButton.click();
+					System.out.println("Element not found, clicking Next.");
+					Thread.sleep(2000);
+
+				} catch (Exception nextButtonException) {
+					System.out.println("Next button not found or failed to click it.");
+					throw nextButtonException;
+				}
+			}
 		}
 	}
 
@@ -1017,8 +1071,7 @@ public class clickWorkflow_meghana {
 
 		actions.moveToElement(elementToHover).perform();
 		Thread.sleep(5000);
-		Javascriptclick(
-				By.xpath("//div[@class=\"el-table__body-wrapper is-scrolling-none\"]//li[1]/button[1]"));
+		Javascriptclick(By.xpath("//div[@class=\"el-table__body-wrapper is-scrolling-none\"]//li[1]/button[1]"));
 		System.out.println("Click on view Workflow done successfully");
 	}
 
@@ -1175,11 +1228,11 @@ public class clickWorkflow_meghana {
 
 	public void SignatureAuthentication() throws Exception {
 		try {
-		Thread.sleep(5000);
-		waitEle(By.xpath("//span[text()=' Send Otp To Email ']"));
-		driver.switchTo().newWindow(WindowType.TAB);
-		}catch(Exception e) {
-			
+			Thread.sleep(5000);
+			waitEle(By.xpath("//span[text()=' Send Otp To Email ']"));
+			driver.switchTo().newWindow(WindowType.TAB);
+		} catch (Exception e) {
+
 		}
 
 	}
@@ -1192,10 +1245,7 @@ public class clickWorkflow_meghana {
 		action2.doubleClick(copy).build().perform();
 		Thread.sleep(10000);
 		Actions actions = new Actions(driver);
-		actions.moveToElement(copy).keyDown(Keys.CONTROL)
-				.sendKeys("c") 
-				.keyUp(Keys.CONTROL) 
-				.build().perform();
+		actions.moveToElement(copy).keyDown(Keys.CONTROL).sendKeys("c").keyUp(Keys.CONTROL).build().perform();
 		Thread.sleep(10000);
 		String Parentwindowid1 = driver.getWindowHandle();
 
@@ -1223,6 +1273,7 @@ public class clickWorkflow_meghana {
 		Thread.sleep(10000);
 		Javascriptclick(By.xpath("//button[text()=\" Signature \"]"));
 	}
+
 	public void closeChildWindow() throws InterruptedException {
 		String Parentwindowid1 = driver.getWindowHandle();
 		Set<String> allwindowhandles1 = driver.getWindowHandles();
@@ -1230,7 +1281,8 @@ public class clickWorkflow_meghana {
 			if (!childwindow.endsWith(Parentwindowid1)) {
 				driver.switchTo().window(childwindow).close();
 				driver.switchTo().window(Parentwindowid1);
-				}
+			}
 		}
 	}
+
 }

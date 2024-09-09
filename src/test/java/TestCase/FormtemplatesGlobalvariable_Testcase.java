@@ -24,23 +24,24 @@ public class FormtemplatesGlobalvariable_Testcase extends testCaseBase {
 		// driver = new ChromeDriver(getChromeOptions());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://preprod.esigns.io/signin");
+		driver.get("https://nsui.esigns.io/signin");
 
 	}
 
 	@BeforeMethod
-	public void Start() {
+	public void Start() throws Exception {
 		setupDriver();
 		login = new Login(driver);
 		formtemplates_globalvariable = new Formtemplates_globalvariable(driver);
 		formTemplate = new FormTemplate(driver);
+		login.SigninprodMeghana();
+		MethodActions.Loadingmask();
 
 	}
 
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void validglobalvariable() throws Exception {
-		login.SigninprodMeghana();
-		MethodActions.Loadingmask();
+		
 		formTemplate.Template();
 		formTemplate.Createtemp();
 		formtemplates_globalvariable.GlobalVariableActions();

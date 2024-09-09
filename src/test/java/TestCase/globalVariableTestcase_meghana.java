@@ -16,6 +16,7 @@ import Pages.globalVariables_meghana;
 import Reports.TestNGExtentReport;
 import Reports.Testlistner;
 import TestBase.testCaseBase;
+
 @Listeners({ TestNGExtentReport.class, Testlistner.class, })
 public class globalVariableTestcase_meghana extends testCaseBase {
 	Login login;
@@ -26,7 +27,7 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 
 	public void setupDriver() {
 		driver = new ChromeDriver(getChromeOptions());
-	//	 driver = new ChromeDriver();
+		// driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://nsui.esigns.io");
 	}
@@ -39,8 +40,8 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 		entitiesMeghana = new EntitiesMeghana(driver);
 		documentsScenarios1 = new DocumentsScenarios1(driver);
 		recevierSide1 = new RecevierSide1(driver);
-		//login.SigninNSUI("pmmeghana200@outlook.com", "Meghana@123");
-		//login.VerifyLoginSucess();
+		// login.SigninNSUI("pmmeghana200@outlook.com", "Meghana@123");
+		// login.VerifyLoginSucess();
 
 	}
 
@@ -233,8 +234,7 @@ public class globalVariableTestcase_meghana extends testCaseBase {
 	@AfterMethod
 	public void quit() {
 		driver.quit();
-		
-		
+
 	}
-	
+
 }
