@@ -82,8 +82,8 @@ public class globalVariables_meghana {
 		System.out.println("Clicked on Global Variables in profile completed");
 	}
 
-	public boolean VerifyClickGlobalVariable() {
-
+	public boolean VerifyClickGlobalVariable() throws Exception {
+             Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		WebElement name = wait.until(
 				ExpectedConditions.presenceOfElementLocated(By.xpath("//section[@id=\"global-variables-list\"]")));
