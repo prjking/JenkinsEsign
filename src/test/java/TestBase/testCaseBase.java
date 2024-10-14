@@ -25,30 +25,6 @@ public class testCaseBase {
 		driver.manage().window().maximize();
 		driver.get("http://wl.esigns.io/");
 	}
-//	  private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-//
-//    @BeforeMethod
-//    @Parameters("browser")
-//    public void setup(@Optional("chrome") String browser) {
-//        WebDriver driver = null;
-//        switch (browser.toLowerCase()) {
-//            case "chrome":
-//                driver = new ChromeDriver();
-//                break;
-//            case "firefox":
-//                driver = new FirefoxDriver();
-//                break;
-//            case "edge":
-//                driver = new EdgeDriver();
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Unsupported browser: " + browser);
-//        }
-//        driverThreadLocal.set(driver);
-//        driver.manage().window().maximize();
-//        driver.get("https://dev.esigns.io/signin");
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-//    }
 
 	public ChromeOptions getChromeOptions() {
 		ChromeOptions options = new ChromeOptions();
@@ -62,10 +38,17 @@ public class testCaseBase {
 		options.addArguments(
 				"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Safari/537.36"); // Set
 																																					// user
-																																					// //
+//		Map<String, Object> prefs = new HashMap<>();
+//		Map<String, Object> profile = new HashMap<>();
+//		Map<String, Object> contentSettings = new HashMap<>();
+//		contentSettings.put("notifications", 1);
+//		contentSettings.put("clipboard", 1);
+//		profile.put("managed_default_content_settings", contentSettings);
+//		prefs.put("profile", profile);
+//		options.setExperimentalOption("prefs", prefs);																																// //
 																																					// agent
 		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		options.setBinary("/usr/bin/sgoogle-chrome-stable");
+		options.setBinary("/usr/bin/google-chrome-stable");
 //      options.addArguments("--incognito");
 //		System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
 //		System.setProperty("webdriver.chrome.verboseLogging", "true");

@@ -13,8 +13,8 @@ public class Testcases_Ramya extends testCaseBase {
 	Documents documents;
 	
 	public void setupDriver() {
-		driver = new ChromeDriver(getChromeOptions());
-		//	driver =new ChromeDriver();
+	//	driver = new ChromeDriver(getChromeOptions());
+			driver =new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://dev.esigns.io/signin");
 	}
@@ -46,7 +46,7 @@ public void VerifyDocuments() throws Exception {
 	//documents.ArchivedPermanentdelete();
 	//documents.ArchivedRenamedocuments();
 	//documents.ArchivedUndodocument();
-	documents.CompletedClonedocument();
+	//documents.CompletedClonedocument();
 	//documents.CompletedDeletedocuement();
 	//documents.CompletedDownloaddocuement();
 	//documents.CompletedDownloadoriginal();
