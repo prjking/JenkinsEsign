@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Failed suite [MySuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="3" name="HubTests(failed)">
+    <classes>
+      <class name="TestCase.FormTemplate_Testcases">
+        <methods>
+          <include name="AdvancedChildEntityTable"/>
+          <include name="ContentDivision"/>
+          <include name="AdvancedConcatenate"/>
+          <include name="Start"/>
+          <include name="AdvancedQRCode"/>
+          <include name="AdvancedQRReader"/>
+          <include name="AdvancedPayButtons"/>
+          <include name="Common"/>
+          <include name="AdvancedAutoIncrementNumber"/>
+          <include name="AdvancedFormula"/>
+          <include name="AdvancedCurrency"/>
+          <include name="AdvancedEntity"/>
+          <include name="AdvancedLocation"/>
+          <include name="AdvancedAudio"/>
+          <include name="AdvancedAggregateFunction"/>
+          <include name="AdvancedQuestion"/>
+          <include name="AdvancedPaymentVariable"/>
+          <include name="AdvancedStarRating"/>
+        </methods>
+      </class> <!-- TestCase.FormTemplate_Testcases -->
+    </classes>
+  </test> <!-- HubTests(failed) -->
+  <test thread-count="3" name="Node1Tests(failed)">
+    <classes>
+      <class name="TestCase.FormTemplate_Testcases_Node1">
+        <methods>
+          <include name="BasicFieldsTimerange"/>
+          <include name="BasicFieldsWeekDays"/>
+          <include name="BasicFieldsMultipleSelect"/>
+          <include name="BasicFieldsTime"/>
+          <include name="BasicFieldsMultiline"/>
+          <include name="BasicFieldsList"/>
+          <include name="Start"/>
+          <include name="BasicFieldsSelect"/>
+          <include name="Common"/>
+          <include name="BasicFieldsSingleline"/>
+          <include name="BasicFieldsDate"/>
+          <include name="BasicFieldsDateTime"/>
+          <include name="BasicFieldsFixedTime"/>
+          <include name="BasicFieldsNumber"/>
+        </methods>
+      </class> <!-- TestCase.FormTemplate_Testcases_Node1 -->
+    </classes>
+  </test> <!-- Node1Tests(failed) -->
+  <test thread-count="3" name="Node2Tests(failed)">
+    <classes>
+      <class name="TestCase.FormTemplate_Testcases_Node2">
+        <methods>
+          <include name="BasicFieldsSignature"/>
+          <include name="ContentHeading"/>
+          <include name="ContentHTML"/>
+          <include name="ContentSingleLineContent"/>
+          <include name="BasicFieldsRadioGroup"/>
+          <include name="ContentVideo"/>
+          <include name="BasicFieldsPhone"/>
+          <include name="BasicFieldsCaptcha"/>
+          <include name="BasicFieldsCheckBoxGroup"/>
+          <include name="ContentImage"/>
+          <include name="ContentParagraph"/>
+          <include name="Start"/>
+          <include name="BasicFieldsRadio"/>
+          <include name="ContentActionButton"/>
+          <include name="BasicFieldsCheckbox"/>
+          <include name="Common"/>
+          <include name="BasicFieldsYesORNo"/>
+          <include name="BasicFieldsDocument"/>
+        </methods>
+      </class> <!-- TestCase.FormTemplate_Testcases_Node2 -->
+    </classes>
+  </test> <!-- Node2Tests(failed) -->
+</suite> <!-- Failed suite [MySuite] -->

@@ -1,0 +1,3 @@
+[submodule "bfg-repo-cleaner"]
+	path = bfg-repo-cleaner
+	url = https://github.com/rtyley/bfg-repo-cleaner.git

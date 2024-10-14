@@ -3,6 +3,7 @@ package Pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,98 +18,84 @@ public class Addrecipients {
 		this.driver = driver;
 
 	}
+	
+	
 
-	public void Recipients() throws Exception {
-
+	public void waitEle(By by) throws Exception {
+		Thread.sleep(3000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
-
-		By ad = By.xpath("//span[contains(text(),'Add Recipient')]");
-
-		WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ad));
-		add.click();
-
-By con = By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']");
-
-		WebElement conc = wait.until(ExpectedConditions.elementToBeClickable(con));
-		conc.click();
-
-
-		By ad1 = By.xpath("//div[@x-placement]//ul//li[2]");
-
-		WebElement add1 = wait.until(ExpectedConditions.elementToBeClickable(ad1));
-		add1.click();
-
-		driver.findElement(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']")).click();
-
-		By ad2 = By.xpath("//div[@x-placement]//ul//li[3]");
-		WebDriverWait hold2 = new WebDriverWait(driver, Duration.ofMinutes(3));
-		WebElement add2 = hold2.until(ExpectedConditions.elementToBeClickable(ad2));
-		add2.click();
+		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+	}
+	public void Recipients() throws Exception {
        Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']")).click();
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
+
+		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select contact type']"));
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Search with Email']"));
+
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
+
+		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@x-placement]//ul//li[3]")).click();
+		waitEle(By.xpath("//div[@x-placement]//ul//li[3]"));
 	}
 
 	public void Recipients1() throws Exception {
-		By ad11 = By.xpath("//span[contains(text(),'Add Recipient')]");
-		WebDriverWait hold11 = new WebDriverWait(driver, Duration.ofMinutes(4));
-		WebElement add11 = hold11.until(ExpectedConditions.elementToBeClickable(ad11));
-		add11.click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']")).click();
-		Thread.sleep(10000);
-		By ad12 = By.xpath("//div[@x-placement]//ul//li[1]");
-		WebDriverWait hold12 = new WebDriverWait(driver, Duration.ofMinutes(3));
-		WebElement add12 = hold12.until(ExpectedConditions.elementToBeClickable(ad12));
-		add12.click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@x-placement]//ul//li[1]")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Select Signer Type']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@x-placement]//ul//li[2]")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Enforce Signature Order']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Enforce Signature Order']")).click();
+		 Thread.sleep(10000);
+		waitEle(By.xpath("//span[contains(text(),'Add Recipient')]"));
 
-		By ad123 = By.xpath("//span[normalize-space()='Save Users']");
-		WebDriverWait hold123 = new WebDriverWait(driver, Duration.ofMinutes(3));
-		WebElement add123 = hold123.until(ExpectedConditions.elementToBeClickable(ad123));
-		add123.click();
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Select contact type']"));
+		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Search with Email']"));
+	   Thread.sleep(10000);
+		waitEle(By.xpath("//div[@x-placement]//ul//li[1]"));
 
+		waitEle(By.xpath("//div[@id='user_1']//input[@placeholder='Select Signer Type']"));
+		
+		waitEle(By.xpath("//div[@x-placement]//ul//li[2]"));
+
+		waitEle(By.xpath("//span[normalize-space()='Enforce Signature Order']"));
+
+		waitEle(By.xpath("//span[normalize-space()='Enforce Signature Order']"));
+		waitEle(By.xpath("//span[normalize-space()='Save Users']"));
 
 	}
 
 	public void MoreFields() throws Exception {
 
-		By Mor = By.xpath("//div[@id=\"user_2\"]//p");
-		WebDriverWait More = new WebDriverWait(driver, Duration.ofMinutes(2));
-		WebElement Morea = More.until(ExpectedConditions.elementToBeClickable(Mor));
-		Morea.click();
-
-		Thread.sleep(10000);
+		waitEle(By.xpath("//div[@id=\"user_2\"]//p"));
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='middle_name']"));
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='middle_name']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='middle_name']")).sendKeys("prj");
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Address']"));
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Address']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Address']")).sendKeys("rjy");
+
+		waitEle(By.xpath("//div[@id='user_2']//input[@placeholder='Title']"));
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Title']")).clear();
 		driver.findElement(By.xpath("//div[@id='user_2']//input[@placeholder='Title']")).sendKeys("mr");
+
+		waitEle(By.id("//input[@placeholder='Company name']"));
 		driver.findElement(By.id("//input[@placeholder='Company name']")).clear();
 		driver.findElement(By.id("//input[@placeholder='Company name']")).sendKeys("Act");
+
 		Thread.sleep(10000);
+
+		waitEle(By.id("//div[@id='user_2']//input[@placeholder='Phone']"));
 		driver.findElement(By.id("//div[@id='user_2']//input[@placeholder='Phone']")).clear();
 		driver.findElement(By.id("//div[@id='user_2']//input[@placeholder='Phone']")).sendKeys("9888789456");
+
 		Thread.sleep(10000);
+	}
 
-		driver.findElement(By.xpath("//div[@id=\\\"user_2\\\"]//p")).click();
-			}
-
-	public void Verifrecipient() {
+	public void Verifrecipient() throws Exception {
+		 Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 
 		WebElement DocMessage = wait.until(

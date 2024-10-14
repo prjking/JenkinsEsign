@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.build.Plugin.Engine.Dispatcher.ForParallelTransformation.WithThrowawayExecutorService;
+
 public class Dragdrop {
 	WebDriver driver;
 
@@ -19,18 +21,44 @@ public class Dragdrop {
 
 	}
 
+	private void waitAndClick(Actions actions, WebElement element, WebElement target) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		try {
+
+			WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+
+			actions.clickAndHold(clickableElement).moveToElement(target).release().build().perform();
+
+			Thread.sleep(1000);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	public void waitEle(By by) throws Exception {
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+	}
+
 	public void EssentialFields() throws Exception {
 		Thread.sleep(10000);
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+
 		// Sign
 		WebElement Sign = wait
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+		System.out.println("Signature Element Drag and Drop Done");
+
 		// initial
 		WebElement Intial = driver.findElement(By.xpath("//button[@id='initialEle']"));
 		// fullNameEle
 		WebElement fullName = driver.findElement(By.xpath("//button[@id='fullNameEle']"));
+
 		// dateSingedEle
 		WebElement dateSinged = driver.findElement(By.xpath("//button[@id='dateSingedEle']"));
 		// companyEle
@@ -43,48 +71,47 @@ public class Dragdrop {
 		WebElement checkbox = driver.findElement(By.xpath("//button[@id='checkboxEle']"));
 		// addressEle
 		WebElement address = driver.findElement(By.xpath("//button[@id='addressEle']"));
+
 		Actions actions = new Actions(driver);
-		actions.clickAndHold(Intial).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(fullName).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(dateSinged).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(company).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(title).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(singleLineText).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(checkbox).moveToElement(Target).release().build().perform();
-		Thread.sleep(1000);
-		actions.clickAndHold(address).moveToElement(Target).release().build().perform();
 
-		/*
-		 * Thread.sleep(3000); WebElement Doubleclick =
-		 * driver.findElement(By.xpath("//p[normalize-space()='Signature']")); Actions
-		 * action = new Actions(driver);
-		 * action.doubleClick(Doubleclick).build().perform(); Set<String> windowHandles
-		 * = driver.getWindowHandles(); for (String handle : windowHandles) {
-		 * driver.switchTo().window(handle); } Thread.sleep(10000);
-		 * driver.findElement(By.
-		 * xpath("//form[@class='el-form el-form--label-top']//input[@placeholder='Select']//li[@class='el-select-dropdown__item'][1]"
-		 * )).click();
-		 */
+		waitAndClick(actions, Intial, Target);
+		System.out.println("Intial Element Drag and Drop Done");
 
+		waitAndClick(actions, fullName, Target);
+		System.out.println("Fullname Element Drag and Drop Done");
+
+		waitAndClick(actions, dateSinged, Target);
+		System.out.println("dateSinged Element Drag and Drop Done");
+
+		waitAndClick(actions, company, Target);
+		System.out.println("company Element Drag and Drop Done");
+
+		waitAndClick(actions, title, Target);
+		System.out.println("Title Element Drag and Drop Done");
+
+		waitAndClick(actions, singleLineText, Target);
+		System.out.println("singleLineText Element Drag and Drop Done");
+
+		waitAndClick(actions, checkbox, Target);
+		System.out.println("checkbox Element Drag and Drop Done");
+
+		waitAndClick(actions, address, Target);
+		System.out.println("Intial Element Drag and Drop Done");
 	}
 
 	public void Contentfields() throws Exception {
-
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
-		// Sign
+
 		WebElement mySignatureEle = wait
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='mySignatureEle']")));
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+
 		Actions actions = new Actions(driver);
-		actions.clickAndHold(mySignatureEle).moveToElement(Target).release().build().perform();
+		waitAndClick(actions, mySignatureEle, Target);
+		System.out.println("mySignatureEle Element Drag and Drop Done");
 
 		Thread.sleep(3000);
+
 		WebElement Doubleclick = driver.findElement(By.xpath("//img[@class='my-signature']"));
 		Actions action = new Actions(driver);
 		action.doubleClick(Doubleclick).build().perform();
@@ -93,29 +120,33 @@ public class Dragdrop {
 			driver.switchTo().window(handle);
 		}
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Edit']")).click();
-		Thread.sleep(10000);
-		// driver.findElement(By.xpath("//input[@placeholder='Select']")).click();
-		// driver.findElement(By.xpath("//input//ul//li//span[normalize-space()='Segoe
-		// Script']")).click();
-		driver.findElement(By.xpath("//input[@placeholder='Enter signature']")).sendKeys("Prj");
-		driver.findElement(By.xpath("//div[@id='pane-letter']//button[1]")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath(
-				"//div[@aria-label='Field Properties']//div[@class='el-dialog__footer']//span[contains(text(),'Save')]"))
-				.click();
+		try {
+			By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
+		} catch (Exception e) {
 
+		}
+		Thread.sleep(10000);
+		waitEle(By.xpath("//span[normalize-space()='Edit']"));
+		driver.findElement(By.xpath("//input[@placeholder='Enter signature']")).sendKeys("Prj");
+
+		waitEle(By.xpath("//div[@id='pane-letter']//button[1]"));
+		waitEle(By.xpath(
+				"//div[@aria-label='Field Properties']//div[@class='el-dialog__footer']//span[contains(text(),'Save')]"));
+
+		System.out.println("mySignatureEle Element opened With Double Click and Entered New Sign Data Successfully");
 	}
 
 	public void Draw() throws Exception {
-
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 
 		WebElement mySignatureEle = wait
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='mySignatureEle']")));
 		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 		Actions actions = new Actions(driver);
-		actions.clickAndHold(mySignatureEle).moveToElement(Target).release().build().perform();
+
+		waitAndClick(actions, mySignatureEle, Target);
+		System.out.println("mySignatureEle Element Drag and Drop Done");
 
 		Thread.sleep(3000);
 		WebElement Doubleclick = driver.findElement(By.xpath("//img[@class='my-signature']"));
@@ -125,69 +156,35 @@ public class Dragdrop {
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);
 		}
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Edit']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.id("tab-drawer")).click();
 
 		Thread.sleep(10000);
+		try {
+			By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
+		} catch (Exception e) {
+
+		}
+		Thread.sleep(10000);
+		waitEle(By.xpath("//span[normalize-space()='Edit']"));
+
+		waitEle(By.id("tab-drawer"));
+
 		Actions act = new Actions(driver);
 		Thread.sleep(10000);
 		act.clickAndHold(driver.findElement(By.xpath("//div[@id='signature']//canvas")))
 				.moveToElement(driver.findElement(By.xpath("//div[@id='signature']//canvas")), 20, -50)
 				.moveByOffset(50, 50).moveByOffset(80, -50).moveByOffset(100, 50).release().build().perform();
+
+		waitEle(By.xpath(
+				"//div[@aria-label='Field Properties']//div[@class='el-dialog__footer']//span[contains(text(),'Save')]"));
+
+		WebDriverWait waitHeading = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement headingEle = waitHeading.until(ExpectedConditions.presenceOfElementLocated(By.id("headingEle")));
+		Actions actionsHeading = new Actions(driver);
+		actionsHeading.clickAndHold(headingEle).moveToElement(Target).release().build().perform();
 		Thread.sleep(10000);
-		driver.findElement(By.xpath(
-				"//div[@aria-label='Field Properties']//div[@class='el-dialog__footer']//span[contains(text(),'Save')]"))
-				.click();
-		// headingEle
-		WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofMinutes(2));
 
-		WebElement headingEle = wait11.until(ExpectedConditions.presenceOfElementLocated(By.id("headingEle")));
-		Actions actions1 = new Actions(driver);
-		actions1.clickAndHold(headingEle).moveToElement(Target).release().build().perform();
-		Thread.sleep(100000);
-		/*
-		 * WebElement Doubleclick1 =
-		 * driver.findElement(By.xpath("//div[contains(text(),'Heading 1')]")); Actions
-		 * action1 = new Actions(driver);
-		 * action1.doubleClick(Doubleclick1).build().perform(); Set<String>
-		 * windowHandles1 = driver.getWindowHandles(); for (String handle :
-		 * windowHandles1) { driver.switchTo().window(handle); } Thread.sleep(10000);
-		 * driver.findElement(By.xpath(
-		 * "//div[@class='el-select']//input[@placeholder='Select']")).click();
-		 * driver.findElement(By.xpath("//ul//li//span[normalize-space()='h4']")).click(
-		 * ); driver.findElement(By.xpath(
-		 * "//div[@class='el-textarea']//textarea[@class='el-textarea__inner']")).
-		 * sendKeys("Test"); driver.findElement(By.
-		 * xpath("//div[@class='el-dialog__wrapper fields-dialog']//button[2]")).click()
-		 * ;
-		 */
-		// paragraphEle
-		/*
-		 * WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofMinutes(2));
-		 *
-		 * WebElement paragraphEle = wait2
-		 * .until(ExpectedConditions.presenceOfElementLocated(By.id("paragraphEle")));
-		 * Actions actions2 = new Actions(driver);
-		 * actions2.clickAndHold(paragraphEle).moveToElement(Target).release().build().
-		 * perform(); Thread.sleep(10000); WebElement Doubleclick3 =
-		 * driver.findElement(By.xpath("//div[contains(text(),' Paragraph 1')]"));
-		 * Actions action2 = new Actions(driver);
-		 * action2.doubleClick(Doubleclick3).build().perform(); Set<String>
-		 * windowHandles2 = driver.getWindowHandles(); for (String handle :
-		 * windowHandles2) { driver.switchTo().window(handle); } Thread.sleep(100000);
-		 * driver.findElement(By.xpath(
-		 * "//div[@class='el-select']//input[@placeholder='Select']")).click();
-		 * driver.findElement(By.xpath("//ul//li//span[normalize-space()='h4']")).click(
-		 * ); driver.findElement(By.xpath(
-		 * "//div[@class='el-textarea']//textarea[@class='el-textarea__inner']")).
-		 * sendKeys("Test Sample"); driver.findElement(By.
-		 * xpath("//div[@class='el-dialog__wrapper fields-dialog']//button[2]")).click()
-		 * ;
-		 *
-		 */ // image
-
+		System.out.println("Signature drawn Successfully");
 	}
 
 	public void image() throws InterruptedException, IOException {
@@ -221,22 +218,29 @@ public class Dragdrop {
 
 	}
 
-	public void send() throws InterruptedException, IOException {
+	public void send() throws Exception {
 
-		By send = By.xpath("//input[@placeholder='Select a Recipient']");
-		WebDriverWait wait11 = new WebDriverWait(driver, Duration.ofMinutes(2));
-		WebElement cli = wait11.until(ExpectedConditions.elementToBeClickable(send));
-		cli.click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//ul//li//span[normalize-space()='Receiver-1']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Send Document']")).click();
+		// waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+
+		// waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[2]"));
+
+		waitEle(By.xpath("//input[@placeholder='Select a Recipient']"));
+
+		waitEle(By.xpath("//div[@x-placement=\"bottom-start\"]//li[3]"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		WebElement Sign = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='signatureEle']")));
+		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
+		Actions actions = new Actions(driver);
+		actions.clickAndHold(Sign).moveToElement(Target).release().build().perform();
+
+		waitEle(By.xpath("//span[normalize-space()='Send Document']"));
 		Set<String> windowHandles3 = driver.getWindowHandles();
 		for (String handle : windowHandles3) {
 			driver.switchTo().window(handle);
 		}
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Send document']")).click();
+
+		waitEle(By.xpath("//span[normalize-space()='Send document']"));
 
 	}
 

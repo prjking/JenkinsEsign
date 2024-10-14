@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="TestCase.globalVariableTestcase_meghana">
+        <methods>
+          <include name="timeRange"/>
+          <include name="time"/>
+          <include name="multiSelect"/>
+          <include name="dateTimeRange"/>
+          <include name="multiLineText"/>
+          <include name="addToEntity"/>
+          <include name="singleLineText"/>
+          <include name="Date"/>
+          <include name="Weekdays"/>
+          <include name="ClickNewVariable"/>
+          <include name="Number"/>
+          <include name="dateRange"/>
+          <include name="Start"/>
+          <include name="select"/>
+          <include name="dateTime"/>
+          <include name="fixedTime"/>
+          <include name="aa"/>
+          <include name="clickGlobalVariableButton"/>
+        </methods>
+      </class> <!-- TestCase.globalVariableTestcase_meghana -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

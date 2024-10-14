@@ -1,0 +1,9 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+	<test name="Bug Test Run">
+		<classes>
+			<class name="TestCase.BugTestcase" />
+		</classes>
+	</test>
+</suite>

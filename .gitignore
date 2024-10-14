@@ -1,1 +1,13 @@
-/target/
+# Exclude all files in directories with high numbers
+src/test/Videos/*/*/*.mov
+src/test/Screenshots/*/*/*.avi
+
+# Alternatively, exclude specific directories
+src/test/Videos/high-number-folder/
+src/test/Screenshots/high-number-folder/
+
+# Exclude specific file patterns
+*.mov
+*.avi
+
+target/

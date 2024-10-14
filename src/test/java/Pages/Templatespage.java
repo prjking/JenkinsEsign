@@ -1,6 +1,5 @@
 package Pages;
 
-
 import java.time.Duration;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class Templatespage {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
 		} catch (Exception e) {
 
-			System.out.println("Overlay not found or not invisible.");
+			//("Overlay not found or not invisible.");
 		}
 
 		By ad = By.xpath("//span[normalize-space()='Templates']");
@@ -43,16 +42,18 @@ public class Templatespage {
 
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", add);
-			System.out.println("Element clicked using JS.");
+			//("Element clicked using JS.");
 		} catch (Exception e) {
 
-			System.out.println("Element not clickable or not found: ");
+			//("Element not clickable or not found: ");
 		}
 
 	}
 
 	public void EditTemp() throws Exception {
+
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
 		WebElement elementToHover = driver.findElement(By.xpath("//div[@class='el-table__fixed']//tr[2]"));
 
 		Actions actions = new Actions(driver);
@@ -67,39 +68,41 @@ public class Templatespage {
 		Thread.sleep(10000);
 		WebElement subMenuItem = driver.findElement(By.xpath("//ul[@x-placement=\"bottom-end\"]//a[1]"));
 		actions.click(subMenuItem).perform();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 
+		By Select = By.xpath("//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']");
+		WebElement Selectrec = wait.until(ExpectedConditions.elementToBeClickable(Select));
+
+		JavascriptExecutor executor1 = (JavascriptExecutor) driver;
+		executor1.executeScript("arguments[0].click();", Selectrec);
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@class='el-scrollbar__view']//input[@placeholder='Select a Recipient']"))
-				.click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//div[@class='el-scrollbar']//ul//li[2]")).click();
-		Thread.sleep(10000);
+		By Selectd = By.xpath("//div[@class='el-scrollbar']//ul//li[2]");
 
+		WebElement Selectdrec = wait.until(ExpectedConditions.elementToBeClickable(Selectd));
+		Selectdrec.click();
 
-		  WebElement Company = wait
-		  .until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-		  "//button[@id='companyEle']"))); WebElement Target =
-		  driver.findElement(By.xpath("//*[@id=\"svg\"]")); Thread.sleep(1000); Actions
-		  actions3 = new Actions(driver);
-		  actions3.clickAndHold(Company).moveToElement(Target).release().build().
-		  perform(); Thread.sleep(10000);
-		 driver.findElement(By.xpath("//span[text()='Create Document']")).click();
+		WebElement Company = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='companyEle']")));
+		WebElement Target = driver.findElement(By.xpath("//*[@id=\"svg\"]"));
 
-		 try {
-				By clo = By.xpath("//div[@class='el-notification__closeBtn el-icon-close']");
-				WebElement close = wait.until(ExpectedConditions.elementToBeClickable(clo));
-				close.click();
+		Actions actions3 = new Actions(driver);
+		actions3.clickAndHold(Company).moveToElement(Target).release().build().perform();
+		By Crea = By.xpath("//span[text()='Create Document']");
+		WebElement CreaDoc = wait.until(ExpectedConditions.elementToBeClickable(Crea));
+		CreaDoc.click();
 
-			} catch (Exception e) {
-				By Send = By.xpath("//span[text()='Save Draft']");
-				WebElement Senddoc = wait.until(ExpectedConditions.elementToBeClickable(Send));
-				Senddoc.click();
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", Senddoc);
-				System.out.println("senddoc clicked using JS.");
-			}
+		try {
+			By clo = By.xpath("//div[@class='el-notification__closeBtn el-icon-close']");
+			WebElement close = wait.until(ExpectedConditions.elementToBeClickable(clo));
+			close.click();
 
+		} catch (Exception e) {
+			By Send = By.xpath("//span[text()='Save Draft']");
+			WebElement Senddoc = wait.until(ExpectedConditions.elementToBeClickable(Send));
+			Senddoc.click();
+			JavascriptExecutor executor2 = (JavascriptExecutor) driver;
+			executor2.executeScript("arguments[0].click();", Senddoc);
+			//("senddoc clicked using JS.");
+		}
 
 		// driver.findElement(By.xpath("//i[@class='el-icon-back']")).click();
 	}
@@ -234,7 +237,7 @@ public class Templatespage {
 
 		Assert.assertEquals(DocMessage.getText(), "Done! Your bulk send was delivered successfully.");
 
-		System.out.println("Upload CSV Document Success");
+		//("Upload CSV Document Success");
 	}
 
 	public void Getlink() throws Exception {
@@ -403,6 +406,8 @@ public class Templatespage {
 
 	public void ChangeOwner() throws Exception {
 		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+
 		WebElement elementToHover = driver.findElement(By.xpath("//div[@class='el-table__fixed']//tr[4]"));
 
 		Actions actions = new Actions(driver);
@@ -415,7 +420,7 @@ public class Templatespage {
 		Thread.sleep(10000);
 		actions2.moveToElement(elementToHover2).perform();
 		Thread.sleep(10000);
-		WebElement subMenuItem = driver.findElement(By.xpath("//ul[@x-placement=\"bottom-end\"]//a[8]"));
+		WebElement subMenuItem = driver.findElement(By.xpath("//ul[@x-placement=\"bottom-end\"]//a[7]"));
 		actions.click(subMenuItem).perform();
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
@@ -423,9 +428,16 @@ public class Templatespage {
 
 		}
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[@class='el-radio__inner']")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//span[normalize-space()='Change']")).click();
+		By ad = By.xpath("//span[@class='el-radio__inner']");
+
+		WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ad));
+		add.click();
+
+		By ad1 = By.xpath("//span[normalize-space()='Change']");
+
+		WebElement add1 = wait.until(ExpectedConditions.elementToBeClickable(ad1));
+		add1.click();
+
 	}
 
 	public void Viewdata() throws Exception {
@@ -473,7 +485,7 @@ public class Templatespage {
 			closeButton.click();
 		} catch (Exception e) {
 
-			System.out.println("Exception occurred: " + e.getMessage());
+			//("Exception occurred: " + e.getMessage());
 		}
 
 		/*
@@ -745,7 +757,7 @@ public class Templatespage {
 		WebDriverWait wait22 = new WebDriverWait(driver, Duration.ofMinutes(2));
 		WebElement EMPLOYEEForm = wait22.until(ExpectedConditions.elementToBeClickable(EMPLOYEE));
 		EMPLOYEEForm.click();
-		System.out.println("EMPLOYEEForm clicked");
+		//("EMPLOYEEForm clicked");
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.PAGE_DOWN).perform();
 
@@ -753,7 +765,7 @@ public class Templatespage {
 		 * By EMPLOYEE = By.xpath("//div[text()='EMPLOYEE FORM']"); WebDriverWait wait22
 		 * = new WebDriverWait(driver, Duration.ofMinutes(2)); WebElement EMPLOYEEForm =
 		 * wait22.until(ExpectedConditions.elementToBeClickable(EMPLOYEE));
-		 * EMPLOYEEForm.click(); System.out.println("EMPLOYEEForm clicked");
+		 * EMPLOYEEForm.click(); //("EMPLOYEEForm clicked");
 		 *
 		 * Thread.sleep(10000);
 		 *
@@ -854,7 +866,7 @@ public class Templatespage {
 			Senddoc.click();
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", Senddoc);
-			System.out.println("senddoc clicked using JS.");
+			//("senddoc clicked using JS.");
 		}
 
 		By emai = By.xpath("(//input[@placeholder='Search with Email'])[2]");

@@ -19,8 +19,49 @@ public class Uploaddocuments {
 
 	}
 
+	public void Blankdoc() throws Exception {
+    
+		Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		try {
+			By overlayLocator = By.xpath("//div[@class='el-loading-mask is-fullscreen']");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
+		} catch (Exception e) {
+
+		}
+		
+		By Element1 = By.xpath("//img[@src='/img/Blank.1f314c3f.svg']");
+		WebElement document1 = wait.until(ExpectedConditions.elementToBeClickable(Element1));
+		document1.click();
+		Set<String> windowHandles = driver.getWindowHandles();
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+		}
+
+		Thread.sleep(10000);
+
+		By Docname1 = By.xpath("//input[@placeholder='Enter Document name']");
+		WebElement Docnameen = wait.until(ExpectedConditions.elementToBeClickable(Docname1));
+		Docnameen.sendKeys("test");
+
+		By page = By.xpath("//input[@placeholder='Select number of pages']");
+		WebElement pages = wait.until(ExpectedConditions.elementToBeClickable(page));
+		pages.click();
+
+		By li = By.xpath("//div[@x-placement]//ul//li[2]");
+		WebElement lis = wait.until(ExpectedConditions.elementToBeClickable(li));
+		lis.click();
+
+		driver.findElement(By.xpath("(//span[normalize-space()='Continue'])[2]")).click();
+		WebElement doc = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[@class='fw-bold fs-24']")));
+		Assert.assertNotNull(doc, "Add Recepient element is not present Create document failed");
+		System.out.println("Upload document successfull");
+
+	}
+
 	public void Fileupload() throws InterruptedException, Exception {
-        Thread.sleep(10000);
+		Thread.sleep(10000);
 		By Element = By.xpath("//h4[@class='fw-normal blue pb-2']");
 		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(10));
 		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
@@ -36,7 +77,7 @@ public class Uploaddocuments {
 		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(1));
 		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
 		canc.click();
- 
+
 		Set<String> windowHandles = driver.getWindowHandles();
 		for (String handle : windowHandles) {
 			driver.switchTo().window(handle);
@@ -57,40 +98,36 @@ public class Uploaddocuments {
 					WebDriverWait hold1 = new WebDriverWait(driver, Duration.ofSeconds(30));
 					WebElement canc1 = hold1.until(ExpectedConditions.elementToBeClickable(Element1));
 					canc1.click();
-		
-					
-		
-						By ad = By.xpath("//span[normalize-space()='Continue']");
-						WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
-						WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ad));
 
-						JavascriptExecutor executor = (JavascriptExecutor) driver;
-						executor.executeScript("arguments[0].click();", add);
- 
- 
+					By ad = By.xpath("//span[normalize-space()='Continue']");
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+					WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ad));
+
+					JavascriptExecutor executor = (JavascriptExecutor) driver;
+					executor.executeScript("arguments[0].click();", add);
+
 				} catch (Exception e) {
 					Thread.sleep(10000);
 					driver.findElement(By.xpath("//span[normalize-space()='Continue']")).click();
- 
+
 				}
 			}
 		}
- 
- 
+
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Prjking@99");
 		try {
- 
+
 			By Element1 = By.id("accept_all_cookies_button");
 			WebDriverWait hold1 = new WebDriverWait(driver, Duration.ofSeconds(30));
 			WebElement canc1 = hold.until(ExpectedConditions.elementToBeClickable(Element1));
 			canc1.click();
 			Thread.sleep(10000);
- 
+
 		} catch (Exception e) {
 			Thread.sleep(10000);
 			driver.findElement(By.xpath("//span[normalize-space()='Log in']")).click();
- 
+
 		}
 		driver.switchTo().window(Parentwindowid);
 		driver.findElement(By.xpath("//span//span[normalize-space()='01 2160 Pineneedle Row.jpg']")).click();
@@ -99,8 +136,6 @@ public class Uploaddocuments {
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//button[@class='el-button text-center upload-btn el-button--danger']")).click();
 	}
-		
-	
 
 	public void uploadGdrive() throws Exception {
 		Thread.sleep(10000);
@@ -156,7 +191,7 @@ public class Uploaddocuments {
 			}
 		}
 	}
-	
+
 	public void oneDriveupload() throws Exception {
 		// driver.findElement(By.xpath("//img[@src='/img/onedrive.cc38d634.svg']"));
 		Thread.sleep(10000);
@@ -174,7 +209,7 @@ public class Uploaddocuments {
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//button[normalize-space()='Connect OneDrive']")).click();
 		Thread.sleep(5000);
- 
+
 		Set<String> allwindowhandles = driver.getWindowHandles();
 		for (String childwindow : allwindowhandles) {
 			if (!childwindow.endsWith(Parentwindowid)) {
@@ -193,19 +228,20 @@ public class Uploaddocuments {
 				Upload2.click();
 				Thread.sleep(5000);
 				Set<String> windowHandles1 = driver.getWindowHandles();
-				for (String handle :windowHandles1) { driver.switchTo().window(handle);
+				for (String handle : windowHandles1) {
+					driver.switchTo().window(handle);
 				}
 				Thread.sleep(5000);
 				driver.findElement(By.xpath("//span//span[normalize-space()='Document 1.docx']")).click();
 				Thread.sleep(5000);
 				driver.findElement(By.xpath("//span[@title='Upload']")).click();
 				Thread.sleep(10000);
-				//driver.findElement(By.xpath(""))
+				// driver.findElement(By.xpath(""))
 				driver.findElement(By.xpath("//span[normalize-space()='Next']")).click();
 			}
 		}
 	}
- 
+
 	/*
 	 * public void fg() throws InterruptedException, Exception {
 	 *

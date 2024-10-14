@@ -1,6 +1,7 @@
 package TestCase;
 
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -27,11 +28,17 @@ public class TestCases_Prudhvi extends testCaseBase {
 	Signup signup;
 	Templatespage templatespage;
 	Dashboard dashboard;
-
+	
+	public void setupDriver() {
+		//driver = new ChromeDriver(getChromeOptions());
+		 driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nsui.esigns.io/signin");
+	}
 
 	@BeforeMethod
 	public void Start() {
-		setup();
+		setupDriver();
 		login = new Login(driver);
 		alldocuments = new Alldocuments(driver);
 		uploaddocuments = new Uploaddocuments(driver);
@@ -54,14 +61,14 @@ public class TestCases_Prudhvi extends testCaseBase {
 
 	@Test
 
-	public void verifyloginwithValidCredentials() throws InterruptedException {
+	public void verifyloginwithValidCredentials() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 
 	}
 
 	@Test
-	public void Document() throws InterruptedException {
+	public void Document() throws Exception {
 		login.Signin();
 		login.VerifyLoginSucess();
 		alldocuments.Createdocument();
